@@ -1,0 +1,134 @@
+ru:
+  helpers:
+    submit:
+      create: Сохранить
+      update: Сохранить измения
+
+  simple_form:
+    yes: Да
+    no: Нет
+    required:
+      text: Обязательное к заполнению
+      mark: "*"
+
+    error_notification:
+      default_message: "Пожалуйста, исправьте следующие ошибки:"
+
+    labels:
+      defaults:
+        title: Заголовок
+        intro: Введение
+        body: Контент
+        categories: Отрасли
+        category: Отрасль
+        locale: Язык
+        cover: Изображение
+        position: Местоположение
+        boundary: Площадка
+        district: Район
+        created_at: Дата создания
+        updated_at: Последнее обновление
+
+      area:
+        ground_type: Тип земли
+        square: Площадь
+        distance_from_road: Расстояние до автодороги
+        distance_from_railway: Расстояние до железной дороги
+        availability_of_electricity: Электричество
+        availability_of_gas: Газ
+        availability_of_plumbing: Водоснабжение
+        availability_of_cellular: Сотовая связь
+
+      article:
+        permalink: Пермалинк
+        path: Путь
+        published: Опубликована
+        template: Шаблон
+        show_in_menu: Показывать в меню
+        menu_title: Заголовок в меню
+
+      attachment:
+        file: Файл
+
+      feedback_form:
+        email: Email
+        subject: Имя и фамилия
+        body: Ваше сообщение
+
+      info_object:
+        contacts: Контактные данные
+        website: Веб-сайт
+        layer: Категория
+
+      post:
+        permalink: Пермалинк
+        source_url: Источник
+        date: Дата
+        announcement: Анонс
+
+      project:
+        protected_content: Приватные данные
+        kind: Тип
+        state: Состояние
+        status: Статус
+        start_date: Дата запуска
+        end_date: Дата завершения
+        due_date: Сроки реализации
+        user: Клиент
+        cost: Стоимость
+        invested_funds: Проинвестированно
+        search_funds: Требуемые вложения
+        npv: NPV
+        irr: IRR
+        pi: PI
+        dpp: DPP
+        visible_on_map: Отображать на карте
+        selected: Приоритетный
+
+      quote:
+        author: Автор
+        title: Подпись
+        body: Цитата
+
+      user:
+        password: Пароль
+        name: Имя
+        password_confirmation: Подтверждение пароля
+        current_password: Текущий пароль
+        email: Email
+        phone_number: Телефонный номер
+        picture: Изображение
+        type: Тип
+        role: Роль
+        country_code: Страна
+        time_zone: Часовой пояс
+        email_notifications: Уведомления по Email
+        last_sign_in_at: Заходил
+        last_sign_in_ip: Последний IP
+        current_sign_in_at: Текущее время входа
+        current_sign_in_ip: Текущий IP
+        sign_in_count: Количество входов
+        remember_me: Запомнить меня
+
+        followed_categories: Отслеживаемые категории
+
+        edit:
+          password: Новый пароль
+          password_confirmation: Подтверждение нового пароля
+
+    placeholders:
+      project_status:
+        title: Заголовок
+        color: Цвет
+      district:
+        title: Название
+      category:
+        title: Заголовок
+      user:
+        name: Имя
+        email: Email
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        edit:
+          password: Новый пароль
+          password_confirmation: Подтверждение нового пароля
