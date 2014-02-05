@@ -1,0 +1,55 @@
+/ <!DOCTYPE html>
+/ <html>
+/ <head>
+/   <title>Stroimarket</title>
+/   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+/   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+/   <%= csrf_meta_tags %>
+/ </head>
+/ <body>
+
+/ <%= yield %>
+
+/ </body>
+/ </html>
+
+!!!
+%html{ lang: I18n.locale }
+  %head
+    = render 'meta'
+
+    = stylesheet_link_tag :application
+    = csrf_meta_tags
+
+    = yield :head
+  %body
+
+    .page-wrapper.site-frontoffice
+      .container
+        = render 'header'
+
+      .container.page-container
+        .row
+          .col-md-12.page-heading
+            = yield :heading
+
+        .row
+          .col-md-8.page-content-column
+            .page-intro
+              = yield :intro
+
+            = yield
+
+          .col-md-4.page-sidebar
+            = yield :sidebar
+
+        .row
+          .col-md-12.page-extra
+            = yield :extra
+
+      = render 'footer'
+
+    -# = javascript_env
+    = javascript_include_tag :application, "data-turbolinks-track" => true
+    = yield :body
+    -# = render 'analytics'

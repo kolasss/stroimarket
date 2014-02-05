@@ -1,0 +1,25 @@
+.header.clearfix
+  %nav.navbar(role="navigation")
+    .row
+      .col-md-6.logowrapper
+        %a.logo{ href: root_path }
+          .logo_image
+          %span.sitename= t 'sitename'
+
+      .col-md-6
+        = render 'usermenu'
+
+    .row
+      .col-md-12
+        %button#mainnav-toggle.navbar-toggle.btn.btn-primary.btn-block(data-toggle="collapse" data-target="#mainnav")
+          %span.btn-nav-collapse ☰
+          = t 'mainnav'
+
+    .row
+      .col-md-12
+        #mainnav.navbar-collapse.collapse
+          = render 'nav'
+
+
+.page-messages
+  = messages

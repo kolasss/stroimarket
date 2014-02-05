@@ -1,0 +1,12 @@
+= paginator.render do
+  %nav
+    %ul.content-pagination
+      = prev_page_tag
+
+      - each_page do |p|
+        - if p.left_outer? or p.right_outer? or p.inside_window?
+          = page_tag p
+        - elsif not p.was_truncated?
+          = gap_tag
+
+      = next_page_tag

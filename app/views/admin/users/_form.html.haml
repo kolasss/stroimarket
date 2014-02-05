@@ -1,0 +1,27 @@
+= simple_form_for [ :admin, @user ] do |f|
+
+  .row
+    / .col-md-3
+    /   = f.input :picture, wrapper: :group do
+    /     = user_picture_uploader f
+
+    .col-md-9
+      = f.input :name,  input_html: { autocomplete: :off }
+      = f.input :email, input_html: { autocomplete: :off }
+
+      = f.input :role, as: :select, collection: User::ROLES, include_blank: false
+
+      / %hr
+
+      -# = locale_input f
+      -# = country_code_input f
+      -# = time_zone_input f
+
+      %hr
+
+      = f.input :password,              input_html: { autocomplete: :off }
+      = f.input :password_confirmation, input_html: { autocomplete: :off }
+
+      %hr
+
+      = f.button :submit

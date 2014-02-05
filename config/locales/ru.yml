@@ -1,6 +1,6 @@
 ru:
   language: Русский
-  sitename: Инвест Якутия
+  sitename: Строительный рынок
   siteinfo: Инвест проекты Республики Саха (Якутии)
 
   back: Назад
@@ -138,218 +138,225 @@ ru:
     add_project_hint: "Добавьте проект, чтобы найти инвесторов."
     search_hint: Поиск проекта
 
-  projects:
-    new:
-      title: Новый проект
-    index:
-      title: Проекты
-      projects: Проекты
-      statuses: Статусы
-      categories: Отрасли
-    selected:
-      title: Инвестиционные проекты в фокусе
-      intro: "Здесь представлен инвест-каталог проектов и идей. Если у вас есть проект, и вы ищете инвестора, предлагаем разместить ваш проект на нашем сайте."
-    edit:
-      open: Открыть
-      close: Закрыть
-    state:
-      pending: Модерация
-      open: Открыт
-      closed: Закрыт
-    kind:
-      invest: Инвест
-      goverment: ГЧП
-      municipal: МИП
-    kind_full:
-      invest: Инвестиционные Проекты
-      goverment: Государственно-частное Партнёрство
-      municipal: Муниципальные Инвестиционные Проекты
-    fields: Данные
-    map: На карте
-    documents: Документы
-    images: Изображения
-    financial: Финансовые показатели
-    info: Информация
-    follow: Подписаться
-    unfollow: Отписаться
-    following: 'Вы подписаны на "%{project}".'
-    not_following: 'Вы не подписаны на "%{project}".'
-    follow_successful: 'Вы подписались на "%{project}".'
-    unfollow_successful: 'Вы отписались от "%{project}".'
-    already_follow: 'Вы уже подписаны на "%{project}".'
+  unauthorized:
+    manage:
+      all: "Доступ запрещен."
+      user: "Запрещено изменять учетные записи других пользователей."
+    create:
+      sell: "Для подачи объявления войдите или зарегистрируйтесь"
 
-  areas:
-    new:
-      title: Новый участок
-    index:
-      title: Участки
-    info: Информация
-    infrastructure: Инфраструктура
-    fields: Данные
-    map: На карте
-    documents: Документы
-    images: Изображения
-    ground_types_info:
-      whitefield: "Готовый объект с описанием характеристик, с подведенной инфраструктурой."
-      brownfield: "Земля, которая ранее использовалась для промышленных целей, например такая, как территория старого завода."
-      greenfield: "Неосвоенная земля, в городской территории или сельском районе, или в настоящее время используемая для сельского хозяйства."
+  # projects:
+  #   new:
+  #     title: Новый проект
+  #   index:
+  #     title: Проекты
+  #     projects: Проекты
+  #     statuses: Статусы
+  #     categories: Отрасли
+  #   selected:
+  #     title: Инвестиционные проекты в фокусе
+  #     intro: "Здесь представлен инвест-каталог проектов и идей. Если у вас есть проект, и вы ищете инвестора, предлагаем разместить ваш проект на нашем сайте."
+  #   edit:
+  #     open: Открыть
+  #     close: Закрыть
+  #   state:
+  #     pending: Модерация
+  #     open: Открыт
+  #     closed: Закрыт
+  #   kind:
+  #     invest: Инвест
+  #     goverment: ГЧП
+  #     municipal: МИП
+  #   kind_full:
+  #     invest: Инвестиционные Проекты
+  #     goverment: Государственно-частное Партнёрство
+  #     municipal: Муниципальные Инвестиционные Проекты
+  #   fields: Данные
+  #   map: На карте
+  #   documents: Документы
+  #   images: Изображения
+  #   financial: Финансовые показатели
+  #   info: Информация
+  #   follow: Подписаться
+  #   unfollow: Отписаться
+  #   following: 'Вы подписаны на "%{project}".'
+  #   not_following: 'Вы не подписаны на "%{project}".'
+  #   follow_successful: 'Вы подписались на "%{project}".'
+  #   unfollow_successful: 'Вы отписались от "%{project}".'
+  #   already_follow: 'Вы уже подписаны на "%{project}".'
 
-  info_objects:
-    new:
-      title: Новый объект инфо слоя
-    index:
-      title: Инфо слои
-    layer:
-      government: Органы власти и институты развития
-      administrative: Административное устройство
-      education: Учебные заведения
-      special_education: Специальные учебные центры
-      hotels: Гостиницы
-    fields: Данные
-    map: На карте
-    documents: Документы
-    images: Изображения
+  # areas:
+  #   new:
+  #     title: Новый участок
+  #   index:
+  #     title: Участки
+  #   info: Информация
+  #   infrastructure: Инфраструктура
+  #   fields: Данные
+  #   map: На карте
+  #   documents: Документы
+  #   images: Изображения
+  #   ground_types_info:
+  #     whitefield: "Готовый объект с описанием характеристик, с подведенной инфраструктурой."
+  #     brownfield: "Земля, которая ранее использовалась для промышленных целей, например такая, как территория старого завода."
+  #     greenfield: "Неосвоенная земля, в городской территории или сельском районе, или в настоящее время используемая для сельского хозяйства."
 
-  categories:
-    index:
-      title: Отрасли
-    show:
-      intro: "Подпишитесь и оставайтесь в курсе новых инвестиционных проектов, свежих новостей и анонсов."
-    follow: Подписаться
-    unfollow: Отписаться
-    following: 'Вы подписаны на "%{category}".'
-    not_following: 'Вы не подписаны на "%{category}".'
-    follow_successful: 'Вы подписались на "%{category}".'
-    unfollow_successful: 'Вы отписались от "%{category}".'
-    already_follow: 'Вы уже подписаны на "%{category}".'
+  # info_objects:
+  #   new:
+  #     title: Новый объект инфо слоя
+  #   index:
+  #     title: Инфо слои
+  #   layer:
+  #     government: Органы власти и институты развития
+  #     administrative: Административное устройство
+  #     education: Учебные заведения
+  #     special_education: Специальные учебные центры
+  #     hotels: Гостиницы
+  #   fields: Данные
+  #   map: На карте
+  #   documents: Документы
+  #   images: Изображения
 
-  districts:
-    index:
-      title: Районы
+  # categories:
+  #   index:
+  #     title: Отрасли
+  #   show:
+  #     intro: "Подпишитесь и оставайтесь в курсе новых инвестиционных проектов, свежих новостей и анонсов."
+  #   follow: Подписаться
+  #   unfollow: Отписаться
+  #   following: 'Вы подписаны на "%{category}".'
+  #   not_following: 'Вы не подписаны на "%{category}".'
+  #   follow_successful: 'Вы подписались на "%{category}".'
+  #   unfollow_successful: 'Вы отписались от "%{category}".'
+  #   already_follow: 'Вы уже подписаны на "%{category}".'
 
-  project_statuses:
-    index:
-      title: Состояния
+  # districts:
+  #   index:
+  #     title: Районы
 
-  quotes:
-    index:
-      title: Цитаты
-    new:
-      title: Добавление цитаты
+  # project_statuses:
+  #   index:
+  #     title: Состояния
 
-  users:
-    new:
-      title: Новый пользователь
-    index:
-      title: Пользователи
-    role:
-      client: Клиент
-      manager: Менеджер проектов
-      editor: Редактор
-      admin: Администратор
+  # quotes:
+  #   index:
+  #     title: Цитаты
+  #   new:
+  #     title: Добавление цитаты
 
-  contacts:
-    feedback:
-      title: Контакты
-      form: Обратная связь
-    president_feedback:
-      title: Горячая линия с Президентом
-      president_title: "Егор Борисов &mdash; Президент Республики Саха (Якутия)."
-    partners:
-      title: Партнёры
+  # users:
+  #   new:
+  #     title: Новый пользователь
+  #   index:
+  #     title: Пользователи
+  #   role:
+  #     client: Клиент
+  #     manager: Менеджер проектов
+  #     editor: Редактор
+  #     admin: Администратор
 
-  partners:
-    yakutiaventure: Венчурная компания Якутия
-    asi: Агентство стратегических инициатив
-    rdif: Российский фонд прямых инвестиций
-    ricsakha: Республиканская инвестиционная компания
-    tpykt: Технопарк Якутия
-    iuprez: Институт управления при Президенте РС(Я)
+  # contacts:
+  #   feedback:
+  #     title: Контакты
+  #     form: Обратная связь
+  #   president_feedback:
+  #     title: Горячая линия с Президентом
+  #     president_title: "Егор Борисов &mdash; Президент Республики Саха (Якутия)."
+  #   partners:
+  #     title: Партнёры
 
-  feedback:
-    subject: '[Обратная связь] %{subject}'
-    president_subject: '[Горячая линия с Президентом] %{subject}'
-    success_message: 'Сообщение успешно отправлено, спасибо!'
-    failure_message: 'Сообщение небыло отправлено!'
+  # partners:
+  #   yakutiaventure: Венчурная компания Якутия
+  #   asi: Агентство стратегических инициатив
+  #   rdif: Российский фонд прямых инвестиций
+  #   ricsakha: Республиканская инвестиционная компания
+  #   tpykt: Технопарк Якутия
+  #   iuprez: Институт управления при Президенте РС(Я)
 
-  video:
-    stream: Прямая трансляция
-    about_yakutia: Видео о Якутии
+  # feedback:
+  #   subject: '[Обратная связь] %{subject}'
+  #   president_subject: '[Горячая линия с Президентом] %{subject}'
+  #   success_message: 'Сообщение успешно отправлено, спасибо!'
+  #   failure_message: 'Сообщение небыло отправлено!'
 
-  dashboard:
-    account:
-      profile:
-        title: Профиль
-      edit_profile:
-        title: Редактирование профиля
-        unconfirmed_email: "Ожидается подтверждение: %{email}"
-      settings:
-        title: Настройки
-    projects:
-      title: Проекты
-      own: Мои проекты
-      followed: Отслеживаемые проекты
-      fields: Данные
-      map: На карте
-      documents: Документы
-      images: Изображения
-      activity: Активность
-      show_in_catalog: Показать в каталоге →
-    activities:
-      title: Активность
-    notifications:
-      title: Уведомления
+  # video:
+  #   stream: Прямая трансляция
+  #   about_yakutia: Видео о Якутии
 
-  activities:
-    create_project   : 'создал проект <a href="%{project_url}">%{project_title}</a>'
-    update_project   : 'обновил проект <a href="%{project_url}">%{project_title}</a>'
-    add_attachment   : 'прикрепил документ <a href="%{attachment_url}">%{attachment_title}</a> к проекту <a href="%{project_url}">%{project_title}</a>'
-    open_project     : 'опубликовал проект <a href="%{project_url}">%{project_title}</a>'
-    close_project    : 'закрыл проект <a href="%{project_url}">%{project_title}</a>'
-    moderate_project : 'обновил проект <a href="%{project_url}">%{project_title}</a>'
-    curate_project   : 'подписался на проект <a href="%{project_url}">%{project_title}</a>'
-    follow_project   : 'подписался на проект <a href="%{project_url}">%{project_title}</a>'
-    publish_post     : 'опубликовал пост <a href="%{post_url}">«%{post_title}»</a>'
+  # dashboard:
+  #   account:
+  #     profile:
+  #       title: Профиль
+  #     edit_profile:
+  #       title: Редактирование профиля
+  #       unconfirmed_email: "Ожидается подтверждение: %{email}"
+  #     settings:
+  #       title: Настройки
+  #   projects:
+  #     title: Проекты
+  #     own: Мои проекты
+  #     followed: Отслеживаемые проекты
+  #     fields: Данные
+  #     map: На карте
+  #     documents: Документы
+  #     images: Изображения
+  #     activity: Активность
+  #     show_in_catalog: Показать в каталоге →
+  #   activities:
+  #     title: Активность
+  #   notifications:
+  #     title: Уведомления
 
-  notifications:
-    settings: Настройки уведомлений
-    mark_as_read: Отметить как прочитанное
-    mark_all_as_read: Отметить все как прочитанные
-    read_state_updated:
-      zero: "У вас нет уведомлений!"
-      one: "Уведомление отмечено как прочитанное."
-      few: "%{count} уведомления отмечены как прочитанные."
-      many: "%{count} уведомлений отмечены как прочитанные."
+  # activities:
+  #   create_project   : 'создал проект <a href="%{project_url}">%{project_title}</a>'
+  #   update_project   : 'обновил проект <a href="%{project_url}">%{project_title}</a>'
+  #   add_attachment   : 'прикрепил документ <a href="%{attachment_url}">%{attachment_title}</a> к проекту <a href="%{project_url}">%{project_title}</a>'
+  #   open_project     : 'опубликовал проект <a href="%{project_url}">%{project_title}</a>'
+  #   close_project    : 'закрыл проект <a href="%{project_url}">%{project_title}</a>'
+  #   moderate_project : 'обновил проект <a href="%{project_url}">%{project_title}</a>'
+  #   curate_project   : 'подписался на проект <a href="%{project_url}">%{project_title}</a>'
+  #   follow_project   : 'подписался на проект <a href="%{project_url}">%{project_title}</a>'
+  #   publish_post     : 'опубликовал пост <a href="%{post_url}">«%{post_title}»</a>'
 
-    create_project   : '<a href="%{user_url}">%{user_name}</a> опубликовал проект <a href="%{project_url}">%{project_title}</a>'
-    update_project   : '<a href="%{user_url}">%{user_name}</a> обновил проект <a href="%{project_url}">%{project_title}</a>'
-    add_attachment   : '<a href="%{user_url}">%{user_name}</a> прикрепил документ <a href="%{attachment_url}">%{attachment_title}</a> к проекту <a href="%{project_url}">%{project_title}</a>'
-    open_project     : '<a href="%{user_url}">%{user_name}</a> открыл проект <a href="%{project_url}">%{project_title}</a>'
-    close_project    : '<a href="%{user_url}">%{user_name}</a> закрыл проект <a href="%{project_url}">%{project_title}</a>'
-    moderate_project : '<a href="%{user_url}">%{user_name}</a> обновил проект <a href="%{project_url}">%{project_title}</a>'
-    follow_project   : '<a href="%{user_url}">%{user_name}</a> подписался на проект <a href="%{project_url}">%{project_title}</a>'
-    curate_project   : '<a href="%{user_url}">%{user_name}</a> подписался на проект <a href="%{project_url}">%{project_title}</a>'
-    publish_post     : '<a href="%{post_url}">«%{post_title}»</a>'
-    new_message      : '<a href="%{user_url}">%{user_name}</a> написал <a href="%{message_url}">сообщение</a>: %{message}'
+  # notifications:
+  #   settings: Настройки уведомлений
+  #   mark_as_read: Отметить как прочитанное
+  #   mark_all_as_read: Отметить все как прочитанные
+  #   read_state_updated:
+  #     zero: "У вас нет уведомлений!"
+  #     one: "Уведомление отмечено как прочитанное."
+  #     few: "%{count} уведомления отмечены как прочитанные."
+  #     many: "%{count} уведомлений отмечены как прочитанные."
 
-    type:
-      client:
-        'Activities::CurateProject'   : 'Менеджер начал курировать ваш проект'
-        'Activities::ModerateProject' : 'Менеджер отредактировал ваш проект'
-        'Activities::AddAttachment'   : 'Менеджер прикрепил файл к вашему проекту'
-        'Activities::OpenProject'     : 'Ваш проект опубликован'
-        'Activities::CloseProject'    : 'Ваш проект закрыт'
-        'Activities::PublishPost'     : 'Новость связана с отраслью, на новости в которой вы подписаны'
-      manager:
-        'Activities::CreateProject'   : 'Новый проект'
-        'Activities::OpenProject'     : 'Другой менеджер открыл проект'
-        'Activities::CloseProject'    : 'Другой менеджер закрыл проект'
-        'Activities::CurateProject'   : 'Другой менеджер подписался на проект'
-        'Activities::ModerateProject' : 'Другой менеджер отредактировал проект'
-        'Activities::AddAttachment'   : 'Новое вложение'
-        'Activities::UpdateProject'   : 'Клиент отредактировал описание проекта'
-        'Activities::FollowProject'   : 'Клиент подписался на проект'
-        'Activities::PublishPost'     : 'Новость связана с отраслью, на новости в которой вы подписаны'
+  #   create_project   : '<a href="%{user_url}">%{user_name}</a> опубликовал проект <a href="%{project_url}">%{project_title}</a>'
+  #   update_project   : '<a href="%{user_url}">%{user_name}</a> обновил проект <a href="%{project_url}">%{project_title}</a>'
+  #   add_attachment   : '<a href="%{user_url}">%{user_name}</a> прикрепил документ <a href="%{attachment_url}">%{attachment_title}</a> к проекту <a href="%{project_url}">%{project_title}</a>'
+  #   open_project     : '<a href="%{user_url}">%{user_name}</a> открыл проект <a href="%{project_url}">%{project_title}</a>'
+  #   close_project    : '<a href="%{user_url}">%{user_name}</a> закрыл проект <a href="%{project_url}">%{project_title}</a>'
+  #   moderate_project : '<a href="%{user_url}">%{user_name}</a> обновил проект <a href="%{project_url}">%{project_title}</a>'
+  #   follow_project   : '<a href="%{user_url}">%{user_name}</a> подписался на проект <a href="%{project_url}">%{project_title}</a>'
+  #   curate_project   : '<a href="%{user_url}">%{user_name}</a> подписался на проект <a href="%{project_url}">%{project_title}</a>'
+  #   publish_post     : '<a href="%{post_url}">«%{post_title}»</a>'
+  #   new_message      : '<a href="%{user_url}">%{user_name}</a> написал <a href="%{message_url}">сообщение</a>: %{message}'
 
-  messages:
-    successfully_sent: Сообщение добавлено.
+  #   type:
+  #     client:
+  #       'Activities::CurateProject'   : 'Менеджер начал курировать ваш проект'
+  #       'Activities::ModerateProject' : 'Менеджер отредактировал ваш проект'
+  #       'Activities::AddAttachment'   : 'Менеджер прикрепил файл к вашему проекту'
+  #       'Activities::OpenProject'     : 'Ваш проект опубликован'
+  #       'Activities::CloseProject'    : 'Ваш проект закрыт'
+  #       'Activities::PublishPost'     : 'Новость связана с отраслью, на новости в которой вы подписаны'
+  #     manager:
+  #       'Activities::CreateProject'   : 'Новый проект'
+  #       'Activities::OpenProject'     : 'Другой менеджер открыл проект'
+  #       'Activities::CloseProject'    : 'Другой менеджер закрыл проект'
+  #       'Activities::CurateProject'   : 'Другой менеджер подписался на проект'
+  #       'Activities::ModerateProject' : 'Другой менеджер отредактировал проект'
+  #       'Activities::AddAttachment'   : 'Новое вложение'
+  #       'Activities::UpdateProject'   : 'Клиент отредактировал описание проекта'
+  #       'Activities::FollowProject'   : 'Клиент подписался на проект'
+  #       'Activities::PublishPost'     : 'Новость связана с отраслью, на новости в которой вы подписаны'
+
+  # messages:
+  #   successfully_sent: Сообщение добавлено.

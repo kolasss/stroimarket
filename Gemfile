@@ -41,6 +41,8 @@ gem 'simple_form'
 
 gem 'thin'
 
+gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
@@ -52,3 +54,5 @@ gem 'thin'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'kaminari'
