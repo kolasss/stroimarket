@@ -32,6 +32,7 @@ group :doc do
 end
 
 gem 'mongoid', :github=>"mongoid/mongoid"
+gem 'mongoid-tree', :require => 'mongoid/tree'
 
 gem 'haml-rails'
 
@@ -56,3 +57,4 @@ gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 # gem 'debugger', group: [:development, :test]
 
 gem 'kaminari'
+gem "the_sortable_tree", "~> 2.4.0"

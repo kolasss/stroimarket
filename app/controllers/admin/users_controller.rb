@@ -51,15 +51,15 @@ class Admin::UsersController < AdminController
 
   protected
 
-  def user_params
-    params.require(:user).permit(
-      :name,
-      :email,
-      :role,
-      :password,
-      :password_confirmation,
-    )
-  end
+    def user_params
+      params.require(:user).permit(
+        :name,
+        :email,
+        :role,
+        :password,
+        :password_confirmation,
+      )
+    end
 
   # def sorting_columns
   #   %w[name role created_at]

@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @category.title
+%p
+  %b Position:
+  = @category.position
+%p
+  %b Parent:
+  = @category.parent.title if @category.parent
+%p
+  %b Children:
+  = @category.children if @category.children
+%p
+  %b Attr list:
+  = @category.attr_list
+
+= link_to 'Edit', edit_category_path(@category)
+\|
+= link_to 'Back', categories_path

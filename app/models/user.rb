@@ -2,7 +2,11 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  ROLES = %w[admin seller user]
+  ROLES = [
+    :admin,
+    :seller,
+    :user
+  ]
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
