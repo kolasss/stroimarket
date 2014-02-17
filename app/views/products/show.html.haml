@@ -1,0 +1,24 @@
+%p
+  %b Title:
+  = @product.title
+%p
+  %b Cover:
+  = @product.cover
+%p
+  %b Body:
+  = @product.body
+%p
+  %b Категория:
+  = @product.category.title
+
+.custom_attributes
+  - if @product.category && @product.category.product_attributes
+    - @product.category.product_attributes.each do |pr_at|
+      %p
+        %b #{pr_at.title}:
+        = @product[pr_at.name]
+        = pr_at.unit if pr_at.unit && pr_at.type == 'integer'
+
+= link_to 'Edit', edit_product_path(@product)
+\|
+= link_to 'Back', products_path

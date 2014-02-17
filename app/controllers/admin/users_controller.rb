@@ -6,7 +6,7 @@ class Admin::UsersController < AdminController
   # before_action :require_admin_rights!
 
   # before_action :set_user,     except: [ :index, :new, :create ]
-  # before_action :clean_password, only: [ :create, :update ]
+  before_action :clean_password, only: [ :update ]
 
   def index
     @users = User.page(params[:page])
@@ -69,12 +69,12 @@ class Admin::UsersController < AdminController
   #   @user = User.find(params[:id])
   # end
 
-  # def clean_password
-  #   par = params[:user]
+    def clean_password
+      par = params[:user]
 
-  #   if par[:password].blank?
-  #     par.delete :password
-  #     par.delete :password_confirmation
-  #   end
-  # end
+      if par[:password].blank?
+        par.delete :password
+        par.delete :password_confirmation
+      end
+    end
 end

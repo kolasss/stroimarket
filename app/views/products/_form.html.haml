@@ -1,0 +1,17 @@
+= simple_form_for(@product) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :cover
+    = f.input :body
+    = f.association :category, input_html: {object_id: f.object._id}
+
+    .custom_attributes
+      = render partial: 'custom_category_fields', locals: {category: @product.category, object: @product}
+      / - if @product.category && @product.category.product_attributes
+      /   - @product.category.product_attributes.each do |pr_at|
+      /     = f.input pr_at.name, as: :category, type: pr_at.type, label: pr_at.title
+
+  .form-actions
+    = f.button :submit

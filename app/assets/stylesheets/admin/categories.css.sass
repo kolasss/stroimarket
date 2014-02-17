@@ -1,0 +1,36 @@
+ol.sortable_tree
+  list-style-type: none
+  li .node_item
+    display: block
+    margin: 5px
+    padding: 5px
+    border: 1px solid #cccccc
+    color: #0088cc
+    background: #eeeeee
+    .control-links
+      float: right
+      a
+        margin-left: 5px
+    .sorting-handle
+      cursor: pointer
+      margin-right: 5px
+
+  li.placeholder
+    position: relative
+    margin: 5px
+    padding: 5px
+    border: 1px solid #cccccc
+    color: #0088cc
+    background: #fff
+    min-height: 30px
+
+  &.tree_root
+    padding: 0
+
+body.dragging, body.dragging *
+  cursor: move !important
+
+.dragged
+  position: absolute
+  opacity: 0.5
+  z-index: 2000

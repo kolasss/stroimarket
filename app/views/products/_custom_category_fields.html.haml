@@ -1,0 +1,4 @@
+- if category && category.product_attributes
+  = simple_fields_for(object) do |f|
+    - category.product_attributes.each do |pr_at|
+      = f.input pr_at.name, as: :category, type: pr_at.type, label: pr_at.title

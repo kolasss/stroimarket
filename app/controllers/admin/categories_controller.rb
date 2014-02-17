@@ -1,12 +1,12 @@
-class CategoriesController < ApplicationController
+class Admin::CategoriesController < AdminController
   load_and_authorize_resource
-  skip_load_resource :only => [:index, :create]
+  skip_load_resource :only => [ :create ]
   # before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    # @categories = Category.all
   end
 
   # GET /categories/1
@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
-    @category = Category.new
+    # @category = Category.new
   end
 
   # GET /categories/1/edit
@@ -30,7 +30,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
+        format.html { redirect_to admin_category_path(@category), notice: 'Category was successfully created.' }
         format.json { render action: 'show', status: :created, location: @category }
       else
         format.html { render action: 'new' }
@@ -44,7 +44,7 @@ class CategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @category.update(category_params)
-        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
+        format.html { redirect_to admin_category_path(@category), notice: 'Category was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -58,9 +58,32 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to categories_url }
+      format.html { redirect_to admin_categories_url }
       format.json { head :no_content }
     end
+  end
+
+  def update_position
+
+    if params[:parent_id]
+      @category.parent = Category.find(params[:parent_id])
+    else
+      @category.parent = nil
+    end
+    # @category.save
+
+    if params[:prev_id]
+      @category.move_below(Category.find(params[:prev_id]))
+    else
+      @category.move_to_top
+    end
+
+    if @category.save
+      render nothing: true
+    else
+      render json: @category.errors, status: :unprocessable_entity
+    end
+    # render MultiJson.dump(@category)
   end
 
   private
@@ -71,13 +94,33 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(
+      # params.require(:category).permit(
+      #   :title,
+      #   :position,
+      #   :parent_id
+      # ).tap do |whitelisted|
+      #   whitelisted[:attr_list] = params[:category][:attr_list]
+      # end
+      safe_attributes = [
         :title,
-        :attr_list,
         :position,
-        :parent_id
-      ).tap do |whitelisted|
-        whitelisted[:attr_list] = params[:category][:attr_list]
-      end
+        :parent_id,
+        product_attributes_attributes:
+        [
+          :id,
+          :_destroy,
+          :title,
+          :type,
+          :unit
+        ]
+      ]
+      params.require(:category).permit(*safe_attributes)
+
+      # params.require(:category).permit(
+      #   :title,
+      #   :position,
+      #   :parent_id,
+      #   :product_attributes_attributes
+      # )
     end
 end

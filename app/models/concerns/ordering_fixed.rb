@@ -31,13 +31,13 @@ module Ordering_fixed
   extend ActiveSupport::Concern
 
   included do
-    field :position, :type => Integer
+    field :position, :type => Integer, default: 0
 
     default_scope -> { asc(:position) }
 
-    before_save :assign_default_position, :if => :assign_default_position?
-    before_save :reposition_former_siblings, :if => :sibling_reposition_required?
-    after_destroy :move_lower_siblings_up
+    # before_save :assign_default_position, :if => :assign_default_position?
+    # before_save :reposition_former_siblings, :if => :sibling_reposition_required?
+    # after_destroy :move_lower_siblings_up
   end
 
   ##
@@ -113,8 +113,11 @@ module Ordering_fixed
   #
   # @return [undefined]
   def move_to_top
-    return true if at_top?
-    move_above(first_sibling_in_list)
+    # return true if at_top?
+    # move_above(first_sibling_in_list)
+    self.position = 0
+    save!
+    self.siblings.inc(:position => 1)
   end
 
   ##
@@ -155,11 +158,11 @@ module Ordering_fixed
 
     if position > other.position
       new_position = other.position
-      self.siblings_between(other).inc(:position, 1)
-      other.inc(:position, 1)
+      self.siblings_between(other).inc(:position => 1)
+      other.inc(:position => 1)
     else
       new_position = other.position - 1
-      self.siblings_between(other).inc(:position, -1)
+      self.siblings_between(other).inc(:position => -1)
     end
 
     self.position = new_position
@@ -177,14 +180,16 @@ module Ordering_fixed
   def move_below(other)
     ensure_to_be_sibling_of(other)
 
-    if position > other.position
+    # if position > other.position
       new_position = other.position + 1
-      self.siblings_between(other).inc(:position, 1)
-    else
-      new_position = other.position
-      self.siblings_between(other).inc(:position, -1)
-      other.inc(:position, -1)
-    end
+      other.lower_siblings.inc(:position => 1)
+      # self.siblings_between(other).inc(:position => 1)
+
+    # else
+    #   new_position = other.position
+    #   self.siblings_between(other).inc(:position => -1)
+    #   other.inc(:position => -1)
+    # end
 
     self.position = new_position
     save!
@@ -193,7 +198,7 @@ module Ordering_fixed
   private
 
     def switch_with_sibling_at_offset(offset)
-      siblings.where(:position => self.position + offset).first.inc(:position, -offset)
+      siblings.where(:position => self.position + offset).first.inc(:position => -offset)
       inc(:position, offset)
     end
 
@@ -204,14 +209,14 @@ module Ordering_fixed
     end
 
     def move_lower_siblings_up
-      lower_siblings.inc(:position, -1)
+      lower_siblings.inc(:position => -1)
     end
 
     def reposition_former_siblings
       former_siblings = base_class.where(:parent_id => attribute_was('parent_id')).
                                    and(:position.gt => (attribute_was('position') || 0)).
                                    excludes(:id => self.id)
-      former_siblings.inc(:position,  -1)
+      former_siblings.inc(:position => -1)
     end
 
     def sibling_reposition_required?

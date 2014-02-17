@@ -1,0 +1,23 @@
+= simple_nested_form_for [ :admin, @category ] do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    -# = f.input :position
+    = f.association :parent
+    -# = f.input :attr_list
+
+    .custom_attributes
+      .attribute_fields_set
+        = f.simple_fields_for :product_attributes do |ff|
+          %p Аттрибут
+          = ff.input :title
+          = ff.input :type, as: :select, collection: ProductAttribute::TYPES, include_blank: false
+          = ff.input :unit
+          = ff.link_to_remove "Удалить", class: 'btn btn-danger'
+          -# = ff.input :_destroy, as: :boolean
+
+      = f.link_to_add "Добавить аттрибут", :product_attributes, :data => { :target => ".attribute_fields_set" }, class: 'btn btn-success'
+
+  .form-actions
+    = f.button :submit

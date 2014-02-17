@@ -90,6 +90,7 @@ GEM
       connection_pool (~> 1.2)
       optionable (~> 0.2.0)
     multi_json (1.8.4)
+    nested_form (0.3.2)
     optionable (0.2.0)
     origin (2.1.0)
     orm_adapter (0.5.0)
@@ -136,8 +137,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    the_sortable_tree (2.4.0)
-      rails (>= 3.1)
     thin (1.6.1)
       daemons (>= 1.0.9)
       eventmachine (>= 1.0.0)
@@ -149,8 +148,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.2.1)
-      coffee-rails
     tzinfo (0.3.38)
     uglifier (2.4.0)
       execjs (>= 0.3.0)
@@ -171,12 +168,11 @@ DEPENDENCIES
   kaminari
   mongoid!
   mongoid-tree
+  nested_form
   rails (= 4.0.2)
   rails-i18n (~> 4.0.0)
   sass-rails (~> 4.0.0)
   sdoc
   simple_form
-  the_sortable_tree (~> 2.4.0)
   thin
-  turbolinks
   uglifier (>= 1.3.0)

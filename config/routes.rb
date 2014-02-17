@@ -1,5 +1,7 @@
 Stroimarket::Application.routes.draw do
-  resources :categories
+  resources :products do
+    get :custom_category_fields, on: :collection
+  end
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
@@ -13,6 +15,9 @@ Stroimarket::Application.routes.draw do
     root to: :index
 
     resources :users
+    resources :categories do
+      post :update_position, on: :collection
+    end
   end
 
   # Example of regular route:
