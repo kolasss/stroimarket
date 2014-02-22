@@ -1,8 +1,8 @@
-%h1 Listing categories
+%h1 Категории
 
-= link_to 'New Category', new_admin_category_path, class: 'btn'
+= link_to 'New Category', new_admin_category_path, class: 'btn btn-info'
 
 %br
 
-%ol.sortable_tree.tree_root
-  = render_category_tree @categories.roots
+%ol#categories_root.sortable_tree.tree_root
+  = render_sortable_tree @categories.roots

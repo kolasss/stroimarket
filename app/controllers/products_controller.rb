@@ -84,7 +84,9 @@ class ProductsController < ApplicationController
         :title,
         :cover,
         :body,
-        :category_id
+        :category_id,
+        :cover,
+        :remove_cover
       ).tap do |whitelisted|
         whitelisted.update(params[:product].slice(*@category.product_attributes.map(&:name)))
       end

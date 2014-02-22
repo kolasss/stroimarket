@@ -1,0 +1,21 @@
+- if @article.cover.present?
+  = image_tag(@article.cover.large, class: 'img-thumbnail')
+  %hr
+
+%p
+  %b Title:
+  = @article.title
+%p
+  %b Создан:
+  = @article.created_at
+  %br
+  %b Обновлен:
+  = @article.updated_at
+%p
+  %b Body:
+  = @article.body
+
+
+= link_to 'Edit', edit_admin_article_path(@article)
+\|
+= link_to 'Back', admin_articles_path

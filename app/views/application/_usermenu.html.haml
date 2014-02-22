@@ -15,6 +15,7 @@
         - if current_user.admin?
           %li= link_to t('usermenu.admin_panel'), admin_root_path
           %li= link_to t('usermenu.admin_categories_path'), admin_categories_path
+          %li= link_to 'Статьи', admin_articles_path
 
         -# = nav_item t('usermenu.dashboard'), dashboard_root_path, root: root
 

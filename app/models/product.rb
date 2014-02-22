@@ -1,18 +1,13 @@
 class Product
   include Mongoid::Document
   include Mongoid::Attributes::Dynamic
-
-  field :title, type: String
-  field :cover, type: String
-  field :body, type: String
+  include Content
 
   belongs_to :category
 
   before_validation :custom_field_to_datatype
-  before_save :clear_old_custom_fields
+  before_save :clear_old_custom_fields, if: :category_id_changed?
 
-  validates :title, :presence => true
-  validates :body, :presence => true
   validates :category_id, :presence => true
   validate :custom_fields_validator
 

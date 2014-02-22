@@ -1,9 +1,10 @@
+- if @product.cover.present?
+  = image_tag(@product.cover.large, class: 'img-thumbnail')
+  %hr
+
 %p
   %b Title:
   = @product.title
-%p
-  %b Cover:
-  = @product.cover
 %p
   %b Body:
   = @product.body

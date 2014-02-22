@@ -1,0 +1,10 @@
+= simple_form_for(@post) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = cover_uploader f
+    = f.input :title
+    = f.input :body
+
+  .form-actions
+    = f.button :submit

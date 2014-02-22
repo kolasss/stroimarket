@@ -32,8 +32,15 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'mongoid', :github=>"mongoid/mongoid"
-gem 'mongoid-tree', :require => 'mongoid/tree'
+# gem 'mongoid', :github=>"mongoid/mongoid"
+gem 'mongoid', :git => 'git@github.com:mongoid/mongoid.git'
+# gem 'mongoid-tree', :require => 'mongoid/tree'
+gem 'mongoid-tree', :git => 'git@github.com:benedikt/mongoid-tree.git', :branch => "mongoid-4.0", :require => 'mongoid/tree'
+gem 'mongoid_slug'
+
+gem 'carrierwave'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'mini_magick'
 
 gem 'haml-rails'
 

@@ -3,8 +3,38 @@
 //= require_self
 //= require_tree .
 
+@import "lib"
+
 @font-face
   font-family: 'Glyphicons Halflings'
   src: url('../assets/glyphicons-halflings-regular.eot')
   src: url('../assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../assets/glyphicons-halflings-regular.woff') format('woff'), url('../assets/glyphicons-halflings-regular.ttf') format('truetype'), url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg')
 
+
+// Uploaders.
+.image-uploader
+  @extend %filepicker-decorator
+
+  margin-bottom: 1em
+  background: #eee center center no-repeat
+  text-align: center
+
+  img
+    max-width: 100%
+    z-index: -1
+
+.image-uploader
+  min-height: 100px
+  background-image: image-url("content/placeholder-image.png")
+
+.cover-uploader
+  min-height: 300px
+  background-image: image-url("content/placeholder-cover.png")
+
+.document-uploader
+  @extend %filepicker-decorator
+
+  width: 100px
+  height: 100px
+  margin-bottom: 1em
+  background: #eee image-url("content/placeholder-document.png") center center no-repeat

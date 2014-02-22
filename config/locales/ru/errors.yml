@@ -1,0 +1,21 @@
+ru:
+  errors:
+    messages:
+      carrierwave_processing_error: невозможно обработать изображение
+      carrierwave_integrity_error: не является изображением
+      carrierwave_download_error: невозможно загрузить
+      extension_white_list_error: "допустимые типы файлов: %{allowed_types}"
+      extension_black_list_error: "недопустимые типы файлов: %{prohibited_types}"
+
+      wrong_size: "должен быть %{file_size}"
+      size_too_small: "должен быть не менее %{file_size}"
+      size_too_big: "должен быть не более %{file_size}"
+
+      width_must_be: "ширина должна быть %{width}px"
+      height_must_be: "высота должна быть %{height}px"
+      width_must_be_at_least: "ширина должна быть не менее %{min_width}px"
+      height_must_be_at_least: "высота должна быть не менее %{min_height}px"
+      width_must_be_at_most: "ширина должна быть не более %{max_width}px"
+      height_must_be_at_most: "высота должна быть не более %{max_height}px"
+
+      is_not_an_url: должен быть ссылкой

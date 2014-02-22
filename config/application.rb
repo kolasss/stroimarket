@@ -24,7 +24,8 @@ module Stroimarket
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.enforce_available_locales = true
-    config.i18n.available_locales = :ru
+    config.i18n.load_path += Dir["#{config.root}/config/locales/**/*.{rb,yml}"]
+    config.i18n.available_locales = [ :ru, :en ]
     config.i18n.default_locale = :ru
   end
 end

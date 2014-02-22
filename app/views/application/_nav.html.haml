@@ -1,12 +1,6 @@
-%ul.nav.navbar-nav
-  -# = nav_item t('nav.main'),          root_path
-  -# = nav_item t('nav.yakutia'),       yakutia_path
-  -# = nav_item t('nav.map'),           map_root_path
-  -# = nav_item t('nav.catalog'),       catalog_path
-  -# = nav_item t('nav.video'),        video_path
-  -# = nav_item t('nav.announcements'), announcements_path
-  -# = nav_item t('nav.posts'),         posts_path
+%ul.nav.nav-pills
+  = nav_item t('nav.main'),          root_path
+  = nav_item 'Новости', posts_path
+  = nav_item 'Товары', products_path
 
-  -# = render 'articles/roots'
-
-  -# = nav_item t('nav.contacts'), contacts_path
+  = render 'articles/roots'

@@ -1,0 +1,23 @@
+%h1 Listing articles
+
+%table.table.table-striped
+  %tr
+    %th Title
+    %th Cover
+    %th Body
+    %th
+    %th
+    %th
+
+  - @articles.each do |article|
+    %tr
+      %td= article.title
+      %td= image_tag(article.cover.thumb, class: 'img-thumbnail') if article.cover.present?
+      %td= article.body
+      %td= link_to 'Show', article
+      %td= link_to 'Edit', edit_article_path(article)
+      %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Article', new_article_path, class: 'btn btn-info'

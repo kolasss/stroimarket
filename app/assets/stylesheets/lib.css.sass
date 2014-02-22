@@ -1,0 +1,25 @@
+%filepicker-decorator
+  position: relative
+  overflow: hidden
+  max-width: 100%
+
+  &.dragover
+    outline: 4px dashed #ccc
+    outline-offset: 4px
+    background: #eee
+
+  button.close
+    position: absolute
+    top: 10px
+    right: 10px
+
+  input
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    opacity: 0
+    z-index: 0
+    cursor: pointer
+    width: 100%

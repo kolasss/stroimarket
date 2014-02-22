@@ -1,0 +1,21 @@
+en:
+  errors:
+    messages:
+      carrierwave_processing_error: failed to be processed
+      carrierwave_integrity_error: is not of an allowed file type
+      carrierwave_download_error: could not be downloaded
+      extension_white_list_error: "allowed types: %{allowed_types}"
+      extension_black_list_error: "prohibited types: %{prohibited_types}"
+
+      wrong_size: "is the wrong size (should be %{file_size})"
+      size_too_small: "is too small (should be at least %{file_size})"
+      size_too_big: "is too big (should be at most %{file_size})"
+
+      width_must_be: "width must be %{width}px"
+      height_must_be: "height must be %{height}px"
+      width_must_be_at_least: "width must be at least %{min_width}px"
+      height_must_be_at_least: "height must be at least %{min_height}px"
+      width_must_be_at_most: "width must be at most %{max_width}px"
+      height_must_be_at_most: "height must be at most %{max_height}px"
+
+      is_not_an_url: is not an URL

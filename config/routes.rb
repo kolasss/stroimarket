@@ -1,4 +1,7 @@
 Stroimarket::Application.routes.draw do
+
+  resources :posts
+
   resources :products do
     get :custom_category_fields, on: :collection
   end
@@ -14,11 +17,17 @@ Stroimarket::Application.routes.draw do
   namespace :admin do
     root to: :index
 
+    resources :articles do
+      post :update_position, on: :collection
+    end
     resources :users
     resources :categories do
       post :update_position, on: :collection
     end
   end
+
+  # Статьи и документы.
+  get '*path', to: 'articles#show', as: :article_page
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
