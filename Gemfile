@@ -44,8 +44,10 @@ gem 'mini_magick'
 
 gem 'haml-rails'
 
-gem 'cancan'
+# gem 'cancan'
 gem 'devise'
+gem "pundit"
+
 gem 'simple_form'
 
 gem 'thin'

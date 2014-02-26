@@ -1,12 +1,11 @@
 class ProductsController < ApplicationController
-  load_and_authorize_resource
-  skip_load_resource :only => [ :create, :custom_category_fields ]
-  # before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  after_action :verify_authorized, :except => [:index, :show, :custom_category_fields]
 
   # GET /products
   # GET /products.json
   def index
-    # @products = Product.all
+    @products = Product.all
   end
 
   # GET /products/1
@@ -16,7 +15,8 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    # @product = Product.new
+    @product = Product.new
+    authorize @product
   end
 
   # GET /products/1/edit
@@ -27,6 +27,7 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
+    authorize @product
 
     respond_to do |format|
       if @product.save
@@ -72,9 +73,10 @@ class ProductsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    # def set_product
-    #   @product = Product.find(params[:id])
-    # end
+    def set_product
+      @product = Product.find(params[:id])
+      authorize @product
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params

@@ -12,9 +12,11 @@
   %b Обновлен:
   = @post.updated_at
 %p
+  %b intro:
+  = @post.intro
+%p
   %b Body:
   = @post.body
-
 
 = link_to 'Edit', edit_post_path(@post)
 \|

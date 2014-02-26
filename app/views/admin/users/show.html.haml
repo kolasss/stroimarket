@@ -68,8 +68,8 @@
       %b phone
       = @user.store_profile.phone
 
-  - if can? :update, @user.store_profile
+  - if policy(@user.store_profile).update?
     = link_to 'Изменить профиль', edit_admin_user_store_profile_path(@user, @user.store_profile), class: 'btn btn-primary'
 
-- elsif can? :create, @user.store_profile
+- elsif policy(StoreProfile).create?
   = link_to 'Создать профиль', new_admin_user_store_profile_path(@user), class: 'btn btn-primary'

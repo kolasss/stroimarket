@@ -1,6 +1,4 @@
 class Admin::StoreProfilesController < AdminController
-  # authorize_resource
-  # skip_load_resource :only => [:index, :new, :create]
   # before_action :load_user, except: [ :index ]
   before_action :set_profile, only: [ :edit, :update, :destroy ]
 
@@ -18,11 +16,11 @@ class Admin::StoreProfilesController < AdminController
     @user.build_store_profile
   end
 
-  # def edit
-  #   p "==========================================="
-  #   # @user = User.find(params[:user_id])
-  #   # @store_profile = @user.store_profile
-  # end
+  def edit
+    p "==========================================="
+    # @user = User.find(params[:user_id])
+    # @store_profile = @user.store_profile
+  end
 
   def create
     # @user = User.find(params[:user_id])

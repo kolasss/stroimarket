@@ -20,4 +20,5 @@
 
 %br
 
-= link_to 'New Post', new_post_path, class: 'btn btn-info'
+-if policy(Post).create?
+  = link_to 'New Post', new_post_path, class: 'btn btn-info'

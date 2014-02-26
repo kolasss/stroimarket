@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
-  load_and_authorize_resource
-  # skip_load_resource :only => [ :create ]
+  after_action :verify_authorized
   def index
+    authorize AdminController
   end
 end

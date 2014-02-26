@@ -1,12 +1,11 @@
 class Admin::ArticlesController < AdminController
-  load_and_authorize_resource
-  skip_load_resource :only => [ :create ]
-  # before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
   # GET /articles.json
   def index
-    # @articles = Article.all
+    @articles = Article.all
+    authorize AdminController
   end
 
   # GET /articles/1
@@ -16,7 +15,8 @@ class Admin::ArticlesController < AdminController
 
   # GET /articles/new
   def new
-    # @article = Article.new
+    @article = Article.new
+    authorize AdminController
   end
 
   # GET /articles/1/edit
@@ -27,6 +27,7 @@ class Admin::ArticlesController < AdminController
   # POST /articles.json
   def create
     @article = Article.new(article_params)
+    authorize AdminController
 
     respond_to do |format|
       if @article.save
@@ -64,6 +65,8 @@ class Admin::ArticlesController < AdminController
   end
 
   def update_position
+    @article = Article.find(params[:id])
+    authorize AdminController, :update?
     if params[:prev_id]
       @article.move_below(Article.find(params[:prev_id]))
     else
@@ -85,9 +88,10 @@ class Admin::ArticlesController < AdminController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    # def set_article
-    #   @article = Article.find(params[:id])
-    # end
+    def set_article
+      @article = Article.find(params[:id])
+      authorize AdminController
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params

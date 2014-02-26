@@ -1,22 +1,18 @@
 class Admin::UsersController < AdminController
-  load_and_authorize_resource
-  skip_load_resource :only => [:index, :create]
-  # include Concerns::SortableController
-
-  # before_action :require_admin_rights!
-
-  # before_action :set_user,     except: [ :index, :new, :create ]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :clean_password, only: [ :update ]
 
   def index
     @users = User.page(params[:page])
+    authorize AdminController
   end
 
   def show
   end
 
   def new
-    # @user = User.new
+    @user = User.new
+    authorize AdminController
   end
 
   def edit
@@ -24,6 +20,7 @@ class Admin::UsersController < AdminController
 
   def create
     @user = User.new(user_params)
+    authorize AdminController
     # @user.skip_confirmation!
 
     if @user.save
@@ -61,13 +58,14 @@ class Admin::UsersController < AdminController
       )
     end
 
-  # def sorting_columns
-  #   %w[name role created_at]
-  # end
+    # def sorting_columns
+    #   %w[name role created_at]
+    # end
 
-  # def set_user
-  #   @user = User.find(params[:id])
-  # end
+    def set_user
+      @user = User.find(params[:id])
+      authorize AdminController
+    end
 
     def clean_password
       par = params[:user]
