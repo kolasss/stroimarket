@@ -1,0 +1,5 @@
+.panel.panel-default.articles-nav-panel
+  .panel-body
+    %ul.articles-nav-tree
+      - @article.children.each do |article|
+        %li= link_to article.title, article

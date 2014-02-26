@@ -112,12 +112,5 @@ class Admin::CategoriesController < AdminController
         ]
       ]
       params.require(:category).permit(*safe_attributes)
-
-      # params.require(:category).permit(
-      #   :title,
-      #   :position,
-      #   :parent_id,
-      #   :product_attributes_attributes
-      # )
     end
 end

@@ -91,11 +91,26 @@ class Admin::ArticlesController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(
+      safe_attributes = [
         :title,
+        :intro,
         :body,
         :cover,
-        :remove_cover
-      )
+        :remove_cover,
+        :menu_title,
+        documents_attributes: [
+          :id,
+          :title,
+          :file,
+          :_destroy
+        ],
+        images_attributes: [
+          :id,
+          :title,
+          :file,
+          :_destroy
+        ]
+      ]
+      params.require(:article).permit(*safe_attributes)
     end
 end

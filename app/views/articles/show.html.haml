@@ -30,8 +30,8 @@
   = render @article.children
 
 
--# - content_for :sidebar do
--#   = render 'tree' if @article.root.descendants.present?
+- content_for :sidebar do
+  / = render 'tree' if @article.root.descendants.present?
 
--#   - if @article.documents.present?
--#     = render 'documents/panel', documents: @article.documents
+  - if @article.documents.present?
+    -# = render 'documents/panel', documents: @article.documents

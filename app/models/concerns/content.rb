@@ -2,12 +2,13 @@ module Content
   extend ActiveSupport::Concern
 
   included do
-    # has_many :images,    as: :attachable
-    # has_many :documents, as: :attachable
+    embeds_many :images, as: :attachable, cascade_callbacks: true
+    embeds_many :documents, as: :attachable, cascade_callbacks: true
 
-    # accepts_nested_attributes_for :images, :documents, allow_destroy: true
+    accepts_nested_attributes_for :images, :documents, allow_destroy: true
 
     field :title, type: String
+    field :intro, type: String
     field :body, type: String
 
     mount_uploader :cover, ImageUploader

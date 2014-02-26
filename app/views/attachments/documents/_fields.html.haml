@@ -1,0 +1,20 @@
+.attachment-fields.attachment-fields-document
+  = icon_close
+
+  .row
+    .col-sm-3
+      .document-uploader
+        = f.file_field :file
+        = f.error :file
+
+      - if document.file.present?
+        .attachment-meta
+          = document.ext.upcase
+          = number_to_human_size document.size
+
+        .attachment-download-link
+          = link_to t('download'), document.file.url
+
+
+    .col-sm-9
+      = f.input :title

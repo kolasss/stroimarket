@@ -4,7 +4,13 @@
   .form-inputs
     = cover_uploader f
     = f.input :title
+    = f.input :menu_title
+    = f.input :intro
     = f.input :body
+
+    = render 'attachments/documents/form', f: f, documents: @article.documents
+
+    = render 'attachments/images/form', f: f, images: @article.images
 
   .form-actions
     = f.button :submit

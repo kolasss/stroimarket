@@ -20,14 +20,20 @@ Stroimarket::Application.routes.draw do
     resources :articles do
       post :update_position, on: :collection
     end
-    resources :users
+
+    resources :users do
+      # resources :store_profiles, only: [:new, :edit, :create, :update, :destroy]
+      resources :store_profiles
+    end
+    # resources :store_profiles, only: [:index]
+
     resources :categories do
       post :update_position, on: :collection
     end
   end
 
   # Статьи и документы.
-  get '*path', to: 'articles#show', as: :article_page
+  get 'articles/*path', to: 'articles#show', as: :article_page
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

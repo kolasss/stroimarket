@@ -1,0 +1,18 @@
+.attachment-fields.attachment-fields-image
+  = icon_close
+
+  .row
+    .col-sm-3
+      = image_uploader f, attr_name: :file
+
+      - if image.file.present?
+        .attachment-meta
+          = image.ext.upcase
+          = number_to_human_size image.size
+
+        .attachment-download-link
+          = link_to t('download'), image.file.url
+
+
+    .col-sm-9
+      = f.input :title

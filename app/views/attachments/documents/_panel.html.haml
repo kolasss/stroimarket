@@ -1,0 +1,5 @@
+.panel.panel-default.attachments-panel
+  .panel-heading
+    = t('attachments.title')
+  .list-group
+    = render :partial => 'attachments/documents/document', :collection => documents

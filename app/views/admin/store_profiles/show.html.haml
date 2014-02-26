@@ -49,27 +49,5 @@
         %th= localized_attribute :user, :last_sign_in_ip
         %td= @user.last_sign_in_ip
 
-- if @user.store_profile.present?
-  %h2 Профиль продавца
-  %ul
-    %li
-      %b Название продавца
-      = @user.store_profile.name
-    %li
-      %b title
-      = @user.store_profile.title
-    %li
-      %b ogrn
-      = @user.store_profile.ogrn
-    %li
-      %b address
-      = @user.store_profile.address
-    %li
-      %b phone
-      = @user.store_profile.phone
-
-  - if can? :update, @user.store_profile
-    = link_to 'Изменить профиль', edit_admin_user_store_profile_path(@user, @user.store_profile), class: 'btn btn-primary'
-
-- elsif can? :create, @user.store_profile
-  = link_to 'Создать профиль', new_admin_user_store_profile_path(@user), class: 'btn btn-primary'
+-if @user.store_profile.present?
+  = @user.store_profile

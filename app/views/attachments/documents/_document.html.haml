@@ -1,0 +1,11 @@
+.list-group-item.attachment.attachments-list-item.attachment-document
+  .attachment-icon{ class: "attachment-icon-#{document.common_type}" }
+
+  .attachment-info
+    .attachment-title
+      = link_to document.title, document.file.url, target: '_blank'
+
+    .attachment-meta
+      = l document.created_at.to_date
+      = document.simple_ext.upcase
+      = number_to_human_size document.size

@@ -1,0 +1,33 @@
+.page-header
+  %h1
+    Продавцы
+
+    %small.control-links
+      -# = icon_link 'plus-sign', new_admin_user_path
+
+%table.table.table-hover
+  %tr
+    %th
+      Имя
+    %th
+      Официальное название
+    %th
+      Адрес
+    %th
+      Телефон
+    %th
+      Дата создания
+    %th
+
+  - @store_profiles.each do |profile|
+    %tr
+      %td= link_to(profile.name, admin_user_path(profile.user))
+      %td= profile.title
+      %td= profile.address
+      %td= profile.phone
+      %td= l profile.created_at, format: :short
+      %td.control-links
+        = icon_link 'pencil', edit_admin_store_profile_path(profile)
+        = icon_link 'remove', admin_store_profile_path(profile), data: { method: :delete, confirm: t(:confirm_deletion) }
+
+= paginate @store_profiles

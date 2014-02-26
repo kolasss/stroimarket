@@ -8,7 +8,7 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   process :cache_meta
 
   def meta
-    @meta || model[:"#{mounted_as}_meta"]
+    @meta || model[:file_meta]
   end
 
   def cache_meta

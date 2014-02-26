@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_path, :alert => exception.message
+    # redirect_to root_path, :status => :unauthorized, :alert => exception.message
+    render file: "public/403", status: :unauthorized, layout: false
   end
 end

@@ -1,0 +1,16 @@
+= simple_form_for [ :admin, @user, @user.store_profile ] do |f|
+
+  .row
+    .col-md-9
+      = f.input :name
+
+      %hr
+
+      = f.input :title
+      = f.input :ogrn
+      = f.input :address
+      = f.input :phone
+
+      %hr
+
+      = f.button :submit

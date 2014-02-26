@@ -1,3 +1,9 @@
+- if @article.parent?
+  %small
+    = link_to @article.parent.title, edit_admin_article_path(@article.parent)
+    \/
+  %br
+
 - if @article.cover.present?
   = image_tag(@article.cover.large, class: 'img-thumbnail')
   %hr
@@ -15,7 +21,18 @@
   %b Body:
   = @article.body
 
+- if @article.images
+  %ul
+    - @article.images.each do |image|
+      %li
+        = image_tag(image.file.thumb, class: 'img-thumbnail')
 
 = link_to 'Edit', edit_admin_article_path(@article)
 \|
 = link_to 'Back', admin_articles_path
+
+- content_for :sidebar do
+  = render 'tree' if @article.children.present?
+
+  - if @article.documents.present?
+    = render 'attachments/documents/panel', documents: @article.documents

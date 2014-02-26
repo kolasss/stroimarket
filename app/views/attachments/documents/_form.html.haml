@@ -1,0 +1,12 @@
+.attachments-form.attachments-form-documents
+  - documents.each do |doc|
+    .attachment.attachment-document
+      = f.fields_for :documents, doc do |docf|
+        = docf.hidden_field :_destroy, class: 'attachment-destroy'
+
+        = render 'attachments/documents/fields', f: docf, document: doc
+
+
+  = button_to_add_document f do |docf, doc|
+    .attachment.attachment-template.attachment-document
+      = render 'attachments/documents/fields', f: docf, document: doc

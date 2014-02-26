@@ -8,6 +8,8 @@ class User
     user
   )
 
+  embeds_one :store_profile
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -49,6 +51,8 @@ class User
   validates_inclusion_of :role, in: ROLES
 
   # default_scope ->{ order_by(:created_at => :desc) }
+
+  scope :sellers, ->{ where(role: "seller") }
 
   def user?
     role == "user"

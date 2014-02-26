@@ -10,8 +10,9 @@
   src: url('../assets/glyphicons-halflings-regular.eot')
   src: url('../assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../assets/glyphicons-halflings-regular.woff') format('woff'), url('../assets/glyphicons-halflings-regular.ttf') format('truetype'), url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg')
 
-
+//
 // Uploaders.
+// ================================
 .image-uploader
   @extend %filepicker-decorator
 
@@ -34,7 +35,62 @@
 .document-uploader
   @extend %filepicker-decorator
 
-  width: 100px
-  height: 100px
+  min-width: 100px
+  min-height: 100px
   margin-bottom: 1em
   background: #eee image-url("content/placeholder-document.png") center center no-repeat
+
+//
+// Attachments.
+//=================================
+
+.attachment
+  overflow: hidden
+
+.attachment-info
+  float: left
+  width: 200px
+  margin-left: 10px
+  padding: 5px 0 0
+
+.attachment-meta
+  line-height: 16px
+  font-size: 12px
+  color: #999
+
+.attachment-icon
+  display: block
+  float: left
+  width: 40px
+  height: 48px
+  background: image-url("content/attachment-icons.png") no-repeat
+
+.attachment-icon-archive
+  background-position: -38px 0
+
+.attachment-icon-document
+  background-position: -78px 0
+
+.attachment-icon-image
+  background-position: -118px 0
+
+.attachment-icon-video
+  background-position: -158px 0
+
+.attachments-form
+  .add-attachment
+    margin-top: 20px
+
+  .attachment
+    padding: 10px 0 20px
+    border-top: 1px solid #eee
+
+    &:first-child
+      border-top: none
+
+  .document-uploader,
+  .image-uploader
+    margin-top: 35px
+
+  .document-uploader
+    width: 140px

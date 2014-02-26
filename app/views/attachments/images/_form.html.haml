@@ -1,0 +1,12 @@
+.attachments-form.attachments-form-images
+  - images.each do |img|
+    .attachment.attachment-image
+      = f.fields_for :images, img do |imgf|
+        = imgf.hidden_field :_destroy, class: 'attachment-destroy'
+
+        = render 'attachments/images/fields', f: imgf, image: img
+
+
+  = button_to_add_image f do |imgf, img|
+    .attachment.attachment-template.attachment-image
+      = render 'attachments/images/fields', f: imgf, image: img
