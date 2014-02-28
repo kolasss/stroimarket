@@ -9,6 +9,7 @@ class User
   )
 
   embeds_one :store_profile
+  has_many :offers, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -64,5 +65,9 @@ class User
 
   def admin?
     role == "admin"
+  end
+
+  def company_name
+    self.store_profile? ? self.store_profile.name : name
   end
 end

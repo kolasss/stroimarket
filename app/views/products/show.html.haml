@@ -20,6 +20,34 @@
         = @product[pr_at.name]
         = pr_at.unit if pr_at.unit && pr_at.type == 'integer'
 
+- if @product.offers?
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title
+        Цены
+    / .panel-body
+    %ul.list-group
+      - @product.offers.each do |offer|
+        %li.list-group-item
+          %h4.list-group-item-heading
+            = offer.price
+          %p.list-group-item-text
+            = offer.user.company_name
+            -# - if offer.user.store_profile
+            -#   = offer.user.store_profile.name
+            -# - else
+            -#   = offer.user.name
+
+            - if policy(offer).update?
+              .control-links
+                = icon_link 'pencil', edit_product_offer_path(@product, offer)
+                = icon_link 'remove', product_offer_path(@product, offer), data: { method: :delete, confirm: t(:confirm_deletion) }
+
+-# - if policy(Offer).create? && !@product.has_user_offer?
+- unless @product.has_user_offer? current_user
+  = link_to 'Новая цена', new_product_offer_path(@product), class: 'btn btn-primary'
+
+%br
 = link_to 'Edit', edit_product_path(@product)
 \|
 = link_to 'Back', products_path

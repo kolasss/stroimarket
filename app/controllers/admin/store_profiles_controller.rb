@@ -1,31 +1,28 @@
 class Admin::StoreProfilesController < AdminController
-  # before_action :load_user, except: [ :index ]
+  before_action :set_user, except: [ :index ]
   before_action :set_profile, only: [ :edit, :update, :destroy ]
 
 
   def index
-    @users = User.sellers
-    @store_profiles = @users
+    @all_profiles = User.sellers.map(&:store_profile).compact
+    @store_profiles = Kaminari.paginate_array(@all_profiles).page(params[:page])
+    authorize StoreProfile
   end
 
   # def show
   # end
 
   def new
-    # @user = User.find(params[:user_id])
     @user.build_store_profile
+    authorize @user.store_profile
   end
 
   def edit
-    p "==========================================="
-    # @user = User.find(params[:user_id])
-    # @store_profile = @user.store_profile
   end
 
   def create
-    # @user = User.find(params[:user_id])
-    # @store_profile = @user.store_profile.build(profile_params)
-    # @store_profile = @user.build_store_profile(profile_params)
+    @store_profile = @user.build_store_profile(profile_params)
+    authorize @store_profile
 
     if @store_profile.save
       redirect_to admin_user_path(@user)
@@ -45,26 +42,27 @@ class Admin::StoreProfilesController < AdminController
   def destroy
     @store_profile.destroy
 
-    redirect_to admin_user_path(@user)
+    redirect_to admin_store_profiles_path
   end
 
   protected
-    def load_user
+    def set_user
       @user = User.find(params[:user_id])
     end
 
     def set_profile
-      @store_profile = @post.store_profile
+      @store_profile = @user.store_profile
+      authorize @store_profile
     end
 
-    # def profile_params
-    #   params.require(:store_profile).permit(
-    #     :name,
-    #     :title,
-    #     :ogrn,
-    #     :address,
-    #     :phone
-    #   )
-    # end
+    def profile_params
+      params.require(:store_profile).permit(
+        :name,
+        :title,
+        :ogrn,
+        :address,
+        :phone
+      )
+    end
 
 end

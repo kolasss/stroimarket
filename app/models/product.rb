@@ -2,14 +2,22 @@ class Product
   include Mongoid::Document
   include Mongoid::Attributes::Dynamic
   include Content
+  include Mongoid::Search
 
   belongs_to :category
+  has_many :offers, dependent: :destroy
 
   before_validation :custom_field_to_datatype
   before_save :clear_old_custom_fields, if: :category_id_changed?
 
   validates :category_id, :presence => true
   validate :custom_fields_validator
+
+  search_in :title
+
+  def has_user_offer? user
+    self.offers.map(&:user_id).include?(user.id)
+  end
 
   private
     def custom_field_to_datatype

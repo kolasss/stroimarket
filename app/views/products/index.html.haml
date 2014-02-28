@@ -1,5 +1,14 @@
 %h1 Listing products
 
+.panel.panel-default
+  .panel-body
+    %form
+      .input-group
+        %input.form-control{ type: :text, name: :query, placeholder: t('catalog.search_hint'), value: params[:query] }
+
+        .input-group-btn
+          %button.btn.btn-primary= t('search')
+
 %table.table.table-striped
   %tr
     %th Title

@@ -5,7 +5,7 @@ class Category
   # include Ordering_fixed
 
   embeds_many :product_attributes
-  has_many :products
+  has_many :products, dependent: :destroy
 
   field :title, type: String
 

@@ -1,18 +1,3 @@
-/ <!DOCTYPE html>
-/ <html>
-/ <head>
-/   <title>Stroimarket</title>
-/   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-/   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-/   <%= csrf_meta_tags %>
-/ </head>
-/ <body>
-
-/ <%= yield %>
-
-/ </body>
-/ </html>
-
 !!!
 %html{ lang: I18n.locale }
   %head
@@ -50,6 +35,6 @@
       = render 'footer'
 
     -# = javascript_env
-    = javascript_include_tag :application, "data-turbolinks-track" => true
+    = javascript_include_tag :application
     = yield :body
     -# = render 'analytics'

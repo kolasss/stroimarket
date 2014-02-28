@@ -37,6 +37,7 @@ gem 'mongoid', :git => 'git@github.com:mongoid/mongoid.git'
 # gem 'mongoid-tree', :require => 'mongoid/tree'
 gem 'mongoid-tree', :git => 'git@github.com:benedikt/mongoid-tree.git', :branch => "mongoid-4.0", :require => 'mongoid/tree'
 gem 'mongoid_slug'
+gem 'mongoid_search'
 
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'

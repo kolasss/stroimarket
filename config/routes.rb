@@ -4,6 +4,8 @@ Stroimarket::Application.routes.draw do
 
   resources :products do
     get :custom_category_fields, on: :collection
+
+    resources :offers, except: [:index, :show]
   end
 
   devise_for :users
@@ -23,9 +25,10 @@ Stroimarket::Application.routes.draw do
 
     resources :users do
       # resources :store_profiles, only: [:new, :edit, :create, :update, :destroy]
-      resources :store_profiles
+      resources :store_profiles, except: [:index]
+      # resources :store_profiles
     end
-    # resources :store_profiles, only: [:index]
+    resources :store_profiles, only: [:index]
 
     resources :categories do
       post :update_position, on: :collection
