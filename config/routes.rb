@@ -1,5 +1,6 @@
 Stroimarket::Application.routes.draw do
 
+  resources :categories, only: [:index, :show]
   resources :posts
 
   resources :products do
@@ -24,9 +25,7 @@ Stroimarket::Application.routes.draw do
     end
 
     resources :users do
-      # resources :store_profiles, only: [:new, :edit, :create, :update, :destroy]
       resources :store_profiles, except: [:index]
-      # resources :store_profiles
     end
     resources :store_profiles, only: [:index]
 

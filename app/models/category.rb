@@ -2,7 +2,7 @@ class Category
   include Mongoid::Document
   include Mongoid::Tree
   include Mongoid::Tree::Ordering
-  # include Ordering_fixed
+  include Mongoid::Slug
 
   embeds_many :product_attributes
   has_many :products, dependent: :destroy
@@ -10,6 +10,8 @@ class Category
   field :title, type: String
 
   validates :title, :presence => true
+
+  slug :title, history: true
 
   before_destroy :destroy_children
 

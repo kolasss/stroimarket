@@ -1,0 +1,7 @@
+%li
+  - if product.cover.present?
+    = image_tag(product.cover.thumb, class: 'img-thumbnail')
+
+  = link_to product.title, product
+
+

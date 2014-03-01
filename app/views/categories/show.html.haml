@@ -1,0 +1,9 @@
+%h1= @category.title
+
+- if @category.products?
+  %ul
+    = render @category.products
+- else
+  %p Товаров в категории нет
+
+= link_to 'Back', categories_path
