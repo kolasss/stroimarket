@@ -63,15 +63,16 @@ class ProductsController < ApplicationController
     def product_params
       @category = Category.find(params[:product][:category_id])
 
-      params.require(:product).permit(
+      safe_attributes = [
         :title,
         :cover,
         :body,
         :category_id,
         :cover,
         :remove_cover
-      ).tap do |whitelisted|
-        whitelisted.update(params[:product].slice(*@category.product_attributes.map(&:name)))
-      end
+      ]
+      safe_attributes << @category.product_attributes.map(&:name)
+
+      params.require(:product).permit(safe_attributes)
     end
 end
