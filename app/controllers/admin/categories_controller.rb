@@ -44,22 +44,25 @@ class Admin::CategoriesController < AdminController
   def update_position
     @category = Category.find(params[:id])
     authorize AdminController, :update?
+
     if params[:prev_id]
       @category.move_below(Category.find(params[:prev_id]))
     else
-      if params[:parent_id]
-        @category.parent = Category.find(params[:parent_id])
-      else
-        @category.parent = nil
-      end
+      # if params[:parent_id]
+      #   @category.parent = Category.find(params[:parent_id])
+      # else
+      #   @category.parent = nil
+      # end
+
+       @category.parent = params[:parent_id] ? Category.find(params[:parent_id]) : nil
 
       if @category.save
         @category.move_to_top
       else
-        render json: @category.errors, status: :unprocessable_entity
-        return
+        render(json: @category.errors, status: :unprocessable_entity) and return
       end
     end
+
     render nothing: true
   end
 

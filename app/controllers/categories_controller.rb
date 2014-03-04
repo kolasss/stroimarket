@@ -7,12 +7,12 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @category = Category.includes(:products).find(params[:id])
+    authorize @category
+
     @filter = OpenStruct.new params[:filter]
     @filter.class_name = :filter
     @filter.symbol_name = :fields
-
-    @category = Category.includes(:products).find(params[:id])
-    authorize @category
 
     criterias = {}
 
