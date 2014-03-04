@@ -44,22 +44,19 @@ class Admin::ArticlesController < AdminController
   def update_position
     @article = Article.find(params[:id])
     authorize AdminController, :update?
+
     if params[:prev_id]
       @article.move_below(Article.find(params[:prev_id]))
     else
-      if params[:parent_id]
-        @article.parent = Article.find(params[:parent_id])
-      else
-        @article.parent = nil
-      end
+      @article.parent = params[:parent_id] ? Article.find(params[:parent_id]) : nil
 
       if @article.save
         @article.move_to_top
       else
-        render json: @article.errors, status: :unprocessable_entity
-        return
+        render(json: @article.errors, status: :unprocessable_entity) and return
       end
     end
+
     render nothing: true
   end
 

@@ -20,7 +20,7 @@ module Content
                       allow_blank: true
   end
 
-  module ClassMethods
+  # module ClassMethods
 
-  end
+  # end
 end

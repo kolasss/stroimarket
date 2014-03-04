@@ -48,13 +48,7 @@ class Admin::CategoriesController < AdminController
     if params[:prev_id]
       @category.move_below(Category.find(params[:prev_id]))
     else
-      # if params[:parent_id]
-      #   @category.parent = Category.find(params[:parent_id])
-      # else
-      #   @category.parent = nil
-      # end
-
-       @category.parent = params[:parent_id] ? Category.find(params[:parent_id]) : nil
+      @category.parent = params[:parent_id] ? Category.find(params[:parent_id]) : nil
 
       if @category.save
         @category.move_to_top
