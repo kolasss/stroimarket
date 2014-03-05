@@ -1,28 +1,40 @@
 class ProductFilterInput < SimpleForm::Inputs::Base
   def input
-    input_html_options[:class] << "form-control"
-
-    class_name = @builder.object.class_name
-    symbol_name = @builder.object.symbol_name
-    input_html_options[:id] ||= "#{class_name}_#{symbol_name}_#{attribute_name}"
-    input_html_options[:name] ||= "[#{class_name}]#{attribute_name}"
-
-    # p @builder.object
+    set_default_options input_html_options
 
     value = @builder.object ? @builder.object[attribute_name] : nil
 
     case options[:type]
     when 'boolean'
-      template.check_box(class_name, attribute_name, input_html_options, 'true', 'false')
+      template.check_box(@class_name, attribute_name, input_html_options, 'true', 'false')
     when 'string'
       template.text_field_tag(attribute_name, value, input_html_options)
     when 'integer'
-      input_html_options[:name] = "[#{class_name}]#{attribute_name}[min]"
+      min_max_input attribute_name, value, input_html_options
+    else
+      raise NotImplementedError
+    end
+  end
+
+  private
+    def set_default_options input_html_options
+      input_html_options[:class] << "form-control"
+
+      @class_name = @builder.object.class_name
+
+      symbol_name = @builder.object.symbol_name
+
+      input_html_options[:id] ||= "#{@class_name}_#{symbol_name}_#{attribute_name}"
+      input_html_options[:name] ||= "[#{@class_name}]#{attribute_name}"
+    end
+
+    def min_max_input attribute_name, value, input_html_options
+      input_html_options[:name] = "[#{@class_name}]#{attribute_name}[min]"
       min_value = value.try(:min) ? value[:min] : nil
       min_input = template.number_field_tag(attribute_name, min_value, input_html_options)
 
       input_html_options[:id] += "_max"
-      input_html_options[:name] = "[#{class_name}]#{attribute_name}[max]"
+      input_html_options[:name] = "[#{@class_name}]#{attribute_name}[max]"
       max_value = value.try(:max) ? value[:max] : nil
       max_input = template.number_field_tag(attribute_name, max_value, input_html_options)
 
@@ -34,10 +46,7 @@ class ProductFilterInput < SimpleForm::Inputs::Base
           <span class="measure">#{options[:measure]}</span>
         </div>
       </div>}
-    else
-      raise NotImplementedError
     end
-  end
 
   # def range_input object, attribute, measure, show_label: true, show_checkbox: false
   #   # if param = params[attribute]
