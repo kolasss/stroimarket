@@ -38,18 +38,18 @@ class Product
 
       self.category.product_attributes.each do |pr_at|
         name = pr_at.name.to_sym
-        if pr_at.type == 'string'
+
+        case pr_at.type
+        when 'string'
           errors.add(name, "Длина строки должна быть не больше #{max_length} символов") if self[name].length > max_length
-        elsif pr_at.type == 'boolean'
-          # errors.add(name, 'Неверное значение') unless [true, false].include?(self[name])
-        elsif pr_at.type == 'integer'
+        # when 'boolean'
+        #   # do nothing
+        when 'integer'
           if self[name] > max_integer
             errors.add(name, "Значение должно быть не больше #{max_integer}")
           elsif self[name] < min_integer
             errors.add(name, "Значение должно быть не меньше #{min_integer}")
           end
-        else
-          raise NotImplementedError
         end
       end
     end
