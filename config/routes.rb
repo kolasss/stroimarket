@@ -1,5 +1,6 @@
 Stroimarket::Application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
   resources :categories, only: [:index, :show]
   resources :posts
 
@@ -32,6 +33,16 @@ Stroimarket::Application.routes.draw do
     resources :categories do
       post :update_position, on: :collection
     end
+  end
+
+  get 'catalog', to: 'catalog#index'
+
+  namespace :api do
+    # resources :stocks, defaults: {format: :json} do
+    #   get :ohlc
+    # end
+    # get :categories, to: 'categories#index', defaults: {format: :json}
+    resources :categories, only: [:index, :show], defaults: {format: :json}
   end
 
   # Статьи и документы.

@@ -25,12 +25,12 @@ gem 'jquery-rails'
 # gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+# gem 'jbuilder', '~> 1.2'
 
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
+# group :doc do
+#   # bundle exec rake doc:rails generates the API under doc/api.
+#   gem 'sdoc', require: false
+# end
 
 # gem 'mongoid', :github=>"mongoid/mongoid"
 gem 'mongoid', :git => 'git@github.com:mongoid/mongoid.git'
@@ -47,7 +47,7 @@ gem 'haml-rails'
 
 # gem 'cancan'
 gem 'devise'
-gem "pundit"
+gem "pundit" #authorization
 
 gem 'simple_form'
 
@@ -67,6 +67,11 @@ gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'kaminari'
+gem 'kaminari' #paginator
 
 gem "nested_form"
+gem 'ckeditor'
+
+gem 'angularjs-rails'
+
+gem 'oj'

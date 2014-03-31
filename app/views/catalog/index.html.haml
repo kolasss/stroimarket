@@ -1,0 +1,26 @@
+%h1 Каталог
+
+.row(ng-controller="CategoriesCtrl")
+  .col-md-4
+    -# %abn-tree(tree-data="categories" tree-control="my_tree" on-select="my_tree_handler(branch)" expand-level="2" initial-selection="Granny Smith")
+    %abn-tree(tree-data="categories" on-select="loadCategory(branch)")
+  .col-md-8
+    %ul.row(ng-show="showCategory")
+      .col-md-4(ng-repeat="product in productsList")
+        %li.thumbnail
+          %img(ng-src="{{product.cover.thumb.url}}")
+          .caption
+            %h3 {{product.title}}
+            %p {{product.intro}}
+            %p
+              %a.btn.btn-primary(role="button" href="" ng-click="loadProduct(product)") Подробнее
+
+    .panel.panel-default(ng-show="showProduct")
+      .panel-heading
+        %h3.panel-title
+          {{currentProduct.title}}
+      .panel-body
+        %img.img-rounded.catalog_product_image_large(ng-src="{{currentProduct.cover.large.url}}" ng-show="currentProduct.cover.large.url")
+        %p {{currentProduct.body}}
+      .panel-footer
+        %a.btn.btn-primary(role="button" href="" ng-click="backToCategory()") Назад

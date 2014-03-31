@@ -8,10 +8,10 @@ class StoreProfilePolicy < ApplicationPolicy
   # end
 
   def create?
-    user.admin? or user.seller?
+    @user.admin? or @user.seller?
   end
 
   def update?
-    user.admin? or (user.seller? and record.user == user)
+    @user.admin? or (@user.seller? and @record.user == @user)
   end
 end

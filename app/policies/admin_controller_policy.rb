@@ -1,9 +1,9 @@
 class AdminControllerPolicy < ApplicationPolicy
   def index?
-    user.admin?
+    @user.admin?
   end
 
   def show?
-    user.admin?
+    @user.admin?
   end
 end

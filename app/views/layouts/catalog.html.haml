@@ -1,0 +1,23 @@
+!!!
+%html(ng-app='Stroimarket'){ lang: I18n.locale }
+  %head
+    = render 'meta'
+
+    = stylesheet_link_tag :application
+    = csrf_meta_tags
+
+    = yield :head
+    = javascript_include_tag :application
+  %body
+
+    .page-wrapper.site-frontoffice
+      .container
+        = render 'header'
+      .container.page-container
+        = yield
+
+      = render 'footer'
+
+    -# = javascript_env
+    = yield :body
+    -# = render 'analytics'

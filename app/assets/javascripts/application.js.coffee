@@ -2,6 +2,12 @@
 #= require jquery_ujs
 #= require bootstrap.min
 #= require jquery_nested_form
+#= require ckeditor/init
+#= require angular
+#= require angular-resource
+#= require abn_tree_directive
+#= require angular_app
+#= require_tree ./angular
 #= require_tree .
 
 # Uploaders.

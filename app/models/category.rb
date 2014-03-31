@@ -16,4 +16,14 @@ class Category
   before_destroy :destroy_children
 
   accepts_nested_attributes_for :product_attributes, :allow_destroy => true, :reject_if => :all_blank
+
+  def self.json_tree(nodes)
+    nodes.map do |node|
+      {:label => node.title, :id => node.id.to_s, :children => json_tree(node.children).compact}
+    end
+  end
+
+  def self_and_children_ids
+    descendants.pluck(:id) << id
+  end
 end
