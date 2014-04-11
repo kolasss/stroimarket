@@ -4,6 +4,7 @@
   .form-inputs
     = cover_uploader f
     = f.input :title
+    = f.input :intro
     = f.input :body
     = f.association :category, input_html: {object_id: f.object._id}
 

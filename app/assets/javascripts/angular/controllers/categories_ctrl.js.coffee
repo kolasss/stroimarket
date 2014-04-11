@@ -1,23 +1,21 @@
-app.controller 'CategoriesCtrl', ['$scope', 'Category', ($scope, Category) ->
-  $scope.showCategory = false
-  $scope.showProduct = false
-
-  $scope.categories = Category.all()
-
-  $scope.loadCategory = (category) ->
-    category.products = Category.show(category.id) if not category.products?
-    $scope.productsList = category.products
-    $scope.showCategory = true
-    $scope.showProduct = false
-    # $scope.selectedCategory = true
-
-  $scope.loadProduct = (product) ->
-    $scope.currentProduct = product
+app.controller 'CategoriesCtrl',
+  ['$scope', 'Category', '$routeParams',
+  ($scope, Category, $routeParams) ->
     $scope.showCategory = false
-    $scope.showProduct = true
 
-  $scope.backToCategory = ->
-    $scope.showCategory = true
-    $scope.showProduct = false
+    $scope.categories = Category.all()
+
+    $scope.$watchCollection 'categories', (newCats, oldCats) ->
+      $scope.setCurrentCategory()
+
+    $scope.loadCategory = (category) ->
+      category.products = Category.show(category.id) if not category.products?
+      $scope.productsList = category.products
+      $scope.showCategory = true
+
+    $scope.setCurrentCategory = ->
+      $scope.currentCategory = Category.getCurrent($routeParams.category_slug)
+      if $scope.currentCategory
+        $scope.loadCategory $scope.currentCategory
 
 ]

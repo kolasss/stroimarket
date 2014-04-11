@@ -10,4 +10,11 @@ class Offer
   validates :price, :presence => true, numericality: true
   validates :user_id, :presence => true, :uniqueness => {:scope => :product_id}
   validates :product_id, :presence => true
+
+  after_save :set_min_max_price_to_product, if: :price_changed?
+
+  private
+    def set_min_max_price_to_product
+      product.set_min_max_price
+    end
 end

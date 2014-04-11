@@ -20,6 +20,13 @@
         = @product[pr_at.name]
         = pr_at.unit if pr_at.unit && pr_at.type == 'integer'
 
+%p
+  минимальная цена:
+  = @product.min_price
+%p
+  максимальная цена:
+  = @product.max_price
+
 - if @product.offers?
   .panel.panel-default
     .panel-heading

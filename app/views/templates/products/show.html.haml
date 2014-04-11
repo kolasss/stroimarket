@@ -1,0 +1,31 @@
+%h1 Каталог продукт
+
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title
+      {{currentProduct.title}}
+  .panel-body
+    %img.img-rounded.catalog_product_image_large(ng-src="{{currentProduct.cover.large.url}}" ng-show="currentProduct.cover.large.url")
+    %p {{currentProduct.body}}
+
+    / {{currentProduct.category_id}}
+    / {{productCategory}}
+
+    %ul
+      %li(ng-repeat="attribute in productCategory.custom_attributes")
+        %b {{attribute.title}}
+        %span {{currentProduct[attribute.name]}}
+
+    %p Цены
+    %ul
+      %li(ng-repeat="offer in currentProduct.offers")
+        {{offer.price}} руб.
+
+    / angular.forEach(currentProduct.category_id, function(value, key){
+    /   this.push(key + ': ' + value);
+    / }, log);
+
+  .panel-footer
+    / %a.btn.btn-primary(role="button" href="" ng-click="backToCategory()") Назад
+    %a.btn.btn-primary(href="#/{{currentProduct.category.slug}}")
+      Назад

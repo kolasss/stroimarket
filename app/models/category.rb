@@ -19,7 +19,13 @@ class Category
 
   def self.json_tree(nodes)
     nodes.map do |node|
-      {:label => node.title, :id => node.id.to_s, :children => json_tree(node.children).compact}
+      {
+        :label => node.title,
+        :id => node.id.to_s,
+        :slug => node.slug,
+        :custom_attributes => node.product_attributes.as_json,
+        :children => json_tree(node.children).compact
+      }
     end
   end
 

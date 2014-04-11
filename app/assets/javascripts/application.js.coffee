@@ -4,6 +4,7 @@
 #= require jquery_nested_form
 #= require ckeditor/init
 #= require angular
+#= require angular-route
 #= require angular-resource
 #= require abn_tree_directive
 #= require angular_app

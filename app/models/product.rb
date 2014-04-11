@@ -7,6 +7,9 @@ class Product
   belongs_to :category
   has_many :offers, dependent: :destroy
 
+  field :min_price, type: Integer
+  field :max_price, type: Integer
+
   before_validation :custom_field_to_datatype
   before_save :clear_old_custom_fields, if: :category_id_changed?
 
@@ -17,6 +20,11 @@ class Product
 
   def has_user_offer? user
     self.offers.map(&:user_id).include?(user.id)
+  end
+
+  def set_min_max_price
+    update_attribute(:min_price, offers.min(:price))
+    update_attribute(:max_price, offers.max(:price))
   end
 
   private
