@@ -1,5 +1,7 @@
-app.controller 'ProductsCtrl', ['$scope', 'Product', '$filter', '$routeParams', ($scope, Product, $filter, $routeParams) ->
+app.controller 'ProductsCtrl',
+  ['$scope', 'Product', '$routeParams',
+  ($scope, Product, $routeParams) ->
 
-  $scope.currentProduct = Product.show($routeParams.product_id)
+    $scope.product = Product.show($routeParams.product_id)
 
 ]

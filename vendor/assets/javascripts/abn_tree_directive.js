@@ -101,6 +101,12 @@ module.directive('abnTree', function($timeout) {
       scope.user_clicks_branch = function(branch) {
         if (branch !== selected_branch) {
           return select_branch(branch);
+        } else if (scope.onSelect != null) {
+          return $timeout(function() {
+            return scope.onSelect({
+              branch: branch
+            });
+          });
         }
       };
       get_parent = function(child) {

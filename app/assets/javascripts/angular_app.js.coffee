@@ -11,25 +11,19 @@ window.app.config ['$routeProvider', '$locationProvider',
       .when '/',
         templateUrl: '/templates/categories/index.html',
         controller: 'CategoriesCtrl'
-      .when '/:category_slug',
+      .when '/categories/:category_slug',
         templateUrl: '/templates/categories/index.html',
         controller: 'CategoriesCtrl',
       .when '/products/:product_id',
         templateUrl: '/templates/products/show.html',
         controller: 'ProductsCtrl'
+      .when '/stores',
+        templateUrl: '/templates/stores/index.html',
+        controller: 'StoresCtrl',
       .otherwise
         redirectTo: '/'
 
-    # $routeProvider.
-    #   when('/phones', {
-    #     templateUrl: 'partials/phone-list.html',
-    #     controller: 'PhoneListCtrl'
-    #   }).
-    #   when('/phones/:phoneId', {
-    #     templateUrl: 'partials/phone-detail.html',
-    #     controller: 'PhoneDetailCtrl'
-    #   }).
-    #   otherwise({
-    #     redirectTo: '/phones'
-    #   });
 ]
+
+window.app.run ($rootScope, stroiUtils) ->
+  $rootScope.stroiUtils = stroiUtils

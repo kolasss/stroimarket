@@ -42,8 +42,9 @@ Stroimarket::Application.routes.draw do
     #   get :ohlc
     # end
     # get :categories, to: 'categories#index', defaults: {format: :json}
-    resources :categories, only: [:index, :show], defaults: {format: :json}
-    resources :products, only: [:show], defaults: {format: :json}
+    resources :categories,  only: [:index, :show],  defaults: {format: :json}
+    resources :stores,      only: [:index, :show],  defaults: {format: :json}
+    resources :products,    only: [:show],          defaults: {format: :json}
   end
 
   # get '/dashboard' => 'templates#index'

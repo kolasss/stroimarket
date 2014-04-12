@@ -13,10 +13,12 @@ app.controller 'CategoryTreeCtrl',
       $scope.setCurrentCategory()
 
     $scope.changeCategory = (category) ->
-      $location.path category.slug
+      $location.path $scope.stroiUtils.getCategoryLink(category)
 
     $scope.setCurrentCategory = ->
-      $scope.currentCategory = Category.getCurrent($routeParams.category_slug)
+      if $routeParams.category_slug
+        $scope.currentCategory = Category.getCurrent($routeParams.category_slug)
+
       if $scope.currentCategory
         $timeout () ->
           $scope.categories_tree.select_branch($scope.currentCategory)

@@ -21,12 +21,12 @@
             .col-sm-10
               %input.form-control#filter_min_price(type="text" placeholder="minimum" ng-model="filter.minPrice")
               %input.form-control#filter_min_price(type="text" placeholder="maximum" ng-model="filter.maxPrice")
-          .form-group
-            .col-sm-offset-2.col-sm-10
-              .checkbox
-                %label
-                  %input(type="checkbox")
-                  checkbox
+          / .form-group
+          /   .col-sm-offset-2.col-sm-10
+          /     .checkbox
+          /       %label
+          /         %input(type="checkbox")
+          /         checkbox
 
   .col-md-4(ng-repeat="product in productsList | filter:filter.query | priceRange:filter")
     .thumbnail

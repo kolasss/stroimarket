@@ -27,6 +27,38 @@ class Product
     update_attribute(:max_price, offers.max(:price))
   end
 
+  def as_json_for_catalog
+    options = {
+      except: [:_id, :_keywords, :category_id, :cover_filename],
+      include: {
+        category: {
+          methods: [:slug],
+          only: [
+            :slug,
+            :title
+          ],
+          include: {
+            product_attributes: {
+              only: [:name, :title, :type, :unit]
+            }
+          }
+        },
+        offers: {
+          only: [
+            :price
+          ],
+          include: {
+            user: {
+              # only: [:store_profile]
+            }
+          }
+        }
+      }
+    }
+
+    return serializable_hash(options)
+  end
+
   private
     def custom_field_to_datatype
       self.category.product_attributes.each do |pr_at|

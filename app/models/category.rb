@@ -23,7 +23,7 @@ class Category
         :label => node.title,
         :id => node.id.to_s,
         :slug => node.slug,
-        :custom_attributes => node.product_attributes.as_json,
+        # :product_attributes => node.product_attributes.as_json,
         :children => json_tree(node.children).compact
       }
     end

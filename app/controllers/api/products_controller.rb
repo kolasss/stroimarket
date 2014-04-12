@@ -3,12 +3,6 @@ class Api::ProductsController < ApplicationController
 
   def show
     product = Product.find(params[:id])
-    respond_with product,
-      include: {
-        category: {
-          methods: [:slug],
-          only: [:slug]
-        }
-      }
+    respond_with product.as_json_for_catalog
   end
 end
