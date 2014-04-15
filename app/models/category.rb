@@ -11,7 +11,7 @@ class Category
 
   validates :title, :presence => true
 
-  slug :title, history: true
+  slug :title
 
   before_destroy :destroy_children
 

@@ -70,4 +70,14 @@ class User
   def company_name
     self.store_profile? ? self.store_profile.name : name
   end
+
+  def products_for_catalog
+    self.offers.map do |i|
+      product = i.product.as_json(
+        except: [:body, :_keywords, :cover_filename, :category_id]
+      )
+      product[:price] = i.price
+      product
+    end
+  end
 end

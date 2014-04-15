@@ -20,6 +20,9 @@ window.app.config ['$routeProvider', '$locationProvider',
       .when '/stores',
         templateUrl: '/templates/stores/index.html',
         controller: 'StoresCtrl',
+      .when '/stores/:store_slug',
+        templateUrl: '/templates/stores/show.html',
+        controller: 'StoresCtrl',
       .otherwise
         redirectTo: '/'
 

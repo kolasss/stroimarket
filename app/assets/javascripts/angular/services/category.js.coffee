@@ -22,5 +22,5 @@ app.factory 'Category', ['$resource', '$filter', ($resource, $filter) ->
       if category_slug?
         @setCurrent(category_slug)
       else
-        if @current? then @current else @setCurrent(category_slug)
+        @current
 ]

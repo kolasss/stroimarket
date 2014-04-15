@@ -9,7 +9,15 @@ class StoreProfile
   field :ogrn, type: String
   field :address, type: String
   field :phone, type: String
+  field :slug, type: String
 
-  validates :name, :presence => true
-  validates :title, :presence => true
+  validates :name, presence: true
+  validates :title, presence: true
+
+  before_validation :add_slug
+
+  private
+    def add_slug
+      self.slug = self.name.gsub(/['`]/, "").parameterize(sep = '_')
+    end
 end

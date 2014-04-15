@@ -2,24 +2,16 @@ class Api::StoresController < ApplicationController
   respond_to :json
 
   def index
-    respond_with User.sellers.map(&:store_profile).compact
+    stores = User.sellers.map(&:store_profile).compact
+    respond_with stores,
+      include: {
+        user: {only: [:_id]}
+      }
   end
 
   def show
-    # ids = Category.find(params[:id]).self_and_children_ids
-    # products = Product.where(:category.in => ids).includes(:offers)
-    # respond_with products,
-    #   except: [:body, :_keywords, :cover_filename, :category_id]
-      # include: {
-      #   offers: { only: [:price, :user_id] }
-      # }
+    products = User.find(params[:id]).products_for_catalog
 
-    # render json: products,
-    #   # except: [:body_translations, :protected_content, :position],
-    #   # include: {
-    #   #   category: {only: [:id, :title_translations, :label]},
-    #   #   status: {only: [:color, :title_translations]}
-    #   # },
-    #   cover_helper: method(cover.thumb.url)
+    respond_with products
   end
 end

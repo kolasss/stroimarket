@@ -1,10 +1,13 @@
 .ng-cloak
+  %h1 {{currentStore.name}}
+  %p {{currentStore.title}}
+  %p ОГРН {{currentStore.ogrn}}
+  %p Телефон {{currentStore.phone}}
+  %p Адрес {{currentStore.address}}
+
   %h1 Каталог
 
-  / %p name: {{name}}
-  / %p params: {{params}}
-  / %p current category: {{currentCategory}}
-  .productsList(ng-show="showProducts")
+  .productsList
     .row
       .col-md-12
         .panel.panel-info
@@ -23,12 +26,6 @@
                 .col-sm-10
                   %input.form-control#filter_min_price(type="text" placeholder="minimum" ng-model="filter.minPrice")
                   %input.form-control#filter_min_price(type="text" placeholder="maximum" ng-model="filter.maxPrice")
-              / .form-group
-              /   .col-sm-offset-2.col-sm-10
-              /     .checkbox
-              /       %label
-              /         %input(type="checkbox")
-              /         checkbox
 
     .row
       .col-md-4(ng-repeat="product in productsList | filter:filter.query | priceRange:filter")
@@ -37,7 +34,10 @@
           .caption
             %h3 {{product.title}}
             %p {{product.intro}}
-            %span.label.label-success(ng-show="product.min_price") минимальная цена: {{product.min_price}} руб.
+            %span.label.label-success(ng-show="product.price") цена: {{product.price}} руб.
             %p
               %a.btn.btn-primary(href="#/products/{{product._id.$oid}}")
                 Подробнее
+
+  %a.btn.btn-primary(back-button)
+    Назад

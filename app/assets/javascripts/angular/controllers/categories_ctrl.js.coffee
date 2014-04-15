@@ -1,7 +1,8 @@
 app.controller 'CategoriesCtrl',
   ['$scope', 'Category', '$routeParams',
   ($scope, Category, $routeParams) ->
-    $scope.showCategory = false
+
+    $scope.showProducts = false
 
     $scope.categories = Category.all()
 
@@ -11,7 +12,7 @@ app.controller 'CategoriesCtrl',
     $scope.loadCategory = (category) ->
       category.products = Category.show(category.id) if not category.products?
       $scope.productsList = category.products
-      $scope.showCategory = true
+      $scope.showProducts = true
 
     $scope.setCurrentCategory = ->
       $scope.currentCategory = Category.getCurrent($routeParams.category_slug)

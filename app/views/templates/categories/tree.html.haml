@@ -1,4 +1,5 @@
-%div(data-ng-controller="CategoryTreeCtrl")
-  %abn-tree(tree-data="categories"
-    on-select="changeCategory(branch)"
-    tree-control="categories_tree")
+.ng-cloak
+  %div(data-ng-controller="CategoryTreeCtrl")
+    %abn-tree(tree-data="categories"
+      on-select="changeCategory(branch)"
+      tree-control="categories_tree")

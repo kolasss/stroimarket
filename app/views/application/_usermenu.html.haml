@@ -1,7 +1,7 @@
 %ul.nav.navbar-nav.navbar-right.usermenu
   %li
     - if user_signed_in?
-      %a.usermenu-dropdown-trigger(href="#" data-toggle="dropdown")
+      %a.usermenu-dropdown-trigger(href data-toggle="dropdown")
         %span.usermenu-picture
           -# = image_tag(current_user.picture.mini, class: 'user-picture-small')
         %span.usermenu-username

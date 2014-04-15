@@ -1,34 +1,36 @@
-%h1 Каталог продукт
+.ng-cloak
+  %h1 Каталог продукт
 
-.panel.panel-default
-  .panel-heading
-    %h3.panel-title
-      {{product.title}}
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title
+        {{product.title}}
 
-  .panel-body
-    %img.img-rounded.catalog_product_image_large(ng-src="{{product.cover.large.url}}" ng-show="product.cover.large.url")
+    .panel-body
+      %img.img-rounded.catalog_product_image_large(ng-src="{{product.cover.large.url}}" ng-show="product.cover.large.url")
 
-    %a.badge(ng-href="#/{{stroiUtils.getCategoryLink(product.category)}}")
-      {{product.category.title}}
+      %a.badge(ng-href="#/{{stroiUtils.getCategoryLink(product.category)}}")
+        {{product.category.title}}
 
-    %p {{product.body}}
+      %p {{product.body}}
 
-    %ul
-      %li(ng-repeat="attribute in product.category.product_attributes")
-        %b {{attribute.title}}
-        %span {{product[attribute.name]}}
+      %ul
+        %li(ng-repeat="attribute in product.category.product_attributes")
+          %b {{attribute.title}}
+          %span {{product[attribute.name]}}
 
-    %p Цены
-    %ul
-      %li(ng-repeat="offer in product.offers")
-        {{offer.price}} руб.
-        %span.label.label-default {{offer.user.store_profile.name}}
+      %p Цены
+      %ul
+        %li(ng-repeat="offer in product.offers")
+          {{offer.price}} руб.
+          %a.badge(ng-href="#/stores/{{offer.user.store_profile.slug}}")
+            {{offer.user.store_profile.name}}
 
-    / angular.forEach(product.category_id, function(value, key){
-    /   this.push(key + ': ' + value);
-    / }, log);
+      / angular.forEach(product.category_id, function(value, key){
+      /   this.push(key + ': ' + value);
+      / }, log);
 
-  .panel-footer
-    / %a.btn.btn-primary(role="button" href="" ng-click="backToCategory()") Назад
-    %a.btn.btn-primary(back-button)
-      Назад
+    .panel-footer
+      / %a.btn.btn-primary(role="button" href="" ng-click="backToCategory()") Назад
+      %a.btn.btn-primary(back-button)
+        Назад

@@ -22,6 +22,10 @@ class Product
     self.offers.map(&:user_id).include?(user.id)
   end
 
+  def user_offer user
+    self.offers.where(user_id: user.id)
+  end
+
   def set_min_max_price
     update_attribute(:min_price, offers.min(:price))
     update_attribute(:max_price, offers.max(:price))

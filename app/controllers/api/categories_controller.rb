@@ -14,12 +14,5 @@ class Api::CategoriesController < ApplicationController
       #   offers: { only: [:price, :user_id] }
       # }
 
-    # render json: products,
-    #   # except: [:body_translations, :protected_content, :position],
-    #   # include: {
-    #   #   category: {only: [:id, :title_translations, :label]},
-    #   #   status: {only: [:color, :title_translations]}
-    #   # },
-    #   cover_helper: method(cover.thumb.url)
   end
 end

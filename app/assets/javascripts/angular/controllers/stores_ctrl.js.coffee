@@ -1,21 +1,22 @@
 app.controller 'StoresCtrl',
-  ['$scope', 'Category', '$routeParams',
-  ($scope, Category, $routeParams) ->
-    $scope.showCategory = false
+  ['$scope', 'Store', '$routeParams',
+  ($scope, Store, $routeParams) ->
 
-    # $scope.categories = Category.all()
+    # $scope.showProducts = false
 
-    # $scope.$watchCollection 'categories', (newCats, oldCats) ->
-    #   $scope.setCurrentCategory()
+    $scope.stores = Store.all()
 
-    # $scope.loadCategory = (category) ->
-    #   category.products = Category.show(category.id) if not category.products?
-    #   $scope.productsList = category.products
-    #   $scope.showCategory = true
+    $scope.$watchCollection 'stores', (newStores, oldStores) ->
+      $scope.setCurrentStore()
 
-    # $scope.setCurrentCategory = ->
-    #   $scope.currentCategory = Category.getCurrent($routeParams.category_slug)
-    #   if $scope.currentCategory
-    #     $scope.loadCategory $scope.currentCategory
+    $scope.loadStore = (store) ->
+      store.products = Store.show(store.user._id.$oid) if not store.products?
+      $scope.productsList = store.products
+      # $scope.showProducts = true
+
+    $scope.setCurrentStore = ->
+      $scope.currentStore = Store.getCurrent($routeParams.store_slug)
+      if $scope.currentStore
+        $scope.loadStore $scope.currentStore
 
 ]
