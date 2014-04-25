@@ -2,6 +2,7 @@ class CatalogController < ApplicationController
   # before_action :set_category, only: [:show]
 
   def index
+    render layout: "home"
   end
 
   private

@@ -1,0 +1,14 @@
+.ng-cloak
+  %h1 Каталог
+
+  %p name: {{name}}
+  %p params: {{params}}
+  %p current category: {{currentCategory}}
+
+  / %categories-list(categories-data="categories"
+  /   on-select="changeCategory(branch)"
+  /   max-level="sadasd")
+
+  %categorieslist(categories-data="categories"
+    on-select="changeCategory(item)"
+    max-level="2")

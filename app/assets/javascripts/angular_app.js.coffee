@@ -9,8 +9,10 @@ window.app.config ['$routeProvider', '$locationProvider',
     # $locationProvider.html5Mode true
     $routeProvider
       .when '/',
-        templateUrl: '/templates/categories/index.html',
-        controller: 'CategoriesCtrl'
+        # templateUrl: '/templates/categories/index.html',
+        # controller: 'CategoriesCtrl'
+        templateUrl: '/templates/home/home.html',
+        controller: 'HomeCtrl'
       .when '/categories/:category_slug',
         templateUrl: '/templates/categories/index.html',
         controller: 'CategoriesCtrl',

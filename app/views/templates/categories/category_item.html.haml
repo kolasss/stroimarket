@@ -1,0 +1,6 @@
+%li.category_item
+  %a(ng-click="user_clicks_branch(row)")
+    {{ row.label }}
+  %ul.subcategories(ng-repeat="row in row.children"
+    ng-include="'/templates/categories/category_item.html'"
+  )
