@@ -15,6 +15,39 @@
 html, body
   height: 100%
 
+a
+  border-bottom: 1px solid rgba(#428BCA, .4)
+  // color: #428BCA
+  text-decoration: none
+  cursor: pointer
+
+  &:hover
+    text-decoration: none
+    // border-bottom-color: rgba(#d22e34, .3)
+    // color: #d22e34
+
+  &:focus
+    text-decoration: none
+    outline: none
+
+  td &,
+  th &
+    border-bottom: none
+
+  th &
+    white-space: nowrap
+
+  .nav &
+    border-bottom: none
+
+img
+  vertical-align: middle
+  max-width: 100%
+
+\:focus
+  outline: none
+  text-decoration: none
+
 //
 // Layout.
 //

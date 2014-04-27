@@ -13,8 +13,11 @@ window.app.config ['$routeProvider', '$locationProvider',
         # controller: 'CategoriesCtrl'
         templateUrl: '/templates/home/home.html',
         controller: 'HomeCtrl'
-      .when '/categories/:category_slug',
+      .when '/categories/',
         templateUrl: '/templates/categories/index.html',
+        controller: 'CategoriesCtrl',
+      .when '/categories/:category_slug',
+        templateUrl: '/templates/categories/show.html',
         controller: 'CategoriesCtrl',
       .when '/products/:product_id',
         templateUrl: '/templates/products/show.html',
@@ -30,5 +33,5 @@ window.app.config ['$routeProvider', '$locationProvider',
 
 ]
 
-window.app.run ($rootScope, stroiUtils) ->
-  $rootScope.stroiUtils = stroiUtils
+# window.app.run ($rootScope, stroiUtils) ->
+#   $rootScope.stroiUtils = stroiUtils

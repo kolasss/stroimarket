@@ -52,6 +52,7 @@ class Admin::CategoriesController < AdminController
     def category_params
       safe_attributes = [
         :title,
+        :show_on_main,
         :position,
         :parent_id,
         product_attributes_attributes:

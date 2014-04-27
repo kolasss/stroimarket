@@ -8,6 +8,7 @@ class Category
   has_many :products, dependent: :destroy
 
   field :title, type: String
+  field :show_on_main, type: Boolean
 
   validates :title, :presence => true
 
@@ -23,6 +24,7 @@ class Category
         :label => node.title,
         :id => node.id.to_s,
         :slug => node.slug,
+        :show_on_main => node.show_on_main,
         # :product_attributes => node.product_attributes.as_json,
         :children => json_tree(node.children).compact
       }

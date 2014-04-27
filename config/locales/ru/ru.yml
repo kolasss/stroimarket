@@ -26,7 +26,9 @@ ru:
   create_failed: В процессе сохранения возникла ошибка!
   update_failed: Данные не были обновлены!
   create_successful: Данные сохранены!
+  created: Данные сохранены!
   update_successful: Данные сохранены!
+  updated: Данные сохранены!
   details: Подробнее
   show_more: Показать все
   collapse: Свернуть
@@ -65,6 +67,7 @@ ru:
     settings: Настройки
     signin: Войти
     signout: Выйти
+    admin_categories: Категории
 
   adminmenu:
     map: Карта

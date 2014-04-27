@@ -2,6 +2,7 @@
 #= require jquery_ujs
 #= require bootstrap.min
 #= require jquery_nested_form
+#= require ckeditor/init
 #= require angular
 #= require angular-route
 #= require angular-resource
@@ -10,7 +11,6 @@
 #= require_tree ./angular
 #= require_tree .
 
-## require ckeditor/init
 
 # Uploaders.
 ($ '.image-uploader').each (i, el) ->
