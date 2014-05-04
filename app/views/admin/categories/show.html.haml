@@ -18,15 +18,15 @@
         %li
           =child.title
 
-- if @category.product_attributes
-  %p
-    %b Attributes:
-    %ol
-      - @category.product_attributes.each do |at|
-        %li
-          = at.title
-          = at.type
-          = at.name
+-# - if @category.product_attributes
+-#   %p
+-#     %b Attributes:
+-#     %ol
+-#       - @category.product_attributes.each do |at|
+-#         %li
+-#           = at.title
+-#           = at.type
+-#           = at.name
 
 = link_to 'Edit', edit_admin_category_path(@category)
 \|

@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:edit, :update, :destroy]
-  after_action :verify_authorized, :except => [:index, :show, :custom_category_fields]
+  after_action :verify_authorized, :except => [:index, :show]
 
   def index
     if params[:query].present?
@@ -47,11 +47,20 @@ class ProductsController < ApplicationController
     redirect_to products_url
   end
 
-  def custom_category_fields
+  # def custom_category_fields
+  #   @product = Product.find_or_initialize_by(id: params[:object_id])
+  #   authorize @product, :update?
+  #   @category = Category.find(params[:category_id])
+
+  #   render partial: "custom_category_fields", locals: {category: @category, object: @product}
+  # end
+
+  def manufacturer_field
     @product = Product.find_or_initialize_by(id: params[:object_id])
+    authorize @product, :update?
     @category = Category.find(params[:category_id])
 
-    render partial: "custom_category_fields", locals: {category: @category, object: @product}
+    render partial: "manufacturer_field", locals: {category: @category, object: @product}
   end
 
   private
@@ -61,7 +70,7 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      @category = Category.find(params[:product][:category_id])
+      # @category = Category.find(params[:product][:category_id])
 
       safe_attributes = [
         :title,
@@ -70,9 +79,10 @@ class ProductsController < ApplicationController
         :body,
         :category_id,
         :cover,
-        :remove_cover
+        :remove_cover,
+        :manufacturer_id
       ]
-      safe_attributes << @category.product_attributes.map(&:name)
+      # safe_attributes << @category.product_attributes.map(&:name)
 
       params.require(:product).permit(safe_attributes)
     end

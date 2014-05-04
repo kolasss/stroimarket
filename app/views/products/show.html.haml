@@ -12,13 +12,19 @@
   %b Категория:
   = @product.category.title
 
-.custom_attributes
-  - if @product.category && @product.category.product_attributes
-    - @product.category.product_attributes.each do |pr_at|
-      %p
-        %b #{pr_at.title}:
-        = @product[pr_at.name]
-        = pr_at.unit if pr_at.unit && pr_at.type == 'integer'
+- if @product.manufacturer
+  %p
+    %b Производитель:
+    = @product.manufacturer.title
+
+/ Часть для кастомных полей
+/ .custom_attributes
+/   - if @product.category && @product.category.product_attributes
+/     - @product.category.product_attributes.each do |pr_at|
+/       %p
+/         %b #{pr_at.title}:
+/         = @product[pr_at.name]
+/         = pr_at.unit if pr_at.unit && pr_at.type == 'integer'
 
 %p
   минимальная цена:

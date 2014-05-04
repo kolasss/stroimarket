@@ -1,0 +1,15 @@
+%h1 Производители
+
+%table.table.table-striped
+  %tr
+    %th Наименование
+    %th
+    %th
+
+  - @manufacturers.each do |manufacturer|
+    %tr
+      %td= link_to manufacturer.title, admin_manufacturer_path(manufacturer)
+      %td= link_to 'Edit', edit_admin_manufacturer_path(manufacturer)
+      %td= link_to 'Destroy', admin_manufacturer_path(manufacturer), :method => :delete, :data => { confirm: t(:confirm_deletion) }
+
+= link_to 'Новый производитель', new_admin_manufacturer_path, class: 'btn btn-info'

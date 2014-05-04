@@ -9,29 +9,41 @@ window.app.config ['$routeProvider', '$locationProvider',
     # $locationProvider.html5Mode true
     $routeProvider
       .when '/',
-        # templateUrl: '/templates/categories/index.html',
-        # controller: 'CategoriesCtrl'
         templateUrl: '/templates/home/home.html',
         controller: 'HomeCtrl'
-      .when '/categories/',
+      .when '/categories',
         templateUrl: '/templates/categories/index.html',
         controller: 'CategoriesCtrl',
       .when '/categories/:category_slug',
         templateUrl: '/templates/categories/show.html',
-        controller: 'CategoriesCtrl',
+        controller: 'CategoryCtrl',
       .when '/products/:product_id',
         templateUrl: '/templates/products/show.html',
-        controller: 'ProductsCtrl'
+        controller: 'ProductCtrl'
       .when '/stores',
         templateUrl: '/templates/stores/index.html',
         controller: 'StoresCtrl',
       .when '/stores/:store_slug',
         templateUrl: '/templates/stores/show.html',
-        controller: 'StoresCtrl',
+        controller: 'StoreCtrl',
       .otherwise
         redirectTo: '/'
 
 ]
 
-# window.app.run ($rootScope, stroiUtils) ->
-#   $rootScope.stroiUtils = stroiUtils
+window.app.run ['$route', '$rootScope', 'stroiUtils',
+  ($route, $rootScope, stroiUtils) ->
+
+    # $rootScope.stroiUtils = stroiUtils
+
+    $rootScope.path_for = (controller, params) ->
+      for path of $route.routes
+        pathController = $route.routes[path].controller
+        if pathController == controller
+          result = path
+          for param of params
+            result = '#' + result.replace(':' + param, params[param])
+          return result
+
+      return undefined
+]

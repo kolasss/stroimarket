@@ -1,0 +1,13 @@
+.ng-cloak
+  %ul.nav.nav-pills(nav-menu)
+    %li(ng-class="getClass('CategoriesCtrl', 'CategoryCtrl', 'ProductCtrl')")
+      %a(href='#/categories')
+        Каталог
+    %li(ng-class="getClass('StoresCtrl', 'StoreCtrl')")
+      %a(href='#/stores')
+        Магазины
+    %li
+      %a(href='#/facilities')
+        Услуги
+
+    = render 'articles/roots'

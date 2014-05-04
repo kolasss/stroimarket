@@ -71,7 +71,6 @@ app.directive 'listnode',
         element.replaceWith(e)
 
         scope.user_clicks_item = (item) ->
-          console.log item
           $location.path stroiUtils.getCategoryLink(item)
     }
 ]

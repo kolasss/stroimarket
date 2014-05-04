@@ -5,7 +5,8 @@ Stroimarket::Application.routes.draw do
   resources :posts
 
   resources :products do
-    get :custom_category_fields, on: :collection
+    # get :custom_category_fields, on: :collection
+    get :manufacturer_field, on: :collection
 
     resources :offers, except: [:index, :show]
   end
@@ -33,6 +34,8 @@ Stroimarket::Application.routes.draw do
     resources :categories do
       post :update_position, on: :collection
     end
+
+    resources :manufacturers
   end
 
   get 'catalog', to: 'catalog#index'

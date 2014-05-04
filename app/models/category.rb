@@ -6,6 +6,7 @@ class Category
 
   embeds_many :product_attributes
   has_many :products, dependent: :destroy
+  has_and_belongs_to_many :manufacturers
 
   field :title, type: String
   field :show_on_main, type: Boolean

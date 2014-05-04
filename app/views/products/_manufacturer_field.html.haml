@@ -1,0 +1,3 @@
+- if category
+  = simple_fields_for(object) do |f|
+    = f.association :manufacturer, collection: category.manufacturers

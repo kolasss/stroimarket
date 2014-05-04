@@ -5,16 +5,18 @@ class Product
   include Mongoid::Search
 
   belongs_to :category
+  belongs_to :manufacturer
   has_many :offers, dependent: :destroy
 
   field :min_price, type: Integer
   field :max_price, type: Integer
 
-  before_validation :custom_field_to_datatype
-  before_save :clear_old_custom_fields, if: :category_id_changed?
+  # Часть для кастомных полей
+  # before_validation :custom_field_to_datatype
+  # before_save :clear_old_custom_fields, if: :category_id_changed?
+  # validate :custom_fields_validator
 
   validates :category_id, :presence => true
-  validate :custom_fields_validator
 
   search_in :title
 
@@ -41,11 +43,12 @@ class Product
             :slug,
             :title
           ],
-          include: {
-            product_attributes: {
-              only: [:name, :title, :type, :unit]
-            }
-          }
+          # Часть для кастомных полей
+          # include: {
+          #   product_attributes: {
+          #     only: [:name, :title, :type, :unit]
+          #   }
+          # }
         },
         offers: {
           only: [
@@ -64,50 +67,51 @@ class Product
   end
 
   private
-    def custom_field_to_datatype
-      self.category.product_attributes.each do |pr_at|
-        name = pr_at.name.to_sym
-        if pr_at.type == 'boolean'
-          self[name] = self[name].to_bool
-        elsif pr_at.type == 'integer'
-          self[name] = self[name].to_i
-        end
-      end
-    end
+    # Часть для кастомных полей
+    # def custom_field_to_datatype
+    #   self.category.product_attributes.each do |pr_at|
+    #     name = pr_at.name.to_sym
+    #     if pr_at.type == 'boolean'
+    #       self[name] = self[name].to_bool
+    #     elsif pr_at.type == 'integer'
+    #       self[name] = self[name].to_i
+    #     end
+    #   end
+    # end
 
-    def custom_fields_validator
-      max_length = 30
-      max_integer = 9223372036854775807
-      min_integer = -9223372036854775807
+    # def custom_fields_validator
+    #   max_length = 30
+    #   max_integer = 9223372036854775807
+    #   min_integer = -9223372036854775807
 
-      self.category.product_attributes.each do |pr_at|
-        name = pr_at.name.to_sym
+    #   self.category.product_attributes.each do |pr_at|
+    #     name = pr_at.name.to_sym
 
-        case pr_at.type
-        when 'string'
-          errors.add(name, "Длина строки должна быть не больше #{max_length} символов") if self[name].length > max_length
-        # when 'boolean'
-        #   # do nothing
-        when 'integer'
-          if self[name] > max_integer
-            errors.add(name, "Значение должно быть не больше #{max_integer}")
-          elsif self[name] < min_integer
-            errors.add(name, "Значение должно быть не меньше #{min_integer}")
-          end
-        end
-      end
-    end
+    #     case pr_at.type
+    #     when 'string'
+    #       errors.add(name, "Длина строки должна быть не больше #{max_length} символов") if self[name].length > max_length
+    #     # when 'boolean'
+    #     #   # do nothing
+    #     when 'integer'
+    #       if self[name] > max_integer
+    #         errors.add(name, "Значение должно быть не больше #{max_integer}")
+    #       elsif self[name] < min_integer
+    #         errors.add(name, "Значение должно быть не меньше #{min_integer}")
+    #       end
+    #     end
+    #   end
+    # end
 
-    def clear_old_custom_fields
-      current = category.product_attributes.map(&:name)
-      old = []
-      dynamic_attributes.each do |dyn_at|
-        old << dyn_at unless current.include?(dyn_at)
-      end
-      unset(old)
-    end
+    # def clear_old_custom_fields
+    #   current = category.product_attributes.map(&:name)
+    #   old = []
+    #   dynamic_attributes.each do |dyn_at|
+    #     old << dyn_at unless current.include?(dyn_at)
+    #   end
+    #   unset(old)
+    # end
 
-    def dynamic_attributes
-      attributes.keys - fields.keys
-    end
+    # def dynamic_attributes
+    #   attributes.keys - fields.keys
+    # end
 end

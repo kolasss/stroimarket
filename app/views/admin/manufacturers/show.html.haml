@@ -1,0 +1,12 @@
+%p
+  %b Наименование:
+  = @manufacturer.title
+%p
+  %b Категории
+  %ul
+    - @manufacturer.categories.each do |category|
+      %li= category.title
+
+= link_to 'Edit', edit_admin_manufacturer_path(@manufacturer)
+\|
+= link_to 'Назад', admin_manufacturers_path
