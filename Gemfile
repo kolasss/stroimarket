@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-ruby '2.1.0'
-gem 'rails', '4.0.2'
+ruby '2.1.1'
+gem 'rails', '~> 4.1.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -73,4 +73,4 @@ gem 'ckeditor'
 
 gem 'angularjs-rails'
 
-gem 'oj'
+# gem 'oj'
