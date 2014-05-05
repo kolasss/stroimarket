@@ -20,6 +20,8 @@ init_sortable = (target_list, item_type) ->
       $.ajax
         type:     'post'
         url:      url
+        beforeSend: (xhr) ->
+          xhr.setRequestHeader 'X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')
         data:
           id:        id
           parent_id: parent_id
@@ -45,5 +47,5 @@ init_sortable = (target_list, item_type) ->
 
 
 init_sortable('#categories_root', 'categories')
-
+init_sortable('#service_categories_root', 'service_categories')
 init_sortable('#articles_root', 'articles')

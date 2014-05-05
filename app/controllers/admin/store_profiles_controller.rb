@@ -2,7 +2,6 @@ class Admin::StoreProfilesController < AdminController
   before_action :set_user, except: [ :index ]
   before_action :set_profile, only: [ :edit, :update, :destroy ]
 
-
   def index
     @all_profiles = User.sellers.map(&:store_profile).compact
     @store_profiles = Kaminari.paginate_array(@all_profiles).page(params[:page])

@@ -1,0 +1,8 @@
+%h1 Категории услуг
+
+= link_to 'New Category', new_admin_service_category_path, class: 'btn btn-info'
+
+%br
+
+%ol#service_categories_root.sortable_tree.tree_root
+  = render_sortable_tree @categories.roots

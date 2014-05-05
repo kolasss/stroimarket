@@ -1,0 +1,20 @@
+%p
+  %b Title:
+  = @category.title
+%p
+  %b Position:
+  = @category.position
+%p
+  %b Parent:
+  = @category.parent.title if @category.parent
+%p
+  %b Children:
+  - if @category.children
+    %ol
+      - @category.children.each do |child|
+        %li
+          =child.title
+
+= link_to 'Edit', edit_admin_service_category_path(@category)
+\|
+= link_to 'Back', admin_service_categories_path

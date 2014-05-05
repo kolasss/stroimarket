@@ -1,9 +1,9 @@
-class Admin::ManufacturersController < ApplicationController
+class Admin::ManufacturersController < AdminController
   before_action :set_manufacturer, only: [:show, :edit, :update, :destroy]
-  after_action :verify_authorized, :except => [:index, :show]
 
   def index
     @manufacturers = Manufacturer.all
+    authorize AdminController
   end
 
   def show

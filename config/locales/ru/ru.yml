@@ -68,6 +68,10 @@ ru:
     signin: Войти
     signout: Выйти
     admin_categories: Категории
+    admin_service_categories: Категории услуг
+    admin_articles: Статьи
+    admin_manufacturers: Производители
+    admin_services: Услуги
 
   adminmenu:
     map: Карта

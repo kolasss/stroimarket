@@ -1,0 +1,15 @@
+%p
+  %b Title:
+  = @service.title
+%p
+  %b Body:
+  = @service.body
+%p
+  %b Категория:
+  = @service.service_category.title
+
+
+%br
+= link_to 'Edit', edit_admin_service_path(@service)
+\|
+= link_to 'Back', admin_services_path

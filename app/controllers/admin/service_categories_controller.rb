@@ -1,10 +1,10 @@
-class Admin::CategoriesController < AdminController
+class Admin::ServiceCategoriesController < AdminController
   include AdminPositionable
 
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
-    @categories = Category.all
+    @categories = ServiceCategory.all
     authorize AdminController
   end
 
@@ -12,7 +12,7 @@ class Admin::CategoriesController < AdminController
   end
 
   def new
-    @category = Category.new
+    @category = ServiceCategory.new
     authorize AdminController
   end
 
@@ -20,11 +20,11 @@ class Admin::CategoriesController < AdminController
   end
 
   def create
-    @category = Category.new(category_params)
+    @category = ServiceCategory.new(category_params)
     authorize AdminController
 
     if @category.save
-      redirect_to admin_categories_path, notice: t(:created)
+      redirect_to admin_service_categories_path, notice: t(:created)
     else
       render action: 'new'
     end
@@ -32,7 +32,7 @@ class Admin::CategoriesController < AdminController
 
   def update
     if @category.update(category_params)
-      redirect_to admin_categories_path, notice: t(:updated)
+      redirect_to admin_service_categories_path, notice: t(:updated)
     else
       render action: 'edit'
     end
@@ -40,30 +40,20 @@ class Admin::CategoriesController < AdminController
 
   def destroy
     @category.destroy
-    redirect_to admin_categories_path
+    redirect_to admin_service_categories_path
   end
 
   private
     def set_category
-      @category = Category.find(params[:id])
+      @category = ServiceCategory.find(params[:id])
       authorize AdminController
     end
 
     def category_params
       safe_attributes = [
         :title,
-        :show_on_main,
-        # :position,
-        :parent_id,
-        # product_attributes_attributes:
-        # [
-        #   :id,
-        #   :_destroy,
-        #   :title,
-        #   :type,
-        #   :unit
-        # ]
+        :parent_id
       ]
-      params.require(:category).permit(*safe_attributes)
+      params.require(:service_category).permit(*safe_attributes)
     end
 end

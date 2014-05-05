@@ -1,5 +1,6 @@
 Stroimarket::Application.routes.draw do
 
+
   mount Ckeditor::Engine => '/ckeditor'
   resources :categories, only: [:index, :show]
   resources :posts
@@ -35,7 +36,12 @@ Stroimarket::Application.routes.draw do
       post :update_position, on: :collection
     end
 
+    resources :service_categories do
+      post :update_position, on: :collection
+    end
+
     resources :manufacturers
+    resources :services
   end
 
   get 'catalog', to: 'catalog#index'

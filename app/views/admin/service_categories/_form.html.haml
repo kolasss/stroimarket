@@ -1,0 +1,9 @@
+= simple_nested_form_for [ :admin, @category ] do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.association :parent
+
+  .form-actions
+    = f.button :submit

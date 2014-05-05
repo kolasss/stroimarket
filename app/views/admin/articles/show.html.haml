@@ -19,7 +19,7 @@
   = @article.updated_at
 %p
   %b Body:
-  = @article.body
+  = raw @article.body
 
 - if @article.images
   %ul

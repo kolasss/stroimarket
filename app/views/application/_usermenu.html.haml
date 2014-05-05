@@ -18,7 +18,10 @@
           %li= link_to t('usermenu.users'), admin_users_path
           %li= link_to t('usermenu.store_profiles'), admin_store_profiles_path
           %li= link_to t('usermenu.admin_categories'), admin_categories_path
-          %li= link_to 'Статьи', admin_articles_path
+          %li= link_to t('usermenu.admin_articles'), admin_articles_path
+          %li= link_to t('usermenu.admin_manufacturers'), admin_manufacturers_path
+          %li= link_to t('usermenu.admin_service_categories'), admin_service_categories_path
+          %li= link_to t('usermenu.admin_services'), admin_services_path
 
         -# = nav_item t('usermenu.dashboard'), dashboard_root_path, root: root
 

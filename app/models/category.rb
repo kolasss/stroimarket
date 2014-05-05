@@ -1,21 +1,11 @@
 class Category
-  include Mongoid::Document
-  include Mongoid::Tree
-  include Mongoid::Tree::Ordering
-  include Mongoid::Slug
+  include CommonCategory
 
   embeds_many :product_attributes
   has_many :products, dependent: :destroy
   has_and_belongs_to_many :manufacturers
 
-  field :title, type: String
   field :show_on_main, type: Boolean
-
-  validates :title, :presence => true
-
-  slug :title
-
-  before_destroy :destroy_children
 
   accepts_nested_attributes_for :product_attributes, :allow_destroy => true, :reject_if => :all_blank
 
@@ -30,9 +20,5 @@ class Category
         :children => json_tree(node.children).compact
       }
     end
-  end
-
-  def self_and_children_ids
-    descendants.pluck(:id) << id
   end
 end
