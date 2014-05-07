@@ -6,5 +6,8 @@
     = f.input :body
     = f.association :service_category
 
+    - if current_user.admin?
+      = f.association :user, collection: User.sellers
+
   .form-actions
     = f.button :submit

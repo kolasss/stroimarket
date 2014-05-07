@@ -7,6 +7,7 @@ app.directive 'categorieslist', ->
       # onSelect: '&'
       maxLevel: '@'
       onMain: '@'
+      type: '@'
     template:
       '<div class="row clearfix categories_list">
         <div class="col-md-4" ng-repeat="item in categoriesData | onMainFilter:onMain">
@@ -14,7 +15,8 @@ app.directive 'categorieslist', ->
             item="item"
             category-level="1"
             max-level="{{maxLevel}}"
-            on-main="{{onMain}}">
+            on-main="{{onMain}}"
+            type="{{type}}">
           </listnode>
         </div>
       </div>'
@@ -37,7 +39,7 @@ app.directive 'listnode',
       # wrap_start = '<div class="category_item">'
       # wrap_end = '</div>'
 
-      link = "<a ng-click='user_clicks_item(item)'>{{ item.label }}</a>"
+      link = "<a type='{{type}}' ng-click='user_clicks_item(item)'>{{ item.label }}</a>"
 
       if categoryLevel == maxLevel
         children_list = ''
@@ -48,7 +50,8 @@ app.directive 'listnode',
               item='item'
               category-level='#{nextLevel}'
               max-level='#{maxLevel}'
-              on-main='{{onMain}}'>
+              on-main='{{onMain}}'
+              type='{{type}}'>
             </listnode>
           </span>
         </div>"
@@ -61,6 +64,7 @@ app.directive 'listnode',
       scope:
         item: '='
         onMain: '@'
+        type: '@'
       link: (scope, element, attrs) ->
         categoryLevel = parseInt attrs.categoryLevel
         maxLevel = parseInt attrs.maxLevel || 100
@@ -71,7 +75,11 @@ app.directive 'listnode',
         element.replaceWith(e)
 
         scope.user_clicks_item = (item) ->
-          $location.path stroiUtils.getCategoryLink(item)
+          if scope.type == 'service'
+            item_controller = 'ServiceCategoryCtrl'
+          else
+            item_controller = 'CategoryCtrl'
+          $location.path stroiUtils.path_for(item_controller, {category_slug: item.slug}, false)
     }
 ]
 

@@ -16,6 +16,10 @@ class StoreProfile
 
   before_validation :add_slug
 
+  def user_id
+    user.id.to_s
+  end
+
   private
     def add_slug
       self.slug = self.name.gsub(/['`]/, "").parameterize(sep = '_')

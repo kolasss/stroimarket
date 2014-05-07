@@ -21,6 +21,8 @@ class Admin::ServicesController < AdminController
     @service = Service.new(service_params)
     authorize AdminController
 
+    @service.user = current_user if @service.user.blank? and current_user.seller?
+
     if @service.save
       redirect_to admin_service_path(@service), notice: t(:created)
     else
@@ -51,7 +53,8 @@ class Admin::ServicesController < AdminController
       params.require(:service).permit(
         :title,
         :body,
-        :service_category_id
+        :service_category_id,
+        :user_id
       )
     end
 end

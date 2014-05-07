@@ -12,15 +12,23 @@
 #= require_tree .
 
 
-# Uploaders.
-($ '.image-uploader').each (i, el) ->
-  new ImageUploader el: el
+jQuery ->
+  # Uploaders.
+  ($ '.image-uploader').each (i, el) ->
+    new ImageUploader el: el
 
-($ '.attachments-form').each (i, el) ->
-  attachments = $ el
+  ($ '.attachments-form').each (i, el) ->
+    attachments = $ el
 
-  attachments.find('.attachment').each (i, el) ->
-    new AttachmentFields el: el
+    attachments.find('.attachment').each (i, el) ->
+      new AttachmentFields el: el
 
-  attachments.find('.add-attachment').each (i, el) ->
-    new AttachmentButton el: el
+    attachments.find('.add-attachment').each (i, el) ->
+      new AttachmentButton el: el
+
+  # $('.dropdown-on-hover').hover(
+  #   () ->
+  #     $(this).addClass('open')
+  #   () ->
+  #     $(this).removeClass('open')
+  # )

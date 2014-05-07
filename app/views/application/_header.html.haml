@@ -1,25 +1,23 @@
-.header.clearfix
-  %nav.navbar(role="navigation")
+%header.navbar.navbar-default.navbar-static-top(role="navigation")
+  .container-fluid
     .row
-      .col-md-6.logowrapper
+      .col-md-4.logowrapper
         %a.logo{ href: root_path }
           .logo_image
           %span.sitename= t 'sitename'
-
-      .col-md-6
-        = render 'usermenu'
-
+      .col-md-8
+        = render 'search'
     .row
       .col-md-12
-        %button#mainnav-toggle.navbar-toggle.btn.btn-primary.btn-block(data-toggle="collapse" data-target="#mainnav")
-          %span.btn-nav-collapse ☰
-          = t 'mainnav'
+        .navbar-header
+          %button.navbar-toggle(type="button" data-toggle="collapse" data-target="#mainnav")
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          / %a.navbar-brand(href="#")= t 'sitename'
 
-    .row
-      .col-md-12
-        #mainnav.navbar-collapse.collapse
+        #mainnav.collapse.navbar-collapse
           = render 'nav'
 
-
-.page-messages
-  = messages
+          = render 'usermenu'

@@ -10,10 +10,9 @@
     = javascript_include_tag :application
   %body
 
-    .page-wrapper.site-frontoffice
-      .container
-        = render 'header'
-      .container.page-container
+    .page-wrapper
+      = render 'header'
+      .container-fluid.page-container
         = yield
 
       = render 'footer'

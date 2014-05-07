@@ -4,8 +4,8 @@ window.app = angular.module "Stroimarket", [
   'angularBootstrapNavTree'
 ]
 
-window.app.config ['$routeProvider', '$locationProvider',
-  ($routeProvider, $locationProvider) ->
+window.app.config ['$routeProvider',
+  ($routeProvider) ->
     # $locationProvider.html5Mode true
     $routeProvider
       .when '/',
@@ -26,24 +26,23 @@ window.app.config ['$routeProvider', '$locationProvider',
       .when '/stores/:store_slug',
         templateUrl: '/templates/stores/show.html',
         controller: 'StoreCtrl',
+      .when '/service_categories',
+        templateUrl: '/templates/service_categories/index.html',
+        controller: 'ServiceCategoriesCtrl',
+      .when '/service_categories/:category_slug',
+        templateUrl: '/templates/service_categories/show.html',
+        controller: 'ServiceCategoryCtrl',
+      .when '/services/:service_id',
+        templateUrl: '/templates/services/show.html',
+        controller: 'ServiceCtrl'
       .otherwise
         redirectTo: '/'
 
 ]
 
-window.app.run ['$route', '$rootScope', 'stroiUtils',
-  ($route, $rootScope, stroiUtils) ->
+window.app.run ['$rootScope', 'stroiUtils',
+  ($rootScope, stroiUtils) ->
 
-    # $rootScope.stroiUtils = stroiUtils
+    $rootScope.stroiUtils = stroiUtils
 
-    $rootScope.path_for = (controller, params) ->
-      for path of $route.routes
-        pathController = $route.routes[path].controller
-        if pathController == controller
-          result = path
-          for param of params
-            result = '#' + result.replace(':' + param, params[param])
-          return result
-
-      return undefined
 ]

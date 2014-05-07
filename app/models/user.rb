@@ -10,6 +10,7 @@ class User
 
   embeds_one :store_profile
   has_many :offers, dependent: :destroy
+  has_many :services, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -72,11 +73,11 @@ class User
   end
 
   def products_for_catalog
-    self.offers.map do |i|
-      product = i.product.as_json(
+    self.offers.map do |offer|
+      product = offer.product.as_json(
         except: [:body, :_keywords, :cover_filename, :category_id]
       )
-      product[:price] = i.price
+      product[:price] = offer.price
       product
     end
   end

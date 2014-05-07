@@ -56,7 +56,15 @@ class Product
           ],
           include: {
             user: {
-              # only: [:store_profile]
+              only: [:store_profile],
+              include: {
+                store_profile: {
+                  only: [
+                    :slug,
+                    :name
+                  ]
+                }
+              }
             }
           }
         }

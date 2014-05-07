@@ -28,7 +28,7 @@
                   %input.form-control#filter_min_price(type="text" placeholder="maximum" ng-model="filter.maxPrice")
 
     .row
-      .col-md-4(ng-repeat="product in productsList | filter:filter.query | priceRange:filter")
+      .col-md-4(ng-repeat="product in currentStore.products | filter:filter.query | priceRange:filter")
         .thumbnail
           %img(ng-src="{{product.cover.thumb.url}}")
           .caption

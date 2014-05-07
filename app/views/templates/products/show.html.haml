@@ -8,8 +8,7 @@
     .panel-body
       %img.img-rounded.catalog_product_image_large(ng-src="{{product.cover.large.url}}" ng-show="product.cover.large.url")
 
-      / %a.badge(ng-href="#/{{stroiUtils.getCategoryLink(product.category)}}")
-      %a.badge(ng-href="{{path_for('CategoryCtrl', {category_slug: product.category.slug})}}")
+      %a.badge(ng-href="{{stroiUtils.path_for('CategoryCtrl', {category_slug: product.category.slug})}}")
         {{product.category.title}}
 
       %p {{product.body}}
@@ -23,7 +22,7 @@
       %ul
         %li(ng-repeat="offer in product.offers")
           {{offer.price}} руб.
-          %a.badge(ng-href="{{path_for('StoreCtrl', {store_slug: offer.user.store_profile.slug})}}")
+          %a.badge(ng-href="{{stroiUtils.path_for('StoreCtrl', {store_slug: offer.user.store_profile.slug})}}")
             {{offer.user.store_profile.name}}
 
       / angular.forEach(product.category_id, function(value, key){
@@ -31,6 +30,5 @@
       / }, log);
 
     .panel-footer
-      / %a.btn.btn-primary(role="button" href="" ng-click="backToCategory()") Назад
       %a.btn.btn-primary(back-button)
         Назад

@@ -1,8 +1,55 @@
-%ul.nav.nav-pills
-  = nav_item t('nav.main'),          root_path
-  = nav_item 'Новости', posts_path
-  = nav_item 'Каталог', catalog_path
-  = nav_item 'Товары', products_path
-  = nav_item 'Категории', categories_path
+%ul.nav.navbar-nav.ng-cloak(nav-menu)
+  / %li.dropdown
+  /   %a.dropdown-toggle(href="#" data-toggle="dropdown")
+  /     Dropdown
+  /     %b.caret
+  /   %ul.dropdown-menu
+  /     %li.dropdown-submenu
+  /       %a(tabindex="-1" href="#") More options
+  /       %ul.dropdown-menu
+  /         %li
+  /           %a(href="#") Second level 1
+  /         %li
+  /           %a(href="#") Second level
+  /         %li
+  /           %a(href="#") Second level
+  /     %li.dropdown-submenu
+  /       %a(tabindex="-1" href="#") More options
+  /       %ul.dropdown-menu
+  /         %li
+  /           %a(href="#") Second level 2
+  /         %li
+  /           %a(href="#") Second level
+  /         %li
+  /           %a(href="#") Second level
+  /     %li.dropdown-submenu
+  /       %a(tabindex="-1" href="#") More options
+  /       %ul.dropdown-menu
+  /         %li
+  /           %a(href="#") Second level 3
+  /         %li
+  /           %a(href="#") Second level
+  /         %li
+  /           %a(href="#") Second level
+  /     %li
+  /       %a(href="#") Action
+  /     %li
+  /       %a(href="#") Another action
+  /     %li
+  /       %a(href="#") Something else here
+
+  %li.dropdown.dropdown-on-hover(ng-class="getClass('CategoriesCtrl', 'CategoryCtrl', 'ProductCtrl')")
+    %a.dropdown-toggle(href='#/categories' data-toggle="dropdown")
+      Каталог товаров
+      %b.caret
+    %ul.dropdown-menu(categories-dropdown ng-class="Open()")
+
+  %li(ng-class="getClass('StoresCtrl', 'StoreCtrl')")
+    %a(href='#/stores')
+      Магазины
+  %li(ng-class="getClass('ServiceCategoriesCtrl', 'ServiceCategoryCtrl', 'ServiceCtrl')")
+    %a(href='#/service_categories')
+      Услуги
 
   = render 'articles/roots'
+

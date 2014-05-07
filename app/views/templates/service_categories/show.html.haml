@@ -1,0 +1,32 @@
+.ng-cloak
+  %h1 Каталог
+
+  .servicesList
+    .row
+      .col-md-12
+        .panel.panel-info
+          .panel-heading
+            Фильтр
+          .panel-body
+            %form.form-horizontal(role="form")
+              .form-group
+                %label.col-sm-2.control-label(for="filter_text")
+                  Текст
+                .col-sm-10
+                  %input.form-control#filter_text(type="search" placeholder="Поиск" ng-model="filter.query")
+              / .form-group
+              /   %label.col-sm-2.control-label(for="filter_min_price")
+              /     price range
+              /   .col-sm-10
+              /     %input.form-control#filter_min_price(type="text" placeholder="minimum" ng-model="filter.minPrice")
+              /     %input.form-control#filter_min_price(type="text" placeholder="maximum" ng-model="filter.maxPrice")
+
+    .row
+      .col-md-4(ng-repeat="service in currentCategory.services | filter:filter.query")
+        .thumbnail
+          / %img(ng-src="{{service.cover.thumb.url}}")
+          .caption
+            %h3 {{service.title}}
+            %p
+              %a.btn.btn-primary(ng-href="{{stroiUtils.path_for('ServiceCtrl', {service_id: service._id.$oid})}}")
+                Подробнее

@@ -1,3 +1,7 @@
-%form.search-form(role="search")
-  %input.form-control{ type: :text, name: :search, placeholder: t('search') }
-  %button.btn= icon 'search'
+%form.navbar-form.navbar-left(role="search")
+  .input-group
+    %input.form-control{ type: :text, name: :search, placeholder: t('search') }
+    %span.input-group-btn
+      %button.btn.btn-default(type="submit")
+        = icon 'search'
+

@@ -11,11 +11,11 @@ module MessagesHelper
 
   def message_class type
     case type
-    when :info    then 'alert-info'
-    when :notice  then 'alert-info'
-    when :warning then 'alert-warning'
-    when :alert   then 'alert-danger'
-    when :danger  then 'alert-danger'
+    when 'info'    then 'alert-info'
+    when 'notice'  then 'alert-info'
+    when 'warning' then 'alert-warning'
+    when 'alert'   then 'alert-danger'
+    when 'danger'  then 'alert-danger'
     end
   end
 end

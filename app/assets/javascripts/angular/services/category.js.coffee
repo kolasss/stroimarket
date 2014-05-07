@@ -1,26 +1,25 @@
-app.factory 'Category', ['$resource', '$filter', ($resource, $filter) ->
+app.factory 'Category', ['$resource', ($resource) ->
   new class Category
     constructor: ->
       @service = $resource(
         '/api/categories/:categoryId',
         {categoryId: '@id'}
       )
+      @categoriesCache = []
 
     index: ->
       @categories = @service.query()
 
-    show: (id) ->
+    get: (id) ->
       @service.query(categoryId: id)
 
     all: ->
       if @categories? then @categories else @index()
 
-    setCurrent: (category_slug) ->
-      @current = $filter('getBySlug')(@categories, category_slug)
-
-    getCurrent: (category_slug)->
-      if category_slug?
-        @setCurrent(category_slug)
+    show: (id) ->
+      if @categoriesCache[id]
+        @categoriesCache[id]
       else
-        @current
+        @categoriesCache[id] = @get(id)
+
 ]

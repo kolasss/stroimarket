@@ -47,13 +47,11 @@ Stroimarket::Application.routes.draw do
   get 'catalog', to: 'catalog#index'
 
   namespace :api do
-    # resources :stocks, defaults: {format: :json} do
-    #   get :ohlc
-    # end
-    # get :categories, to: 'categories#index', defaults: {format: :json}
-    resources :categories,  only: [:index, :show],  defaults: {format: :json}
-    resources :stores,      only: [:index, :show],  defaults: {format: :json}
-    resources :products,    only: [:show],          defaults: {format: :json}
+    resources :categories,          only: [:index, :show],  defaults: {format: :json}
+    resources :stores,              only: [:index, :show],  defaults: {format: :json}
+    resources :products,            only: [:show],          defaults: {format: :json}
+    resources :service_categories,  only: [:index, :show],  defaults: {format: :json}
+    resources :services,            only: [:show],          defaults: {format: :json}
   end
 
   # get '/dashboard' => 'templates#index'

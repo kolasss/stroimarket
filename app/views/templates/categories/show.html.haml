@@ -28,7 +28,7 @@
               /         checkbox
 
     .row
-      .col-md-4(ng-repeat="product in productsList | filter:filter.query | priceRange:filter")
+      .col-md-4(ng-repeat="product in currentCategory.products | filter:filter.query | priceRange:filter")
         .thumbnail
           %img(ng-src="{{product.cover.thumb.url}}")
           .caption
@@ -36,5 +36,5 @@
             %p {{product.intro}}
             %span.label.label-success(ng-show="product.min_price") минимальная цена: {{product.min_price}} руб.
             %p
-              %a.btn.btn-primary(href="#/products/{{product._id.$oid}}")
+              %a.btn.btn-primary(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
                 Подробнее
