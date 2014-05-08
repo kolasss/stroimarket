@@ -3,7 +3,15 @@ app.factory 'Product', ['$resource', ($resource) ->
     constructor: ->
       @service = $resource(
         '/api/products/:productId',
-        {productId: '@id'}
+        {
+          productId: '@id'
+        }, {
+          popular:
+            method: 'GET'
+            params:
+              productId: 'popular'
+            isArray: true
+        }
       )
       @productsCache = []
 
@@ -15,4 +23,10 @@ app.factory 'Product', ['$resource', ($resource) ->
         @productsCache[id]
       else
         @productsCache[id] = @get(id)
+
+    getPopular: ->
+      @popularCache = @service.popular()
+
+    popular: ->
+      if @popularCache? then @popularCache else @getPopular()
 ]

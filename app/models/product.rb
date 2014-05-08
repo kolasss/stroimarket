@@ -10,6 +10,7 @@ class Product
 
   field :min_price, type: Integer
   field :max_price, type: Integer
+  field :views, type: Integer, default: 0
 
   # Часть для кастомных полей
   # before_validation :custom_field_to_datatype

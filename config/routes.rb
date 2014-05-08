@@ -49,9 +49,12 @@ Stroimarket::Application.routes.draw do
   namespace :api do
     resources :categories,          only: [:index, :show],  defaults: {format: :json}
     resources :stores,              only: [:index, :show],  defaults: {format: :json}
-    resources :products,            only: [:show],          defaults: {format: :json}
+    resources :products,            only: [:show],          defaults: {format: :json} do
+      get :popular, on: :collection
+    end
     resources :service_categories,  only: [:index, :show],  defaults: {format: :json}
     resources :services,            only: [:show],          defaults: {format: :json}
+    resources :posts,               only: [:index],           defaults: {format: :json}
   end
 
   # get '/dashboard' => 'templates#index'

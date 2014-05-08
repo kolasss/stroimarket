@@ -1,19 +1,19 @@
 .ng-cloak
   .row
-    Слайдер
+    .col-md-offset-3.col-md-9
+      .row
+        .col-xs-12
+          .thumbnail
+            %img(ng-src="{{currentPost.cover.middle.url}}" alt="{{currentPost.title}}")
+            .caption
+              %h3 {{currentPost.title}}
+              %a.btn.btn-default(href="#" role="button") Подробнее
+      .row
+        .col-xs-3(ng-repeat='post in posts')
+          .thumbnail(ng-class="{active: currentPost==post}" ng-click="setActive(post)")
+            %img(ng-src="{{post.cover.thumb.url}}" alt="{{post.title}}")
+            .caption
+              %p {{post.title}}
   .row
-    Популярные товары
+    .col-md-12
 
-  / %h1 Каталог
-
-  / %p name: {{name}}
-  / %p params: {{params}}
-  / %p current category: {{currentCategory}}
-
-  / %categories-list(categories-data="categories"
-  /   on-select="changeCategory(branch)"
-  /   max-level="sadasd")
-
-  / %categorieslist(categories-data="categories"
-  /   max-level="2"
-  /   on-main="true")

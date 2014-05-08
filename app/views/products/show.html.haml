@@ -32,6 +32,9 @@
 %p
   максимальная цена:
   = @product.max_price
+%p
+  Просмотров:
+  = @product.views
 
 - if @product.offers?
   .panel.panel-default
