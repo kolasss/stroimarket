@@ -1,16 +1,15 @@
 #= require jquery
 #= require jquery_ujs
 #= require bootstrap.min
+#= require owl.carousel.min
 #= require jquery_nested_form
 #= require ckeditor/init
 #= require angular
 #= require angular-route
 #= require angular-resource
-#= require abn_tree_directive
 #= require angular_app
 #= require_tree ./angular
 #= require_tree .
-
 
 jQuery ->
   # Uploaders.
@@ -32,3 +31,4 @@ jQuery ->
   #   () ->
   #     $(this).removeClass('open')
   # )
+

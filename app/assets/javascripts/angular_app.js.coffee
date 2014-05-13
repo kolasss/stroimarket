@@ -1,7 +1,6 @@
 window.app = angular.module "Stroimarket", [
-  'ngRoute',
-  'ngResource',
-  'angularBootstrapNavTree'
+  'ngRoute'
+  'ngResource'
 ]
 
 window.app.config ['$routeProvider',
