@@ -1,0 +1,9 @@
+.owl-carousel.owl-theme
+  .item(ng-repeat="product in products")
+    .thumbnail
+      %img(ng-src="{{product.cover.thumb.url}}" alt="{{product.title}}")
+      .caption
+        %a(ng-href="{{link_to(product)}}")
+          {{product.title}}
+        %p
+          {{product.min_price}} ... {{product.max_price}} Р

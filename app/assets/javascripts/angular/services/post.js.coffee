@@ -5,21 +5,21 @@ app.factory 'Post', ['$resource', ($resource) ->
         '/api/posts/:postId',
         {postId: '@id'}
       )
-      # @postsCache = []
+      @postsCache = []
 
     index: ->
       @posts = @service.query()
 
-    # get: (id) ->
-    #   @service.query(postId: id)
+    get: (id) ->
+      @service.get(postId: id)
 
     all: ->
       if @posts? then @posts else @index()
 
-    # show: (id) ->
-    #   if @postsCache[id]
-    #     @postsCache[id]
-    #   else
-    #     @postsCache[id] = @get(id)
+    show: (id) ->
+      if @postsCache[id]
+        @postsCache[id]
+      else
+        @postsCache[id] = @get(id)
 
 ]

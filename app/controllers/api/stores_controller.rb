@@ -4,7 +4,7 @@ class Api::StoresController < ApplicationController
   def index
     stores = User.sellers.map(&:store_profile).compact
     respond_with stores,
-    methods: [:user_id]
+      methods: [:user_id]
   end
 
   def show

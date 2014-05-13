@@ -2,17 +2,15 @@ class Api::PostsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Post.all
+    posts = Post.all
+    respond_with posts,
+      methods: [:slug],
+      except: [:_id, :body, :_slugs, :cover_filename]
   end
 
-  # def show
-  #   ids = Category.find(params[:id]).self_and_children_ids
-  #   products = Product.where(:category.in => ids).includes(:offers)
-  #   respond_with products,
-  #     except: [:body, :_keywords, :cover_filename, :category_id]
-  #     # include: {
-  #     #   offers: { only: [:price, :user_id] }
-  #     # }
-
-  # end
+  def show
+    post = Post.find(params[:id])
+    respond_with post,
+      except: [:_id, :_slugs, :cover_filename]
+  end
 end

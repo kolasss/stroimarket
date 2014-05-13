@@ -34,6 +34,9 @@ window.app.config ['$routeProvider',
       .when '/services/:service_id',
         templateUrl: '/templates/services/show.html',
         controller: 'ServiceCtrl'
+      .when '/posts/:post_slug',
+        templateUrl: '/templates/posts/show.html',
+        controller: 'PostCtrl',
       .otherwise
         redirectTo: '/'
 
