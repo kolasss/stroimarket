@@ -1,6 +1,7 @@
 class Product
   include Mongoid::Document
-  include Mongoid::Attributes::Dynamic
+  include Mongoid::Timestamps
+  # include Mongoid::Attributes::Dynamic
   include Content
   include Mongoid::Search
 

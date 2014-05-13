@@ -1,40 +1,50 @@
 .ng-cloak
-  %h1 Каталог
+  .row
+    .col-md-3
+      .panel.panel-info
+        .panel-heading
+          Фильтр
+        .panel-body
+          %form.form-horizontal(role="form")
+            .form-group
+              %label.col-sm-2.control-label(for="filter_text")
+                Текст
+              .col-sm-10
+                %input.form-control#filter_text(type="search" placeholder="Поиск" ng-model="filter.query")
+            .form-group
+              %label.col-sm-2.control-label(for="filter_min_price")
+                price range
+              .col-sm-10
+                %input.form-control#filter_min_price(type="text" placeholder="minimum" ng-model="filter.minPrice")
+                %input.form-control#filter_min_price(type="text" placeholder="maximum" ng-model="filter.maxPrice")
+            / .form-group
+            /   .col-sm-offset-2.col-sm-10
+            /     .checkbox
+            /       %label
+            /         %input(type="checkbox")
+            /         checkbox
+    .col-md-9
+      %h5(ng-show="currentCategory.parent_title") {{currentCategory.parent_title}}
+      %h3 {{currentCategory.title}}
 
-  .productsList
-    .row
-      .col-md-12
-        .panel.panel-info
-          .panel-heading
-            Фильтр
-          .panel-body
-            %form.form-horizontal(role="form")
-              .form-group
-                %label.col-sm-2.control-label(for="filter_text")
-                  Текст
-                .col-sm-10
-                  %input.form-control#filter_text(type="search" placeholder="Поиск" ng-model="filter.query")
-              .form-group
-                %label.col-sm-2.control-label(for="filter_min_price")
-                  price range
-                .col-sm-10
-                  %input.form-control#filter_min_price(type="text" placeholder="minimum" ng-model="filter.minPrice")
-                  %input.form-control#filter_min_price(type="text" placeholder="maximum" ng-model="filter.maxPrice")
-              / .form-group
-              /   .col-sm-offset-2.col-sm-10
-              /     .checkbox
-              /       %label
-              /         %input(type="checkbox")
-              /         checkbox
+      .products_sorting
+        %span.pull-left
+          Сортировать по:
+        %ul.nav.nav-pills
+          %li(ng-repeat="(attr, title) in sorting_by" ng-class="selectedCls(attr)")
+            %a(ng-click="changeSorting(attr)")
+              %span.glyphicon.glyphicon-chevron-up
+              %span.glyphicon.glyphicon-chevron-down
+              {{title}}
 
-    .row
-      .col-md-4(ng-repeat="product in currentCategory.products | filter:filter.query | priceRange:filter")
-        .thumbnail
-          %img(ng-src="{{product.cover.thumb.url}}")
-          .caption
-            %h3 {{product.title}}
-            %p {{product.intro}}
-            %span.label.label-success(ng-show="product.min_price") минимальная цена: {{product.min_price}} руб.
-            %p
-              %a.btn.btn-primary(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
-                Подробнее
+      %table.table
+        %tbody
+          %tr(ng-repeat="product in currentCategory.products | filter:filter.query | priceRange:filter | orderBy:sort.column:sort.descending")
+            %td
+              %img(ng-src="{{product.cover.thumb.url}}")
+            %td
+              %a.btn.btn-link(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
+                {{product.title}}
+              %p {{product.intro}}
+            %td
+              %span(ng-show="product.min_price") от {{product.min_price}} Р

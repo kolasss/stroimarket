@@ -1,5 +1,5 @@
 %li(ng-repeat='category in categories' ng-class="submenuClass(category)")
-  %a(ng-href="{{stroiUtils.path_for('CategoryCtrl', {category_slug: category.slug})}}") {{category.label}}
+  %a(ng-href="{{stroiUtils.path_for('CategoryCtrl', {category_slug: category.slug})}}") {{category.title}}
   %ul.dropdown-menu
     %li(ng-repeat='subcat in category.children')
-      %a(ng-href="{{stroiUtils.path_for('CategoryCtrl', {category_slug: subcat.slug})}}") {{subcat.label}}
+      %a(ng-href="{{stroiUtils.path_for('CategoryCtrl', {category_slug: subcat.slug})}}") {{subcat.title}}

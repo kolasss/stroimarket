@@ -39,7 +39,7 @@ app.directive 'listnode',
       # wrap_start = '<div class="category_item">'
       # wrap_end = '</div>'
 
-      link = "<a type='{{type}}' ng-click='user_clicks_item(item)'>{{ item.label }}</a>"
+      link = "<a type='{{type}}' ng-click='user_clicks_item(item)'>{{ item.title }}</a>"
 
       if categoryLevel == maxLevel
         children_list = ''
