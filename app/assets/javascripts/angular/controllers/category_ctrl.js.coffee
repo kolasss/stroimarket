@@ -1,15 +1,16 @@
 app.controller 'CategoryCtrl',
-  ['$scope', 'Category', '$routeParams', '$filter',
-  ($scope, Category, $routeParams, $filter) ->
+  ['$scope', 'Category', '$routeParams', '$filter', 'Manufacturer', '$q'
+  ($scope, Category, $routeParams, $filter, Manufacturer, $q) ->
 
-    $scope.categories = Category.all()
-
-    $scope.$watchCollection 'categories', (newCats, oldCats) ->
+    $q.all([Category.all().$promise, Manufacturer.all().$promise]).then (results) ->
+      $scope.categories = results[0]
       $scope.currentCategory = $filter('getBySlug')($scope.categories, $routeParams.category_slug)
-      $scope.currentCategory.products = Category.show($scope.currentCategory.id) if $scope.currentCategory?
-      # console.log $scope.currentCategory
+      $scope.currentCategory.products = Category.show($scope.currentCategory.id)
+
+      $scope.manufacturers = $filter('manufacturerByCategory')(results[1], $scope.currentCategory)
 
 
+    # sorting
     $scope.sorting_by =
       min_price: 'цене'
       updated_at: 'новизне'
@@ -31,5 +32,15 @@ app.controller 'CategoryCtrl',
       else
         sort.column = column
         sort.descending = false
+
+    #filtering
+    $scope.filter = {manufacturers: []}
+
+    $scope.toggleBrand = (manufacturer) ->
+      idx = $scope.filter.manufacturers.indexOf(manufacturer)
+      if idx > -1
+        $scope.filter.manufacturers.splice(idx, 1)
+      else
+        $scope.filter.manufacturers.push(manufacturer)
 
 ]

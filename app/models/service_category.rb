@@ -6,7 +6,7 @@ class ServiceCategory
   def self.json_tree(nodes)
     nodes.map do |node|
       {
-        :label => node.title,
+        :title => node.title,
         :id => node.id.to_s,
         :slug => node.slug,
         :children => json_tree(node.children).compact

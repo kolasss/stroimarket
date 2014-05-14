@@ -2,8 +2,6 @@
   .row
     .col-md-3
       .panel.panel-info
-        .panel-heading
-          Фильтр
         .panel-body
           %form.form-horizontal(role="form")
             .form-group
@@ -17,12 +15,15 @@
               .col-sm-10
                 %input.form-control#filter_min_price(type="text" placeholder="minimum" ng-model="filter.minPrice")
                 %input.form-control#filter_min_price(type="text" placeholder="maximum" ng-model="filter.maxPrice")
-            / .form-group
-            /   .col-sm-offset-2.col-sm-10
-            /     .checkbox
-            /       %label
-            /         %input(type="checkbox")
-            /         checkbox
+            .form-group
+              %ul.list-unstyled.col-sm-12
+                %li(ng-repeat="manufacturer in manufacturers")
+                  .checkbox
+                    %label
+                      %input(type="checkbox"
+                        ng-click="toggleBrand(manufacturer.title)")
+                      {{manufacturer.title}}
+
     .col-md-9
       %h5(ng-show="currentCategory.parent_title") {{currentCategory.parent_title}}
       %h3 {{currentCategory.title}}
@@ -39,12 +40,13 @@
 
       %table.table
         %tbody
-          %tr(ng-repeat="product in currentCategory.products | filter:filter.query | priceRange:filter | orderBy:sort.column:sort.descending")
+          %tr(ng-repeat="product in currentCategory.products | filter:filter.query | priceRange:filter | productByManufacturer:filter |orderBy:sort.column:sort.descending")
             %td
               %img(ng-src="{{product.cover.thumb.url}}")
             %td
-              %a.btn.btn-link(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
+              %a(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
                 {{product.title}}
               %p {{product.intro}}
+              %span.badge {{product.manufacturer_title}}
             %td
               %span(ng-show="product.min_price") от {{product.min_price}} Р

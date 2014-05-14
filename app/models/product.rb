@@ -35,6 +35,10 @@ class Product
     update_attribute(:max_price, offers.max(:price))
   end
 
+  def manufacturer_title
+    manufacturer.title if manufacturer?
+  end
+
   def as_json_for_catalog
     options = {
       except: [:_id, :_keywords, :category_id, :cover_filename],
