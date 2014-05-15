@@ -23,6 +23,7 @@
                       %input(type="checkbox"
                         ng-click="toggleBrand(manufacturer.title)")
                       {{manufacturer.title}}
+                      %span.text-muted {{manufacturers_counter[manufacturer.title]}}
 
     .col-md-9
       %h5(ng-show="currentCategory.parent_title") {{currentCategory.parent_title}}

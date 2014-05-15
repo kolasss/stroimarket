@@ -5,9 +5,19 @@ app.controller 'CategoryCtrl',
     $q.all([Category.all().$promise, Manufacturer.all().$promise]).then (results) ->
       $scope.categories = results[0]
       $scope.currentCategory = $filter('getBySlug')($scope.categories, $routeParams.category_slug)
-      $scope.currentCategory.products = Category.show($scope.currentCategory.id)
 
       $scope.manufacturers = $filter('manufacturerByCategory')(results[1], $scope.currentCategory)
+
+      # $scope.currentCategory.products = Category.show($scope.currentCategory.id)
+      Category.show($scope.currentCategory.id).$promise.then (result) ->
+        $scope.currentCategory.products = result
+
+        $scope.manufacturers_counter = {}
+        angular.forEach $scope.manufacturers, (item) ->
+          $scope.manufacturers_counter[item.title] = 0
+
+        angular.forEach $scope.currentCategory.products, (item) ->
+          $scope.manufacturers_counter[item.manufacturer_title] += 1 if item.manufacturer_title
 
 
     # sorting
