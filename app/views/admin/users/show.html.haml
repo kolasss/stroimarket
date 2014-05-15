@@ -53,20 +53,28 @@
   %h2 Профиль продавца
   %ul
     %li
+      = image_tag @user.store_profile.logo
+    %li
       %b Название продавца
       = @user.store_profile.name
     %li
-      %b title
-      = @user.store_profile.title
+      %b contacts
+      = @user.store_profile.contacts
     %li
-      %b ogrn
-      = @user.store_profile.ogrn
-    %li
-      %b address
-      = @user.store_profile.address
+      %b requisites
+      = @user.store_profile.requisites
     %li
       %b phone
       = @user.store_profile.phone
+    %li
+      %b site
+      = @user.store_profile.site
+    %li
+      %b email
+      = @user.store_profile.email
+    %li
+      %b info
+      = @user.store_profile.info
 
   - if policy(@user.store_profile).update?
     = link_to 'Изменить профиль', edit_admin_user_store_profile_path(@user, @user.store_profile), class: 'btn btn-primary'

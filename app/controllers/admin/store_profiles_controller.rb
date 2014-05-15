@@ -57,10 +57,16 @@ class Admin::StoreProfilesController < AdminController
     def profile_params
       params.require(:store_profile).permit(
         :name,
-        :title,
-        :ogrn,
-        :address,
-        :phone
+        :contacts,
+        :requisites,
+        :phone,
+        :site,
+        :email,
+        :info,
+        :logo,
+        :remove_logo,
+        :header,
+        :remove_header
       )
     end
 

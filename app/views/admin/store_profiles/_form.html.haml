@@ -3,13 +3,17 @@
   .row
     .col-md-9
       = f.input :name
-
+      %p logo
+      = image_uploader f, attr_name: 'logo'
       %hr
-
-      = f.input :title
-      = f.input :ogrn
-      = f.input :address
+      %p header
+      = image_uploader f, attr_name: 'header'
+      = f.input :contacts
+      = f.input :requisites
       = f.input :phone
+      = f.input :site
+      = f.input :email
+      = f.input :info
 
       %hr
 

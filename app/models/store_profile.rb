@@ -5,14 +5,18 @@ class StoreProfile
   embedded_in :user
 
   field :name, type: String
-  field :title, type: String
-  field :ogrn, type: String
-  field :address, type: String
+  field :contacts, type: String
+  field :requisites, type: String
   field :phone, type: String
+  field :site, type: String
+  field :email, type: String
+  field :info, type: String
   field :slug, type: String
 
+  mount_uploader :logo, LogoUploader
+  mount_uploader :header, HeaderUploader
+
   validates :name, presence: true
-  validates :title, presence: true
 
   before_validation :add_slug
 

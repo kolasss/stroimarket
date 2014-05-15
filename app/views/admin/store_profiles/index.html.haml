@@ -8,11 +8,11 @@
 %table.table.table-hover
   %tr
     %th
+      Лого
+    %th
       Имя
     %th
-      Официальное название
-    %th
-      Адрес
+      email
     %th
       Телефон
     %th
@@ -21,9 +21,9 @@
 
   - @store_profiles.each do |profile|
     %tr
+      %td= image_tag profile.logo if profile.logo.present?
       %td= link_to(profile.name, admin_user_path(profile.user))
-      %td= profile.title
-      %td= profile.address
+      %td= profile.email
       %td= profile.phone
       %td= l profile.created_at, format: :short
       %td.control-links
