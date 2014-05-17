@@ -78,6 +78,7 @@ class User
         except: [:body, :_keywords, :cover_filename, :category_id]
       )
       product[:price] = offer.price
+      product[:updated_at] = offer.updated_at
       product
     end
   end

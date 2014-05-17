@@ -1,0 +1,18 @@
+.ng-cloak
+  .row.store_profile_header
+    = render 'templates/stores/store_header'
+
+  .row.store_profile_body
+    .col-md-4(ng-repeat="service in currentStore.services")
+      .thumbnail
+        / %img(ng-src="{{service.cover.thumb.url}}")
+        .caption
+          %h3 {{service.title}}
+          %p
+            %a.btn.btn-primary(ng-href="{{stroiUtils.path_for('ServiceCtrl', {service_id: service._id.$oid})}}")
+              Подробнее
+
+  .row
+    .col-md-12
+      %a.btn.btn-primary(back-button)
+        Назад

@@ -1,0 +1,20 @@
+.header_background(back-img="{{currentStore.header.url}}")
+%img.logo.img-rounded(ng-src="{{currentStore.logo.url}}")
+.profile_menu
+  %h1 {{currentStore.name}}
+  %ul.nav.nav-pills(nav-menu)
+    %li(ng-class="getClass('StoreMainCtrl')")
+      %a(ng-href="{{stroiUtils.path_for('StoreMainCtrl', {store_slug: currentStore.slug})}}")
+        Главная
+    %li(ng-class="getClass('StoreCatalogCtrl')")
+      %a(ng-href="{{stroiUtils.path_for('StoreCatalogCtrl', {store_slug: currentStore.slug})}}")
+        Каталог товаров
+    %li(ng-class="getClass('StoreServicesCtrl')")
+      %a(ng-href="{{stroiUtils.path_for('StoreServicesCtrl', {store_slug: currentStore.slug})}}")
+        Услуги
+    %li
+      %a(ng-href="")
+        О нас
+    %li
+      %a(ng-href="")
+        %span.glyphicon.glyphicon-search

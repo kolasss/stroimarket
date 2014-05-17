@@ -9,5 +9,5 @@
           %h3 {{store.name}}
           %p {{store.title}}
           %p
-            %a.btn.btn-primary(href="#/stores/{{store.slug}}")
+            %a.btn.btn-primary(ng-href="{{stroiUtils.path_for('StoreMainCtrl', {store_slug: store.slug})}}")
               Подробнее

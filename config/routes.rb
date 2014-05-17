@@ -48,7 +48,9 @@ Stroimarket::Application.routes.draw do
 
   namespace :api do
     resources :categories,          only: [:index, :show],  defaults: {format: :json}
-    resources :stores,              only: [:index, :show],  defaults: {format: :json}
+    resources :stores,              only: [:index, :show],  defaults: {format: :json} do
+      get :services, on: :member
+    end
     resources :products,            only: [:show],          defaults: {format: :json} do
       get :popular, on: :collection
     end
