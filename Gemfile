@@ -50,7 +50,10 @@ gem "pundit" #authorization
 
 gem 'simple_form'
 
-gem 'thin'
+
+group :development do
+  gem 'thin'
+end
 
 gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 
@@ -74,3 +77,9 @@ gem 'ckeditor'
 gem 'angularjs-rails'
 
 # gem 'oj'
+
+group :production do
+  gem 'rails_12factor' #for heroku
+end
+
+gem 'unicorn'
