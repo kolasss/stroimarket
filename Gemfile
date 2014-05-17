@@ -32,9 +32,9 @@ gem 'jquery-rails'
 # end
 
 # gem 'mongoid', :github=>"mongoid/mongoid"
-gem 'mongoid', :git => 'git@github.com:mongoid/mongoid.git'
+gem 'mongoid', :git => 'https://github.com/mongoid/mongoid.git'
 # gem 'mongoid-tree', :require => 'mongoid/tree'
-gem 'mongoid-tree', :git => 'git@github.com:benedikt/mongoid-tree.git', :branch => "mongoid-4.0", :require => 'mongoid/tree'
+gem 'mongoid-tree', :git => 'https://github.com/benedikt/mongoid-tree.git', :branch => "mongoid-4.0", :require => 'mongoid/tree'
 gem 'mongoid_slug'
 gem 'mongoid_search'
 
