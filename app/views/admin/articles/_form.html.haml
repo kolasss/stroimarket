@@ -7,7 +7,7 @@
     = f.input :menu_title
     = f.input :intro
     -# = f.input :body, input_html: { class: 'wysiwyg' }
-    = f.input :body, :as => :ckeditor
+    = f.input :body, :as => :text, input_html: { class: 'wysihtml5' }
 
     = render 'attachments/documents/form', f: f, documents: @article.documents
 

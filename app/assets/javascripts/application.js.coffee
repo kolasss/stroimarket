@@ -3,7 +3,8 @@
 #= require bootstrap.min
 #= require owl.carousel.min
 #= require jquery_nested_form
-#= require ckeditor/init
+#= require bootstrap-wysihtml5/b3
+#= require bootstrap-wysihtml5/locales/ru-RU
 #= require angular
 #= require angular-route
 #= require angular-resource
@@ -32,3 +33,5 @@ jQuery ->
   #     $(this).removeClass('open')
   # )
 
+  $('.wysihtml5').each (i, elem) ->
+    $(elem).wysihtml5()

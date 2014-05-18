@@ -72,7 +72,8 @@ gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 gem 'kaminari' #paginator
 
 gem "nested_form"
-gem 'ckeditor'
+# gem 'ckeditor'
+gem 'bootstrap-wysihtml5-rails'
 
 gem 'angularjs-rails'
 
