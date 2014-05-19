@@ -1,13 +1,13 @@
 = simple_form_for [ :admin, @article ] do |f|
   = f.error_notification
 
-  .form-inputs
+  .form-inputs(ng-app='AdminTextAngular')
     = cover_uploader f
     = f.input :title
     = f.input :menu_title
     = f.input :intro
-    -# = f.input :body, input_html: { class: 'wysiwyg' }
-    = f.input :body, :as => :text, input_html: { class: 'wysihtml5' }
+
+    = f.input :body, :as => :text, wrapper_html: { 'replace-with-text-angular' => '', "data-text-value" => f.object.body, class: 'ng-cloak' }
 
     = render 'attachments/documents/form', f: f, documents: @article.documents
 

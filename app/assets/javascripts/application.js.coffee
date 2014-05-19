@@ -3,11 +3,11 @@
 #= require bootstrap.min
 #= require owl.carousel.min
 #= require jquery_nested_form
-#= require bootstrap-wysihtml5/b3
-#= require bootstrap-wysihtml5/locales/ru-RU
 #= require angular
 #= require angular-route
 #= require angular-resource
+#= require textAngular-sanitize.min
+#= require textAngular.min
 #= require angular_app
 #= require_tree ./angular
 #= require_tree .
@@ -33,5 +33,6 @@ jQuery ->
   #     $(this).removeClass('open')
   # )
 
-  $('.wysihtml5').each (i, elem) ->
-    $(elem).wysihtml5()
+  # $('.wysihtml5').each (i, elem) ->
+  #   $(elem).wysihtml5
+  #     locale: "ru-RU"
