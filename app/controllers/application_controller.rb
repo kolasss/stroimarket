@@ -4,6 +4,14 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  before_action :configure_devise_parameters, if: :devise_controller?
+
+  protected
+
+    def configure_devise_parameters
+      devise_parameter_sanitizer.for(:sign_up) << :name
+    end
+
   private
     def user_not_authorized
       # flash[:error] = "You are not authorized to perform this action."
