@@ -1,9 +1,10 @@
-class PostsController < ApplicationController
+class Admin::PostsController < AdminController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  after_action :verify_authorized, :except => [:index, :show]
+  # after_action :verify_authorized, :except => [:index, :show]
 
   def index
     @posts = Post.all
+    authorize AdminController
   end
 
   def show
@@ -11,7 +12,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    authorize @post
+    authorize AdminController
   end
 
   def edit
@@ -19,10 +20,10 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    authorize @post
+    authorize AdminController
 
     if @post.save
-      redirect_to @post, notice: 'Post was successfully created.'
+      redirect_to admin_post_path(@post), notice: 'Post was successfully created.'
     else
       render action: 'new'
     end
@@ -30,7 +31,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: 'Post was successfully updated.'
+      redirect_to admin_post_path(@post), notice: 'Post was successfully updated.'
     else
       render action: 'edit'
     end
@@ -38,13 +39,13 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_path
+    redirect_to admin_posts_path
   end
 
   private
     def set_post
       @post = Post.find(params[:id])
-      authorize @post
+      authorize AdminController
     end
 
     def post_params

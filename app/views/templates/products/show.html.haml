@@ -13,10 +13,10 @@
 
       %p {{product.body}}
 
-      / %ul
-      /   %li(ng-repeat="attribute in product.category.product_attributes")
-      /     %b {{attribute.title}}
-      /     %span {{product[attribute.name]}}
+      %ul
+        %li(ng-repeat="attribute in product.category.product_attributes")
+          %b {{attribute.title}}
+          %span {{product[attribute.name]}}
 
       %p Цены
       %ul

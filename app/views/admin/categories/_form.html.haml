@@ -3,20 +3,19 @@
 
   .form-inputs
     = f.input :title
-    = f.input :show_on_main, as: :boolean
+    -# = f.input :show_on_main, as: :boolean
     = f.association :parent
 
-    / .custom_attributes
-    /   .attribute_fields_set
-    /     = f.simple_fields_for :product_attributes do |ff|
-    /       %p Аттрибут
-    /       = ff.input :title
-    /       = ff.input :type, as: :select, collection: ProductAttribute::TYPES, include_blank: false
-    /       = ff.input :unit
-    /       = ff.link_to_remove "Удалить", class: 'btn btn-danger'
-    /       -# = ff.input :_destroy, as: :boolean
+    .custom_attributes
+      .attribute_fields_set
+        = f.simple_fields_for :product_attributes do |ff|
+          %p Аттрибут
+          = ff.input :title
+          = ff.input :type, as: :select, collection: ProductAttribute::TYPES, include_blank: false
+          = ff.input :unit_list
+          = ff.link_to_remove "Удалить", class: 'btn btn-danger'
 
-    /   = f.link_to_add "Добавить аттрибут", :product_attributes, :data => { :target => ".attribute_fields_set" }, class: 'btn btn-success'
+      = f.link_to_add "Добавить аттрибут", :product_attributes, :data => { :target => ".attribute_fields_set" }, class: 'btn btn-success'
 
   .form-actions
     = f.button :submit

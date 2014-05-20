@@ -1,9 +1,9 @@
 %p
   %b Title:
   = @category.title
-%p
-  %b show_on_main:
-  = @category.show_on_main
+/ %p
+/   %b show_on_main:
+/   = @category.show_on_main
 %p
   %b Position:
   = @category.position
@@ -18,15 +18,16 @@
         %li
           =child.title
 
--# - if @category.product_attributes
--#   %p
--#     %b Attributes:
--#     %ol
--#       - @category.product_attributes.each do |at|
--#         %li
--#           = at.title
--#           = at.type
--#           = at.name
+- if @category.product_attributes
+  %p
+    %b Attributes:
+    %ol
+      - @category.product_attributes.each do |at|
+        %li
+          %b= at.title
+          %p= at.type
+          %p= at.name
+          %p= at.unit_list
 
 = link_to 'Edit', edit_admin_category_path(@category)
 \|

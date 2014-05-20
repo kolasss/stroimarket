@@ -18,13 +18,13 @@
     = @product.manufacturer.title
 
 / Часть для кастомных полей
-/ .custom_attributes
-/   - if @product.category && @product.category.product_attributes
-/     - @product.category.product_attributes.each do |pr_at|
-/       %p
-/         %b #{pr_at.title}:
-/         = @product[pr_at.name]
-/         = pr_at.unit if pr_at.unit && pr_at.type == 'integer'
+.custom_attributes
+  - if @product.category && @product.category.product_attributes
+    - @product.category.product_attributes.each do |pr_at|
+      %p
+        %b #{pr_at.title}:
+        = @product[pr_at.name]
+        = pr_at.unit if pr_at.unit && pr_at.type == 'integer'
 
 %p
   минимальная цена:
@@ -49,10 +49,6 @@
             = offer.price
           %p.list-group-item-text
             = offer.user.company_name
-            -# - if offer.user.store_profile
-            -#   = offer.user.store_profile.name
-            -# - else
-            -#   = offer.user.name
 
             - if policy(offer).update?
               .control-links

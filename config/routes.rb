@@ -1,9 +1,7 @@
 Stroimarket::Application.routes.draw do
-  resources :categories, only: [:index, :show]
-  resources :posts
 
   resources :products do
-    # get :custom_category_fields, on: :collection
+    get :custom_category_fields, on: :collection
     get :manufacturer_field, on: :collection
 
     resources :offers, except: [:index, :show]
@@ -39,9 +37,8 @@ Stroimarket::Application.routes.draw do
 
     resources :manufacturers
     resources :services
+    resources :posts
   end
-
-  get 'catalog', to: 'catalog#index'
 
   namespace :api do
     resources :categories,          only: [:index, :show],  defaults: {format: :json}

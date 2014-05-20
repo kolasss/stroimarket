@@ -60,8 +60,8 @@ adminapp.directive 'replaceWithTextAngular', ->
     link: (scope, element, attrs) ->
       scope.htmlContent = scope.textValue
 
-      textarea = element.find('textarea')
-      input_name = textarea.attr('name')
+      console.log textarea = element.find('textarea')[0]
+      input_name = textarea.name
       textarea.remove()
 
       hidden = element.find('input:hidden')

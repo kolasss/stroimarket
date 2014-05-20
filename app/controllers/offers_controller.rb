@@ -3,17 +3,6 @@ class OffersController < ApplicationController
   before_action :set_offer, only: [:edit, :update, :destroy]
   after_action :verify_authorized
 
-  # GET /offers
-  # GET /offers.json
-  # def index
-  #   @offers = Offer.all
-  # end
-
-  # GET /offers/1
-  # GET /offers/1.json
-  # def show
-  # end
-
   def new
     @offer = @product.offers.new
     authorize @offer

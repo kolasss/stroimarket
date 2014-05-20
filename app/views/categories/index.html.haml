@@ -1,8 +1,0 @@
-%h1 Категории
-
-.row(ng-controller="CategoriesCtrl")
-  .col-md-4
-    %ul.categories_tree
-      = render_category_tree @categories.roots
-  .col-md-8
-    {{stocks}}

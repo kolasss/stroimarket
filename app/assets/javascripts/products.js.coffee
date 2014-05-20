@@ -3,18 +3,18 @@ $('#product_category_id').change ->
   object_id = this.getAttribute('object_id')
 
   # Часть для кастомных полей
-  # target = $('.custom_attributes')
+  custom_attributes = $('.custom_attributes')
 
-  # $.ajax
-  #   url: '/products/custom_category_fields'
-  #   data:
-  #     category_id: category_id
-  #     object_id: object_id
-  #   success: (res, status, xhr) ->
-  #     target.html res
+  $.ajax
+    url: '/products/custom_category_fields'
+    data:
+      category_id: category_id
+      object_id: object_id
+    success: (res, status, xhr) ->
+      custom_attributes.html res
   # - Конец - Часть для кастомных полей
 
-  target = $('.manufacturer_field')
+  manufacturer_field = $('.manufacturer_field')
 
   $.ajax
     url: '/products/manufacturer_field'
@@ -22,4 +22,4 @@ $('#product_category_id').change ->
       category_id: category_id
       object_id: object_id
     success: (res, status, xhr) ->
-      target.html res
+      manufacturer_field.html res

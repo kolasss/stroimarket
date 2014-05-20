@@ -55,14 +55,14 @@ class Admin::CategoriesController < AdminController
         :show_on_main,
         # :position,
         :parent_id,
-        # product_attributes_attributes:
-        # [
-        #   :id,
-        #   :_destroy,
-        #   :title,
-        #   :type,
-        #   :unit
-        # ]
+        product_attributes_attributes:
+        [
+          :id,
+          :_destroy,
+          :title,
+          :type,
+          :unit
+        ]
       ]
       params.require(:category).permit(*safe_attributes)
     end
