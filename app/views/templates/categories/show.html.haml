@@ -41,7 +41,7 @@
 
       %table.table
         %tbody
-          %tr(ng-repeat="product in currentCategory.products | filter:filter.query | priceRange:filter | productByManufacturer:filter |orderBy:sort.column:sort.descending")
+          %tr(ng-repeat="product in filteredProducts() | orderBy:sort.column:sort.descending | startFrom:currentPage*pageSize | limitTo:pageSize")
             %td
               %img(ng-src="{{product.cover.thumb.url}}")
             %td
@@ -51,3 +51,5 @@
               %span.badge {{product.manufacturer_title}}
             %td
               %span(ng-show="product.min_price") от {{product.min_price}} Р
+
+      %my-paginator(data-current-page="currentPage" data-number-of-pages="numberOfPages")
