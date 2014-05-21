@@ -55,7 +55,7 @@ class ProductAttribute
     end
 
     def capitalize_title
-      self.title[0] = self.title[0].mb_chars.capitalize.to_s
+      self.title[0] = self.title[0].mb_chars.capitalize.to_s unless self.title.empty?
     end
 
     # def unit_to_array
