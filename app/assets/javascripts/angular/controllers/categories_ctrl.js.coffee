@@ -1,7 +1,9 @@
 app.controller 'CategoriesCtrl',
-  ['$scope', 'Category',
-  ($scope, Category) ->
+  ['$scope', 'Category', '$timeout'
+  ($scope, Category, $timeout) ->
 
     $scope.categories = Category.all()
 
+    $timeout ->
+      $('ul.nav li.open').removeClass('open')
 ]

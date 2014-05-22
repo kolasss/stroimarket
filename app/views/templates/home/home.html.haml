@@ -3,16 +3,16 @@
     .col-md-offset-3.col-md-9
       .row
         .col-xs-12(ng-show="currentPost")
-          .thumbnail
-            %img(ng-src="{{currentPost.cover.middle.url}}" alt="{{currentPost.title}}")
+          .thumbnail.post_big_thumb(back-img="{{currentPost.cover.large.url}}")
             .caption
               %h3 {{currentPost.title}}
-              %a.btn.btn-default(ng-href="{{stroiUtils.path_for('PostCtrl', {post_slug: currentPost.slug})}}" role="button")
+              %p {{currentPost.intro}}
+              %a.btn.btn-transparent(ng-href="{{stroiUtils.path_for('PostCtrl', {post_slug: currentPost.slug})}}" role="button")
                 Подробнее
       .row
         .col-xs-3(ng-repeat='post in posts')
-          .thumbnail(ng-class="{active: currentPost==post}" ng-click="setActive(post)")
-            %img(ng-src="{{post.cover.thumb.url}}" alt="{{post.title}}")
+          .thumbnail.post_small_thumb(ng-class="{active: currentPost==post}" ng-click="setActive(post)")
+            %img.img-rounded(ng-src="{{post.cover.thumb.url}}" alt="{{post.title}}")
             .caption
               %p {{post.title}}
   .row

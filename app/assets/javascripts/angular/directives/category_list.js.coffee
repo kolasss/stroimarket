@@ -10,7 +10,7 @@ app.directive 'categorieslist', ->
       type: '@'
     template:
       '<div class="row clearfix categories_list">
-        <div class="col-md-4" ng-repeat="item in categoriesData | onMainFilter:onMain">
+        <div class="col-md-4" ng-repeat="item in categoriesData">
           <listnode
             item="item"
             category-level="1"
@@ -45,7 +45,7 @@ app.directive 'listnode',
         children_list = ''
       else
         children_list = "<div class='subcategories_list' on-main='{{onMain}}'>
-          <span ng-repeat='item in item.children | onMainFilter:onMain'>
+          <span ng-repeat='item in item.children'>
             <listnode
               item='item'
               category-level='#{nextLevel}'
@@ -82,13 +82,3 @@ app.directive 'listnode',
           $location.path stroiUtils.path_for(item_controller, {category_slug: item.slug}, false)
     }
 ]
-
-app.filter 'onMainFilter', () ->
-  return (items, condition) ->
-    return items if condition == undefined || condition == ''
-
-    filtered = []
-    angular.forEach items, (item) ->
-      filtered.push(item) if item.show_on_main
-
-    return filtered

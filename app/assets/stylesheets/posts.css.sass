@@ -1,0 +1,46 @@
+@import "lib"
+
+.post_big_thumb
+  min-height: 300px
+  background-size: cover
+  padding: 0
+  border: 0
+  .caption
+    min-height: 300px
+    height: 100%
+    width: 100%
+    padding-left: 29px
+    background: linear-gradient(to right, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0) 100%) /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33000000', endColorstr='#00000000',GradientType=1 ) /* IE6-9 */
+    h3, p
+      color: #fff
+    p
+      margin-top: 19px
+      margin-bottom: 29px
+
+.post_small_thumb
+  cursor: pointer
+  border: 0
+  padding: 0
+  box-shadow: none
+  img
+    width: 100%
+    border: 3px solid
+    border-color: transparent
+  .caption
+    padding-left: 0
+    padding-right: 0
+    p
+      color: $blue-color
+
+  &.active img
+    border-color: $blue-color
+
+
+.btn-transparent
+  background-color: transparent
+  border-radius: 16px
+  border: 1px solid #ffde05
+  color: #fff
+  &:hover
+    color: #aaa
