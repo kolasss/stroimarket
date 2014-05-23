@@ -1,6 +1,7 @@
 window.app = angular.module "Stroimarket", [
   'ngRoute'
   'ngResource'
+  'ngSanitize'
 ]
 
 window.app.config ['$routeProvider',
@@ -49,6 +50,10 @@ window.app.config ['$routeProvider',
       .when '/posts/:post_slug',
         templateUrl: '/templates/posts/show.html',
         controller: 'PostCtrl'
+
+      .when '/articles/:article_slug',
+        templateUrl: '/templates/articles/show.html',
+        controller: 'ArticleCtrl'
 
       .otherwise
         redirectTo: '/'

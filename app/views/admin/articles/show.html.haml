@@ -1,6 +1,6 @@
 - if @article.parent?
   %small
-    = link_to @article.parent.title, edit_admin_article_path(@article.parent)
+    = link_to @article.parent.title, admin_article_path(@article.parent)
     \/
   %br
 

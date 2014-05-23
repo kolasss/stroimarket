@@ -12,5 +12,8 @@
     %a(href='#/service_categories')
       Услуги
 
-  = render 'articles/roots'
+  - Article.roots.map do |a|
+    %li(ng-class="getClass('ArticleCtrl')")
+      %a(href="#/articles/#{a.slug}")
+        = a.menu_title
 

@@ -1,0 +1,40 @@
+.ng-cloak
+  %span(ng-hide="article.$resolved") loading
+  .row
+    .col-md-8
+      .panel.panel-default(ng-show="article.$resolved")
+        .panel-heading
+          %h3.panel-title
+            {{article.title}}
+
+        .panel-body
+          %img.img-rounded.catalog_article_image_large(ng-src="{{article.cover.large.url}}" ng-show="article.cover.large.url")
+
+          .article_body(ng-bind-html="article.body")
+
+          %ul
+            %li(ng-repeat="image in article.images")
+              %img.img-rounded(ng-src="{{image.file.middle.url}}" alt="{{image.title}}")
+
+        .panel-footer
+          %a.btn.btn-primary(back-button)
+            Назад
+    .col-md-4
+      .panel.panel-default(ng-show="article.children.length > 0")
+        .panel-body
+          %ul.articles-nav-tree
+            %li(ng-repeat="subarticle in article.children")
+              %a(ng-href="{{stroiUtils.path_for('ArticleCtrl', {article_slug: subarticle.slug})}}")
+                {{subarticle.title}}
+
+      .panel.panel-default(ng-show="article.documents.length > 0")
+        .panel-heading
+          = t('attachments.title')
+        .list-group
+          .list-group-item.attachment.attachments-list-item.attachment-document(ng-repeat="doc in article.documents")
+            .attachment-icon(ng-class="'attachment-icon-' + doc.common_type")
+
+            .attachment-info
+              .attachment-title
+                %a(ng-href="{{doc.file.url}}")
+                  {{doc.title}}

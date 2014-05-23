@@ -42,15 +42,19 @@ Stroimarket::Application.routes.draw do
 
   namespace :api do
     resources :categories,          only: [:index, :show],  defaults: {format: :json}
+
     resources :stores,              only: [:index, :show],  defaults: {format: :json} do
       get :services, on: :member
     end
+
     resources :products,            only: [:show],          defaults: {format: :json} do
       get :popular, on: :collection
     end
+
     resources :service_categories,  only: [:index, :show],  defaults: {format: :json}
     resources :services,            only: [:show],          defaults: {format: :json}
     resources :posts,               only: [:index, :show],  defaults: {format: :json}
+    resources :articles,            only: [:index, :show],  defaults: {format: :json}
     resources :manufacturers,       only: [:index, :show],  defaults: {format: :json}
   end
 
@@ -59,6 +63,6 @@ Stroimarket::Application.routes.draw do
   get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/  }
 
   # Статьи и документы.
-  get 'articles/*path', to: 'articles#show', as: :article_page
+  # get 'articles/*path', to: 'articles#show', as: :article_page
 
 end

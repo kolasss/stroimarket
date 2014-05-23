@@ -2,4 +2,4 @@
   .panel-body
     %ul.articles-nav-tree
       - @article.children.each do |article|
-        %li= link_to article.title, article
+        %li= link_to article.title, admin_article_path(article)
