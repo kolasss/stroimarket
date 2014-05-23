@@ -5,6 +5,10 @@ app.directive 'productsCarousel',
       $timeout ->
         element.owlCarousel
           navigation: true
+          # rewindSpeed: 200
+          navigationText: ['<span class="glyphicon glyphicon-chevron-left"></span>', '<span class="glyphicon glyphicon-chevron-right"></span>']
+          pagination: false
+          rewindNav: false
     return {
       restrict: 'E'
       scope:

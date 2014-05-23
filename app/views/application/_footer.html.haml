@@ -1,28 +1,15 @@
-%footer.page-footer
+%footer.page-footer.navbar(role="navigation")
   .container-fluid
-    .row
-      .col-md-3
-        .copy
-          © 2014
-          = t 'sitename'
-      /   .contacts
-      /     = render 'contacts'
+    .copy.navbar-text.navbar-left
+      © 2014
+      = t 'sitename'
 
-      /   = render 'language_panel'
-
-      / .col-md-3
-      /   %ul.links
-      /     %li= link_to t('nav.yakutia'), yakutia_path
-      /     %li= link_to t('nav.catalog'), catalog_path
-      /     %li= link_to t('nav.map'),     map_root_path
-
-      / .col-md-3
-      /   %ul.links
-      /     %li= link_to t('nav.video'),   video_path
-      /     = render 'articles/roots'
-
-      / .col-md-3
-      /   %ul.links
-      /     %li= link_to t('nav.announcements'), announcements_path
-      /     %li= link_to t('nav.posts'),         posts_path
-      /     %li= link_to t('nav.contacts'),      contacts_path
+    %ul.nav.navbar-nav.navbar-right
+      %li
+        = link_to 'О проекте', '#'
+      %li
+        = link_to 'Рекламодателю', '#'
+      %li
+        = link_to 'Поддержка', '#'
+      %li
+        = link_to 'Сделано в Якутске', '#'
