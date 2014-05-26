@@ -50,6 +50,8 @@
               %p {{product.intro}}
               %span.badge {{product.manufacturer_title}}
             %td
-              %span(ng-show="product.min_price") от {{product.min_price}} Р
+              %span(ng-show="product.min_price")
+                от {{product.min_price}}
+                %ruble-icon
 
       %my-paginator(data-current-page="currentPage" data-number-of-pages="numberOfPages")

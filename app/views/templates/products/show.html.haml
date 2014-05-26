@@ -21,7 +21,8 @@
       %p Цены
       %ul
         %li(ng-repeat="offer in product.offers")
-          {{offer.price}} руб.
+          {{offer.price}}
+          %ruble-icon
           %a.badge(ng-href="{{stroiUtils.path_for('StoreCtrl', {store_slug: offer.user.store_profile.slug})}}")
             {{offer.user.store_profile.name}}
 

@@ -62,15 +62,17 @@ img
     clear: both
     height: 100px
     content: " "
+    @media screen and (max-width: 768px)
+      height: 300px
 
 .page-footer
-  position: absolute
-  bottom: 0
-  left: 0
   width: 100%
   background: #FFFF33
   margin-bottom: 0
   border: 0
+  position: absolute
+  bottom: 0
+  left: 0
 
   .nav > li > a
     color: #333333
@@ -287,3 +289,17 @@ img
     padding-right: 0
     p
       margin-bottom: 0
+
+
+//
+//  misc
+//
+.rouble
+  display: inline-block
+  position: relative
+
+.rouble:before
+  display: block
+  content: "–"
+  position: absolute
+  top: 0.07em

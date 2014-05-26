@@ -20,19 +20,7 @@
           %a(ng-href="mailto:{{currentStore.email}}") {{currentStore.email}}
 
     .col-md-9
-      .row
-        .col-md-4(ng-repeat="product in currentStore.products | filter:filter.query | priceRange:filter")
-          .thumbnail
-            %img(ng-src="{{product.cover.thumb.url}}")
-            .caption
-              %h3 {{product.title}}
-              %p {{product.intro}}
-              %span.label.label-success(ng-show="product.price")
-                цена: {{product.price}}
-                %ruble-icon
-              %p
-                %a.btn.btn-primary(href="#/products/{{product._id.$oid}}")
-                  Подробнее
+      .store_about(ng-bind-html="currentStore.about")
 
       %a.btn.btn-primary(back-button)
         Назад

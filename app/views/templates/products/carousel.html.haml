@@ -5,5 +5,4 @@
       .caption
         %a(ng-href="{{link_to(product)}}")
           {{product.title}}
-        %p
-          {{draw_price(product)}}
+        %p(ng-bind-html="draw_price(product)")

@@ -63,6 +63,7 @@ class Admin::StoreProfilesController < AdminController
         :site,
         :email,
         :info,
+        :about,
         :logo,
         :remove_logo,
         :header,

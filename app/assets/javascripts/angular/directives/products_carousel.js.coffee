@@ -29,9 +29,9 @@ app.directive 'productsCarousel',
 
         scope.draw_price = (product) ->
           if scope.store
-            "#{product.price} Р"
+            "#{product.price} <span class=rouble>Р</span>"
           else if product.min_price
-            "#{product.min_price} ... #{product.max_price} Р"
+            "#{product.min_price} ... #{product.max_price} <span class=rouble>Р</span>"
 
     }
 ]

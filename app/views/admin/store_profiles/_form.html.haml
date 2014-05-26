@@ -1,20 +1,25 @@
 = simple_form_for [ :admin, @user, @user.store_profile ] do |f|
 
-  .row
-    .col-md-9
-      = f.input :name
-      %p logo
-      = image_uploader f, attr_name: 'logo'
-      %hr
-      %p header
-      = image_uploader f, attr_name: 'header'
-      = f.input :contacts
-      = f.input :requisites
-      = f.input :phone
-      = f.input :site
-      = f.input :email
-      = f.input :info
+  .form-inputs(ng-app='AdminTextAngular')
+    = f.input :name
 
-      %hr
+    %label logo
+    = image_uploader f, attr_name: 'logo'
 
-      = f.button :submit
+    %hr
+
+    %label header
+    = image_uploader f, attr_name: 'header'
+
+    = f.input :contacts
+    = f.input :requisites
+    = f.input :phone
+    = f.input :site
+    = f.input :email
+    = f.input :info
+
+    = f.input :about, :as => :text, wrapper_html: { 'replace-with-text-angular' => '', "data-text-value" => f.object.about, class: 'ng-cloak' }
+
+  .form-actions
+    %hr
+    = f.button :submit

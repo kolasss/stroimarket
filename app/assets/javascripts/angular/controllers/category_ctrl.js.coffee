@@ -3,7 +3,7 @@ app.controller 'CategoryCtrl',
   ($scope, Category, $routeParams, $filter, Manufacturer, $q, filterFilter) ->
 
     $scope.currentPage = 0
-    $scope.pageSize = 2
+    $scope.pageSize = 10
     $scope.numberOfPages = 0
 
     $scope.currentCategory = {products: []}
