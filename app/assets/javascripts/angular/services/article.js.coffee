@@ -7,19 +7,23 @@ app.factory 'Article', ['$resource', ($resource) ->
       )
       @articlesCache = []
 
-    index: ->
-      @articles = @service.query()
+    # index: ->
+    #   @articles = @service.query()
 
     get: (id) ->
       @service.get(articleId: id)
 
-    all: ->
-      if @articles? then @articles else @index()
+    # all: ->
+    #   if @articles? then @articles else @index()
 
     show: (id) ->
       if @articlesCache[id]
-        @articlesCache[id]
+        @currentArticle = @articlesCache[id]
       else
         @articlesCache[id] = @get(id)
+        @currentArticle = @articlesCache[id]
+
+    getCurrent: ->
+      return @currentArticle if @currentArticle
 
 ]

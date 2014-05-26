@@ -1,14 +1,24 @@
 app.directive 'navMenu',
-  ['$route',
-  ($route) ->
+  ['$route', 'Article',
+  ($route, Article) ->
     return {
       restrict: 'A'
       link: (scope, element, attrs) ->
 
-        scope.getClass = () ->
+        scope.isActive = () ->
           if $route.current
             for argument in arguments
-              return 'active' if $route.current.controller == argument
+              return true if $route.current.controller == argument
+
+        scope.isActiveArticle = (id) ->
+          if $route.current and $route.current.controller == 'ArticleCtrl'
+            article = Article.getCurrent()
+            if article and article.$resolved
+              if article._id.$oid == id
+                return true
+              else
+                for parent in article.parent_ids
+                  return true if parent.$oid == id
 
     }
 ]
@@ -18,13 +28,6 @@ app.directive 'categoriesDropdown',
   ($route, Category) ->
     return {
       restrict: 'A'
-      # replace: true
-      # scope:
-        # categoriesData: '='
-        # onSelect: '&'
-        # maxLevel: '@'
-        # onMain: '@'
-        # type: '@'
       templateUrl: 'templates/navigation/categories.html'
       link: (scope, element, attrs) ->
         scope.categories = Category.all()
