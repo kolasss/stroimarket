@@ -9,6 +9,6 @@ class Api::ServiceCategoriesController < ApplicationController
     ids = ServiceCategory.find(params[:id]).self_and_children_ids
     services = Service.where(:service_category.in => ids)
     respond_with services,
-      except: [:body, :service_category_id]
+      except: [:body, :service_category_id, :_keywords]
   end
 end

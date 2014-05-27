@@ -31,12 +31,10 @@ gem 'jquery-rails'
 #   gem 'sdoc', require: false
 # end
 
-# gem 'mongoid', :github=>"mongoid/mongoid"
 gem 'mongoid', :git => 'https://github.com/mongoid/mongoid.git'
-# gem 'mongoid-tree', :require => 'mongoid/tree'
 gem 'mongoid-tree', :git => 'https://github.com/benedikt/mongoid-tree.git', :branch => "mongoid-4.0", :require => 'mongoid/tree'
 gem 'mongoid_slug'
-gem 'mongoid_search'
+gem 'mongoid_search', :git => 'https://github.com/mauriciozaffari/mongoid_search.git'
 
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'

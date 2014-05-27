@@ -58,6 +58,10 @@ window.app.config ['$routeProvider',
         templateUrl: '/templates/articles/show.html',
         controller: 'ArticleCtrl'
 
+      .when '/search/:query',
+        templateUrl: '/templates/search/show.html',
+        controller: 'SearchCtrl'
+
       .otherwise
         redirectTo: '/'
 

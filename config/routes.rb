@@ -56,6 +56,7 @@ Stroimarket::Application.routes.draw do
     resources :posts,               only: [:index, :show],  defaults: {format: :json}
     resources :articles,            only: [:index, :show],  defaults: {format: :json}
     resources :manufacturers,       only: [:index, :show],  defaults: {format: :json}
+    resources :search,              only: [:show],          defaults: {format: :json}
   end
 
   # get '/dashboard' => 'templates#index'

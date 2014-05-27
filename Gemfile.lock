@@ -7,6 +7,14 @@ GIT
       mongoid (>= 3.0, <= 5.0)
 
 GIT
+  remote: https://github.com/mauriciozaffari/mongoid_search.git
+  revision: dfc7c45157a9339862f140a5641a5ea249d6f48a
+  specs:
+    mongoid_search (0.3.2)
+      fast-stemmer (~> 1.0.0)
+      mongoid (>= 3.0.0)
+
+GIT
   remote: https://github.com/mongoid/mongoid.git
   revision: 9be37a9266d8b703e8f549af7bb6977e7a3a8352
   specs:
@@ -105,9 +113,6 @@ GEM
     mongoid-grid_fs (2.1.0)
       mime-types (>= 1.0, < 3.0)
       mongoid (>= 3.0, < 5.0)
-    mongoid_search (0.3.2)
-      fast-stemmer (~> 1.0.0)
-      mongoid (>= 3.0.0)
     mongoid_slug (3.2.1)
       mongoid (> 3.0)
       stringex (~> 2.0)
@@ -208,7 +213,7 @@ DEPENDENCIES
   mini_magick
   mongoid!
   mongoid-tree!
-  mongoid_search
+  mongoid_search!
   mongoid_slug
   nested_form
   pundit

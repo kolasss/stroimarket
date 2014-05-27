@@ -1,11 +1,14 @@
 class Service
   include Mongoid::Document
+  include Mongoid::Search
 
   belongs_to :service_category
   belongs_to :user
 
   field :title, type: String
   field :body, type: String
+
+  search_in :title
 
   validates :service_category_id, :presence => true
   validates :user_id, :presence => true

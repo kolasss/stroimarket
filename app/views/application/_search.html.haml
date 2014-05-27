@@ -1,7 +1,10 @@
-%form.navbar-form.navbar-left(role="search")
+%form.navbar-form.navbar-left.search_form(role="search"
+  data-ng-controller='SearchFormCtrl'
+  name="searchForm"
+  novalidate)
   .input-group
-    %input.form-control{ type: :text, name: :search, placeholder: t('search') }
+    %input.form-control(ng-model="query" required type='text' name='search'){ placeholder: t('search') }
     %span.input-group-btn
-      %button.btn.btn-default(type="submit")
+      %button.btn.btn-default(type="submit" data-ng-click="submit(searchForm)")
         = icon 'search'
 
