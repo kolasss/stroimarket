@@ -40,7 +40,7 @@ class Product
 
   def as_json_for_catalog
     options = {
-      except: [:_id, :_keywords, :category_id, :cover_filename],
+      except: [:_id, :_keywords, :category_id, :cover_filename, :manufacturer_id],
       include: {
         category: {
           methods: [:slug],
@@ -71,6 +71,12 @@ class Product
               }
             }
           }
+        },
+        manufacturer: {
+          only: [
+            :slug,
+            :title
+          ]
         }
       }
     }

@@ -5,6 +5,9 @@
       %h3.panel-title
         {{product.title}}
 
+        %a.badge(ng-href="{{stroiUtils.path_for('ManufacturerCtrl', {manufacturer_slug: product.manufacturer.slug})}}")
+          {{product.manufacturer.title}}
+
     .panel-body
       %img.img-rounded.catalog_product_image_large(ng-src="{{product.cover.large.url}}" ng-show="product.cover.large.url")
 

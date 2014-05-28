@@ -3,20 +3,27 @@
     .col-md-3
       .panel.panel-info
         .panel-body
-          %form.form-horizontal(role="form")
+          %form(role="form")
             .form-group
-              %label.col-sm-2.control-label(for="filter_text")
+              %ul.list-unstyled
+                %li(ng-repeat="subcat in currentCategory.children")
+                  .checkbox
+                    %label
+                      %input(type="checkbox"
+                        ng-click="toggleSubcat(subcat.id)")
+                      {{subcat.title}}
+                      %span.text-muted {{subcats_counter[subcat.id]}}
+            .form-group
+              %label(for="filter_text")
                 Текст
-              .col-sm-10
-                %input.form-control#filter_text(type="search" placeholder="Поиск" ng-model="filter.query")
+              %input.form-control#filter_text(type="search" placeholder="Поиск" ng-model="filter.query")
             .form-group
-              %label.col-sm-2.control-label(for="filter_min_price")
+              %label(for="filter_min_price")
                 price range
-              .col-sm-10
-                %input.form-control#filter_min_price(type="text" placeholder="minimum" ng-model="filter.minPrice")
-                %input.form-control#filter_min_price(type="text" placeholder="maximum" ng-model="filter.maxPrice")
+              %input.form-control#filter_min_price(type="text" placeholder="minimum" ng-model="filter.minPrice")
+              %input.form-control#filter_min_price(type="text" placeholder="maximum" ng-model="filter.maxPrice")
             .form-group
-              %ul.list-unstyled.col-sm-12
+              %ul.list-unstyled
                 %li(ng-repeat="manufacturer in manufacturers")
                   .checkbox
                     %label

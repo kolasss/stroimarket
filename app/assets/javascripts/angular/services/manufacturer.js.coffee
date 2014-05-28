@@ -5,25 +5,20 @@ app.factory 'Manufacturer', ['$resource', ($resource) ->
         '/api/manufacturers/:manufacturerId',
         {manufacturerId: '@id'}
       )
-      # @manufacturersCache = []
+      @manufacturersCache = []
 
     index: ->
       @manufacturers = @service.query()
 
-      # deferred = $q.defer()
-      # @service.query (result) ->
-      #   deferred.resolve(result)
-      # @manufacturers = deferred.promise
-
-    # get: (id) ->
-    #   @service.query(categoryId: id)
+    get: (id) ->
+      @service.query(manufacturerId: id)
 
     all: ->
       if @manufacturers? then @manufacturers else @index()
 
-    # show: (id) ->
-    #   if @manufacturersCache[id]
-    #     @manufacturersCache[id]
-    #   else
-    #     @manufacturersCache[id] = @get(id)
+    show: (id) ->
+      if @manufacturersCache[id]
+        @manufacturersCache[id]
+      else
+        @manufacturersCache[id] = @get(id)
 ]

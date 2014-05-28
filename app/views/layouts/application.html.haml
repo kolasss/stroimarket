@@ -7,34 +7,20 @@
     = csrf_meta_tags
 
     = yield :head
+    = javascript_include_tag :application
   %body
 
-    .page-wrapper.site-frontoffice
-      .container
-        = render 'header'
-
-      .container.page-container
-        .row
-          .col-md-12.page-heading
-            = yield :heading
-
+    .page-wrapper
+      = render 'header'
+      .container-fluid.page-container
         .row
           .col-md-8.page-content-column
-            .page-intro
-              = yield :intro
-
             = yield
-
           .col-md-4.page-sidebar
             = yield :sidebar
-
-        .row
-          .col-md-12.page-extra
-            = yield :extra
 
       = render 'footer'
 
     -# = javascript_env
-    = javascript_include_tag :application
     = yield :body
     -# = render 'analytics'

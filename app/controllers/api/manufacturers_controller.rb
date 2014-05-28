@@ -4,12 +4,18 @@ class Api::ManufacturersController < ApplicationController
   def index
     manufacturers = Manufacturer.all
     respond_with manufacturers,
-      only: [:title, :category_ids]
+      except: [:_keywords]
   end
 
-  # def show
-  #   manufacturer = Manufacturer.find(params[:id])
-  #   respond_with manufacturer,
-  #     except: [:_id, :_slugs, :cover_filename]
-  # end
+  def show
+    products = Manufacturer.find(params[:id]).products
+    respond_with products,
+      except: [:body, :_keywords, :cover_filename, :category_id, :manufacturer_id]
+
+    # ids = Category.find(params[:id]).self_and_children_ids
+    # products = Product.where(:category.in => ids).includes(:offers)
+    # respond_with products,
+    #   except: [:body, :_keywords, :cover_filename, :category_id, :manufacturer_id],
+    #   methods: [:manufacturer_title]
+  end
 end

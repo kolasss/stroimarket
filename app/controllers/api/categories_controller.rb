@@ -9,7 +9,7 @@ class Api::CategoriesController < ApplicationController
     ids = Category.find(params[:id]).self_and_children_ids
     products = Product.where(:category.in => ids).includes(:offers)
     respond_with products,
-      except: [:body, :_keywords, :cover_filename, :category_id, :manufacturer_id],
+      except: [:body, :_keywords, :cover_filename, :manufacturer_id],
       methods: [:manufacturer_title]
       # include: {
       #   offers: { only: [:price, :user_id] }

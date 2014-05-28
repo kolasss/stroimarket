@@ -19,7 +19,7 @@ class StoreProfile
 
   validates :name, presence: true
 
-  before_validation :add_slug
+  before_validation :add_slug, if: :name_changed?
 
   def user_id
     user.id.to_s

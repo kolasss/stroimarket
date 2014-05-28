@@ -1,2 +1,10 @@
 .ng-cloak
   %categorieslist(categories-data="categories")
+
+  %h4
+    Производители
+
+  %ul
+    %li(ng-repeat="manufacturer in manufacturers")
+      %a(ng-href="{{stroiUtils.path_for('ManufacturerCtrl', {manufacturer_slug: manufacturer.slug})}}")
+        {{manufacturer.title}}

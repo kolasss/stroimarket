@@ -62,6 +62,10 @@ window.app.config ['$routeProvider',
         templateUrl: '/templates/search/show.html',
         controller: 'SearchCtrl'
 
+      .when '/manufacturers/:manufacturer_slug',
+        templateUrl: '/templates/manufacturers/show.html',
+        controller: 'ManufacturerCtrl'
+
       .otherwise
         redirectTo: '/'
 

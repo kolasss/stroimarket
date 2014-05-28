@@ -17,12 +17,19 @@ app.controller 'CategoryCtrl',
       Category.show($scope.currentCategory.id).$promise.then (result) ->
         $scope.currentCategory.products = result
 
+        # считаем товары по производителям и подкатегориям
         $scope.manufacturers_counter = {}
+        $scope.subcats_counter = {}
+
         angular.forEach $scope.manufacturers, (item) ->
           $scope.manufacturers_counter[item.title] = 0
 
+        angular.forEach $scope.currentCategory.children, (item) ->
+          $scope.subcats_counter[item.id] = 0
+
         angular.forEach $scope.currentCategory.products, (item) ->
           $scope.manufacturers_counter[item.manufacturer_title] += 1 if item.manufacturer_title
+          $scope.subcats_counter[item.category_id.$oid] += 1 if item.category_id.$oid != $scope.currentCategory.id
 
     # sorting
     $scope.sorting_by =
@@ -48,7 +55,9 @@ app.controller 'CategoryCtrl',
         sort.descending = false
 
     #filtering
-    $scope.filter = {manufacturers: []}
+    $scope.filter =
+      manufacturers: []
+      subcats: []
 
     $scope.toggleBrand = (manufacturer) ->
       idx = $scope.filter.manufacturers.indexOf(manufacturer)
@@ -56,6 +65,13 @@ app.controller 'CategoryCtrl',
         $scope.filter.manufacturers.splice(idx, 1)
       else
         $scope.filter.manufacturers.push(manufacturer)
+
+    $scope.toggleSubcat = (subcat_id) ->
+      idx = $scope.filter.subcats.indexOf(subcat_id)
+      if idx > -1
+        $scope.filter.subcats.splice(idx, 1)
+      else
+        $scope.filter.subcats.push(subcat_id)
 
     $scope.filteredProducts = () ->
       result = $scope.currentCategory.products
@@ -69,6 +85,9 @@ app.controller 'CategoryCtrl',
 
       # by manufacturer
       result = $filter('productByManufacturer')(result, filter)
+
+      # by subcategory
+      result = $filter('productByCategory')(result, filter)
 
       $scope.numberOfPages = Math.ceil(result.length/$scope.pageSize) if result
       return result
