@@ -21,6 +21,8 @@ class Product
 
   search_in :title
 
+  mount_uploader :cover, ProductImageUploader
+
   def has_user_offer? user
     self.offers.map(&:user_id).include?(user.id)
   end

@@ -22,7 +22,7 @@
   - @products.each do |product|
     %tr
       %td= product.title
-      %td= image_tag(product.cover.thumb, class: 'img-thumbnail') if product.cover.present?
+      %td= image_tag(product.cover.thumb, class: 'img-thumbnail')
       %td= product.body
       %td= product.category.title
       %td= link_to 'Show', product
