@@ -15,8 +15,8 @@
             .caption
               %h3 {{manufacturer.title}}
               %p
-                / %a.btn.btn-primary(ng-href="{{stroiUtils.path_for('ServiceCtrl', {service_id: service._id.$oid})}}")
-                /   Подробнее
+                %a.btn.btn-primary(ng-href="{{stroiUtils.path_for('ManufacturerCtrl', {manufacturer_slug: manufacturer.slug})}}")
+                  Подробнее
 
       .search_products(ng-show="pl > 0")
         .products_sorting

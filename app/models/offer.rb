@@ -12,6 +12,7 @@ class Offer
   validates :product_id, :presence => true
 
   after_save :set_min_max_price_to_product, if: :price_changed?
+  after_destroy :set_min_max_price_to_product
 
   private
     def set_min_max_price_to_product

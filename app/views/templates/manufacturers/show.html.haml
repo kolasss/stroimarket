@@ -15,15 +15,6 @@
               .col-sm-10
                 %input.form-control#filter_min_price(type="text" placeholder="minimum" ng-model="filter.minPrice")
                 %input.form-control#filter_min_price(type="text" placeholder="maximum" ng-model="filter.maxPrice")
-            / .form-group
-            /   %ul.list-unstyled.col-sm-12
-            /     %li(ng-repeat="manufacturer in manufacturers")
-            /       .checkbox
-            /         %label
-            /           %input(type="checkbox"
-            /             ng-click="toggleBrand(manufacturer.title)")
-            /           {{manufacturer.title}}
-            /           %span.text-muted {{manufacturers_counter[manufacturer.title]}}
 
     .col-md-9
       %h3 {{currentManufacturer.title}}

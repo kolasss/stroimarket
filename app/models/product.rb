@@ -107,8 +107,8 @@ class Product
         case pr_at.type
         when 'string'
           errors.add(name, "Длина строки должна быть не больше #{max_length} символов") if self[name].length > max_length
-        # when 'boolean'
-        #   # do nothing
+        when 'list'
+          errors.add(name, "Значение должно быть одним из списка") unless JSON.parse(pr_at.unit).include? self[name]
         when 'integer'
           if self[name] > max_integer
             errors.add(name, "Значение должно быть не больше #{max_integer}")

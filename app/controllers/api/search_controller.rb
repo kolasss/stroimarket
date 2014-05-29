@@ -10,7 +10,7 @@ class Api::SearchController < ApplicationController
     )
 
     result[:manufacturers] = Manufacturer.full_text_search(params[:id]).as_json(
-      only: [:title]
+      only: [:title, :slug]
     )
 
     result[:services] = Service.full_text_search(params[:id]).as_json(

@@ -10,7 +10,7 @@
     = f.input :price
 
     - if current_user.admin?
-      = f.association :user, collection: User.sellers
+      = f.association :user, collection: User.sellers, label_method: :company_name
 
   .form-actions
     = f.button :submit
