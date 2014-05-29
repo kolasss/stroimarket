@@ -1,5 +1,15 @@
 %li(ng-repeat='category in categories' ng-class="submenuClass(category)")
   %a(ng-href="{{stroiUtils.path_for('CategoryCtrl', {category_slug: category.slug})}}") {{category.title}}
-  %ul.dropdown-menu
-    %li(ng-repeat='subcat in category.children')
-      %a(ng-href="{{stroiUtils.path_for('CategoryCtrl', {category_slug: subcat.slug})}}") {{subcat.title}}
+  / %ul.dropdown-menu
+  /   %li(ng-repeat='subcat in category.children')
+  /     %a(ng-href="{{stroiUtils.path_for('CategoryCtrl', {category_slug: subcat.slug})}}") {{subcat.title}}
+  / .row.dropdown-menu
+  /   %ul.list-unstyled.subcat_column.col-md-4(ng-repeat="catRow in category.children track by $index")
+  /     %li(ng-repeat="subcat in catRow track by $index")
+  /       %a(ng-href="{{stroiUtils.path_for('CategoryCtrl', {category_slug: subcat.slug})}}") {{subcat.title}}
+  %ul.dropdown-menu.row.subcat_dropdown
+    %li(ng-repeat="catRow in category.children track by $index"
+      ng-class="columnClass(category.children.length)")
+      %ul
+        %li(ng-repeat="subcat in catRow track by $index")
+          %a(ng-href="{{stroiUtils.path_for('CategoryCtrl', {category_slug: subcat.slug})}}") {{subcat.title}}
