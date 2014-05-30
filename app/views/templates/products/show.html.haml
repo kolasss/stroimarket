@@ -8,6 +8,11 @@
         %a.badge(ng-href="{{stroiUtils.path_for('ManufacturerCtrl', {manufacturer_slug: product.manufacturer.slug})}}")
           {{product.manufacturer.title}}
 
+      - if current_user.admin?
+        .control-links
+          %a{'ng-href' => "{{editProductPath('#{Rails.application.routes.url_helpers.edit_product_path('product_id')}')}}"}
+            %span.glyphicon.glyphicon-pencil
+
     .panel-body
       %img.img-rounded.catalog_product_image_large(ng-src="{{product.cover.large.url}}" ng-show="product.cover.large.url")
 

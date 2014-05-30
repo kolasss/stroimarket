@@ -20,4 +20,12 @@ module ApplicationHelper
   def localized_role role
     t(role, scope: 'users.role')
   end
+
+  def javascript_env
+    js = ""
+    js << "var system_info = {}"
+    js << ";system_info.user = #{current_user.to_json(only:[:role])}"
+
+    javascript_tag js
+  end
 end

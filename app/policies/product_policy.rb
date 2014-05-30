@@ -1,13 +1,13 @@
 class ProductPolicy < ApplicationPolicy
   def create?
-    @user.seller?
+    @user.seller? or @user.admin?
   end
 
   def update?
-    @user.seller?
+    create?
   end
 
   def destroy?
-    @user.seller?
+    create?
   end
 end
