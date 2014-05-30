@@ -3,8 +3,10 @@
 
   .form-inputs
     = f.input :title
-    -# = f.input :show_on_main, as: :boolean
     = f.association :parent
+
+    %label Фон
+    = image_uploader f, attr_name: 'background'
 
     .custom_attributes
       .attribute_fields_set

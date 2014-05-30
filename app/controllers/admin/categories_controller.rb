@@ -53,8 +53,9 @@ class Admin::CategoriesController < AdminController
       safe_attributes = [
         :title,
         :show_on_main,
-        # :position,
         :parent_id,
+        :background,
+        :remove_background,
         product_attributes_attributes:
         [
           :id,

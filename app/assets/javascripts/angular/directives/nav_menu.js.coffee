@@ -82,6 +82,5 @@ app.directive 'categoriesDropdown',
         scope.submenuClass = (category) ->
           'dropdown-submenu' if category.children.length > 0
 
-
     }
 ]
