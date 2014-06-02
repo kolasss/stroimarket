@@ -9,6 +9,11 @@ app.directive 'productsCarousel',
           navigationText: ['<span class="glyphicon glyphicon-chevron-left"></span>', '<span class="glyphicon glyphicon-chevron-right"></span>']
           pagination: false
           rewindNav: false
+          items : 7
+          itemsDesktop : [1199,5]
+          itemsDesktopSmall : false
+          itemsTablet: [768,4]
+          itemsMobile : [479,2]
     return {
       restrict: 'E'
       scope:

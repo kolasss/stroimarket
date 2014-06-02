@@ -1,11 +1,12 @@
-%header.navbar.navbar-default.navbar-static-top(role="navigation")
+%header.site-header.navbar.navbar-static-top(role="navigation")
   .container-fluid
-    .row
-      .col-md-4.logowrapper
+    .row.logowrapper
+      .col-md-4
         %a.logo{ href: root_path }
-          .logo_image
-          %span.sitename GuruStroy
-      .col-md-8
+          / .logo_image
+          = image_tag("logo.png", alt: "GuruStroy")
+          / %span.sitename GuruStroy
+      .col-md-6
         = render 'search'
     .row
       .col-md-12

@@ -34,10 +34,6 @@
           %a.badge(ng-href="{{stroiUtils.path_for('StoreCtrl', {store_slug: offer.user.store_profile.slug})}}")
             {{offer.user.store_profile.name}}
 
-      / angular.forEach(product.category_id, function(value, key){
-      /   this.push(key + ': ' + value);
-      / }, log);
-
     .panel-footer
       %a.btn.btn-primary(back-button)
         Назад
