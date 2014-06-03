@@ -22,4 +22,17 @@ class Category
       }
     end
   end
+
+  def parents_tree
+    if self.parent?
+      parent = {
+        :title => self.parent.title,
+        :slug => self.parent.slug,
+        :parent => self.parent.parent? ? self.parent.parents_tree : {}
+      }
+    else
+      parent = {}
+    end
+    return parent
+  end
 end

@@ -29,16 +29,16 @@ module NavigationHelper
     end
   end
 
-  def breadcrumbs links = {}
-    links = links.map do |title, path|
-      "<span>#{link_to title, path}</span>"
-    end
+  # def breadcrumbs links = {}
+  #   links = links.map do |title, path|
+  #     "<span>#{link_to title, path}</span>"
+  #   end
 
-    raw %{
-      <nav class="page-breadcrumbs">
-        <span>#{link_to t('nav.main'), root_path}</span>
-        #{links.join}
-      </nav>
-    }
-  end
+  #   raw %{
+  #     <nav class="page-breadcrumbs">
+  #       <span>#{link_to t('nav.main'), root_path}</span>
+  #       #{links.join}
+  #     </nav>
+  #   }
+  # end
 end

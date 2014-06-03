@@ -45,10 +45,11 @@ class Product
       except: [:_id, :_keywords, :category_id, :cover_filename, :manufacturer_id],
       include: {
         category: {
-          methods: [:slug],
+          methods: [:slug, :parents_tree],
           only: [
             :slug,
-            :title
+            :title,
+            :parents_tree
           ],
           include: {
             product_attributes: {

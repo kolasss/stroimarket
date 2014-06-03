@@ -1,39 +1,42 @@
 .ng-cloak
   %span(ng-hide="product.$resolved") loading
-  .panel.panel-default(ng-show="product.$resolved")
-    .panel-heading
-      %h3.panel-title
-        {{product.title}}
+  .product_show(ng-show="product.$resolved")
+    %product-breadcrumbs(data-product="product" ng-if="product.$resolved")
 
-        %a.badge(ng-href="{{stroiUtils.path_for('ManufacturerCtrl', {manufacturer_slug: product.manufacturer.slug})}}")
-          {{product.manufacturer.title}}
+    %h1
+      {{product.title}}
 
       - if current_user.admin?
         .control-links
           %a{'ng-href' => "{{editProductPath('#{Rails.application.routes.url_helpers.edit_product_path('product_id')}')}}"}
             %i.fa.fa-pencil
 
-    .panel-body
-      %img.img-rounded.catalog_product_image_large(ng-src="{{product.cover.large.url}}" ng-show="product.cover.large.url")
+    .row
+      .col-md-8
+        %img.img-rounded.catalog_product_image_large(ng-src="{{product.cover.large.url}}" ng-show="product.cover.large.url")
 
-      %a.badge(ng-href="{{stroiUtils.path_for('CategoryCtrl', {category_slug: product.category.slug})}}")
-        {{product.category.title}}
+        %h3 Описание
+        %p {{product.body}}
 
-      %p {{product.body}}
+        %ul.list-unstyled
+          %li(ng-repeat="attribute in product.category.product_attributes")
+            %p {{attribute.title}}: {{product[attribute.name]}}
 
-      %ul
-        %li(ng-repeat="attribute in product.category.product_attributes")
-          %b {{attribute.title}}
-          %span {{product[attribute.name]}}
-
-      %p Цены
-      %ul
-        %li(ng-repeat="offer in product.offers")
-          {{offer.price}}
-          %ruble-icon
-          %a.badge(ng-href="{{stroiUtils.path_for('StoreCtrl', {store_slug: offer.user.store_profile.slug})}}")
-            {{offer.user.store_profile.name}}
-
-    .panel-footer
-      %a.btn.btn-primary(back-button)
-        Назад
+        %table.table.table-striped
+          %tbody
+            %tr(ng-repeat="offer in product.offers")
+              %td
+                %a(ng-href="{{stroiUtils.path_for('StoreCtrl', {store_slug: offer.user.store_profile.slug})}}")
+                  {{offer.user.store_profile.name}}
+              %td
+                {{offer.price}}
+                %ruble-icon
+      .col-md-4
+        .price_range_wrapper(ng-show="product.min_price")
+          %p Цена:
+          %p.price_range
+            {{product.min_price}}
+            %ruble-icon
+            \...
+            {{product.max_price}}
+            %ruble-icon
