@@ -40,6 +40,10 @@ class Product
     manufacturer.title if manufacturer?
   end
 
+  def offers_count
+    offers.count
+  end
+
   def as_json_for_catalog
     options = {
       except: [:_id, :_keywords, :category_id, :cover_filename, :manufacturer_id],

@@ -5,6 +5,17 @@
         .panel-body
           %form(role="form")
             .form-group
+              %label(for="filter_text")
+                Текст
+              %input.form-control#filter_text(type="search" placeholder="Поиск" ng-model="filter.query")
+            .form-group
+              %label(for="filter_min_price")
+                Цена
+              %input.form-control#filter_min_price(type="text" placeholder="minimum" ng-model="filter.minPrice")
+              %input.form-control#filter_min_price(type="text" placeholder="maximum" ng-model="filter.maxPrice")
+            .form-group
+              %label
+                Подкатегории
               %ul.list-unstyled
                 %li(ng-repeat="subcat in currentCategory.children")
                   .checkbox
@@ -14,15 +25,8 @@
                       {{subcat.title}}
                       %span.text-muted {{subcats_counter[subcat.id]}}
             .form-group
-              %label(for="filter_text")
-                Текст
-              %input.form-control#filter_text(type="search" placeholder="Поиск" ng-model="filter.query")
-            .form-group
-              %label(for="filter_min_price")
-                price range
-              %input.form-control#filter_min_price(type="text" placeholder="minimum" ng-model="filter.minPrice")
-              %input.form-control#filter_min_price(type="text" placeholder="maximum" ng-model="filter.maxPrice")
-            .form-group
+              %label
+                Бренд
               %ul.list-unstyled
                 %li(ng-repeat="manufacturer in manufacturers")
                   .checkbox
@@ -46,19 +50,25 @@
               %i.fa.fa-angle-down
               {{title}}
 
-      %table.table
+      %table.table.products_list
         %tbody
           %tr(ng-repeat="product in filteredProducts() | orderBy:sort.column:sort.descending | startFrom:currentPage*pageSize | limitTo:pageSize")
-            %td
+            %td.product_img
               %img(ng-src="{{product.cover.thumb.url}}")
             %td
               %a(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
                 {{product.title}}
               %p {{product.intro}}
-              %span.badge {{product.manufacturer_title}}
-            %td
-              %span(ng-show="product.min_price")
-                от {{product.min_price}}
+            %td.product_prices
+              %p(ng-show="product.min_price")
+                {{product.min_price}}
                 %ruble-icon
+                \...
+                {{product.max_price}}
+                %ruble-icon
+              %p(ng-show='product.offers_count > 0')
+                {{product.offers_count}} предложений
+              %a.btn.btn-blue(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
+                Подробнее
 
       %my-paginator(data-current-page="currentPage" data-number-of-pages="numberOfPages")

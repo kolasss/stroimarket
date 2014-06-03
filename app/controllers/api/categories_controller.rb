@@ -10,7 +10,7 @@ class Api::CategoriesController < ApplicationController
     products = Product.where(:category.in => ids).includes(:offers)
     respond_with products,
       except: [:body, :_keywords, :cover_filename, :manufacturer_id],
-      methods: [:manufacturer_title]
+      methods: [:manufacturer_title, :offers_count]
       # include: {
       #   offers: { only: [:price, :user_id] }
       # }
