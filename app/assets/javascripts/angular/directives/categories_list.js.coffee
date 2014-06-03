@@ -4,9 +4,7 @@ app.directive 'categorieslist', ->
     replace: true
     scope:
       categoriesData: '='
-      # onSelect: '&'
       maxLevel: '@'
-      onMain: '@'
       type: '@'
     template:
       '<div class="row clearfix categories_list">
@@ -15,7 +13,6 @@ app.directive 'categorieslist', ->
             item="item"
             category-level="1"
             max-level="{{maxLevel}}"
-            on-main="{{onMain}}"
             type="{{type}}">
           </listnode>
         </div>
@@ -44,13 +41,12 @@ app.directive 'listnode',
       if categoryLevel == maxLevel
         children_list = ''
       else
-        children_list = "<div class='subcategories_list' on-main='{{onMain}}'>
+        children_list = "<div class='subcategories_list'>
           <span ng-repeat='item in item.children'>
             <listnode
               item='item'
               category-level='#{nextLevel}'
               max-level='#{maxLevel}'
-              on-main='{{onMain}}'
               type='{{type}}'>
             </listnode>
           </span>
@@ -63,7 +59,6 @@ app.directive 'listnode',
       restrict: 'E'
       scope:
         item: '='
-        onMain: '@'
         type: '@'
       link: (scope, element, attrs) ->
         categoryLevel = parseInt attrs.categoryLevel

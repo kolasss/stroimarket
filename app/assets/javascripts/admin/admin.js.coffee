@@ -13,10 +13,6 @@ init_sortable = (target_list, item_type) ->
       if item.prev('li.list_node').length != 0
         prev_id = item.prev('li.list_node').data('id')
 
-      # console.log('id: ' + id)
-      # console.log('parent_id: ' + parent_id)
-      # console.log('prev_id: ' + prev_id)
-
       $.ajax
         type:     'post'
         url:      url
@@ -45,7 +41,7 @@ init_sortable = (target_list, item_type) ->
         left: position.left - adjustment.left,
         top: position.top - adjustment.top
 
-
-init_sortable('#categories_root', 'categories')
-init_sortable('#service_categories_root', 'service_categories')
-init_sortable('#articles_root', 'articles')
+jQuery ->
+  init_sortable('#categories_root', 'categories')
+  init_sortable('#service_categories_root', 'service_categories')
+  init_sortable('#articles_root', 'articles')

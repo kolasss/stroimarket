@@ -68,6 +68,7 @@ gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 # gem 'debugger', group: [:development, :test]
 
 gem 'kaminari' #paginator
+gem "font-awesome-rails"
 
 gem "nested_form"
 

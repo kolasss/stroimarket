@@ -11,14 +11,14 @@ module AttachmentsHelper
   end
 
   def button_to_add_document f, &blk
-    btn = "#{icon 'file'} #{t 'documents.add'}"
+    btn = "#{fa_icon 'file'} #{t 'documents.add'}"
     classes = 'btn btn-default add-attachment add-document'
 
     button_to_add_attachment(raw(btn), f, :documents, class: classes, &blk)
   end
 
   def button_to_add_image f, &blk
-    btn = "#{icon 'picture'} #{t 'images.add'}"
+    btn = "#{fa_icon 'picture-o'} #{t 'images.add'}"
     classes = 'btn btn-default add-attachment add-image'
 
     button_to_add_attachment(raw(btn), f, :images, class: classes, &blk)

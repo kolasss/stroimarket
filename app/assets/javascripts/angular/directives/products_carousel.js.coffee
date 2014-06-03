@@ -6,7 +6,7 @@ app.directive 'productsCarousel',
         element.owlCarousel
           navigation: true
           # rewindSpeed: 200
-          navigationText: ['<span class="glyphicon glyphicon-chevron-left"></span>', '<span class="glyphicon glyphicon-chevron-right"></span>']
+          navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>']
           pagination: false
           rewindNav: false
           items : 7
@@ -34,9 +34,9 @@ app.directive 'productsCarousel',
 
         scope.draw_price = (product) ->
           if scope.store
-            "#{product.price} <span class=rouble>Р</span>"
+            "#{product.price} <i class='fa fa-rub'></i>"
           else if product.min_price
-            "#{product.min_price} ... #{product.max_price} <span class=rouble>Р</span>"
+            "#{product.min_price} ... #{product.max_price} <i class='fa fa-rub'></i>"
 
     }
 ]
