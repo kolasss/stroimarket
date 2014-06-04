@@ -29,9 +29,6 @@ window.app.config ['$routeProvider',
       .when '/stores/:store_slug',
         templateUrl: '/templates/stores/show.html',
         controller: 'StoreMainCtrl'
-      .when '/stores/:store_slug/catalog',
-        templateUrl: '/templates/stores/catalog.html',
-        controller: 'StoreCatalogCtrl'
       .when '/stores/:store_slug/services',
         templateUrl: '/templates/stores/services.html',
         controller: 'StoreServicesCtrl'

@@ -40,13 +40,6 @@ app.controller 'ManufacturerCtrl',
 
     $scope.filter = {}
 
-    # $scope.toggleBrand = (manufacturer) ->
-    #   idx = $scope.filter.manufacturers.indexOf(manufacturer)
-    #   if idx > -1
-    #     $scope.filter.manufacturers.splice(idx, 1)
-    #   else
-    #     $scope.filter.manufacturers.push(manufacturer)
-
     $scope.filteredProducts = () ->
       result = $scope.currentManufacturer.products
       filter = $scope.filter
@@ -55,7 +48,7 @@ app.controller 'ManufacturerCtrl',
       result = filterFilter(result, filter.query) if filter.query
 
       # price range
-      result = $filter('priceRange')(result, filter)
+      result = $filter('priceRangeCatalog')(result, filter)
 
       $scope.numberOfPages = Math.ceil(result.length/$scope.pageSize) if result
       return result

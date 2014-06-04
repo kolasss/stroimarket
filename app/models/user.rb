@@ -75,7 +75,7 @@ class User
   def products_for_catalog
     self.offers.map do |offer|
       product = offer.product.as_json(
-        except: [:body, :_keywords, :cover_filename, :category_id]
+        except: [:body, :_keywords, :cover_filename]
       )
       product[:price] = offer.price
       product[:updated_at] = offer.updated_at

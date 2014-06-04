@@ -71,7 +71,7 @@ app.directive 'categoriesDropdown',
 
         Category.all().$promise.then (result) ->
           scope.categories = angular.copy(result)
-          angular.forEach scope.categories, (cat) ->
+          for cat in scope.categories
             cat.children = splitIntoColumns(cat.children, rows) if cat.children.length > 0
 
         scope.columnClass = (cat_length) ->

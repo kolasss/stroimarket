@@ -3,30 +3,63 @@
     = render 'templates/stores/store_header'
 
   .row.store_profile_body
-    .col-md-3
-      %dl.store_info
-        %dt О нас
-        %dd {{currentStore.info}}
-
-        %dt.inner_header Контакты
-        %dd {{currentStore.contacts}}
-
-        %dt.inner_header Реквизиты
-        %dd {{currentStore.requisites}}
-        %dd {{currentStore.phone}}
-        %dd
-          %a(ng-href="http://{{currentStore.site}}") {{currentStore.site}}
-        %dd
-          %a(ng-href="mailto:{{currentStore.email}}") {{currentStore.email}}
-
-    .col-md-9
+    .col-md-12.carousel_popular
       %h4
         Популярные товары →
       %products-carousel(data-products="currentStore.popular" data-store="true")
 
-      %h4
-        Новые товары →
-      %products-carousel(data-products="currentStore.new_products" data-store="true")
+    .col-md-3
+      .panel.panel-info
+        .panel-body
+          %form(role="form")
+            .form-group
+              %label(for="filter_text")
+                Текст
+              %input.form-control#filter_text(type="search" placeholder="Поиск" ng-model="filter.query")
 
-      %a.btn.btn-primary(back-button)
-        Назад
+            .form-group
+              %label(for="filter_min_price")
+                Цена
+              %input.form-control#filter_min_price(type="text" placeholder="minimum" ng-model="filter.minPrice")
+              %input.form-control#filter_min_price(type="text" placeholder="maximum" ng-model="filter.maxPrice")
+
+            .form-group(ng-show="categories.length > 0")
+              %label
+                Категории
+              %ul.list-unstyled
+                %li(ng-repeat="cat in categories")
+                  .checkbox
+                    %label
+                      %input(type="checkbox"
+                        ng-click="toggleSubcat(cat.id, cat.children_ids)")
+                      {{cat.title}}
+                      %span.text-muted {{cats_counter[cat.id]}}
+
+    .col-md-9
+      .products_sorting
+        %span.pull-left
+          Сортировать по:
+        %ul.nav.nav-pills
+          %li(ng-repeat="(attr, title) in sorting_by" ng-class="selectedCls(attr)")
+            %a(ng-click="changeSorting(attr)")
+              %i.fa.fa-angle-up
+              %i.fa.fa-angle-down
+              {{title}}
+
+      %table.table.products_list
+        %tbody
+          %tr(ng-repeat="product in filteredProducts() | orderBy:sort.column:sort.descending | startFrom:currentPage*pageSize | limitTo:pageSize")
+            %td.product_img
+              %img(ng-src="{{product.cover.thumb.url}}")
+            %td
+              %a(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
+                {{product.title}}
+              %p {{product.intro}}
+            %td.product_prices
+              %p(ng-show="product.price")
+                {{product.price}}
+                %ruble-icon
+              %a.btn.btn-blue(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
+                Подробнее
+
+      %my-paginator(data-current-page="currentPage" data-number-of-pages="numberOfPages")

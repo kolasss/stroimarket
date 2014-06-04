@@ -8,12 +8,14 @@
               %label(for="filter_text")
                 Текст
               %input.form-control#filter_text(type="search" placeholder="Поиск" ng-model="filter.query")
+
             .form-group
               %label(for="filter_min_price")
                 Цена
               %input.form-control#filter_min_price(type="text" placeholder="minimum" ng-model="filter.minPrice")
               %input.form-control#filter_min_price(type="text" placeholder="maximum" ng-model="filter.maxPrice")
-            .form-group
+
+            .form-group(ng-show="currentCategory.children.length > 0")
               %label
                 Подкатегории
               %ul.list-unstyled
@@ -21,10 +23,11 @@
                   .checkbox
                     %label
                       %input(type="checkbox"
-                        ng-click="toggleSubcat(subcat.id)")
+                        ng-click="toggleSubcat(subcat.id, subcat.children_ids)")
                       {{subcat.title}}
                       %span.text-muted {{subcats_counter[subcat.id]}}
-            .form-group
+
+            .form-group(ng-show="manufacturers.length > 0")
               %label
                 Бренд
               %ul.list-unstyled

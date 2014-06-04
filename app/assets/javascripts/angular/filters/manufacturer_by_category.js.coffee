@@ -11,9 +11,9 @@ app.filter 'manufacturerByCategory', ->
 
     filtered = []
 
-    angular.forEach input_array, (item) ->
+    for item in input_array
       for cat in item.category_ids
-        if categories_ids.indexOf(cat.$oid) > -1
+        if cat.$oid in categories_ids
           filtered.push(item)
           break
 
