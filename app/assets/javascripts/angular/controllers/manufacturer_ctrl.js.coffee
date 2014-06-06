@@ -9,8 +9,7 @@ app.controller 'ManufacturerCtrl',
     $scope.currentManufacturer = {products: []}
 
     Manufacturer.all().$promise.then (result) ->
-      $scope.manufacturers = result
-      $scope.currentManufacturer = $filter('getBySlug')($scope.manufacturers, $routeParams.manufacturer_slug)
+      $scope.currentManufacturer = $filter('getBySlug')(result, $routeParams.manufacturer_slug)
       $scope.currentManufacturer.products = Manufacturer.show($scope.currentManufacturer._id.$oid)
 
     # sorting
