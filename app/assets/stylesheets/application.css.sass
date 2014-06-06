@@ -443,3 +443,43 @@ img
 
 // .site-header .navbar-link:hover
 //     color: #333333
+
+
+//
+// Paginator
+// ================
+.pagination_wrapper
+  ul
+    list-style: none outside none
+    margin: 0
+    li
+      display: inline
+      a
+        display: inline-block
+        &:hover, &:focus
+          background-color: #EEEEEE
+
+.my_pager
+  padding-left: 0
+
+.my_pager li > a
+  border-radius: 15px
+  padding: 5px 14px
+
+.my_pager .disabled > a, .my_pager .disabled > a:hover, .my_pager .disabled > a:focus, .my_pagination > .disabled > a, .my_pagination > .disabled > a:hover, .my_pagination > .disabled > a:focus
+  background-color: #FFFFFF
+  color: #999999
+  cursor: not-allowed
+
+.my_pagination
+  padding-left: 14px
+
+.my_pagination > li > a
+  border-radius: 50%
+  line-height: 1.42857
+  padding: 6px 12px
+
+.my_pagination > .active > a, .my_pagination > .active > a:hover, .my_pagination > .active > a:focus
+  background-color: $light-blue-color
+  color: #333
+  cursor: default

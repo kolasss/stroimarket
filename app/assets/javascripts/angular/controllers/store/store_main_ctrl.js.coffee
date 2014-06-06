@@ -3,7 +3,7 @@ app.controller 'StoreMainCtrl',
   ($scope, Store, $routeParams, $filter, Category, $q, filterFilter) ->
 
     $scope.currentPage = 0
-    $scope.pageSize = 2
+    $scope.pageSize = 10
     $scope.numberOfPages = 0
 
     $scope.currentStore = {products: []}
