@@ -1,11 +1,11 @@
 = simple_form_for(@product) do |f|
   = f.error_notification
 
-  .form-inputs
+  .form-inputs(ng-app='AdminTextAngular')
     = cover_uploader f
     = f.input :title
     = f.input :intro
-    = f.input :body
+    = text_angular_body f
     = f.association :category, input_html: {object_id: f.object._id}
 
     .custom_attributes

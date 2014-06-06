@@ -5,7 +5,7 @@
     = cover_uploader f
     = f.input :title
     = f.input :intro
-    = f.input :body, :as => :text, wrapper_html: { 'replace-with-text-angular' => '', "data-text-value" => f.object.body, class: 'ng-cloak' }
+    = text_angular_body f
 
   .form-actions
     = f.button :submit

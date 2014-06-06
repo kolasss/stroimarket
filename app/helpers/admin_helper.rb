@@ -30,4 +30,14 @@ module AdminHelper
 
     html.html_safe
   end
+
+  def text_angular_body form, options = {}
+    wrapper = {
+      'replace-with-text-angular' => '',
+      "data-text-value" => form.object.body,
+      class: 'ng-cloak'
+    }
+    form.input :body, :as => :text, wrapper_html: wrapper
+  end
+
 end
