@@ -52,9 +52,13 @@ class Admin::ServicesController < AdminController
     def service_params
       params.require(:service).permit(
         :title,
+        :intro,
         :body,
+        :cover,
+        :remove_cover,
         :service_category_id,
-        :user_id
+        :user_id,
+        :price
       )
     end
 end

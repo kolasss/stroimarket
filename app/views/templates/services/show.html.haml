@@ -6,14 +6,15 @@
         {{service.title}}
 
     .panel-body
-      / %img.img-rounded.catalog_service_image_large(ng-src="{{service.cover.large.url}}" ng-show="service.cover.large.url")
+      %img.img-rounded.catalog_service_image_large(ng-src="{{service.cover.large.url}}" ng-show="service.cover.large.url")
 
-      %a.badge(ng-href="{{stroiUtils.path_for('ServiceCategoryCtrl', {category_slug: service.service_category.slug})}}")
-        {{service.service_category.title}}
+      %p
+        %span.badge
+          {{service.service_category.title}}
 
       %p {{service.body}}
 
-      %a.badge(ng-href="{{stroiUtils.path_for('StoreCtrl', {store_slug: service.user.store_profile.slug})}}")
+      %a.badge(ng-href="{{stroiUtils.path_for('StoreServicesCtrl', {store_slug: service.user.store_profile.slug})}}")
         {{service.user.store_profile.name}}
 
     .panel-footer

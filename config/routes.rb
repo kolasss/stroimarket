@@ -51,8 +51,8 @@ Stroimarket::Application.routes.draw do
       get :popular, on: :collection
     end
 
-    resources :service_categories,  only: [:index, :show],  defaults: {format: :json}
-    resources :services,            only: [:show],          defaults: {format: :json}
+    resources :service_categories,  only: [:index],         defaults: {format: :json}
+    resources :services,            only: [:index, :show],  defaults: {format: :json}
     resources :posts,               only: [:index, :show],  defaults: {format: :json}
     resources :articles,            only: [:index, :show],  defaults: {format: :json}
     resources :manufacturers,       only: [:index, :show],  defaults: {format: :json}

@@ -7,6 +7,12 @@ app.factory 'Service', ['$resource', ($resource) ->
       )
       @servicesCache = []
 
+    index: ->
+      @services = @service.query()
+
+    all: ->
+      if @services? then @services else @index()
+
     get: (id) ->
       @service.get(serviceId: id)
 

@@ -23,5 +23,8 @@
 
           = render 'usermenu'
 
-.page-messages
-  = messages
+- unless flash.empty?
+  .page-messages.container-fluid
+    .row
+      .col-md-6.col-md-offset-6
+        = messages

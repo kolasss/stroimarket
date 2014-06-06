@@ -1,3 +1,5 @@
+@import "lib"
+
 .catalog_product_image_large
   width: 100%
 
@@ -15,8 +17,16 @@
 // show category
 //
 .products_sorting
+  span,
+  .nav > li > a
+    padding: 3px 5px
+    margin-left: 5px
+
   ul
     li
+      &.active a, &.active a:hover, &.active a:focus
+        background-color: $light-blue-color
+        color: $black-color
       i
         display: none
     li.sort-false
@@ -26,16 +36,11 @@
       i.fa.fa-angle-up
         display: inline
 
+
 .product_show
   .price_range
     font-size: 1.7em
 
-
-.products_sorting
-  span,
-  .nav > li > a
-    padding: 3px 5px
-    margin-left: 5px
 
 .products_list
   margin-top: 10px

@@ -1,17 +1,25 @@
 class Service
   include Mongoid::Document
   include Mongoid::Search
+  include Mongoid::Timestamps
+  include Content
 
   belongs_to :service_category
   belongs_to :user
 
-  field :title, type: String
-  field :body, type: String
+  field :price, type: Integer
+  field :views, type: Integer, default: 0
 
   search_in :title
 
   validates :service_category_id, :presence => true
   validates :user_id, :presence => true
+
+  mount_uploader :cover, ProductImageUploader
+
+  def store_title
+    user.company_name if user?
+  end
 
   def as_json_for_catalog
     options = {

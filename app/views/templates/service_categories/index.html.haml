@@ -1,2 +1,61 @@
 .ng-cloak
-  %categorieslist(categories-data="categories" type="service")
+  .row
+    .col-md-3
+      .panel.panel-info
+        .panel-body
+          %form(role="form")
+            .form-group
+              %label(for="filter_text")
+                Текст
+              %input.form-control#filter_text(type="search" placeholder="Поиск" ng-model="filter.query")
+
+            .form-group
+              %label(for="filter_min_price")
+                Цена
+              %input.form-control#filter_min_price(type="text" placeholder="minimum" ng-model="filter.minPrice")
+              %input.form-control#filter_min_price(type="text" placeholder="maximum" ng-model="filter.maxPrice")
+
+            .form-group
+              %label
+                Категории
+              %ul.list-unstyled
+                %li(ng-repeat="subcat in categories")
+                  .checkbox
+                    %label
+                      %input(type="checkbox"
+                        ng-click="toggleSubcat(subcat._id.$oid)")
+                      {{subcat.title}}
+                      %span.text-muted {{subcats_counter[subcat._id.$oid]}}
+
+    .col-md-9
+      %h3 Услуги
+
+      .products_sorting
+        %span.pull-left
+          Сортировать по:
+        %ul.nav.nav-pills
+          %li(ng-repeat="(attr, title) in sorting_by" ng-class="selectedCls(attr)")
+            %a(ng-click="changeSorting(attr)")
+              %i.fa.fa-angle-up
+              %i.fa.fa-angle-down
+              {{title}}
+
+      %table.table.products_list
+        %tbody
+          %tr(ng-repeat="service in filteredServices() | orderBy:sort.column:sort.descending | startFrom:currentPage*pageSize | limitTo:pageSize")
+            %td.product_img
+              %img(ng-src="{{service.cover.thumb.url}}")
+            %td
+              %a(ng-href="{{stroiUtils.path_for('ServiceCtrl', {service_id: service._id.$oid})}}")
+                {{service.title}}
+              %p {{service.intro}}
+            %td.product_prices
+              %p(ng-show="service.price")
+                {{service.price}}
+                %ruble-icon
+              %p
+                {{service.store_title}}
+              %a.btn.btn-blue(ng-href="{{stroiUtils.path_for('ServiceCtrl', {service_id: service._id.$oid})}}")
+                Подробнее
+
+      %my-paginator(data-current-page="currentPage" data-number-of-pages="numberOfPages")

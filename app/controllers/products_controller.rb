@@ -75,7 +75,6 @@ class ProductsController < ApplicationController
 
       safe_attributes = [
         :title,
-        :cover,
         :intro,
         :body,
         :category_id,

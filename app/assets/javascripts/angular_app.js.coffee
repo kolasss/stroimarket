@@ -39,9 +39,6 @@ window.app.config ['$routeProvider',
       .when '/service_categories',
         templateUrl: '/templates/service_categories/index.html',
         controller: 'ServiceCategoriesCtrl'
-      .when '/service_categories/:category_slug',
-        templateUrl: '/templates/service_categories/show.html',
-        controller: 'ServiceCategoryCtrl'
 
       .when '/services/:service_id',
         templateUrl: '/templates/services/show.html',

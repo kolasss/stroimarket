@@ -1,12 +1,27 @@
+- if @service.cover.present?
+  = image_tag(@service.cover.large, class: 'img-thumbnail')
+  %hr
 %p
   %b Title:
   = @service.title
 %p
+  %b intro:
+  = @service.intro
+%p
   %b Body:
-  = @service.body
+  = raw @service.body
+%p
+  %b price:
+  = raw @service.price
+%p
+  %b views:
+  = raw @service.views
 %p
   %b Категория:
   = @service.service_category.title
+%p
+  %b Магазин:
+  = @service.user.company_name
 
 
 %br

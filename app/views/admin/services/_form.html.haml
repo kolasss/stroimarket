@@ -1,13 +1,16 @@
 = simple_form_for [:admin, @service] do |f|
   = f.error_notification
 
-  .form-inputs
+  .form-inputs(ng-app='AdminTextAngular')
+    = cover_uploader f
     = f.input :title
-    = f.input :body
+    = f.input :intro
+    = f.input :body, :as => :text, wrapper_html: { 'replace-with-text-angular' => '', "data-text-value" => f.object.body, class: 'ng-cloak' }
+    = f.input :price
     = f.association :service_category
 
     - if current_user.admin?
-      = f.association :user, collection: User.sellers
+      = f.association :user, collection: User.sellers, label_method: :company_name
 
   .form-actions
     = f.button :submit

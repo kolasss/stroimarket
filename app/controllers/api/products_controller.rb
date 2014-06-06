@@ -3,9 +3,7 @@ class Api::ProductsController < ApplicationController
 
   def show
     product = Product.find(params[:id])
-
     product.update_attribute(:views, product.views+1)
-
     respond_with product.as_json_for_catalog
   end
 
