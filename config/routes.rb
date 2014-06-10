@@ -1,11 +1,5 @@
 Stroimarket::Application.routes.draw do
 
-  resources :products do
-    get :custom_category_fields, on: :collection
-    get :manufacturer_field, on: :collection
-
-    resources :offers, except: [:index, :show]
-  end
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
@@ -17,6 +11,13 @@ Stroimarket::Application.routes.draw do
   # Админка.
   namespace :admin do
     root to: :index
+
+    resources :products do
+      get :custom_category_fields, on: :collection
+      get :manufacturer_field, on: :collection
+
+      resources :offers, except: [:index, :show]
+    end
 
     resources :articles do
       post :update_position, on: :collection

@@ -1,7 +1,7 @@
-class OffersController < ApplicationController
+class Admin::OffersController < AdminController
   before_action :set_product, only: [:new, :create, :edit]
   before_action :set_offer, only: [:edit, :update, :destroy]
-  after_action :verify_authorized
+  # after_action :verify_authorized
 
   def new
     @offer = @product.offers.new
@@ -12,14 +12,13 @@ class OffersController < ApplicationController
   end
 
   def create
-
     @offer = @product.offers.new(offer_params)
     authorize @offer
 
     @offer.user = current_user if @offer.user.blank? and current_user.seller?
 
     if @offer.save
-      redirect_to @product, notice: 'Offer was successfully created.'
+      redirect_to admin_product_path(@product), notice: 'Offer was successfully created.'
     else
       render action: 'new'
     end
@@ -27,7 +26,7 @@ class OffersController < ApplicationController
 
   def update
     if @offer.update(offer_params)
-      redirect_to @offer.product, notice: 'Offer was successfully updated.'
+      redirect_to admin_product_path(@offer.product), notice: 'Offer was successfully updated.'
     else
       render action: 'edit'
     end
@@ -35,7 +34,7 @@ class OffersController < ApplicationController
 
   def destroy
     @offer.destroy
-    redirect_to @offer.product
+    redirect_to admin_product_path(@offer.product)
   end
 
   private

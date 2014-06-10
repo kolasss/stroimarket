@@ -1,4 +1,4 @@
-= simple_form_for [@product, @offer] do |f|
+= simple_form_for [:admin, @product, @offer] do |f|
   = f.error_notification
 
   - if f.object.errors[:user_id].present?

@@ -7,7 +7,7 @@ jQuery ->
     custom_attributes = $('.custom_attributes')
 
     $.ajax
-      url: '/products/custom_category_fields'
+      url: '/admin/products/custom_category_fields'
       data:
         category_id: category_id
         object_id: object_id
@@ -18,7 +18,7 @@ jQuery ->
     manufacturer_field = $('.manufacturer_field')
 
     $.ajax
-      url: '/products/manufacturer_field'
+      url: '/admin/products/manufacturer_field'
       data:
         category_id: category_id
         object_id: object_id

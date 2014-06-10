@@ -1,13 +1,14 @@
-class ProductsController < ApplicationController
+class Admin::ProductsController < AdminController
   before_action :set_product, only: [:edit, :update, :destroy]
-  after_action :verify_authorized
+  # after_action :verify_authorized
 
   def index
-    if params[:query].present?
-      @products = Product.full_text_search(params[:query])
-    else
-      @products = Product.all
-    end
+    # if params[:query].present?
+    #   @products = Product.full_text_search(params[:query])
+    # else
+    #   @products = Product.all
+    # end
+    @products = Product.all.page(params[:page]).per(2)
     authorize @products
   end
 
@@ -29,7 +30,7 @@ class ProductsController < ApplicationController
     authorize @product
 
     if @product.save
-      redirect_to @product, notice: 'Product was successfully created.'
+      redirect_to admin_product_path(@product), notice: 'Product was successfully created.'
     else
       render action: 'new'
     end
@@ -37,7 +38,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to @product, notice: 'Product was successfully updated.'
+      redirect_to admin_product_path(@product), notice: 'Product was successfully updated.'
     else
       render action: 'edit'
     end
@@ -45,7 +46,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to products_url
+    redirect_to admin_products_path
   end
 
   def custom_category_fields

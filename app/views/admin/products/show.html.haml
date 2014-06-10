@@ -52,14 +52,14 @@
 
             - if policy(offer).update?
               .control-links
-                = icon_link 'pencil', edit_product_offer_path(@product, offer)
-                = icon_link 'remove', product_offer_path(@product, offer), data: { method: :delete, confirm: t(:confirm_deletion) }
+                = icon_link 'pencil', edit_admin_product_offer_path(@product, offer)
+                = icon_link 'remove', admin_product_offer_path(@product, offer), data: { method: :delete, confirm: t(:confirm_deletion) }
 
 -# - if policy(Offer).create? && !@product.has_user_offer?
 - unless @product.has_user_offer? current_user
-  = link_to 'Новая цена', new_product_offer_path(@product), class: 'btn btn-primary'
+  = link_to 'Новая цена', new_admin_product_offer_path(@product), class: 'btn btn-primary'
 
 %br
-= link_to 'Edit', edit_product_path(@product)
+= link_to 'Edit', edit_admin_product_path(@product)
 \|
-= link_to 'Back', products_path
+= link_to 'Back', admin_products_path

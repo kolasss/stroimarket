@@ -1,0 +1,32 @@
+%h1 Товары
+
+/ .panel.panel-default
+/   .panel-body
+/     %form
+/       .input-group
+/         %input.form-control{ type: :text, name: :query, placeholder: t('catalog.search_hint'), value: params[:query] }
+
+/         .input-group-btn
+/           %button.btn.btn-primary= t('search')
+
+%table.table.table-striped
+  %tr
+    %th Title
+    %th Cover
+    %th Category
+    %th
+    %th
+    %th
+
+  - @products.each do |product|
+    %tr
+      %td= product.title
+      %td= image_tag(product.cover.thumb, class: 'img-thumbnail')
+      %td= product.category.title
+      %td= link_to 'Show', admin_product_path(product)
+      %td= link_to 'Edit', edit_admin_product_path(product)
+      %td= link_to 'Destroy', admin_product_path(product), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+= paginate @products
+
+= link_to 'New Product', new_admin_product_path, class: 'btn btn-info'
