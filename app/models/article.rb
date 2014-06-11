@@ -5,6 +5,7 @@ class Article
   include Mongoid::Tree
   include Mongoid::Tree::Ordering
   include Content
+  include PostFiles
 
   slug :title, history: true
 

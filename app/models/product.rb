@@ -2,8 +2,9 @@ class Product
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Attributes::Dynamic
-  include Content
   include Mongoid::Search
+  include Content
+  include ProductFiles
 
   belongs_to :category
   belongs_to :manufacturer
@@ -20,8 +21,6 @@ class Product
   validates :category_id, :presence => true
 
   search_in :title
-
-  mount_uploader :cover, ProductImageUploader
 
   def has_user_offer? user
     self.offers.map(&:user_id).include?(user.id)

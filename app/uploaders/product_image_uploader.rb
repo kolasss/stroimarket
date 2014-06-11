@@ -1,14 +1,18 @@
 class ProductImageUploader < AttachmentUploader
   version :large do
-    process resize_to_fill: [ 940, 530 ]
+    process resize_to_fit: [ 800, 800 ]
   end
 
   version :middle, from_version: :large do
-    process resize_to_fill: [ 620, 350 ]
+    process resize_to_fit: [ 10000, 220 ]
   end
 
-  version :thumb, from_version: :middle do
-    process resize_to_fill: [ 140, 100 ]
+  version :small, from_version: :middle do
+    process resize_to_fill: [ 140, 140 ]
+  end
+
+  version :thumb, from_version: :small do
+    process resize_to_fill: [ 100, 100 ]
   end
 
   def extension_white_list

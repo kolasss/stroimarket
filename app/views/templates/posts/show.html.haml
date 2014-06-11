@@ -1,34 +1,33 @@
 .ng-cloak
   %span(ng-hide="post.$resolved") loading
-  .panel.panel-default(ng-show="post.$resolved")
-    .panel-heading
-      %h3.panel-title
-        {{post.title}}
+  .row
+    .col-md-8
+      .panel.panel-default(ng-show="post.$resolved")
+        .panel-heading
+          %h3.panel-title
+            {{post.title}}
 
-    .panel-body
-      %img.img-rounded.catalog_post_image_large(ng-src="{{post.cover.large.url}}" ng-show="post.cover.large.url")
+        .panel-body
+          %img.img-rounded.catalog_article_image_large(ng-src="{{post.cover.large.url}}" ng-show="post.cover.large.url")
 
-      / %a.badge(ng-href="{{stroiUtils.path_for('CategoryCtrl', {category_slug: post.category.slug})}}")
-      /   {{post.category.title}}
+          .body(ng-bind-html="post.body")
 
-      %p {{post.body}}
+          %ul
+            %li(ng-repeat="image in post.images")
+              %img.img-rounded(ng-src="{{image.file.middle.url}}" alt="{{image.title}}")
 
-      / %ul
-      /   %li(ng-repeat="attribute in post.category.post_attributes")
-      /     %b {{attribute.title}}
-      /     %span {{post[attribute.name]}}
+        .panel-footer
+          %a.btn.btn-primary(back-button)
+            Назад
+    .col-md-4
+      .panel.panel-default(ng-show="post.documents.length > 0")
+        .panel-heading
+          = t('attachments.title')
+        .list-group
+          .list-group-item.attachment.attachments-list-item.attachment-document(ng-repeat="doc in post.documents")
+            .attachment-icon(ng-class="'attachment-icon-' + doc.common_type")
 
-      / %p Цены
-      / %ul
-      /   %li(ng-repeat="offer in post.offers")
-      /     {{offer.price}} руб.
-      /     %a.badge(ng-href="{{stroiUtils.path_for('StoreCtrl', {store_slug: offer.user.store_profile.slug})}}")
-      /       {{offer.user.store_profile.name}}
-
-      / angular.forEach(post.category_id, function(value, key){
-      /   this.push(key + ': ' + value);
-      / }, log);
-
-    .panel-footer
-      %a.btn.btn-primary(back-button)
-        Назад
+            .attachment-info
+              .attachment-title
+                %a(ng-href="{{doc.file.url}}")
+                  {{doc.title}}

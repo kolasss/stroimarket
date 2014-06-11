@@ -1,22 +1,39 @@
 .ng-cloak
   %span(ng-hide="service.$resolved") loading
-  .panel.panel-default(ng-show="service.$resolved")
-    .panel-heading
-      %h3.panel-title
-        {{service.title}}
-
-    .panel-body
-      %img.img-rounded.catalog_service_image_large(ng-src="{{service.cover.large.url}}" ng-show="service.cover.large.url")
-
-      %p
-        %span.badge
+  .service_show(ng-show="service.$resolved")
+    %ol.breadcrumb
+      %li Услуги
+      %li
+        %a(ng-href="{{stroiUtils.path_for('ServiceCtrl', {service_id: service.service_category._id.$oid})}}")
           {{service.service_category.title}}
 
-      %p {{service.body}}
+    %h1
+      {{service.title}}
 
-      %a.badge(ng-href="{{stroiUtils.path_for('StoreServicesCtrl', {store_slug: service.user.store_profile.slug})}}")
-        {{service.user.store_profile.name}}
+      - if current_user.admin?
+        .control-links
+          %a{'ng-href' => "{{editServicePath('#{Rails.application.routes.url_helpers.edit_admin_service_path('service_id')}')}}"}
+            %i.fa.fa-pencil
 
-    .panel-footer
-      %a.btn.btn-primary(back-button)
-        Назад
+    .row
+      .col-md-8
+        %img.img-rounded(ng-src="{{service.cover.middle.url}}" ng-show="service.cover.middle.url")
+
+        %h3 Описание
+
+        .body(ng-bind-html="service.body")
+
+      .col-md-4
+        .price_range_wrapper(ng-show="service.price")
+          %p Цена:
+          %p.price_range
+            {{service.price}}
+            %ruble-icon
+
+        %a(ng-href="{{stroiUtils.path_for('StoreServicesCtrl', {store_slug: service.user.store_profile.slug})}}")
+          {{service.user.store_profile.name}}
+
+        %p {{service.user.store_profile.phone}}
+        %p {{service.user.store_profile.site}}
+        %p {{service.user.store_profile.email}}
+

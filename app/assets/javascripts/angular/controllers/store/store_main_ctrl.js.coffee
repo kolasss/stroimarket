@@ -1,13 +1,14 @@
 app.controller 'StoreMainCtrl',
-  ['$scope', 'Store', '$routeParams', '$filter', 'Category', '$q', 'filterFilter',
-  ($scope, Store, $routeParams, $filter, Category, $q, filterFilter) ->
+  ['$scope', 'Store', '$routeParams', '$filter', 'Category', '$q', 'filterFilter', 'SortingCatalog',
+  ($scope, Store, $routeParams, $filter, Category, $q, filterFilter, SortingCatalog) ->
 
+    $scope.SortingCatalog = SortingCatalog
     $scope.currentPage = 0
-    $scope.pageSize = 10
     $scope.numberOfPages = 0
 
     $scope.currentStore = {products: []}
 
+    #counters
     get_children_ids = (category) ->
       ids = []
       for subcat in category.children
@@ -51,28 +52,6 @@ app.controller 'StoreMainCtrl',
 
         count_products()
 
-    # sorting
-    $scope.sorting_by =
-      price: 'цене'
-      updated_at: 'новизне'
-      views: 'популярности'
-
-    $scope.sort = {
-      column: null,
-      descending: false
-    };
-
-    $scope.selectedCls = (column) ->
-      if column == $scope.sort.column
-        'active sort-' + $scope.sort.descending
-
-    $scope.changeSorting = (column) ->
-      sort = $scope.sort
-      if sort.column == column
-        sort.descending = !sort.descending
-      else
-        sort.column = column
-        sort.descending = false
 
     #filtering
     $scope.filter =
@@ -101,6 +80,6 @@ app.controller 'StoreMainCtrl',
       # by subcategory
       result = $filter('productByCategory')(result, filter)
 
-      $scope.numberOfPages = Math.ceil(result.length/$scope.pageSize) if result
+      $scope.numberOfPages = Math.ceil(result.length/SortingCatalog.pageSize) if result
       return result
 ]

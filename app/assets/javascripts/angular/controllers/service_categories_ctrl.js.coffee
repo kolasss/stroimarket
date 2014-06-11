@@ -1,11 +1,12 @@
 app.controller 'ServiceCategoriesCtrl',
-  ['$scope', 'ServiceCategory', 'Service', '$filter', '$q', 'filterFilter',
-  ($scope, ServiceCategory, Service, $filter, $q, filterFilter) ->
+  ['$scope', 'ServiceCategory', 'Service', '$filter', '$q', 'filterFilter', 'SortingCatalog',
+  ($scope, ServiceCategory, Service, $filter, $q, filterFilter, SortingCatalog) ->
 
+    $scope.SortingCatalog = SortingCatalog
     $scope.currentPage = 0
-    $scope.pageSize = 10
     $scope.numberOfPages = 0
 
+    #counters
     create_counters = ->
       $scope.subcats_counter = {}
 
@@ -21,33 +22,12 @@ app.controller 'ServiceCategoriesCtrl',
 
       $scope.services = results[1]
 
-      # считаем товары по производителям и подкатегориям
+      # считаем товары по категориям
       create_counters()
 
       count_products()
 
 
-    # sorting
-    $scope.sorting_by =
-      price: 'цене'
-      updated_at: 'новизне'
-      views: 'популярности'
-
-    $scope.sort =
-      column: null,
-      descending: false
-
-    $scope.selectedCls = (column) ->
-      if column == $scope.sort.column
-        'active sort-' + $scope.sort.descending
-
-    $scope.changeSorting = (column) ->
-      sort = $scope.sort
-      if sort.column == column
-        sort.descending = !sort.descending
-      else
-        sort.column = column
-        sort.descending = false
 
     #filtering
     $scope.filter =
@@ -73,6 +53,6 @@ app.controller 'ServiceCategoriesCtrl',
       # by subcategory
       result = $filter('serviceByCategory')(result, filter)
 
-      $scope.numberOfPages = Math.ceil(result.length/$scope.pageSize) if result
+      $scope.numberOfPages = Math.ceil(result.length/SortingCatalog.pageSize) if result
       return result
 ]

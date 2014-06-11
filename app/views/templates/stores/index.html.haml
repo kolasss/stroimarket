@@ -4,10 +4,10 @@
   .row
     .col-md-4(ng-repeat="store in stores")
       .thumbnail
-        / %img(ng-src="{{store.cover.thumb.url}}")
+        %img.img-rounded(ng-src="{{store.logo.url}}")
         .caption
           %h3 {{store.name}}
           %p {{store.title}}
           %p
-            %a.btn.btn-primary(ng-href="{{stroiUtils.path_for('StoreMainCtrl', {store_slug: store.slug})}}")
+            %a.btn.btn-blue(ng-href="{{stroiUtils.path_for('StoreMainCtrl', {store_slug: store.slug})}}")
               Подробнее

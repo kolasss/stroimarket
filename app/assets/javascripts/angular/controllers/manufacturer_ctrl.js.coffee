@@ -1,9 +1,9 @@
 app.controller 'ManufacturerCtrl',
-  ['$scope', 'Manufacturer', '$routeParams', '$filter', 'filterFilter'
-  ($scope, Manufacturer, $routeParams, $filter, filterFilter) ->
+  ['$scope', 'Manufacturer', '$routeParams', '$filter', 'filterFilter', 'SortingCatalog',
+  ($scope, Manufacturer, $routeParams, $filter, filterFilter, SortingCatalog) ->
 
+    $scope.SortingCatalog = SortingCatalog
     $scope.currentPage = 0
-    $scope.pageSize = 10
     $scope.numberOfPages = 0
 
     $scope.currentManufacturer = {products: []}
@@ -12,31 +12,8 @@ app.controller 'ManufacturerCtrl',
       $scope.currentManufacturer = $filter('getBySlug')(result, $routeParams.manufacturer_slug)
       $scope.currentManufacturer.products = Manufacturer.show($scope.currentManufacturer._id.$oid)
 
-    # sorting
-    $scope.sorting_by =
-      min_price: 'цене'
-      updated_at: 'новизне'
-      views: 'популярности'
-
-    $scope.sort = {
-      column: null,
-      descending: false
-    };
-
-    $scope.selectedCls = (column) ->
-      if column == $scope.sort.column
-        'active sort-' + $scope.sort.descending
-
-    $scope.changeSorting = (column) ->
-      sort = $scope.sort
-      if sort.column == column
-        sort.descending = !sort.descending
-      else
-        sort.column = column
-        sort.descending = false
 
     #filtering
-
     $scope.filter = {}
 
     $scope.filteredProducts = () ->
@@ -49,6 +26,6 @@ app.controller 'ManufacturerCtrl',
       # price range
       result = $filter('priceRangeCatalog')(result, filter)
 
-      $scope.numberOfPages = Math.ceil(result.length/$scope.pageSize) if result
+      $scope.numberOfPages = Math.ceil(result.length/SortingCatalog.pageSize) if result
       return result
 ]

@@ -47,15 +47,15 @@
         %span.pull-left
           Сортировать по:
         %ul.nav.nav-pills
-          %li(ng-repeat="(attr, title) in sorting_by" ng-class="selectedCls(attr)")
-            %a(ng-click="changeSorting(attr)")
+          %li(ng-repeat="(attr, title) in SortingCatalog.sorting_by" ng-class="SortingCatalog.selectedCls(attr)")
+            %a(ng-click="SortingCatalog.changeSorting(attr)")
               %i.fa.fa-angle-up
               %i.fa.fa-angle-down
               {{title}}
 
       %table.table.products_list
         %tbody
-          %tr(ng-repeat="product in filteredProducts() | orderBy:sort.column:sort.descending | startFrom:currentPage*pageSize | limitTo:pageSize")
+          %tr(ng-repeat="product in filteredProducts() | orderBy:SortingCatalog.sort.column:SortingCatalog.sort.descending | startFrom:currentPage*SortingCatalog.pageSize | limitTo:SortingCatalog.pageSize")
             %td.product_img
               %img(ng-src="{{product.cover.thumb.url}}")
             %td

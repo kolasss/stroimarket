@@ -10,7 +10,7 @@
         .panel-body
           %img.img-rounded.catalog_article_image_large(ng-src="{{article.cover.large.url}}" ng-show="article.cover.large.url")
 
-          .article_body(ng-bind-html="article.body")
+          .body(ng-bind-html="article.body")
 
           %ul
             %li(ng-repeat="image in article.images")

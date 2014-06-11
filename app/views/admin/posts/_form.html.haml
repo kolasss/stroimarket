@@ -7,5 +7,9 @@
     = f.input :intro
     = text_angular_body f
 
+    = render 'attachments/documents/form', f: f, documents: @post.documents
+
+    = render 'attachments/images/form', f: f, images: @post.images
+
   .form-actions
     = f.button :submit

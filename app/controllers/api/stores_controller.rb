@@ -17,15 +17,6 @@ class Api::StoresController < ApplicationController
     services = User.find(params[:id]).services
 
     respond_with services,
-      except: [:_keywords, :service_category_id, :user_id],
-      include: {
-        service_category: {
-          methods: [:slug],
-          only: [
-            :slug,
-            :title
-          ]
-        }
-      }
+      except: [:body, :_keywords, :cover_filename, :user_id]
   end
 end

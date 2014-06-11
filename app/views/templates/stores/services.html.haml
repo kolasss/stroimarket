@@ -2,34 +2,61 @@
   .row.store_profile_header
     = render 'templates/stores/store_header'
 
-
   .row.store_profile_body
     .col-md-3
-      %dl.store_info
-        %dt О нас
-        %dd {{currentStore.info}}
+      .panel.panel-info
+        .panel-body
+          %form(role="form")
+            .form-group
+              %label(for="filter_text")
+                Текст
+              %input.form-control#filter_text(type="search" placeholder="Поиск" ng-model="filter.query")
 
-        %dt.inner_header Контакты
-        %dd {{currentStore.contacts}}
+            .form-group
+              %label(for="filter_min_price")
+                Цена
+              %input.form-control#filter_min_price(type="text" placeholder="minimum" ng-model="filter.minPrice")
+              %input.form-control#filter_min_price(type="text" placeholder="maximum" ng-model="filter.maxPrice")
 
-        %dt.inner_header Реквизиты
-        %dd {{currentStore.requisites}}
-        %dd {{currentStore.phone}}
-        %dd
-          %a(ng-href="http://{{currentStore.site}}") {{currentStore.site}}
-        %dd
-          %a(ng-href="mailto:{{currentStore.email}}") {{currentStore.email}}
+            .form-group(ng-show="categories.length > 0")
+              %label
+                Категории
+              %ul.list-unstyled
+                %li(ng-repeat="subcat in categories")
+                  .checkbox
+                    %label
+                      %input(type="checkbox"
+                        ng-click="toggleSubcat(subcat._id.$oid)")
+                      {{subcat.title}}
+                      %span.text-muted {{subcats_counter[subcat._id.$oid]}}
 
     .col-md-9
-      .row
-        .col-md-4(ng-repeat="service in currentStore.services")
-          .thumbnail
-            / %img(ng-src="{{service.cover.thumb.url}}")
-            .caption
-              %h3 {{service.title}}
-              %p
-                %a.btn.btn-primary(ng-href="{{stroiUtils.path_for('ServiceCtrl', {service_id: service._id.$oid})}}")
-                  Подробнее
+      %h3 Услуги
 
-      %a.btn.btn-primary(back-button)
-        Назад
+      .products_sorting
+        %span.pull-left
+          Сортировать по:
+        %ul.nav.nav-pills
+          %li(ng-repeat="(attr, title) in SortingCatalog.sorting_by2" ng-class="SortingCatalog.selectedCls(attr)")
+            %a(ng-click="SortingCatalog.changeSorting(attr)")
+              %i.fa.fa-angle-up
+              %i.fa.fa-angle-down
+              {{title}}
+
+      %table.table.products_list
+        %tbody
+          %tr(ng-repeat="service in filteredServices() | orderBy:SortingCatalog.sort.column:SortingCatalog.sort.descending | startFrom:currentPage*SortingCatalog.pageSize | limitTo:SortingCatalog.pageSize")
+            %td.product_img
+              %img(ng-src="{{service.cover.thumb.url}}")
+            %td
+              %a(ng-href="{{stroiUtils.path_for('ServiceCtrl', {service_id: service._id.$oid})}}")
+                {{service.title}}
+              %p {{service.intro}}
+            %td.product_prices
+              %p(ng-show="service.price")
+                {{service.price}}
+                %ruble-icon
+              %a.btn.btn-blue(ng-href="{{stroiUtils.path_for('ServiceCtrl', {service_id: service._id.$oid})}}")
+                Подробнее
+
+      %my-paginator(data-current-page="currentPage" data-number-of-pages="numberOfPages")
