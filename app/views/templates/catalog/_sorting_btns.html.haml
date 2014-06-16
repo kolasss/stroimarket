@@ -1,0 +1,9 @@
+.products_sorting
+  %span.pull-left
+    Сортировать по:
+  %ul.nav.nav-pills
+    %li(ng-repeat="(attr, title) in SortingCatalog.sorting_by" ng-class="SortingCatalog.selectedCls(attr)")
+      %a(ng-click="SortingCatalog.changeSorting(attr)")
+        %i.fa.fa-angle-up
+        %i.fa.fa-angle-down
+        {{title}}

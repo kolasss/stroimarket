@@ -4,16 +4,8 @@
       .panel.panel-info
         .panel-body
           %form(role="form")
-            .form-group
-              %label(for="filter_text")
-                Текст
-              %input.form-control#filter_text(type="search" placeholder="Поиск" ng-model="filter.query")
-
-            .form-group
-              %label(for="filter_min_price")
-                Цена
-              %input.form-control#filter_min_price(type="text" placeholder="minimum" ng-model="filter.minPrice")
-              %input.form-control#filter_min_price(type="text" placeholder="maximum" ng-model="filter.maxPrice")
+            = render 'templates/catalog/text_filter'
+            = render 'templates/catalog/price_filter'
 
             .form-group
               %label
@@ -23,26 +15,18 @@
                   .checkbox
                     %label
                       %input(type="checkbox"
-                        ng-click="toggleSubcat(subcat._id.$oid)")
+                        ng-click="FilterCatalog.toggleSubcat(subcat._id.$oid)")
                       {{subcat.title}}
                       %span.text-muted {{subcats_counter[subcat._id.$oid]}}
 
     .col-md-9
       %h3 Услуги
 
-      .products_sorting
-        %span.pull-left
-          Сортировать по:
-        %ul.nav.nav-pills
-          %li(ng-repeat="(attr, title) in SortingCatalog.sorting_by2" ng-class="SortingCatalog.selectedCls(attr)")
-            %a(ng-click="SortingCatalog.changeSorting(attr)")
-              %i.fa.fa-angle-up
-              %i.fa.fa-angle-down
-              {{title}}
+      = render 'templates/catalog/sorting_btns2'
 
       %table.table.products_list
         %tbody
-          %tr(ng-repeat="service in filteredServices() | orderBy:SortingCatalog.sort.column:SortingCatalog.sort.descending | startFrom:currentPage*SortingCatalog.pageSize | limitTo:SortingCatalog.pageSize")
+          %tr(ng-repeat="service in FilterCatalog.filteredServices() | orderBy:SortingCatalog.sort.column:SortingCatalog.sort.descending | startFrom:currentPage*SortingCatalog.pageSize | limitTo:SortingCatalog.pageSize")
             %td.product_img
               %img(ng-src="{{service.cover.thumb.url}}")
             %td
