@@ -1,0 +1,7 @@
+.row.search_manufacturers(ng-show="show_manufacturers")
+  .col-md-12
+    %h3 Производители
+    %ul
+      %li(ng-repeat="manufacturer in manufacturers")
+        %a(ng-href="{{stroiUtils.path_for('ManufacturerCtrl', {manufacturer_slug: manufacturer.slug})}}")
+          {{manufacturer.title}}

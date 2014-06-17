@@ -1,0 +1,22 @@
+%table.table.products_list
+  %tbody
+    %tr(ng-repeat="product in FilterCatalog.filteredProducts() | orderBy:SortingCatalog.sort.column:SortingCatalog.sort.descending | startFrom:currentPage*SortingCatalog.pageSize | limitTo:SortingCatalog.pageSize")
+      %td.product_img
+        %img(ng-src="{{product.cover.thumb.url}}")
+      %td
+        %a(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
+          {{product.title}}
+        %p {{product.intro}}
+      %td.product_prices
+        %p(ng-show="product.min_price")
+          {{product.min_price}}
+          %ruble-icon
+          \...
+          {{product.max_price}}
+          %ruble-icon
+        %p(ng-show='product.offers_count > 0')
+          {{product.offers_count}} предложений
+        %a.btn.btn-blue(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
+          Подробнее
+
+%my-paginator(data-current-page="currentPage" data-number-of-pages="numberOfPages")

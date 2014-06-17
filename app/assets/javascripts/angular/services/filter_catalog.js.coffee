@@ -1,7 +1,8 @@
 app.factory 'FilterCatalog', ['filterFilter', '$filter', 'SortingCatalog', '$rootScope', (filterFilter, $filter, SortingCatalog, $rootScope) ->
   new class FilterCatalog
     constructor: ->
-      @filter = {}
+      @filter =
+        subcats: []
       @current =
         products: []
 
@@ -51,9 +52,14 @@ app.factory 'FilterCatalog', ['filterFilter', '$filter', 'SortingCatalog', '$roo
       # currentCategory or currentStore
       @current = cur
 
-    initFilterServices: (fltr, services) ->
+    initFilterServices: (fltr, srvices) ->
       @filter = fltr
-      @services = services
+      @services = srvices
+
+    initFilterSearch: (fltr, cur, srvices) ->
+      @filter = fltr
+      @current = cur
+      @services = srvices
 
 
     toggleBrand: (manufacturer) ->
@@ -106,4 +112,9 @@ app.factory 'FilterCatalog', ['filterFilter', '$filter', 'SortingCatalog', '$roo
       $rootScope.$broadcast 'ServiceNumberOfPages:updated', Math.ceil(result.length/SortingCatalog.pageSize) if result
 
       return result
+
+    clear_filter: ->
+      @filter =
+        subcats: []
+
 ]

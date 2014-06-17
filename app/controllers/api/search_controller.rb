@@ -5,8 +5,8 @@ class Api::SearchController < ApplicationController
     result = {}
 
     result[:products] = Product.full_text_search(params[:id]).as_json(
-      except: [:body, :_keywords, :cover_filename, :category_id, :manufacturer_id],
-      methods: [:manufacturer_title]
+      except: [:body, :_keywords, :cover_filename, :manufacturer_id],
+      methods: [:offers_count]
     )
 
     result[:manufacturers] = Manufacturer.full_text_search(params[:id]).as_json(
@@ -14,7 +14,8 @@ class Api::SearchController < ApplicationController
     )
 
     result[:services] = Service.full_text_search(params[:id]).as_json(
-      except: [:body, :service_category_id, :_keywords]
+      except: [:body, :_keywords, :cover_filename, :user_id],
+      methods: [:store_title]
     )
 
     respond_with result

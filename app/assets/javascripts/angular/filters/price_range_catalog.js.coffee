@@ -1,5 +1,5 @@
 app.filter 'priceRangeCatalog', ->
-  (input_array, filter, type) ->
+  (input_array = [], filter, type) ->
     if filter and (filter.minPrice or filter.maxPrice)
       filtered = []
       if filter.minPrice and filter.maxPrice

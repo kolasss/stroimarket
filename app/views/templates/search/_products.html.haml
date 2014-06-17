@@ -1,0 +1,26 @@
+.row.search_products(ng-show="show_products")
+  .col-md-3
+    .panel.panel-info
+      .panel-body
+        %form(role="form")
+          = render 'templates/catalog/text_filter'
+          = render 'templates/catalog/price_filter'
+
+          .form-group
+            %label
+              Категории
+            %ul.list-unstyled
+              %li(ng-repeat="cat in categories")
+                .checkbox
+                  %label
+                    %input(type="checkbox"
+                      ng-click="FilterCatalog.toggleSubcat(cat.id, cat.children_ids)"
+                      ng-model="checked_cats[cat.id]")
+                    {{cat.title}}
+                    %span.text-muted {{cats_counter[cat.id]}}
+
+  .col-md-9
+    %h3 Товары
+    = render 'templates/catalog/sorting_btns'
+
+    = render 'templates/catalog/products_catalog'

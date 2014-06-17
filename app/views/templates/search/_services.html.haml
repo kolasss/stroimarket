@@ -1,0 +1,44 @@
+.row.search_services(ng-show="show_services")
+  .col-md-3
+    .panel.panel-info
+      .panel-body
+        %form(role="form")
+          = render 'templates/catalog/text_filter'
+          = render 'templates/catalog/price_filter'
+
+          .form-group
+            %label
+              Категории
+            %ul.list-unstyled
+              %li(ng-repeat="cat in service_categories")
+                .checkbox
+                  %label
+                    %input(type="checkbox"
+                      ng-click="FilterCatalog.toggleSubcat(cat._id.$oid)"
+                      ng-model="checked_cats[cat._id.$oid]")
+                    {{cat.title}}
+                    %span.text-muted {{service_cats_counter[cat._id.$oid]}}
+
+  .col-md-9
+    %h3 Услуги
+    = render 'templates/catalog/sorting_btns2'
+
+    %table.table.products_list
+      %tbody
+        %tr(ng-repeat="service in FilterCatalog.filteredServices() | orderBy:SortingCatalog.sort.column:SortingCatalog.sort.descending | startFrom:currentServicePage*SortingCatalog.pageSize | limitTo:SortingCatalog.pageSize")
+          %td.product_img
+            %img(ng-src="{{service.cover.thumb.url}}")
+          %td
+            %a(ng-href="{{stroiUtils.path_for('ServiceCtrl', {service_id: service._id.$oid})}}")
+              {{service.title}}
+            %p {{service.intro}}
+          %td.product_prices
+            %p(ng-show="service.price")
+              {{service.price}}
+              %ruble-icon
+            %p
+              {{service.store_title}}
+            %a.btn.btn-blue(ng-href="{{stroiUtils.path_for('ServiceCtrl', {service_id: service._id.$oid})}}")
+              Подробнее
+
+    %my-paginator(data-current-page="currentServicePage" data-number-of-pages="numberOfServicePages")

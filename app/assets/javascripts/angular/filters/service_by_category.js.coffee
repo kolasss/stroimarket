@@ -1,5 +1,5 @@
 app.filter 'serviceByCategory', ->
-  (input_array, filter) ->
+  (input_array = [], filter) ->
     if filter.subcats.length > 0
       filtered = []
       for item in input_array

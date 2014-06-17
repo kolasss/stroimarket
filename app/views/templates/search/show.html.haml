@@ -1,56 +1,18 @@
 .ng-cloak
-  .row
-    .col-md-3
-      .panel.panel-info
-        .panel-body
-          %p {{manufacturers|json}}
-          %p {{products|json}}
-          %p {{services|json}}
+  %h1 Результаты поиска по запросу: {{query}}
 
-    .col-md-9
+  %ul.nav.nav-tabs.nav-justified
+    %li(ng-class="{disabled: !found_products, active: show_products}")
+      %a(ng-click="show_tab('products')") Товары
+    %li(ng-class="{disabled: !found_services, active: show_services}")
+      %a(ng-click="show_tab('services')") Услуги
+    %li(ng-class="{disabled: !found_manufacturers, active: show_manufacturers}")
+      %a(ng-click="show_tab('manufacturers')") Производители
 
-      .row.search_manufacturers(ng-show="ml > 0")
-        .col-md-4(ng-repeat="manufacturer in manufacturers")
-          .thumbnail
-            .caption
-              %h3 {{manufacturer.title}}
-              %p
-                %a.btn.btn-primary(ng-href="{{stroiUtils.path_for('ManufacturerCtrl', {manufacturer_slug: manufacturer.slug})}}")
-                  Подробнее
+  .search-tab-content
+    = render 'templates/search/products'
+    = render 'templates/search/services'
+    = render 'templates/search/manufacturers'
 
-      .search_products(ng-show="pl > 0")
-        .products_sorting
-          %span.pull-left
-            Сортировать по:
-          %ul.nav.nav-pills
-            %li(ng-repeat="(attr, title) in sorting_by" ng-class="selectedCls(attr)")
-              %a(ng-click="changeSorting(attr)")
-                %i.fa.fa-angle-up
-                %i.fa.fa-angle-down
-                {{title}}
-
-        %table.table
-          %tbody
-            %tr(ng-repeat="product in products | orderBy:sort.column:sort.descending | startFrom:currentPage*pageSize | limitTo:pageSize")
-              %td
-                %img(ng-src="{{product.cover.thumb.url}}")
-              %td
-                %a(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
-                  {{product.title}}
-                %p {{product.intro}}
-                %span.badge {{product.manufacturer_title}}
-              %td
-                %span(ng-show="product.min_price")
-                  от {{product.min_price}}
-                  %ruble-icon
-
-        %my-paginator(data-current-page="currentPage" data-number-of-pages="numberOfPages")
-
-      .row.search_services(ng-show="sl > 0")
-        .col-md-4(ng-repeat="service in services")
-          .thumbnail
-            .caption
-              %h3 {{service.title}}
-              %p
-                %a.btn.btn-primary(ng-href="{{stroiUtils.path_for('ServiceCtrl', {service_id: service._id.$oid})}}")
-                  Подробнее
+  .not_found(ng-show="!(found_products && found_services && found_manufacturers)")
+    По Вашему запросу ничего не найдено!
