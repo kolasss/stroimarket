@@ -1,31 +1,32 @@
 app.controller 'ManufacturerCtrl',
-  ['$scope', 'Manufacturer', '$routeParams', '$filter', 'filterFilter', 'SortingCatalog',
-  ($scope, Manufacturer, $routeParams, $filter, filterFilter, SortingCatalog) ->
+  ['$scope', 'Manufacturer', '$routeParams', '$filter', 'SortingCatalog','$q', 'FilterCatalog', 'Category',
+  ($scope, Manufacturer, $routeParams, $filter, SortingCatalog, $q, FilterCatalog, Category) ->
 
     $scope.SortingCatalog = SortingCatalog
     $scope.currentPage = 0
     $scope.numberOfPages = 0
 
-    $scope.currentManufacturer = {products: []}
+    $scope.FilterCatalog = FilterCatalog
 
-    Manufacturer.all().$promise.then (result) ->
-      $scope.currentManufacturer = $filter('getBySlug')(result, $routeParams.manufacturer_slug)
-      $scope.currentManufacturer.products = Manufacturer.show($scope.currentManufacturer._id.$oid)
+    #filter and counters
+    $scope.filter =
+      subcats: []
+    $scope.cats_counter = {}
 
+    # запрос на сервер
+    $q.all([Manufacturer.all().$promise, Category.all().$promise]).then (results) ->
+      $scope.currentManufacturer = $filter('getBySlug')(results[0], $routeParams.manufacturer_slug)
+      $scope.categories = results[1]
 
-    #filtering
-    $scope.filter = {}
+      Manufacturer.show($scope.currentManufacturer._id.$oid).$promise.then (result) ->
+        $scope.currentManufacturer.products = result
 
-    $scope.filteredProducts = () ->
-      result = $scope.currentManufacturer.products
-      filter = $scope.filter
+        # считаем товары по категориям
+        FilterCatalog.initFilter($scope.filter, $scope.currentManufacturer)
 
-      # string search
-      result = filterFilter(result, filter.query) if filter.query
+        FilterCatalog.count_products_for_store($scope.cats_counter, $scope.categories)
 
-      # price range
-      result = $filter('priceRangeCatalog')(result, filter)
+    $scope.$on 'ProductNumberOfPages:updated', (event, data) ->
+      $scope.numberOfPages = data
 
-      $scope.numberOfPages = Math.ceil(result.length/SortingCatalog.pageSize) if result
-      return result
 ]

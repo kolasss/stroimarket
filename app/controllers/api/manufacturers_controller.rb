@@ -10,12 +10,7 @@ class Api::ManufacturersController < ApplicationController
   def show
     products = Manufacturer.find(params[:id]).products
     respond_with products,
-      except: [:body, :_keywords, :cover_filename, :category_id, :manufacturer_id]
-
-    # ids = Category.find(params[:id]).self_and_children_ids
-    # products = Product.where(:category.in => ids).includes(:offers)
-    # respond_with products,
-    #   except: [:body, :_keywords, :cover_filename, :category_id, :manufacturer_id],
-    #   methods: [:manufacturer_title]
+      except: [:body, :_keywords, :cover_filename, :manufacturer_id],
+      methods: [:offers_count]
   end
 end

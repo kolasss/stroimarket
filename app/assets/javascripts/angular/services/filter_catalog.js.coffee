@@ -6,23 +6,12 @@ app.factory 'FilterCatalog', ['filterFilter', '$filter', 'SortingCatalog', '$roo
         products: []
 
     #counters
-    get_children_ids: (category) ->
-      ids = []
-      for subcat in category.children
-        ids = ids.concat subcat.id
-        if subcat.children.length > 0
-          ids = ids.concat @get_children_ids(subcat)
-      return ids
-
     count_products_for_category: (subcats_counter, manufacturers_counter, manufacturers) ->
       for item in manufacturers
         manufacturers_counter[item.title] = 0
 
       for item in @current.children
         subcats_counter[item.id] = 0
-        item.children_ids = []
-        if item.children.length > 0
-          item.children_ids = @get_children_ids(item)
 
       for item in @current.products
         manufacturers_counter[item.manufacturer_title] += 1 if item.manufacturer_title
@@ -39,9 +28,6 @@ app.factory 'FilterCatalog', ['filterFilter', '$filter', 'SortingCatalog', '$roo
     count_products_for_store: (cats_counter, categories) ->
       for item in categories
         cats_counter[item.id] = 0
-        item.children_ids = []
-        if item.children.length > 0
-          item.children_ids = @get_children_ids(item)
 
       for item in @current.products
         if item.category_id.$oid of cats_counter
@@ -77,8 +63,8 @@ app.factory 'FilterCatalog', ['filterFilter', '$filter', 'SortingCatalog', '$roo
       else
         @filter.manufacturers.push(manufacturer)
 
-    toggleSubcat: (subcat_id, chidren_ids) ->
-      ids = if children_ids? then chidren_ids.concat(subcat_id) else [subcat_id]
+    toggleSubcat: (subcat_id, children_ids) ->
+      ids = if children_ids? then children_ids.concat(subcat_id) else [subcat_id]
       for id in ids
         idx = @filter.subcats.indexOf(id)
         if idx > -1

@@ -10,6 +10,12 @@ app.factory 'Category', ['$resource', ($resource) ->
     index: ->
       @categories = @service.query()
 
+      @categories.$promise.then (result) =>
+        for item in @categories
+          @set_children_ids(item)
+
+      return @categories
+
     get: (id) ->
       @service.query(categoryId: id)
 
@@ -22,4 +28,14 @@ app.factory 'Category', ['$resource', ($resource) ->
       else
         @categoriesCache[id] = @get(id)
 
+    set_children_ids: (category) ->
+      ids = []
+      for subcat in category.children
+        ids = ids.concat subcat.id
+        if subcat.children_ids and subcat.children_ids.length > 0
+          ids = ids.concat subcat.children_ids
+        else if subcat.children.length > 0
+          ids = ids.concat @set_children_ids(subcat)
+      category.children_ids = ids
+      return ids
 ]

@@ -3,45 +3,46 @@
     .col-md-3
       .panel.panel-info
         .panel-body
-          %form.form-horizontal(role="form")
-            .form-group
-              %label.col-sm-2.control-label(for="filter_text")
-                Текст
-              .col-sm-10
-                %input.form-control#filter_text(type="search" placeholder="Поиск" ng-model="filter.query")
-            .form-group
-              %label.col-sm-2.control-label(for="filter_min_price")
-                price range
-              .col-sm-10
-                %input.form-control#filter_min_price(type="text" placeholder="minimum" ng-model="filter.minPrice")
-                %input.form-control#filter_min_price(type="text" placeholder="maximum" ng-model="filter.maxPrice")
+          %form(role="form")
+            = render 'templates/catalog/text_filter'
+            = render 'templates/catalog/price_filter'
+
+            .form-group(ng-show="categories.length > 0")
+              %label
+                Категории
+              %ul.list-unstyled
+                %li(ng-repeat="cat in categories")
+                  .checkbox
+                    %label
+                      %input(type="checkbox"
+                        ng-click="FilterCatalog.toggleSubcat(cat.id, cat.children_ids)")
+                      {{cat.title}}
+                      %span.text-muted {{cats_counter[cat.id]}}
 
     .col-md-9
       %h3 {{currentManufacturer.title}}
 
-      .products_sorting
-        %span.pull-left
-          Сортировать по:
-        %ul.nav.nav-pills
-          %li(ng-repeat="(attr, title) in SortingCatalog.sorting_by" ng-class="SortingCatalog.selectedCls(attr)")
-            %a(ng-click="SortingCatalog.changeSorting(attr)")
-              %i.fa.fa-angle-up
-              %i.fa.fa-angle-down
-              {{title}}
+      = render 'templates/catalog/sorting_btns'
 
-      %table.table
+      %table.table.products_list
         %tbody
-          %tr(ng-repeat="product in filteredProducts() | orderBy:SortingCatalog.sort.column:SortingCatalog.sort.descending | startFrom:currentPage*SortingCatalog.pageSize | limitTo:SortingCatalog.pageSize")
-            %td
+          %tr(ng-repeat="product in FilterCatalog.filteredProducts() | orderBy:SortingCatalog.sort.column:SortingCatalog.sort.descending | startFrom:currentPage*SortingCatalog.pageSize | limitTo:SortingCatalog.pageSize")
+            %td.product_img
               %img(ng-src="{{product.cover.thumb.url}}")
             %td
               %a(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
                 {{product.title}}
               %p {{product.intro}}
-              %span.badge {{product.manufacturer_title}}
-            %td
-              %span(ng-show="product.min_price")
-                от {{product.min_price}}
+            %td.product_prices
+              %p(ng-show="product.min_price")
+                {{product.min_price}}
                 %ruble-icon
+                \...
+                {{product.max_price}}
+                %ruble-icon
+              %p(ng-show='product.offers_count > 0')
+                {{product.offers_count}} предложений
+              %a.btn.btn-blue(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
+                Подробнее
 
       %my-paginator(data-current-page="currentPage" data-number-of-pages="numberOfPages")
