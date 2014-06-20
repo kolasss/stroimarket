@@ -39,6 +39,7 @@ gem 'mongoid_search', :git => 'https://github.com/mauriciozaffari/mongoid_search
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mini_magick'
+gem 'fog' #aws s3 support
 
 gem 'haml-rails'
 

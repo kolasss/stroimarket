@@ -1,7 +1,7 @@
 class UserPictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  storage :file
+  # storage :file
 
   version :middle do
     process resize_to_fill: [ 200, 200 ]

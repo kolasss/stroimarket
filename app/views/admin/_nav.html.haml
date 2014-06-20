@@ -1,0 +1,15 @@
+%ul.nav.navbar-nav
+  - if current_user.admin?
+    %li= link_to 'Главная', admin_root_path
+    %li= link_to 'Пользователи', admin_users_path
+    %li= link_to 'Магазины', admin_store_profiles_path
+    %li= link_to 'Производители', admin_manufacturers_path
+    %li= link_to 'Категории товаров', admin_categories_path
+    %li= link_to 'Товары', admin_products_path
+    %li= link_to 'Категории услуг', admin_service_categories_path
+    %li= link_to 'Услуги', admin_services_path
+    %li= link_to 'Новости', admin_posts_path
+    %li= link_to 'Статьи', admin_articles_path
+
+  - if current_user.seller?
+    %li= link_to 'Товары', admin_products_path

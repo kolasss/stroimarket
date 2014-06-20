@@ -2,7 +2,7 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   include CarrierWave::MimeTypes
   include CarrierWave::MiniMagick
 
-  storage :file
+  # storage :fog
 
   process :set_content_type
   process :cache_meta

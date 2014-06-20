@@ -9,22 +9,13 @@
         %b.caret
 
       %ul.dropdown-menu.usermenu-dropdown
-        %li= link_to t('usermenu.user'), admin_user_path(current_user)
+        %li= link_to 'Профиль', admin_user_path(current_user)
 
         - if current_user.admin?
-          %li= link_to t('usermenu.admin_panel'), admin_root_path
-          %li= link_to t('usermenu.users'), admin_users_path
-          %li= link_to t('usermenu.store_profiles'), admin_store_profiles_path
-          %li= link_to t('usermenu.admin_categories'), admin_categories_path
-          %li= link_to t('usermenu.admin_articles'), admin_articles_path
-          %li= link_to t('usermenu.admin_manufacturers'), admin_manufacturers_path
-          %li= link_to t('usermenu.admin_service_categories'), admin_service_categories_path
-          %li= link_to t('usermenu.admin_services'), admin_services_path
-          %li= link_to t('usermenu.admin_posts'), admin_posts_path
-          %li= link_to t('usermenu.admin_products'), admin_products_path
+          %li= link_to 'Администрирование', admin_root_path
 
         - if current_user.seller?
-          %li= link_to t('usermenu.admin_products'), admin_products_path
+          %li= link_to 'Товары', admin_products_path
 
         %li.divider
 

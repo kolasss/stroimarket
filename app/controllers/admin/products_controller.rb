@@ -8,7 +8,7 @@ class Admin::ProductsController < AdminController
     # else
     #   @products = Product.all
     # end
-    @products = Product.all.page(params[:page]).per(2)
+    @products = Product.all.page(params[:page])
     authorize @products
   end
 
