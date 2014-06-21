@@ -17,6 +17,9 @@
 %p
   %b Body:
   = raw @post.body
+%p
+  %b ссылка:
+  = raw @post.url
 
 = link_to 'Edit', edit_admin_post_path(@post)
 \|

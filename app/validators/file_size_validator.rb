@@ -22,7 +22,16 @@ class FileSizeValidator < ActiveModel::EachValidator
     CHECKS.each do |check|
       key = check[:key]
 
-      if options[key] and not value.size.send(check[:method], options[key])
+      # p '==================='
+      # p key
+      # p check[:method]
+      # p options[key]
+      # p value
+      # p value.size
+      # p value.file.exists?
+      # p value.file.content_length
+
+      if value.file.exists? and options[key] and not value.size.send(check[:method], options[key])
         message = options[:message] || check[:message]
 
         opts = options.dup

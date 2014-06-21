@@ -6,4 +6,6 @@ class Post
   include PostFiles
 
   slug :title, history: true
+
+  field :url, type: String
 end

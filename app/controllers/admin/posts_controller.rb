@@ -53,6 +53,7 @@ class Admin::PostsController < AdminController
         :title,
         :intro,
         :body,
+        :url,
         :cover,
         :remove_cover
       )

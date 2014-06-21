@@ -6,6 +6,7 @@
     = f.input :title
     = f.input :intro
     = text_angular_body f
+    = f.input :url, as: :url
 
     = render 'attachments/documents/form', f: f, documents: @post.documents
 

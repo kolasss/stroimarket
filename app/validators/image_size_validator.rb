@@ -24,14 +24,16 @@ class ImageSizeValidator < ActiveModel::EachValidator
   end
 
   def validate_each record, attribute, value
-    dim = image_dimensions(record, attribute, value)
+    if value.file.exists?
+      dim = image_dimensions(record, attribute, value)
 
-    CHECKS.each do |check|
-      key, field = check[:key], check[:field]
+      CHECKS.each do |check|
+        key, field = check[:key], check[:field]
 
-      if options[key] and not dim[field].send(check[:method], options[key])
-        message = options[:message] || check[:message]
-        record.errors.add(attribute, message, options)
+        if options[key] and not dim[field].send(check[:method], options[key])
+          message = options[:message] || check[:message]
+          record.errors.add(attribute, message, options)
+        end
       end
     end
   end
