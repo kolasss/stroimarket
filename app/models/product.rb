@@ -95,9 +95,9 @@ class Product
       self.category.product_attributes.each do |pr_at|
         name = pr_at.name.to_sym
         if pr_at.type == 'boolean'
-          self[name] = self[name].to_bool
+          self[name] = self[name].to_bool unless self[name].is_a?(TrueClass) || self[name].is_a?(FalseClass)
         elsif pr_at.type == 'integer'
-          self[name] = self[name].to_i
+          self[name] = self[name].to_f unless self[name].is_a?(Numeric)
         end
       end
     end

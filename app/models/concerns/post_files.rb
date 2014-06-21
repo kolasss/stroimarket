@@ -11,6 +11,6 @@ module PostFiles
 
     validates :cover, file_size: { maximum: 4.megabyte },
                       image_size: { max_width: 2048 },
-                      allow_blank: true
+                      allow_blank: true, if: :cover_changed?
   end
 end

@@ -42,7 +42,7 @@ class ImageSizeValidator < ActiveModel::EachValidator
     if dimensions = record.try("#{attribute}_meta")
       dimensions.symbolize_keys
     else
-      img = MiniMagick::Image.open(value.path)
+      img = MiniMagick::Image.open(value.path) rescue MiniMagick::Image.open(value.file.public_url)
       Hash[[ :width, :height ].zip(img[:dimensions])]
     end
   end
