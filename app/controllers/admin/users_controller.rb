@@ -4,7 +4,7 @@ class Admin::UsersController < AdminController
 
   def index
     @users = User.page(params[:page])
-    authorize AdminController
+    authorize @users
   end
 
   def show
@@ -12,7 +12,7 @@ class Admin::UsersController < AdminController
 
   def new
     @user = User.new
-    authorize AdminController
+    authorize @user
   end
 
   def edit
@@ -20,7 +20,7 @@ class Admin::UsersController < AdminController
 
   def create
     @user = User.new(user_params)
-    authorize AdminController
+    authorize @user
     # @user.skip_confirmation!
 
     if @user.save
@@ -64,7 +64,7 @@ class Admin::UsersController < AdminController
 
     def set_user
       @user = User.find(params[:id])
-      authorize AdminController
+      authorize @user
     end
 
     def clean_password

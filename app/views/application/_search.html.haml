@@ -2,9 +2,13 @@
   data-ng-controller='SearchFormCtrl'
   name="searchForm"
   novalidate)
-  .input-group
-    %input.form-control(ng-model="query" required type='text' name='search'){ placeholder: t('search') }
-    %span.input-group-btn
-      %button.btn.btn-default(type="submit" data-ng-click="submit(searchForm)")
-        = fa_icon 'search'
+  / .input-group
+  /   %input.form-control(ng-model="query" required type='text' name='search'){ placeholder: t('search') }
+  /   %span.input-group-btn
+  /     %button.btn.btn-search(type="submit" data-ng-click="submit(searchForm)")
+  /       = fa_icon 'search'
 
+  .form-group.has-feedback
+    %input.form-control(ng-model="query" required type='text' name='search'){ placeholder: t('search') }
+    %span.form-control-feedback(type="submit" data-ng-click="submit(searchForm)")
+      = fa_icon 'search'
