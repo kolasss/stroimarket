@@ -35,7 +35,7 @@ Stroimarket::Application.configure do
   # custom fonts
   # config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
 
-  config.assets.precompile += %w(admin/*.css.sass)
+  config.assets.paths << "#{Rails.root}/app/assets/stylesheets/admin"
 
   # Version of your assets, change this if you want to expire all your assets.
   config.assets.version = '1.0'
