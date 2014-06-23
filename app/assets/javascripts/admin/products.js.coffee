@@ -1,7 +1,7 @@
 jQuery ->
-  $('#product_category_id').change ->
-    category_id = this.value
-    object_id = this.getAttribute('object_id')
+  $('.category_tree input:radio').change ->
+    category_id = @value
+    object_id = $(@).parents('.category_tree')[0].getAttribute('object_id')
 
     # Часть для кастомных полей
     custom_attributes = $('.custom_attributes')
@@ -24,3 +24,9 @@ jQuery ->
         object_id: object_id
       success: (res, status, xhr) ->
         manufacturer_field.html res
+
+  $(".category_tree i+ul").hide()
+  $(".category_tree i").click ->
+    $(this).toggleClass('fa-angle-down fa-angle-up')
+    # $(this).toggleClass('fa-angle-up')
+    $(this).next("ul").toggle()

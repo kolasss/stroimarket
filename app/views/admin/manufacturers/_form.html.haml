@@ -3,7 +3,9 @@
 
   .form-inputs
     = f.input :title
-    = f.association :categories, as: :check_boxes
+    -# = f.association :categories, as: :check_boxes
+    = render_category_tree 'checkbox', Category.roots, 'manufacturer[category_ids][]', @manufacturer.category_ids
 
   .form-actions
     = f.button :submit
+

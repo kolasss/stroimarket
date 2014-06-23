@@ -4,10 +4,7 @@
 %p
   = @manufacturer.slug
 %p
-  %b Категории
-  %ul
-    - @manufacturer.categories.each do |category|
-      %li= category.title
+  = render_category_tree 'checkbox', Category.roots, 'manufacturer[category_ids][]', @manufacturer.category_ids, nil, true
 
 = link_to 'Edit', edit_admin_manufacturer_path(@manufacturer)
 \|

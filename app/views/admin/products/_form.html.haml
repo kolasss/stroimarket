@@ -6,7 +6,10 @@
     = f.input :title
     = f.input :intro
     = text_angular_body f
-    = f.association :category, input_html: {object_id: f.object._id}
+
+    = render_category_tree 'radio', Category.roots, 'product[category_id]', @product.category_id, @product.id
+
+    -# = f.association :category, input_html: {object_id: f.object._id}
 
     .custom_attributes
       = render partial: 'custom_category_fields', locals: {category: @product.category, object: @product}
