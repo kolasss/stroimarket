@@ -1,7 +1,8 @@
 .owl-carousel.owl-theme
   .item(ng-repeat="product in products")
     .thumbnail.product_thumb
-      %img.img-rounded(ng-src="{{product.cover.small.url}}" alt="{{product.title}}")
+      %a(ng-href="{{link_to(product)}}")
+        %img.img-rounded(ng-src="{{product.cover.small.url}}" alt="{{product.title}}")
       .caption
         %a(ng-href="{{link_to(product)}}")
           {{product.title}}

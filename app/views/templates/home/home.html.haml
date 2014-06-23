@@ -7,7 +7,7 @@
             .caption
               %h3 {{currentPost.title}}
               %p {{currentPost.intro}}
-              %a.btn.btn-yellow(ng-href="{{stroiUtils.path_for('PostCtrl', {post_slug: currentPost.slug})}}" role="button")
+              %a.btn.btn-yellow(ng-href="{{linkToCurrentPost()}}" role="button")
                 Подробнее
       .row
         .col-xs-3(ng-repeat='post in posts')
