@@ -16,11 +16,12 @@
 
         - if current_user.seller?
           %li= link_to 'Товары', admin_products_path
+          %li= link_to 'Услуги', admin_services_path
 
         %li.divider
 
-        %li= link_to t('usermenu.signout'), destroy_user_session_path, data: { method: :delete }
+        %li= link_to 'Выйти', destroy_user_session_path, data: { method: :delete }
 
   - else
     %li
-      = link_to t('usermenu.signin'), new_user_session_path
+      = link_to 'Вход', new_user_session_path

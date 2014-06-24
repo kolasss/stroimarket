@@ -1,20 +1,24 @@
 - if @service.cover.present?
   = image_tag(@service.cover.large, class: 'img-thumbnail')
   %hr
-%p
-  %b Title:
+%h1
   = @service.title
+  .control-links
+    = icon_link 'edit', edit_admin_service_path(@service)
+    = icon_link 'times', admin_service_path(@service), data: { method: :delete, confirm: t('common.confirm_deletion') }
 %p
-  %b intro:
+  %b Введение:
   = @service.intro
+%hr
 %p
-  %b Body:
+  %b Описание:
   = raw @service.body
+%hr
 %p
-  %b price:
+  %b Цена:
   = raw @service.price
 %p
-  %b views:
+  %b Количество просмотров:
   = raw @service.views
 %p
   %b Категория:
@@ -22,9 +26,3 @@
 %p
   %b Магазин:
   = @service.user.company_name
-
-
-%br
-= link_to 'Edit', edit_admin_service_path(@service)
-\|
-= link_to 'Back', admin_services_path

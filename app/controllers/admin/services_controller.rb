@@ -2,29 +2,39 @@ class Admin::ServicesController < AdminController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
   def index
-    @services = Service.all
-    authorize AdminController
+    if current_user.admin?
+      @services = Service.all.page(params[:page])
+    else
+      @services = current_user.services.page(params[:page])
+    end
+    authorize @services
   end
 
   def show
   end
 
   def new
-    @service = Service.new
-    authorize AdminController
+    if current_user.admin?
+      @service = Service.new
+    else
+      @service = current_user.services.new
+    end
+    authorize @service
   end
 
   def edit
   end
 
   def create
-    @service = Service.new(service_params)
-    authorize AdminController
-
-    @service.user = current_user if @service.user.blank? and current_user.seller?
+    if current_user.admin?
+      @service = Service.new(service_params)
+    else
+      @service = current_user.services.new(service_params)
+    end
+    authorize @service
 
     if @service.save
-      redirect_to admin_service_path(@service), notice: t(:created)
+      redirect_to admin_service_path(@service), notice: 'Услуга создана'
     else
       render action: 'new'
     end
@@ -32,7 +42,7 @@ class Admin::ServicesController < AdminController
 
   def update
     if @service.update(service_params)
-      redirect_to admin_service_path(@service), notice: t(:updated)
+      redirect_to admin_service_path(@service), notice: 'Услуга обновлена'
     else
       render action: 'edit'
     end
@@ -46,7 +56,7 @@ class Admin::ServicesController < AdminController
   private
     def set_service
       @service = Service.find(params[:id])
-      authorize AdminController
+      authorize @service
     end
 
     def service_params

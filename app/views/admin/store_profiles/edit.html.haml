@@ -4,7 +4,7 @@
 
     / %small.control-links
     /   = icon_link 'arrow-left', admin_user_path(@user)
-    /   = icon_link 'remove', admin_user_path(@user), data: { method: :delete, confirm: t(:confirm_deletion) }
+    /   = icon_link 'remove', admin_user_path(@user), data: { method: :delete, confirm: t('common.confirm_deletion') }
 
 
 = render 'form'

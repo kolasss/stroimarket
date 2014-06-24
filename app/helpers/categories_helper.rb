@@ -49,7 +49,11 @@ module CategoriesHelper
   end
 
   def item_is_checked? type, item_id, checked_id
-    (type == 'radio' and item_id == checked_id) or (type == 'checkbox' and checked_id.include? item_id) ? 'checked' : ''
+    if (type == 'radio' and item_id == checked_id) or (type == 'checkbox' and checked_id.include? item_id)
+      return 'checked'
+    else
+      return nil
+    end
   end
 
 end

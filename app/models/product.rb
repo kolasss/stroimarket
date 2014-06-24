@@ -8,6 +8,7 @@ class Product
 
   belongs_to :category
   belongs_to :manufacturer
+  belongs_to :user
   has_many :offers, dependent: :destroy
 
   field :min_price, type: Integer

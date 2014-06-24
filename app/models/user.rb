@@ -11,6 +11,7 @@ class User
   embeds_one :store_profile
   has_many :offers, dependent: :destroy
   has_many :services, dependent: :destroy
+  has_many :products, dependent: :nullify
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

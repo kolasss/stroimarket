@@ -10,6 +10,6 @@
     %tr
       %td= link_to manufacturer.title, admin_manufacturer_path(manufacturer)
       %td= link_to 'Edit', edit_admin_manufacturer_path(manufacturer)
-      %td= link_to 'Destroy', admin_manufacturer_path(manufacturer), :method => :delete, :data => { confirm: t(:confirm_deletion) }
+      %td= link_to 'Destroy', admin_manufacturer_path(manufacturer), :method => :delete, :data => { confirm: t('common.confirm_deletion') }
 
 = link_to 'Новый производитель', new_admin_manufacturer_path, class: 'btn btn-info'

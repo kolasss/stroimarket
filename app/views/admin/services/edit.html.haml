@@ -1,7 +1,6 @@
-%h1 Изменение услуги
+%h1
+  Изменение услуги
+  .control-links
+    = icon_link 'eye', admin_service_path(@service)
 
 = render 'form'
-
-= link_to 'Show', admin_service_path(@service)
-\|
-= link_to 'Back', admin_services_path

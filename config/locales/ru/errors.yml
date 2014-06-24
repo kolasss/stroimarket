@@ -19,3 +19,13 @@ ru:
       height_must_be_at_most: "высота должна быть не более %{max_height}px"
 
       is_not_an_url: должен быть ссылкой
+
+  mongoid:
+    errors:
+      # messages:
+      #   taken: "It is already taken"
+      models:
+        offer:
+          attributes:
+            user_id:
+              taken: уже имеет цену для данного товара

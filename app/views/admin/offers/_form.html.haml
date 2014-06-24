@@ -1,10 +1,10 @@
 = simple_form_for [:admin, @product, @offer] do |f|
   = f.error_notification
 
-  - if f.object.errors[:user_id].present?
-    .alert.alert-danger
-      - f.object.errors.full_messages_for(:user_id).each do |msg|
-        %p= msg
+  -# - if f.object.errors[:user_id].present?
+  -#   .alert.alert-danger
+  -#     - f.object.errors.full_messages_for(:user_id).each do |msg|
+  -#       %p= msg
 
   .form-inputs
     = f.input :price

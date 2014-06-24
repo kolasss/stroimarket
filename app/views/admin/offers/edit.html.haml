@@ -1,5 +1,9 @@
 %h1 Изменение цены
 
-= render 'form'
+%h2
+  = link_to @product.title, admin_product_path(@offer.product)
+%p
+  %b Категория:
+  = @product.category.title
 
-= link_to 'Back', admin_product_path(@offer.product)
+= render 'form'

@@ -18,26 +18,23 @@ ru:
       defaults:
         title: Заголовок
         intro: Введение
-        body: Контент
-        categories: Отрасли
-        category: Отрасль
-        locale: Язык
+        body: Описание
+        categories: Категории
+        category: Категория
         cover: Изображение
-        position: Местоположение
-        boundary: Площадка
-        district: Район
         created_at: Дата создания
         updated_at: Последнее обновление
 
-      area:
-        ground_type: Тип земли
-        square: Площадь
-        distance_from_road: Расстояние до автодороги
-        distance_from_railway: Расстояние до железной дороги
-        availability_of_electricity: Электричество
-        availability_of_gas: Газ
-        availability_of_plumbing: Водоснабжение
-        availability_of_cellular: Сотовая связь
+      service:
+        price: Цена
+        service_category: Категория
+
+      product:
+        manufacturer: Производитель
+
+      offer:
+        price: Цена
+        user: Продавец
 
       article:
         permalink: Пермалинк
@@ -47,48 +44,11 @@ ru:
         show_in_menu: Показывать в меню
         menu_title: Заголовок в меню
 
-      attachment:
-        file: Файл
-
-      feedback_form:
-        email: Email
-        subject: Имя и фамилия
-        body: Ваше сообщение
-
-      info_object:
-        contacts: Контактные данные
-        website: Веб-сайт
-        layer: Категория
-
       post:
         permalink: Пермалинк
         source_url: Источник
         date: Дата
         announcement: Анонс
-
-      project:
-        protected_content: Приватные данные
-        kind: Тип
-        state: Состояние
-        status: Статус
-        start_date: Дата запуска
-        end_date: Дата завершения
-        due_date: Сроки реализации
-        user: Клиент
-        cost: Стоимость
-        invested_funds: Проинвестированно
-        search_funds: Требуемые вложения
-        npv: NPV
-        irr: IRR
-        pi: PI
-        dpp: DPP
-        visible_on_map: Отображать на карте
-        selected: Приоритетный
-
-      quote:
-        author: Автор
-        title: Подпись
-        body: Цитата
 
       user:
         password: Пароль
@@ -117,11 +77,6 @@ ru:
           password_confirmation: Подтверждение нового пароля
 
     placeholders:
-      project_status:
-        title: Заголовок
-        color: Цвет
-      district:
-        title: Название
       category:
         title: Заголовок
       user:

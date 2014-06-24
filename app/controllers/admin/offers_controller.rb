@@ -18,7 +18,7 @@ class Admin::OffersController < AdminController
     @offer.user = current_user if @offer.user.blank? and current_user.seller?
 
     if @offer.save
-      redirect_to admin_product_path(@product), notice: 'Offer was successfully created.'
+      redirect_to admin_product_path(@product), notice: 'Предожение создано.'
     else
       render action: 'new'
     end
@@ -26,7 +26,7 @@ class Admin::OffersController < AdminController
 
   def update
     if @offer.update(offer_params)
-      redirect_to admin_product_path(@offer.product), notice: 'Offer was successfully updated.'
+      redirect_to admin_product_path(@offer.product), notice: 'Цена обновлена.'
     else
       render action: 'edit'
     end

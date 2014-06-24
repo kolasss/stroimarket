@@ -1,0 +1,8 @@
+/ %form.navbar-form.navbar-left.search_form(role="search"
+/   data-ng-controller='SearchFormCtrl'
+/   name="searchForm"
+/   novalidate)
+/   .form-group.has-feedback
+/     %input.form-control(ng-model="query" required type='text' name='search'){ placeholder: "Поиск" }
+/     %span.form-control-feedback(type="submit" data-ng-click="submit(searchForm)")
+/       = fa_icon 'search'

@@ -1,6 +1,14 @@
 class ProductPolicy < ApplicationPolicy
+  def index?
+    @user.admin? or @user.seller?
+  end
+
+  def show?
+    index?
+  end
+
   def create?
-    @user.seller? or @user.admin?
+    @user.admin? or (@user.seller? and @record.user == @user)
   end
 
   def update?

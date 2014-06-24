@@ -1,13 +1,20 @@
 - if @product.cover.present?
   = image_tag(@product.cover.large, class: 'img-thumbnail')
   %hr
-
-%p
-  %b Title:
+%h1
   = @product.title
+  - if policy(@product).update?
+    .control-links
+      = icon_link 'edit', edit_admin_product_path(@product)
+      = icon_link 'times', admin_product_path(@product), data: { method: :delete, confirm: t('common.confirm_deletion') }
 %p
-  %b Body:
+  %b Введение:
+  = @product.intro
+%hr
+%p
+  %b Описание:
   = raw @product.body
+%hr
 %p
   %b Категория:
   = @product.category.title
@@ -25,15 +32,17 @@
         %b #{pr_at.title}:
         = @product[pr_at.name]
         = pr_at.unit if pr_at.unit && pr_at.type == 'integer'
-
+- if @product.min_price
+  %p
+    %b Минимальная цена:
+    = @product.min_price
+    = icon_ruble
+  %p
+    %b Максимальная цена:
+    = @product.max_price
+    = icon_ruble
 %p
-  минимальная цена:
-  = @product.min_price
-%p
-  максимальная цена:
-  = @product.max_price
-%p
-  Просмотров:
+  %b Количество просмотров:
   = @product.views
 
 - if @product.offers?
@@ -41,25 +50,20 @@
     .panel-heading
       %h3.panel-title
         Цены
-    / .panel-body
     %ul.list-group
       - @product.offers.each do |offer|
         %li.list-group-item
           %h4.list-group-item-heading
             = offer.price
+            - if policy(offer).update?
+              .control-links
+                = icon_link 'edit', edit_admin_product_offer_path(@product, offer)
+                = icon_link 'times', admin_product_offer_path(@product, offer), data: { method: :delete, confirm: t('common.confirm_deletion') }
           %p.list-group-item-text
             = offer.user.company_name
 
-            - if policy(offer).update?
-              .control-links
-                = icon_link 'pencil', edit_admin_product_offer_path(@product, offer)
-                = icon_link 'remove', admin_product_offer_path(@product, offer), data: { method: :delete, confirm: t(:confirm_deletion) }
 
--# - if policy(Offer).create? && !@product.has_user_offer?
-- unless @product.has_user_offer? current_user
+- if current_user.admin? or not @product.has_user_offer? current_user
   = link_to 'Новая цена', new_admin_product_offer_path(@product), class: 'btn btn-primary'
 
-%br
-= link_to 'Edit', edit_admin_product_path(@product)
-\|
-= link_to 'Back', admin_products_path
+

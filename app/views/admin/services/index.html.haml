@@ -1,30 +1,21 @@
 %h1 Услуги
 
-.panel.panel-default
-  .panel-body
-    %form
-      .input-group
-        %input.form-control{ type: :text, name: :query, placeholder: t('catalog.search_hint'), value: params[:query] }
-
-        .input-group-btn
-          %button.btn.btn-primary= t('search')
-
 %table.table.table-striped
   %tr
-    %th Title
-    %th Body
-    %th Category
+    %th Название
+    %th Картинка
+    %th Категория
     %th
 
   - @services.each do |service|
     %tr
       %td= link_to service.title, admin_service_path(service)
-      %td= service.body
+      %td= image_tag(service.cover.thumb, class: 'img-thumbnail')
       %td= service.service_category.title
       %td
-        = icon_link 'pencil', edit_admin_service_path(service)
-        = icon_link 'remove', admin_service_path(service), data: { method: :delete, confirm: t(:confirm_deletion) }
+        = icon_link 'edit', edit_admin_service_path(service)
+        = icon_link 'times', admin_service_path(service), data: { method: :delete, confirm: t('common.confirm_deletion') }
 
-%br
+= paginate @services
 
 = link_to 'Новая услуга', new_admin_service_path, class: 'btn btn-info'
