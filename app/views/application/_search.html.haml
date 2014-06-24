@@ -10,5 +10,5 @@
 
   .form-group.has-feedback
     %input.form-control(ng-model="query" required type='text' name='search'){ placeholder: "Поиск" }
-    %span.form-control-feedback(type="submit" data-ng-click="submit(searchForm)")
+    %span.form-control-feedback(data-ng-click="submit(searchForm)")
       = fa_icon 'search'
