@@ -38,6 +38,9 @@
             %td
               %a(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
                 {{product.title}}
+              .control-links(ng-show="stroiUtils.canEdit(product.user_id.$oid)")
+                %a{'ng-href' => "{{stroiUtils.editProductPath(product._id.$oid)}}"}
+                  %i.fa.fa-pencil
               %p {{product.intro}}
             %td.product_prices
               %p(ng-show="product.price")

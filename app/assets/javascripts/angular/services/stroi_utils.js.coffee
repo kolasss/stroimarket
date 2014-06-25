@@ -6,12 +6,6 @@ app.factory 'stroiUtils', ['$route', ($route) ->
     #     {categoryId: '@id'}
     #   )
 
-    # getCategoryLink: (category) ->
-    #   return 'categories/' + category.slug if category
-
-    # getServiceCategoryLink: (category) ->
-    #   return 'service_categories/' + category.slug if category
-
     path_for: (controller, params, grill = true) ->
       prepend = if grill then '#' else ''
       for path of $route.routes
@@ -23,4 +17,16 @@ app.factory 'stroiUtils', ['$route', ($route) ->
           return result
 
       return undefined
+
+    canEdit: (item_id) ->
+      # console.log system_info
+      return system_info.current_user.role == "admin" or system_info.current_user._id.$oid == item_id
+
+    editProductPath: (product_id) ->
+      path = system_info.routes.edit_product
+      path.replace(/product_id/, product_id)
+
+    editServicePath: (service_id) ->
+      path = system_info.routes.edit_service
+      path.replace(/service_id/, service_id)
 ]

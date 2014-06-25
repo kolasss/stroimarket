@@ -10,10 +10,9 @@
     %h1
       {{service.title}}
 
-      - if current_user.admin?
-        .control-links
-          %a{'ng-href' => "{{editServicePath('#{Rails.application.routes.url_helpers.edit_admin_service_path('service_id')}')}}"}
-            %i.fa.fa-pencil
+      .control-links(ng-show="stroiUtils.canEdit(service.user_id.$oid)")
+        %a{'ng-href' => "{{stroiUtils.editServicePath(service_id)}}"}
+          %i.fa.fa-pencil
 
     .row
       .col-md-8

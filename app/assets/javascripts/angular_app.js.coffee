@@ -65,9 +65,10 @@ window.app.config ['$routeProvider',
 
 ]
 
-window.app.run ['$rootScope', 'stroiUtils',
-  ($rootScope, stroiUtils) ->
+window.app.run ['$rootScope', 'stroiUtils', '$window',
+  ($rootScope, stroiUtils, $window) ->
 
     $rootScope.stroiUtils = stroiUtils
+    $rootScope.system_info = $window.system_info
 
 ]

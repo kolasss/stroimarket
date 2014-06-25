@@ -6,10 +6,9 @@
     %h1
       {{product.title}}
 
-      - if current_user.admin?
-        .control-links
-          %a{'ng-href' => "{{editProductPath('#{Rails.application.routes.url_helpers.edit_admin_product_path('product_id')}')}}"}
-            %i.fa.fa-pencil
+      .control-links(ng-show="stroiUtils.canEdit(product.user_id.$oid)")
+        %a{'ng-href' => "{{stroiUtils.editProductPath(product_id)}}"}
+          %i.fa.fa-pencil
 
     .row
       .col-md-8

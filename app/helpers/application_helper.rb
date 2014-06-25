@@ -24,7 +24,10 @@ module ApplicationHelper
   def javascript_env
     js = ""
     js << "var system_info = {}"
-    js << ";system_info.user = #{current_user.to_json(only:[:role])}"
+    js << ";system_info.current_user = #{current_user.to_json(only:[:role, :_id])}"
+    js << ";system_info.routes = {}"
+    js << ";system_info.routes.edit_product = '#{Rails.application.routes.url_helpers.edit_admin_product_path('product_id')}'"
+    js << ";system_info.routes.edit_service = '#{Rails.application.routes.url_helpers.edit_admin_service_path('service_id')}'"
 
     javascript_tag js
   end
