@@ -24,17 +24,17 @@ class Admin::StoreProfilesController < AdminController
     authorize @store_profile
 
     if @store_profile.save
-      redirect_to admin_user_path(@user)
+      redirect_to admin_user_path(@user), notice: 'Профиль магазина создан.'
     else
-      render :new, alert: t(:create_failed)
+      render :new
     end
   end
 
   def update
     if @store_profile.update_attributes(profile_params)
-      redirect_to admin_user_path(@user)
+      redirect_to admin_user_path(@user), notice: 'Профиль магазина изменен.'
     else
-      render :edit, alert: t(:update_failed)
+      render :edit
     end
   end
 

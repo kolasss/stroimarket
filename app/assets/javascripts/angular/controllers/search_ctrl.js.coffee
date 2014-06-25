@@ -26,6 +26,8 @@ app.controller 'SearchCtrl',
     $scope.show_services = false
     $scope.show_manufacturers = false
 
+    $scope.loaded = false
+
     # запрос на сервер
     $q.all([Searcher.show($routeParams.query).$promise, Category.all().$promise, ServiceCategory.all().$promise]).then (results) ->
       $scope.current.products = results[0].products
@@ -72,6 +74,8 @@ app.controller 'SearchCtrl',
         $scope.show_services = true
       else if $scope.found_manufacturers
         $scope.show_manufacturers = true
+
+      $scope.loaded = true
 
     $scope.show_tab = (name) ->
       if name == 'products' and $scope.found_products

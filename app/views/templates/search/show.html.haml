@@ -9,12 +9,12 @@
     %li(ng-class="{disabled: !found_manufacturers, active: show_manufacturers}")
       %a(ng-click="show_tab('manufacturers')") Производители
 
-   %span(ng-hide="services.$resolved") loading
+  %span(ng-hide="loaded") loading
 
   .search-tab-content
     = render 'templates/search/products'
     = render 'templates/search/services'
     = render 'templates/search/manufacturers'
 
-  .not_found(ng-show="services.$resolved &&!(found_products && found_services && found_manufacturers)")
+  .not_found(ng-show="loaded &&!(found_products && found_services && found_manufacturers)")
     По Вашему запросу ничего не найдено!

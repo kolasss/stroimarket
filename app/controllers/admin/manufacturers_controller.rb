@@ -22,7 +22,7 @@ class Admin::ManufacturersController < AdminController
     authorize AdminController
 
     if @manufacturer.save
-      redirect_to admin_manufacturer_path(@manufacturer), notice: t(:created)
+      redirect_to admin_manufacturer_path(@manufacturer), notice: 'Производитель создан.'
     else
       render action: 'new'
     end
@@ -30,7 +30,7 @@ class Admin::ManufacturersController < AdminController
 
   def update
     if @manufacturer.update(manufacturer_params)
-      redirect_to admin_manufacturer_path(@manufacturer), notice: t(:updated)
+      redirect_to admin_manufacturer_path(@manufacturer), notice: 'Производитель изменен.'
     else
       render action: 'edit'
     end

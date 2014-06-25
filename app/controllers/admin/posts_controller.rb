@@ -23,7 +23,7 @@ class Admin::PostsController < AdminController
     authorize AdminController
 
     if @post.save
-      redirect_to admin_post_path(@post), notice: 'Post was successfully created.'
+      redirect_to admin_post_path(@post), notice: 'Новость создана.'
     else
       render action: 'new'
     end
@@ -31,7 +31,7 @@ class Admin::PostsController < AdminController
 
   def update
     if @post.update(post_params)
-      redirect_to admin_post_path(@post), notice: 'Post was successfully updated.'
+      redirect_to admin_post_path(@post), notice: 'Новость изменена.'
     else
       render action: 'edit'
     end

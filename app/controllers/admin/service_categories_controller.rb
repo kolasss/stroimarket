@@ -24,7 +24,7 @@ class Admin::ServiceCategoriesController < AdminController
     authorize AdminController
 
     if @category.save
-      redirect_to admin_service_categories_path, notice: t(:created)
+      redirect_to admin_service_categories_path, notice: 'Категория создана.'
     else
       render action: 'new'
     end
@@ -32,7 +32,7 @@ class Admin::ServiceCategoriesController < AdminController
 
   def update
     if @category.update(category_params)
-      redirect_to admin_service_categories_path, notice: t(:updated)
+      redirect_to admin_service_categories_path, notice: 'Категория изменена.'
     else
       render action: 'edit'
     end

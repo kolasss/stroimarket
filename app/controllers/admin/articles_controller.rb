@@ -24,7 +24,7 @@ class Admin::ArticlesController < AdminController
     authorize AdminController
 
     if @article.save
-      redirect_to admin_article_path(@article), notice: t(:created)
+      redirect_to admin_article_path(@article), notice: 'Статья создана.'
     else
       render action: 'new'
     end
@@ -32,7 +32,7 @@ class Admin::ArticlesController < AdminController
 
   def update
     if @article.update(article_params)
-      redirect_to admin_article_path(@article), notice: t(:updated)
+      redirect_to admin_article_path(@article), notice: 'Статья изменена.'
     else
       render action: 'edit'
     end

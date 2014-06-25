@@ -1,0 +1,19 @@
+%ul.nav.navbar-nav.ng-cloak(nav-menu)
+  %li.dropdown.dropdown-on-hover(ng-class="{'active': isActive('CategoriesCtrl', 'CategoryCtrl', 'ProductCtrl')}")
+    %a.dropdown-toggle(href='#/categories' data-toggle="dropdown")
+      Каталог товаров
+      %b.caret
+    %ul.dropdown-menu.main_categories(categories-dropdown ng-class="alwaysOpen()")
+
+  %li(ng-class="{'active': isActive('StoresCtrl', 'StoreMainCtrl', 'StoreCatalogCtrl', 'StoreServicesCtrl', 'StoreAboutCtrl')}")
+    %a(href='#/stores')
+      Магазины
+  %li(ng-class="{'active': isActive('ServiceCategoriesCtrl', 'ServiceCategoryCtrl', 'ServiceCtrl')}")
+    %a(href='#/service_categories')
+      Услуги
+
+  - Article.roots.map do |a|
+    %li(ng-class="{'active': isActiveArticle('#{a.id}')}")
+      %a(href="#/articles/#{a.slug}")
+        = a.menu_title
+

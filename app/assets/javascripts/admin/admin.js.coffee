@@ -41,7 +41,22 @@ init_sortable = (target_list, item_type) ->
         left: position.left - adjustment.left,
         top: position.top - adjustment.top
 
+init_search_form = ->
+  search_form = $("#search_form")
+  search_form.submit (event) ->
+    val = this.children[0].children[0].value
+    if val != ''
+      dst = '/#/search/' + val
+      window.location = dst
+    event.preventDefault()
+
+  $('#search_form .form-control-feedback').click ->
+    search_form.submit()
+
+
 jQuery ->
   init_sortable('#categories_root', 'categories')
   init_sortable('#service_categories_root', 'service_categories')
   init_sortable('#articles_root', 'articles')
+
+  init_search_form()
