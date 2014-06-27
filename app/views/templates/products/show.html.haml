@@ -25,7 +25,7 @@
           %tbody
             %tr(ng-repeat="offer in product.offers")
               %td
-                %a(ng-href="{{stroiUtils.path_for('StoreCtrl', {store_slug: offer.user.store_profile.slug})}}")
+                %a(ng-href="{{stroiUtils.path_for('StoreMainCtrl', {store_slug: offer.user.store_profile.slug})}}")
                   {{offer.user.store_profile.name}}
               %td
                 {{offer.price}}
