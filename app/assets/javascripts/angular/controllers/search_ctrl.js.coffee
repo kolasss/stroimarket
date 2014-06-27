@@ -16,6 +16,7 @@ app.controller 'SearchCtrl',
     $scope.query = $routeParams.query
 
     #filter and counters
+    $scope.priceRange = FilterCatalog.priceRange
     $scope.filter =
       subcats: []
     $scope.cats_counter = {}

@@ -9,6 +9,7 @@ app.controller 'StoreMainCtrl',
     $scope.FilterCatalog = FilterCatalog
 
     #filter and counters
+    $scope.priceRange = FilterCatalog.priceRange
     $scope.filter =
       subcats: []
     $scope.cats_counter = {}

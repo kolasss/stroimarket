@@ -47,3 +47,90 @@
 
 .search-tab-content
   margin-top: 20px
+
+
+//
+//  range slider
+//
+
+.range_inputs
+  margin-bottom: 10px
+  span
+    margin-left: 15px
+    margin-right: 5px
+  .form-control
+    width: 37%
+    height: 28px
+    display: inline-block
+
+// ! jQuery UI - v1.10.4 - 2014-06-26
+// * http://jqueryui.com
+// * Includes: jquery.ui.core.css, jquery.ui.slider.css
+// * Copyright 2014 jQuery Foundation and other contributors; Licensed MIT
+
+$slider-width: .6em
+$slider-hande-margin-top: -.25em
+$slider-hande-margin-left: -.5em
+$slider-hande-size: 1em
+
+.ui-slider
+  position: relative
+  text-align: left
+  border: 1px solid $light-gray-color
+  background: $light-blue-color
+
+.ui-slider .ui-slider-handle
+  position: absolute
+  z-index: 2
+  width: $slider-hande-size
+  height: $slider-hande-size
+  border-radius: 50%
+  border: 1px solid $blue-color
+  background: #fff
+
+  &.ui-state-hover,
+  &.ui-state-focus
+    background: $light-blue-color
+
+  &.ui-state-active
+    background: $yellow-color
+
+.ui-slider .ui-slider-range
+  position: absolute
+  z-index: 1
+  display: block
+  border: 1px solid $blue-border-color
+  background: $blue-color
+
+// For IE8 - See #6727
+.ui-slider.ui-state-disabled .ui-slider-handle,
+.ui-slider.ui-state-disabled .ui-slider-range
+  filter: inherit
+
+.ui-slider-horizontal
+  height: $slider-width
+  .ui-slider-handle
+    top: $slider-hande-margin-top
+    margin-left: $slider-hande-margin-left
+  .ui-slider-range
+    top: 0
+    height: 100%
+  .ui-slider-range-min
+    left: 0
+  .ui-slider-range-max
+    right: 0
+
+.ui-slider-vertical
+  width: $slider-width
+  height: 100px
+  .ui-slider-handle
+    left: $slider-hande-margin-top
+    margin-left: 0
+    margin-bottom: $slider-hande-margin-left
+  .ui-slider-range
+    left: 0
+    width: 100%
+  .ui-slider-range-min
+    bottom: 0
+  .ui-slider-range-max
+    top: 0

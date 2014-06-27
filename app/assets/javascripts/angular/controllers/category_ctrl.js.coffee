@@ -9,6 +9,7 @@ app.controller 'CategoryCtrl',
     $scope.FilterCatalog = FilterCatalog
 
     #filter and counters
+    $scope.priceRange = FilterCatalog.priceRange
     $scope.filter =
       manufacturers: []
       subcats: []
@@ -31,4 +32,5 @@ app.controller 'CategoryCtrl',
 
     $scope.$on 'ProductNumberOfPages:updated', (event, data) ->
       $scope.numberOfPages = data
+
 ]

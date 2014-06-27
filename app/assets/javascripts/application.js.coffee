@@ -3,6 +3,7 @@
 #= require bootstrap.min
 #= require owl.carousel.min
 #= require jquery_nested_form
+#= require jquery-ui-slider.min
 #= require angular
 #= require angular-route
 #= require angular-resource

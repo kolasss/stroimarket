@@ -1,5 +1,14 @@
 .form-group
-  %label(for="filter_min_price")
+  %label
     Цена
-  %input.form-control#filter_min_price(type="text" placeholder="minimum" ng-model="filter.minPrice")
-  %input.form-control#filter_min_price(type="text" placeholder="maximum" ng-model="filter.maxPrice")
+  .range_inputs
+    %input.form-control(type="text" placeholder="от" ng-model="filter.minPrice")
+    %span
+      &#822;
+    %input.form-control(type="text" placeholder="до" ng-model="filter.maxPrice")
+    %ruble-icon
+
+  %div(range-slider
+    data-values="priceRange"
+    data-min-value="filter.minPrice"
+    data-max-value="filter.maxPrice")

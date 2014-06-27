@@ -5,6 +5,7 @@ app.factory 'FilterCatalog', ['filterFilter', '$filter', 'SortingCatalog', '$roo
         subcats: []
       @current =
         products: []
+      @priceRange = [0, 500, 1000, 5000, 10000, 30000, 60000, 100000, 500000, 1000000]
 
     #counters
     count_products_for_category: (subcats_counter, manufacturers_counter, manufacturers) ->
