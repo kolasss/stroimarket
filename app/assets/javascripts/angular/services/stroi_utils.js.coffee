@@ -20,7 +20,10 @@ app.factory 'stroiUtils', ['$route', ($route) ->
 
     canEdit: (item_id) ->
       # console.log system_info
-      return system_info.current_user.role == "admin" or system_info.current_user._id.$oid == item_id
+      if system_info.current_user
+        return system_info.current_user.role == "admin" or system_info.current_user._id.$oid == item_id
+      else
+        return false
 
     editProductPath: (product_id) ->
       path = system_info.routes.edit_product
