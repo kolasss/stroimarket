@@ -68,7 +68,13 @@ class Admin::ServicesController < AdminController
         :remove_cover,
         :service_category_id,
         :user_id,
-        :price
+        :price,
+        images_attributes: [
+          :id,
+          :title,
+          :file,
+          :_destroy
+        ]
       )
     end
 end
