@@ -3,7 +3,7 @@
 
   .row
     .col-sm-3
-      = image_uploader f, attr_name: :file
+      = image_uploader f, attr_name: :file, no_remove: true
 
       - if image.file.present?
         .attachment-meta

@@ -62,6 +62,11 @@
           %p.list-group-item-text
             = offer.user.company_name
 
+- if @product.images
+  %ul
+    - @product.images.each do |image|
+      %li
+        = image_tag(image.file.small, class: 'img-thumbnail')
 
 - if current_user.admin? or not @product.has_user_offer? current_user
   = link_to 'Новая цена', new_admin_product_offer_path(@product), class: 'btn btn-primary'

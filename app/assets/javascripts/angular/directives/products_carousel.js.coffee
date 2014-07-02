@@ -2,18 +2,20 @@ app.directive 'productsCarousel',
   ['$timeout', 'stroiUtils',
   ($timeout, stroiUtils) ->
     init_carousel = (element) ->
+      carousel = element.children('.products-carousel')
+      prev_btn = element.children('.prev')
+      next_btn = element.children('.next')
       $timeout ->
-        element.owlCarousel
-          navigation: true
-          # rewindSpeed: 200
-          navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>']
-          pagination: false
-          rewindNav: false
-          items : 7
-          itemsDesktop : [1199,5]
-          itemsDesktopSmall : false
-          itemsTablet: [768,4]
-          itemsMobile : [479,2]
+        carousel.carouFredSel
+          width: '100%'
+          auto: false
+          prev: prev_btn
+          next: next_btn
+          transition: true
+          swipe:
+            onMouse: true
+            onTouch: true
+
     return {
       restrict: 'E'
       scope:

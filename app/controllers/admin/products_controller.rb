@@ -91,7 +91,13 @@ class Admin::ProductsController < AdminController
         :category_id,
         :cover,
         :remove_cover,
-        :manufacturer_id
+        :manufacturer_id,
+        images_attributes: [
+          :id,
+          :title,
+          :file,
+          :_destroy
+        ]
       ]
       safe_attributes << @category.product_attributes.map(&:name)
 

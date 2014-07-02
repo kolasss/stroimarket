@@ -1,6 +1,5 @@
 @import "bootstrap"
 @import "bootstrap-theme"
-@import "owl.carousel"
 @import "lib"
 @import "font-awesome"
 @import "bootstrap-custom"
@@ -259,7 +258,15 @@ img
 //
 //  Product Carousel
 // =======================
-.owl-theme .owl-controls .owl-buttons div
+.products-carousel
+  overflow: hidden
+  .item
+    display: block
+    float: left
+    width: 150px
+    padding: 5px
+
+.carousel-wrapper .nav-btn
   position: absolute
   color: $blue-color
   display: inline-block
@@ -279,27 +286,20 @@ img
   i
     font-size: 30px
     font-weight: bold
+  &:hover
+    filter: Alpha(Opacity=100) /*IE7 fix*/
+    opacity: 1
+    text-decoration: none
 
-/* Clickable class fix problem with hover on touch devices */
-/* Use it for non-touch hover action */
-.owl-theme .owl-controls.clickable .owl-buttons div:hover
-  filter: Alpha(Opacity=100) /*IE7 fix*/
-  opacity: 1
-  text-decoration: none
-
-.owl-theme .owl-controls .owl-buttons .owl-prev
-  left: 0
+.carousel-wrapper .prev
+  left: 20px
   i
     padding-left: 8px
 
-.owl-theme .owl-controls .owl-buttons .owl-next
+.carousel-wrapper .next
   right: 20px
   i
     padding-left: 10px
-
-.owl-theme
-  .owl-item
-    padding-right: 20px
 
 .product_thumb
   border: 0
@@ -314,7 +314,17 @@ img
     p
       margin-bottom: 0
 
+//
+//  Images carousel
+//
+.images_carousel
+  overflow: hidden
+  .item
+    display: block
+    float: left
+    height: 220px
 
+    padding: 0 5px
 //
 //  misc
 // ======================

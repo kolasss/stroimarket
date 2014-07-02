@@ -93,9 +93,9 @@ class @ImageUploader
     @hideControls()
 
   showControls: ->
-    @preview.show('fast')
-    @closeBtn.show('fast')
+    @preview.show()
+    @closeBtn.show()
 
   hideControls: ->
-    @preview.hide('fast')
-    @closeBtn.hide('fast')
+    @preview.hide()
+    @closeBtn.hide()

@@ -8,7 +8,7 @@
 
     = yield :head
     = javascript_include_tag :application
-  %body{'ng-init' => "system_info = {user:#{current_user.to_json(only:[:role])}}"}
+  %body
 
     .page-wrapper
       = render 'header'

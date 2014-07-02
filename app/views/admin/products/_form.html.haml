@@ -17,5 +17,7 @@
     .manufacturer_field
       = render partial: 'manufacturer_field', locals: {category: @product.category, object: @product}
 
+    = render 'attachments/images/form', f: f, images: @product.images
+
   .form-actions
     = f.button :submit

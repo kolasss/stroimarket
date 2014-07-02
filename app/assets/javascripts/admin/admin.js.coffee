@@ -60,3 +60,16 @@ jQuery ->
   init_sortable('#articles_root', 'articles')
 
   init_search_form()
+
+  # Uploaders.
+  ($ '.image-uploader').each (i, el) ->
+    new ImageUploader el: el
+
+  ($ '.attachments-form').each (i, el) ->
+    attachments = $ el
+
+    attachments.find('.attachment').each (i, el) ->
+      new AttachmentFields el: el
+
+    attachments.find('.add-attachment').each (i, el) ->
+      new AttachmentButton el: el

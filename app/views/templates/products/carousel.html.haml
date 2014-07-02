@@ -1,9 +1,15 @@
-.owl-carousel.owl-theme
-  .item(ng-repeat="product in products")
-    .thumbnail.product_thumb
-      %a(ng-href="{{link_to(product)}}")
-        %img.img-rounded(ng-src="{{product.cover.small.url}}" alt="{{product.title}}")
-      .caption
+.carousel-wrapper
+  .products-carousel
+    .item(ng-repeat="product in products")
+      .thumbnail.product_thumb
         %a(ng-href="{{link_to(product)}}")
-          {{product.title}}
-        %p(ng-bind-html="draw_price(product)")
+          %img.img-rounded(ng-src="{{product.cover.small.url}}" alt="{{product.title}}")
+        .caption
+          %a(ng-href="{{link_to(product)}}")
+            {{product.title}}
+          %p(ng-bind-html="draw_price(product)")
+
+  %btn.prev.nav-btn
+    %i.fa.fa-angle-left
+  %btn.next.nav-btn
+    %i.fa.fa-angle-right

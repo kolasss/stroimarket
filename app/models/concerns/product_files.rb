@@ -2,9 +2,13 @@ module ProductFiles
   extend ActiveSupport::Concern
 
   included do
-    embeds_many :product_images, as: :attachable, cascade_callbacks: true
+    embeds_many :images,
+                as: :attachable,
+                cascade_callbacks: true,
+                class_name: "ProductImage",
+                store_as: 'product_images'
 
-    accepts_nested_attributes_for :product_images, allow_destroy: true
+    accepts_nested_attributes_for :images, allow_destroy: true
 
     mount_uploader :cover, ProductImageUploader
 

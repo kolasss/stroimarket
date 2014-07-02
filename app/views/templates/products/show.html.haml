@@ -12,7 +12,11 @@
 
     .row
       .col-md-8
-        %img.img-rounded(ng-src="{{product.cover.middle.url}}" ng-show="product.cover.middle.url")
+        .images_carousel(images-carousel)
+          .item(ng-show="product.cover.middle.url")
+            %img(ng-src="{{product.cover.middle.url}}")
+          .item(ng-repeat="image in product.images" on-last-repeat)
+            %img(ng-src="{{image.file.middle.url}}")
 
         %h3 Описание
         .body(ng-bind-html="product.body")

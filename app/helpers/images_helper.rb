@@ -6,8 +6,15 @@ module ImagesHelper
 
     image_preview = image_tag (value.present? ? value : ''), class: 'image-preview'
     file_input    = form.file_field attr_name,               class: 'image-file', accept: 'image/jpg, image/jpeg, image/png'
-    remove_input  = form.hidden_field "remove_#{attr_name}", class: 'image-remove'
-    remove_button = icon_close
+
+    if options[:no_remove]
+      remove_input  = ''
+      remove_button = ''
+    else
+      remove_input  = form.hidden_field "remove_#{attr_name}", class: 'image-remove'
+      remove_button = icon_close
+    end
+
     errors        = form.error(attr_name)
 
     raw %{
