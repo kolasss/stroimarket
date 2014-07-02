@@ -16,7 +16,11 @@
 
     .row
       .col-md-8
-        %img.img-rounded(ng-src="{{service.cover.middle.url}}" ng-show="service.cover.middle.url")
+        .images_carousel(images-carousel)
+          .item(ng-show="service.cover.middle.url")
+            %img(ng-src="{{service.cover.middle.url}}")
+          .item(ng-repeat="image in service.images" on-last-repeat)
+            %img(ng-src="{{image.file.middle.url}}")
 
         %h3 Описание
 

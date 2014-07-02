@@ -12,5 +12,7 @@
     - if current_user.admin?
       = f.association :user, collection: User.sellers, label_method: :company_name
 
+    = render 'attachments/images/form', f: f, images: @service.images
+
   .form-actions
     = f.button :submit

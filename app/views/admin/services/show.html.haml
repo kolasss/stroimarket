@@ -26,3 +26,9 @@
 %p
   %b Магазин:
   = @service.user.company_name
+
+- if @service.images
+  %ul
+    - @service.images.each do |image|
+      %li
+        = image_tag(image.file.small, class: 'img-thumbnail')

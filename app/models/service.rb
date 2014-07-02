@@ -22,7 +22,7 @@ class Service
 
   def as_json_for_catalog
     options = {
-      except: [:_id, :_keywords, :service_category_id],
+      except: [:_id, :_keywords, :service_category_id, :product_images],
       include: {
         service_category: {
           methods: [:slug],
@@ -45,6 +45,12 @@ class Service
               ]
             }
           }
+        },
+        images: {
+          only: [
+            :file,
+            :title
+          ]
         }
       }
     }
