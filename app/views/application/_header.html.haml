@@ -1,12 +1,10 @@
 %header.site-header.navbar.navbar-static-top(role="navigation")
-  .container-fluid
+  .container
     .row.logowrapper
-      .col-md-4
+      .col-md-3
         %a.logo{ href: root_path }
-          / .logo_image
           = image_tag("logo.png", alt: "GuruStroy")
-          / %span.sitename GuruStroy
-      .col-md-6
+      .col-md-9
         = render 'search'
     .row
       .col-md-12
@@ -16,7 +14,6 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          / %a.navbar-brand(href="#")= t 'sitename'
 
         #mainnav.collapse.navbar-collapse
           = render 'nav'

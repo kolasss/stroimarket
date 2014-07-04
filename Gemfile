@@ -74,6 +74,8 @@ gem "font-awesome-rails"
 gem "nested_form"
 
 gem 'angularjs-rails'
+gem 'bootstrap-sass'
+gem "autoprefixer-rails"
 
 # gem 'oj'
 

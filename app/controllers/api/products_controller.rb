@@ -8,7 +8,7 @@ class Api::ProductsController < ApplicationController
   end
 
   def popular
-    products = Product.desc(:views).limit(10)
+    products = Product.desc(:views).limit(20)
     respond_with products,
       except: [:_keywords, :cover_filename]
   end

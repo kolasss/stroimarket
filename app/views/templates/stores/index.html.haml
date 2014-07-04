@@ -3,8 +3,8 @@
 
   .row
     .col-md-4(ng-repeat="store in stores")
-      .thumbnail
-        %img.img-rounded(ng-src="{{store.logo.url}}")
+      .thumbnail.store_thumbnail(back-img="{{store.header.url}}")
+        / %img.img-rounded(ng-src="{{store.logo.url}}")
         .caption
           %h3 {{store.name}}
           %p {{store.title}}

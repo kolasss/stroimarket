@@ -1,6 +1,6 @@
 #= require jquery
 #= require jquery_ujs
-#= require bootstrap.min
+#= require bootstrap-sprockets
 #= require jquery.carouFredSel-6.2.1-packed
 #= require jquery.touchSwipe.min
 #= require jquery.transit.min
