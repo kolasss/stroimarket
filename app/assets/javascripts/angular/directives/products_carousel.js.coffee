@@ -38,7 +38,10 @@ app.directive 'productsCarousel',
           if scope.store
             "#{product.price} <i class='fa fa-rub'></i>"
           else if product.min_price
-            "#{product.min_price} ... #{product.max_price} <i class='fa fa-rub'></i>"
+            if product.min_price == product.max_price
+              "#{product.min_price} <i class='fa fa-rub'></i>"
+            else
+              "#{product.min_price} ... #{product.max_price} <i class='fa fa-rub'></i>"
 
     }
 ]

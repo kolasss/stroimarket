@@ -37,9 +37,4 @@
       .col-md-4
         .price_range_wrapper(ng-show="product.min_price")
           %p Цена:
-          %p.price_range
-            {{product.min_price}}
-            %ruble-icon
-            \...
-            {{product.max_price}}
-            %ruble-icon
+          %p.price_range(ng-bind-html="draw_price()")
