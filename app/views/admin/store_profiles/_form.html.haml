@@ -3,12 +3,12 @@
   .form-inputs(ng-app='AdminTextAngular')
     = f.input :name
 
-    %label logo
+    %label Логотип
     = image_uploader f, attr_name: 'logo'
 
     %hr
 
-    %label header
+    %label Картинка для шапки
     = image_uploader f, attr_name: 'header'
 
     = f.input :contacts

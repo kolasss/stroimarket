@@ -1,0 +1,12 @@
+%h2 Вход
+
+= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :email, :autofocus => true
+    = f.input :password
+    = f.hidden_field :remember_me, value: true
+
+  .form-actions
+    = f.button :submit

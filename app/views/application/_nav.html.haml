@@ -13,7 +13,10 @@
       %li= link_to 'Статьи', admin_articles_path
 
     - if current_user.seller?
+      %li= link_to 'Главная', root_path
       %li= link_to 'Товары', admin_products_path
       %li= link_to 'Услуги', admin_services_path
+    - else
+      %li= link_to 'Главная', root_path
   - else
     %li= link_to 'Главная', root_path

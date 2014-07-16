@@ -24,4 +24,9 @@
 
   - else
     %li
-      = link_to 'Вход', new_user_session_path
+      = link_to new_user_session_path do
+        - "Войти " + fa_icon('sign-in')
+    %li
+      = link_to "Регистрация", new_user_registration_path, class: "btn btn-yellow"
+
+

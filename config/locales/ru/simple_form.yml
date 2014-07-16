@@ -56,13 +56,13 @@ ru:
         password_confirmation: Подтверждение пароля
         current_password: Текущий пароль
         email: Email
-        phone_number: Телефонный номер
-        picture: Изображение
-        type: Тип
+        # phone_number: Телефонный номер
+        # picture: Изображение
+        # type: Тип
         role: Роль
-        country_code: Страна
-        time_zone: Часовой пояс
-        email_notifications: Уведомления по Email
+        # country_code: Страна
+        # time_zone: Часовой пояс
+        # email_notifications: Уведомления по Email
         last_sign_in_at: Заходил
         last_sign_in_ip: Последний IP
         current_sign_in_at: Текущее время входа
@@ -70,11 +70,21 @@ ru:
         sign_in_count: Количество входов
         remember_me: Запомнить меня
 
-        followed_categories: Отслеживаемые категории
+        # followed_categories: Отслеживаемые категории
 
         edit:
           password: Новый пароль
           password_confirmation: Подтверждение нового пароля
+
+      store_profile:
+        name: Название
+        contacts: Контакты
+        requisites: Реквизиты
+        phone: Телефонный номер
+        site: Сайт
+        email: Email
+        info: Краткая информация
+        about: О компании
 
     placeholders:
       category:
