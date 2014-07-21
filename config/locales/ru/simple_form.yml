@@ -18,8 +18,7 @@ ru:
       defaults:
         title: Заголовок
         intro: Введение
-        body: Описание
-        categories: Категории
+        body: Содержание
         category: Категория
         cover: Изображение
         created_at: Дата создания
@@ -30,6 +29,10 @@ ru:
         service_category: Категория
 
       product:
+        title: Наименование
+        intro: Краткое описание
+        body: Описание
+        categories: Категории
         manufacturer: Производитель
 
       offer:
@@ -56,21 +59,13 @@ ru:
         password_confirmation: Подтверждение пароля
         current_password: Текущий пароль
         email: Email
-        # phone_number: Телефонный номер
-        # picture: Изображение
-        # type: Тип
         role: Роль
-        # country_code: Страна
-        # time_zone: Часовой пояс
-        # email_notifications: Уведомления по Email
         last_sign_in_at: Заходил
         last_sign_in_ip: Последний IP
         current_sign_in_at: Текущее время входа
         current_sign_in_ip: Текущий IP
         sign_in_count: Количество входов
         remember_me: Запомнить меня
-
-        # followed_categories: Отслеживаемые категории
 
         edit:
           password: Новый пароль

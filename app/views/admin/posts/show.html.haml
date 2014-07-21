@@ -1,10 +1,14 @@
+%h1
+  = @post.title
+  .control-links
+    = icon_link 'edit', edit_admin_post_path(@post)
+    = icon_link 'times', admin_post_path(@post), data: { method: :delete, confirm: t('common.confirm_deletion') }
+
+%hr
+
 - if @post.cover.present?
   = image_tag(@post.cover.large, class: 'img-thumbnail')
-  %hr
 
-%p
-  %b Title:
-  = @post.title
 %p
   %b Создан:
   = @post.created_at
@@ -12,15 +16,9 @@
   %b Обновлен:
   = @post.updated_at
 %p
-  %b intro:
-  = @post.intro
-%p
-  %b Body:
   = raw @post.body
-%p
-  %b ссылка:
-  = raw @post.url
 
-= link_to 'Edit', edit_admin_post_path(@post)
-\|
-= link_to 'Back', admin_posts_path
+- if @post.url.present?
+  %p
+    %b Ссылка:
+    = @post.url

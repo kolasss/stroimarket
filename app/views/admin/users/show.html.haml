@@ -52,28 +52,29 @@
 - if @user.store_profile.present?
   %h2 Профиль продавца
   %ul
+    - if @user.store_profile.logo.present?
+      %li
+        = image_tag @user.store_profile.logo
     %li
-      = image_tag @user.store_profile.logo
-    %li
-      %b Название продавца
+      %b Наименование
       = @user.store_profile.name
     %li
-      %b contacts
+      %b Контакты
       = @user.store_profile.contacts
     %li
-      %b requisites
+      %b Реквизиты
       = @user.store_profile.requisites
     %li
-      %b phone
+      %b Телефон
       = @user.store_profile.phone
     %li
-      %b site
+      %b Сайт
       = @user.store_profile.site
     %li
-      %b email
+      %b Email
       = @user.store_profile.email
     %li
-      %b info
+      %b Информация
       = @user.store_profile.info
 
   - if policy(@user.store_profile).update?

@@ -1,23 +1,23 @@
-%h1 Listing posts
+%h1 Новости
 
 %table.table.table-striped
   %tr
-    %th Title
-    %th Cover
-    %th Body
-    %th
+    %th Заголовок
+    %th Обложка
+    %th Введение
     %th
     %th
 
   - @posts.each do |post|
     %tr
-      %td= post.title
+      %td= link_to post.title, admin_post_path(post)
       %td= image_tag(post.cover.thumb, class: 'img-thumbnail') if post.cover.present?
-      %td= post.body
-      %td= link_to 'Show', admin_post_path(post)
-      %td= link_to 'Edit', edit_admin_post_path(post)
-      %td= link_to 'Destroy', admin_post_path(post), :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= post.intro
+      %td= icon_link 'edit', edit_admin_post_path(post)
+      %td= icon_link 'times', admin_post_path(post), data: { method: :delete, confirm: t('common.confirm_deletion') }
 
-%br
+= paginate @posts
 
-= link_to 'New Post', new_admin_post_path, class: 'btn btn-info'
+= content_for :sidebar do
+  .sidebar_panel
+    = link_to 'Добавить новость', new_admin_post_path, class: 'btn btn-info'

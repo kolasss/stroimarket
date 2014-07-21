@@ -2,7 +2,7 @@
 
 %table.table.table-striped
   %tr
-    %th Название
+    %th Наименование
     %th Картинка
     %th Категория
     %th
@@ -19,4 +19,7 @@
 
 = paginate @products
 
-= link_to 'Новый товар', new_admin_product_path, class: 'btn btn-info'
+= content_for :sidebar do
+  .sidebar_panel
+    = link_to 'Новый товар', new_admin_product_path, class: 'btn btn-info'
+

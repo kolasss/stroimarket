@@ -1,9 +1,8 @@
 class Admin::PostsController < AdminController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  # after_action :verify_authorized, :except => [:index, :show]
 
   def index
-    @posts = Post.all
+    @posts = Post.all.page(params[:page])
     authorize AdminController
   end
 

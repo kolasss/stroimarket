@@ -9,7 +9,9 @@
   - @manufacturers.each do |manufacturer|
     %tr
       %td= link_to manufacturer.title, admin_manufacturer_path(manufacturer)
-      %td= link_to 'Edit', edit_admin_manufacturer_path(manufacturer)
-      %td= link_to 'Destroy', admin_manufacturer_path(manufacturer), :method => :delete, :data => { confirm: t('common.confirm_deletion') }
+      %td= icon_link 'edit', edit_admin_manufacturer_path(manufacturer)
+      %td= icon_link 'times', admin_manufacturer_path(manufacturer), data: { method: :delete, confirm: t('common.confirm_deletion') }
 
-= link_to 'Новый производитель', new_admin_manufacturer_path, class: 'btn btn-info'
+= content_for :sidebar do
+  .sidebar_panel
+    = link_to 'Новый производитель', new_admin_manufacturer_path, class: 'btn btn-info'

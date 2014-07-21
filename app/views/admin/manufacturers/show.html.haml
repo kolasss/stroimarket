@@ -1,11 +1,13 @@
-%p
-  %b Наименование:
+%h1
   = @manufacturer.title
+  .control-links
+    = icon_link 'edit', edit_admin_manufacturer_path(@manufacturer)
+    = icon_link 'times', admin_manufacturer_path(@manufacturer), data: { method: :delete, confirm: t('common.confirm_deletion') }
+
+%hr
+
 %p
+  %b slug:
   = @manufacturer.slug
 %p
   = render_category_tree 'checkbox', Category.roots, 'manufacturer[category_ids][]', @manufacturer.category_ids, nil, true
-
-= link_to 'Edit', edit_admin_manufacturer_path(@manufacturer)
-\|
-= link_to 'Назад', admin_manufacturers_path

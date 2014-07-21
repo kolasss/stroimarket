@@ -1,20 +1,24 @@
-%p
-  %b Title:
+%h1
   = @category.title
+  .control-links
+    = icon_link 'edit', edit_admin_service_category_path(@category)
+    = icon_link 'times', admin_service_category_path(@category), data: { method: :delete, confirm: t('common.confirm_deletion') }
+
+%hr
+
 %p
-  %b Position:
+  %b Позиция:
   = @category.position
-%p
-  %b Parent:
-  = @category.parent.title if @category.parent
-%p
-  %b Children:
-  - if @category.children
+
+- if @category.parent
+  %p
+    %b Родительская категория:
+    = @category.parent.title
+
+- if @category.children.present?
+  %p
+    %b Подкатегории:
     %ol
       - @category.children.each do |child|
         %li
           =child.title
-
-= link_to 'Edit', edit_admin_service_category_path(@category)
-\|
-= link_to 'Back', admin_service_categories_path

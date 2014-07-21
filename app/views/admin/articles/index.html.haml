@@ -1,8 +1,8 @@
 %h1 Статьи
 
-= link_to 'New Article', new_admin_article_path, class: 'btn btn-info'
-
-%br
-
 %ol#articles_root.sortable_tree.tree_root
   = render_sortable_tree @articles.roots
+
+= content_for :sidebar do
+  .sidebar_panel
+    = link_to 'Добавить статью', new_admin_article_path, class: 'btn btn-info'

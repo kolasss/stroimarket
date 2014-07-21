@@ -4,13 +4,17 @@
     \/
   %br
 
+%h1
+  = @article.title
+  .control-links
+    = icon_link 'edit', edit_admin_article_path(@article)
+    = icon_link 'times', admin_article_path(@article), data: { method: :delete, confirm: t('common.confirm_deletion') }
+
+%hr
+
 - if @article.cover.present?
   = image_tag(@article.cover.large, class: 'img-thumbnail')
-  %hr
 
-%p
-  %b Title:
-  = @article.title
 %p
   %b Создан:
   = @article.created_at
@@ -18,7 +22,6 @@
   %b Обновлен:
   = @article.updated_at
 %p
-  %b Body:
   = raw @article.body
 
 - if @article.images
@@ -26,10 +29,6 @@
     - @article.images.each do |image|
       %li
         = image_tag(image.file.thumb, class: 'img-thumbnail')
-
-= link_to 'Edit', edit_admin_article_path(@article)
-\|
-= link_to 'Back', admin_articles_path
 
 - content_for :sidebar do
   = render 'tree' if @article.children.present?
