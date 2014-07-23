@@ -1,0 +1,77 @@
+@import "lib"
+
+.product_show
+  .price_range
+    font-size: 1.7em
+
+//
+//  Product Carousel
+// =======================
+.products-carousel
+  overflow: hidden
+  .item
+    display: block
+    float: left
+    width: 150px
+    padding: 5px
+    min-height: 200px
+
+.carousel-wrapper .nav-btn
+  position: absolute
+  color: $blue-color
+  display: inline-block
+  zoom: 1
+  *display: inline /*IE7 life-saver */
+  padding-top: 8px
+  width: 32px
+  height: 48px
+  border-radius: 4px
+  background: #fff
+  border: $blue-color 1px solid
+  filter: Alpha(Opacity=50) /*IE7 fix*/
+  opacity: 0.5
+  top: 30%
+  &.disabled
+    display: none
+  i
+    font-size: 30px
+    font-weight: bold
+  &:hover
+    filter: Alpha(Opacity=100) /*IE7 fix*/
+    opacity: 1
+    text-decoration: none
+
+.carousel-wrapper .prev
+  left: 20px
+  i
+    padding-left: 8px
+
+.carousel-wrapper .next
+  right: 20px
+  i
+    padding-left: 10px
+
+.product_thumb
+  border: 0
+  padding: 0
+  box-shadow: none
+  margin-bottom: 0
+  img
+    width: 100%
+  .caption
+    padding-left: 0
+    padding-right: 0
+    p
+      margin-bottom: 0
+
+//
+//  Images carousel
+//
+.images_carousel
+  overflow: hidden
+  .item
+    display: block
+    float: left
+    height: 220px
+
+    padding: 0 5px

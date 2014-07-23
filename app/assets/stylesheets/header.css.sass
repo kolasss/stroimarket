@@ -1,0 +1,158 @@
+@import "lib"
+
+//
+//  Header
+// ==============
+.site-header
+  background-color: #0069a6
+  .container
+    margin-left: 0
+    width: auto
+  .logowrapper
+    margin-top: 15px
+
+  .search_form
+    margin-top: 25px
+    max-width: 480px
+    width: 100%
+    .has-feedback
+      width: 100%
+      .form-control
+        width: 100%
+      .form-control-feedback
+        cursor: pointer
+        font-size: 18px
+
+
+  .nav .open>a, .nav .open>a:hover, .nav .open>a:focus
+    background-color: rgba(0, 0, 0, 0)
+
+// Main menu
+.site-header .navbar-nav > li > a
+  color: #fff
+  text-shadow: none
+  font-size: 18px
+
+.site-header .navbar-nav > li > a:hover,
+.site-header .navbar-nav > li > a:focus
+  background-color: rgba(0, 0, 0, 0)
+  color: #ccc
+
+.site-header .navbar-nav > .active > a,
+.site-header .navbar-nav > .active > a:hover,
+.site-header .navbar-nav > .active > a:focus
+  background-color: rgba(0, 0, 0, 0)
+  color: #ffe20a
+
+// .site-header .navbar-nav > .disabled > a, .site-header .navbar-nav > .disabled > a:hover, .site-header .navbar-nav > .disabled > a:focus
+//     background-color: rgba(0, 0, 0, 0)
+//     color: #CCCCCC
+
+.site-header .navbar-toggle
+  // border-color: #DDDDDD
+  color: #fff
+
+
+// .site-header .navbar-toggle:hover, .site-header .navbar-toggle:focus
+//     background-color: #DDDDDD
+
+// .site-header .navbar-toggle .icon-bar
+//     background-color: #888888
+
+// .site-header .navbar-collapse, .site-header .navbar-form
+//     border-color: #E7E7E7
+
+// .site-header .navbar-nav > .open > a, .site-header .navbar-nav > .open > a:hover, .site-header .navbar-nav > .open > a:focus
+//     background-color: #E7E7E7
+//     color: #555555
+
+// @media screen and (min-width: 768px)
+// @media (max-width: 767px)
+// .site-header .navbar-nav .open .dropdown-menu > li > a
+//     color: #777777
+
+// .site-header .navbar-nav .open .dropdown-menu > li > a:hover, .site-header .navbar-nav .open .dropdown-menu > li > a:focus
+//     background-color: rgba(0, 0, 0, 0)
+//     color: $black-color
+
+// .site-header .navbar-nav .open .dropdown-menu > .active > a, .site-header .navbar-nav .open .dropdown-menu > .active > a:hover, .site-header .navbar-nav .open .dropdown-menu > .active > a:focus
+//     background-color: #E7E7E7
+//     color: #555555
+
+// .site-header .navbar-nav .open .dropdown-menu > .disabled > a, .site-header .navbar-nav .open .dropdown-menu > .disabled > a:hover, .site-header .navbar-nav .open .dropdown-menu > .disabled > a:focus
+//     background-color: rgba(0, 0, 0, 0)
+//     color: #CCCCCC
+
+
+// .site-header .navbar-link
+//     color: #777777
+
+// .site-header .navbar-link:hover
+//     color: $black-color
+
+.site-header .usermenu
+  > li > a
+    font-size: 14px
+
+    &.btn-yellow
+      padding: 2px 7px
+      margin: 12px 8px 1px //padding+margin+border=15px
+      border-bottom: 1px solid $yellow-color
+
+//
+//  main menu dropdown with categories
+//=======================================
+@media screen and (min-width: 768px)
+  ul.nav li.dropdown-on-hover:hover > ul.dropdown-menu,
+  ul.dropdown-menu.always-opened
+    display: block
+
+  .main_categories
+    width: 220px
+    min-height: 450px
+    padding: 10px 0
+    top: 41px
+    border-radius: 8px !important
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.176)
+    li a
+      white-space: normal
+    li a:focus, li:hover > a
+      background-color: transparent
+      background-image: none
+      color: $blue-color !important
+    .subcat_dropdown
+      min-height: 450px
+      padding: 10px 0
+      margin: 0
+      box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.176)
+      top: -1px
+      left: 97%
+      border-radius: 0 8px 8px 0
+      width: 200%
+      background-position: right bottom
+      background-repeat: no-repeat
+      ul
+        list-style: none outside none
+        padding: 0
+        li a
+          clear: both
+          color: $black-color
+          display: block
+          font-weight: normal
+          line-height: 1.42857
+          padding: 3px 20px
+          white-space: nowrap
+
+
+  //dropdown submenu for navigation
+  .dropdown-submenu:hover > .dropdown-menu
+    display: block
+
+
+@media screen and (max-width: 768px)
+  .main_categories
+    li > a
+      color: #fff
+      &:hover, &:focus
+        color: #fff
+        background-color: $blue-color

@@ -21,3 +21,88 @@
 
 .sidebar_panel
   margin-top: 70px
+
+//
+// Uploaders.
+// ================================
+.image-uploader
+  @extend %filepicker-decorator
+
+  margin-bottom: 1em
+  background: #eee center center no-repeat
+  text-align: center
+
+  img
+    max-width: 100%
+    z-index: -1
+
+.image-uploader
+  min-height: 100px
+  background-image: image-url("content/placeholder-image.png")
+
+.cover-uploader
+  min-height: 300px
+  background-image: image-url("content/placeholder-cover.png")
+
+.document-uploader
+  @extend %filepicker-decorator
+
+  min-width: 100px
+  min-height: 100px
+  margin-bottom: 1em
+  background: #eee image-url("content/placeholder-document.png") center center no-repeat
+
+//
+// Attachments.
+//=================================
+
+.attachment
+  overflow: hidden
+
+.attachment-info
+  float: left
+  width: 200px
+  margin-left: 10px
+  padding: 5px 0 0
+
+.attachment-meta
+  line-height: 16px
+  font-size: 12px
+  color: #999
+
+.attachment-icon
+  display: block
+  float: left
+  width: 40px
+  height: 48px
+  background: image-url("content/attachment-icons.png") no-repeat
+
+.attachment-icon-archive
+  background-position: -38px 0
+
+.attachment-icon-document
+  background-position: -78px 0
+
+.attachment-icon-image
+  background-position: -118px 0
+
+.attachment-icon-video
+  background-position: -158px 0
+
+.attachments-form
+  .add-attachment
+    margin-top: 20px
+
+  .attachment
+    padding: 10px 0 20px
+    border-top: 1px solid #eee
+
+    &:first-child
+      border-top: none
+
+  .document-uploader,
+  .image-uploader
+    margin-top: 35px
+
+  .document-uploader
+    width: 140px
