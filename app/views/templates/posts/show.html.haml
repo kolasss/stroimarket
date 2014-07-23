@@ -1,24 +1,18 @@
 .ng-cloak
   %span(ng-hide="post.$resolved") loading
-  .row
+  .row.post_show(ng-show="post.$resolved")
+    .col-md-12
+      %h1 {{post.title}}
+
     .col-md-8
-      .panel.panel-default(ng-show="post.$resolved")
-        .panel-heading
-          %h3.panel-title
-            {{post.title}}
+      %img.img-rounded(ng-src="{{post.cover.large.url}}" ng-show="post.cover.large.url")
 
-        .panel-body
-          %img.img-rounded.catalog_article_image_large(ng-src="{{post.cover.large.url}}" ng-show="post.cover.large.url")
+      .post_body(ng-bind-html="post.body")
 
-          .body(ng-bind-html="post.body")
+      %ul
+        %li(ng-repeat="image in post.images")
+          %img.img-rounded(ng-src="{{image.file.middle.url}}" alt="{{image.title}}")
 
-          %ul
-            %li(ng-repeat="image in post.images")
-              %img.img-rounded(ng-src="{{image.file.middle.url}}" alt="{{image.title}}")
-
-        .panel-footer
-          %a.btn.btn-primary(back-button)
-            Назад
     .col-md-4
       .panel.panel-default(ng-show="post.documents.length > 0")
         .panel-heading
