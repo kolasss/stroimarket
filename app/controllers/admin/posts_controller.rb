@@ -54,7 +54,19 @@ class Admin::PostsController < AdminController
         :body,
         :url,
         :cover,
-        :remove_cover
+        :remove_cover,
+        documents_attributes: [
+          :id,
+          :title,
+          :file,
+          :_destroy
+        ],
+        images_attributes: [
+          :id,
+          :title,
+          :file,
+          :_destroy
+        ]
       )
     end
 end

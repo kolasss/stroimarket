@@ -52,6 +52,7 @@ gem 'simple_form'
 
 group :development do
   gem 'thin'
+  gem 'rails-dev-tweaks', '~> 1.1'
 end
 
 gem 'rails-i18n', '~> 4.0.0' # For 4.0.x

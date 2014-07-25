@@ -22,3 +22,13 @@
   %p
     %b Ссылка:
     = @post.url
+
+- if @post.images
+  %ul
+    - @post.images.each do |image|
+      %li
+        = image_tag(image.file.thumb, class: 'img-thumbnail')
+
+- content_for :sidebar do
+  - if @post.documents.present?
+    = render 'attachments/documents/panel', documents: @post.documents
