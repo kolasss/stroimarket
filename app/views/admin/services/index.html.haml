@@ -18,4 +18,6 @@
 
 = paginate @services
 
-= link_to 'Новая услуга', new_admin_service_path, class: 'btn btn-info'
+= content_for :sidebar do
+  .sidebar_panel
+    = link_to 'Новая услуга', new_admin_service_path, class: 'btn btn-info'

@@ -2,9 +2,6 @@
   %h1
     Продавцы
 
-    %small.control-links
-      -# = icon_link 'plus-sign', new_admin_user_path
-
 %table.table.table-hover
   %tr
     %th
@@ -26,8 +23,8 @@
       %td= profile.email
       %td= profile.phone
       %td= l profile.created_at, format: :short
-      %td.control-links
-        = icon_link 'pencil', edit_admin_user_store_profile_path(profile.user, profile)
-        = icon_link 'remove', admin_user_store_profile_path(profile.user, profile), data: { method: :delete, confirm: t('common.confirm_deletion') }
+      %td
+        = icon_link 'edit', edit_admin_user_store_profile_path(profile.user, profile)
+        = icon_link 'times', admin_user_store_profile_path(profile.user, profile), data: { method: :delete, confirm: t('common.confirm_deletion') }
 
 = paginate @store_profiles

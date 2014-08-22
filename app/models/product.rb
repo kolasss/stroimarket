@@ -72,7 +72,8 @@ class Product
                 store_profile: {
                   only: [
                     :slug,
-                    :name
+                    :name,
+                    :pavilion
                   ]
                 }
               }

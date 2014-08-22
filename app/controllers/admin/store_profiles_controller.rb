@@ -67,7 +67,8 @@ class Admin::StoreProfilesController < AdminController
         :logo,
         :remove_logo,
         :header,
-        :remove_header
+        :remove_header,
+        :pavilion
       )
     end
 

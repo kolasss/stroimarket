@@ -80,6 +80,7 @@ ru:
         email: Email
         info: Краткая информация
         about: О компании
+        pavilion: Павильон
 
     placeholders:
       category:

@@ -18,6 +18,8 @@
           %a(ng-href="http://{{currentStore.site}}") {{currentStore.site}}
         %dd
           %a(ng-href="mailto:{{currentStore.email}}") {{currentStore.email}}
+        %dd(ng-show="currentStore.pavilion")
+          Павильон: {{currentStore.pavilion}}
 
     .col-md-9
       .store_about(ng-bind-html="currentStore.about")

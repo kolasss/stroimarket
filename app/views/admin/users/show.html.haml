@@ -74,6 +74,9 @@
       %b Email
       = @user.store_profile.email
     %li
+      %b Павильон
+      = @user.store_profile.pavilion
+    %li
       %b Информация
       = @user.store_profile.info
 
@@ -82,6 +85,3 @@
 
 - elsif policy(StoreProfile).create?
   = link_to 'Создать профиль', new_admin_user_store_profile_path(@user), class: 'btn btn-primary'
-
-%br
-= link_to 'Back', admin_users_path

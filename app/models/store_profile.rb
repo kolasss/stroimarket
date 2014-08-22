@@ -13,6 +13,7 @@ class StoreProfile
   field :info, type: String
   field :slug, type: String
   field :about, type: String
+  field :pavilion, type: String
 
   mount_uploader :logo, LogoUploader
   mount_uploader :header, HeaderUploader

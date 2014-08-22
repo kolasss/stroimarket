@@ -6,15 +6,15 @@
     %th Обложка
     %th Введение
     %th
-    %th
 
   - @posts.each do |post|
     %tr
       %td= link_to post.title, admin_post_path(post)
       %td= image_tag(post.cover.thumb, class: 'img-thumbnail') if post.cover.present?
       %td= post.intro
-      %td= icon_link 'edit', edit_admin_post_path(post)
-      %td= icon_link 'times', admin_post_path(post), data: { method: :delete, confirm: t('common.confirm_deletion') }
+      %td
+        = icon_link 'edit', edit_admin_post_path(post)
+        = icon_link 'times', admin_post_path(post), data: { method: :delete, confirm: t('common.confirm_deletion') }
 
 = paginate @posts
 

@@ -32,6 +32,9 @@
                 %a(ng-href="{{stroiUtils.path_for('StoreMainCtrl', {store_slug: offer.user.store_profile.slug})}}")
                   {{offer.user.store_profile.name}}
               %td
+                %p(ng-show="offer.user.store_profile.pavilion")
+                  Павильон: {{offer.user.store_profile.pavilion}}
+              %td
                 {{offer.price}}
                 %ruble-icon
       .col-md-4
