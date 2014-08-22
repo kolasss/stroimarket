@@ -10,6 +10,8 @@
     width: auto
   .logowrapper
     margin-top: 15px
+    // .logo
+    //   float: left
 
   .search_form
     margin-top: 25px
@@ -23,9 +25,15 @@
         cursor: pointer
         font-size: 18px
 
-
   .nav .open>a, .nav .open>a:hover, .nav .open>a:focus
     background-color: rgba(0, 0, 0, 0)
+
+@media screen and (min-width: 768px)
+  .site-header
+    .col-logo
+      width: 305px
+    .col-search
+      width: 480px
 
 // Main menu
 .site-header .navbar-nav > li > a
@@ -36,13 +44,23 @@
 .site-header .navbar-nav > li > a:hover,
 .site-header .navbar-nav > li > a:focus
   background-color: rgba(0, 0, 0, 0)
-  color: #ccc
+  color: $gray-color
 
 .site-header .navbar-nav > .active > a,
 .site-header .navbar-nav > .active > a:hover,
 .site-header .navbar-nav > .active > a:focus
   background-color: rgba(0, 0, 0, 0)
-  color: #ffe20a
+  color: $yellow-color
+
+@media screen and (max-width: 768px)
+  .usermenu-dropdown > li > a
+    color: #fff
+    text-shadow: none
+
+  .usermenu-dropdown > li > a:hover,
+  .usermenu-dropdown > li > a:focus
+    background-color: rgba(0, 0, 0, 0)
+    color: $gray-color
 
 // .site-header .navbar-nav > .disabled > a, .site-header .navbar-nav > .disabled > a:hover, .site-header .navbar-nav > .disabled > a:focus
 //     background-color: rgba(0, 0, 0, 0)
