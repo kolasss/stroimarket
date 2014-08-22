@@ -33,4 +33,10 @@ app.controller 'CategoryCtrl',
     $scope.$on 'ProductNumberOfPages:updated', (event, data) ->
       $scope.numberOfPages = data
 
+    $scope.draw_price = (product) ->
+      if product.min_price == product.max_price
+        "#{product.min_price} <i class='fa fa-rub'></i>"
+      else
+        "#{product.min_price} ... #{product.max_price} <i class='fa fa-rub'></i>"
+
 ]
