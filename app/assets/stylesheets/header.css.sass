@@ -22,18 +22,17 @@
     margin-top: 25px
     max-width: 480px
     width: 100%
-    opacity: 0.9
     .has-feedback
       width: 100%
       .form-control
+        opacity: 0.9
         width: 100%
+        &:hover, &:focus
+          opacity: 1
+          color: $black-color
       .form-control-feedback
         cursor: pointer
         font-size: 18px
-    &:hover, &:focus
-      opacity: 1
-      .form-control
-        color: $black-color
 
   .nav .open>a, .nav .open>a:hover, .nav .open>a:focus
     background-color: rgba(0, 0, 0, 0)

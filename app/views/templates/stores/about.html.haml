@@ -1,28 +1,30 @@
 .ng-cloak
-  .row.store_profile_header
-    = render 'templates/stores/store_header'
+  %span(ng-hide="currentStore") loading
+  .store_wrapper(ng-show="currentStore")
+    .row.store_profile_header
+      = render 'templates/stores/store_header'
 
-  .row.store_profile_body
-    .col-md-3
-      %dl.store_info
-        %dt О нас
-        %dd {{currentStore.info}}
+    .row.store_profile_body
+      .col-md-3
+        %dl.store_info
+          .dl_block(ng-show="currentStore.info")
+            %dt О нас
+            %dd {{currentStore.info}}
 
-        %dt.inner_header Контакты
-        %dd {{currentStore.contacts}}
+          .dl_block(ng-show="currentStore.contacts || currentStore.phone || currentStore.site || currentStore.email")
+            %dt.inner_header Контакты
+            %dd {{currentStore.contacts}}
+            %dd {{currentStore.phone}}
+            %dd
+              %a(ng-href="http://{{currentStore.site}}") {{currentStore.site}}
+            %dd
+              %a(ng-href="mailto:{{currentStore.email}}") {{currentStore.email}}
+            %dd(ng-show="currentStore.pavilion")
+              Павильон: {{currentStore.pavilion}}
 
-        %dt.inner_header Реквизиты
-        %dd {{currentStore.requisites}}
-        %dd {{currentStore.phone}}
-        %dd
-          %a(ng-href="http://{{currentStore.site}}") {{currentStore.site}}
-        %dd
-          %a(ng-href="mailto:{{currentStore.email}}") {{currentStore.email}}
-        %dd(ng-show="currentStore.pavilion")
-          Павильон: {{currentStore.pavilion}}
+          .dl_block(ng-show="currentStore.requisites")
+            %dt.inner_header Реквизиты
+            %dd {{currentStore.requisites}}
 
-    .col-md-9
-      .store_about(ng-bind-html="currentStore.about")
-
-      / %a.btn.btn-primary(back-button)
-      /   Назад
+      .col-md-9
+        .store_about(ng-bind-html="currentStore.about")
