@@ -11,7 +11,7 @@
             %i.fa.fa-pencil
         %p {{product.intro}}
       %td.product_prices
-        %p.price_range(ng-show="product.min_price" ng-bind-html="draw_price(product)")
+        %p.price(ng-show="product.min_price" ng-bind-html="draw_price(product)")
         %p(ng-show='product.offers_count > 0')
           {{product.offers_count}} предложений
         %a.btn.btn-blue.mini-btn(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")

@@ -46,7 +46,7 @@
                     %i.fa.fa-pencil
                 %p {{product.intro}}
               %td.product_prices
-                %p(ng-show="product.price")
+                %p.price(ng-show="product.price")
                   {{product.price}}
                   %ruble-icon
                 %a.btn.btn-blue.mini-btn(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")

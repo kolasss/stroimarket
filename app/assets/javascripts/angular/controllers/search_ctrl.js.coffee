@@ -99,4 +99,11 @@ app.controller 'SearchCtrl',
       $scope.filter = FilterCatalog.clear_filter()
       $scope.checked_cats = {}
 
+    $scope.draw_price = (product) ->
+      if product.min_price == product.max_price
+        "#{product.min_price} <i class='fa fa-rub'></i>"
+      else
+        "#{product.min_price} ... #{product.max_price} <i class='fa fa-rub'></i>"
+
+
 ]

@@ -42,7 +42,7 @@
                     %i.fa.fa-pencil
                 %p {{service.intro}}
               %td.product_prices
-                %p(ng-show="service.price")
+                %p.price(ng-show="service.price")
                   {{service.price}}
                   %ruble-icon
                 %a.btn.btn-blue.mini-btn(ng-href="{{stroiUtils.path_for('ServiceCtrl', {service_id: service._id.$oid})}}")
