@@ -4,8 +4,9 @@
     %ol.breadcrumb
       %li Услуги
       %li
-        %a(ng-href="{{stroiUtils.path_for('ServiceCtrl', {service_id: service.service_category._id.$oid})}}")
-          {{service.service_category.title}}
+        {{service.service_category.title}}
+        / %a(ng-href="{{stroiUtils.path_for('ServiceCtrl', {service_id: service.service_category._id.$oid})}}")
+        /   {{service.service_category.title}}
 
     %h1
       {{service.title}}
