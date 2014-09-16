@@ -18,6 +18,7 @@
 
 
 // pills
+// ======================
 .nav-pills > li > a
   padding: 2px 10px
 
@@ -26,3 +27,38 @@
 .nav-pills > li.active > a:focus
   background-color: $pills-gray-color
   color: $black-color
+
+// inputs
+// ======================
+.form-group
+  margin-bottom: 20px
+.form-control
+  // background-color: white
+  // background-image: none
+  // border: 1px solid #cccccc
+  border-color: $gray-border-color
+  border-radius: 3px
+  box-shadow: none
+  // color: #555555
+  // display: block
+  // font-size: 14px
+  // height: 34px
+  // line-height: 1.42857
+  padding: 6px 8px
+  // transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s
+  // width: 100%
+
+.form-control:hover
+  border-color: $gray-hover-border-color
+
+.form-control:focus
+  border-color: $gray-active-border-color
+  box-shadow: none
+
+
+// panel
+// ======================
+.panel
+  border-radius: 6px
+  .panel-body
+    padding: 20px 15px 0

@@ -8,7 +8,8 @@
     %input.form-control(type="text" placeholder="до" ng-model="filter.maxPrice")
     %ruble-icon
 
-  %div(range-slider
-    data-values="priceRange"
-    data-min-value="filter.minPrice"
-    data-max-value="filter.maxPrice")
+  .slider_wrapper
+    %div(range-slider
+      data-values="priceRange"
+      data-min-value="filter.minPrice"
+      data-max-value="filter.maxPrice")

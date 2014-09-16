@@ -59,7 +59,7 @@ h1, h2, h3, h4, h5, h6
 
 .page-footer
   width: 100%
-  background: #FFFF33
+  background: $dark-yellow-color
   margin-bottom: 0
   border: 0
   position: absolute
@@ -115,6 +115,8 @@ h1, h2, h3, h4, h5, h6
     color: #fff
     background-color: $blue-color
 
+.mini-btn
+  padding: 2px 10px
 
 
 
@@ -130,32 +132,41 @@ h1, h2, h3, h4, h5, h6
       a
         display: inline-block
         &:hover, &:focus
-          background-color: #EEEEEE
+          color: $black-color
+          background-color: $pills-gray-color
 
-.my_pager
-  padding-left: 0
+  .my_pager
+    padding-left: 0
+    margin-bottom: 10px
 
-.my_pager li > a
-  border-radius: 15px
-  padding: 5px 14px
+  .my_pager li > a
+    border-radius: 4px
+    padding: 2px 10px
 
-.my_pager .disabled > a, .my_pager .disabled > a:hover, .my_pager .disabled > a:focus, .my_pagination > .disabled > a, .my_pagination > .disabled > a:hover, .my_pagination > .disabled > a:focus
-  background-color: #FFFFFF
-  color: #999999
-  cursor: not-allowed
+  .my_pager .disabled > a,
+  .my_pager .disabled > a:hover,
+  .my_pager .disabled > a:focus,
+  .my_pagination > .disabled > a,
+  .my_pagination > .disabled > a:hover,
+  .my_pagination > .disabled > a:focus
+    background-color: $white-color
+    color: $gray-color
+    cursor: not-allowed
 
-.my_pagination
-  padding-left: 14px
+  .my_pagination
+    padding-left: 14px
 
-.my_pagination > li > a
-  border-radius: 50%
-  line-height: 1.42857
-  padding: 6px 12px
+  .my_pagination > li > a
+    border-radius: 50%
+    line-height: 1.42857
+    padding: 4px 10px
 
-.my_pagination > .active > a, .my_pagination > .active > a:hover, .my_pagination > .active > a:focus
-  background-color: $light-blue-color
-  color: $black-color
-  cursor: default
+  .my_pagination > .active > a,
+  .my_pagination > .active > a:hover,
+  .my_pagination > .active > a:focus
+    background-color: $light-blue-color
+    color: $black-color
+    cursor: default
 
 //
 //  Home page

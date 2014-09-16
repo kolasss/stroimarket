@@ -12,6 +12,7 @@ app.directive 'productsCarousel',
           prev: prev_btn
           next: next_btn
           transition: true
+          align: "left"
           swipe:
             onMouse: true
             onTouch: true

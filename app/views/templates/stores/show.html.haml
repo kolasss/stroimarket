@@ -49,7 +49,7 @@
                 %p(ng-show="product.price")
                   {{product.price}}
                   %ruble-icon
-                %a.btn.btn-blue(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
+                %a.btn.btn-blue.mini-btn(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
                   Подробнее
 
         %my-paginator(data-current-page="currentPage" data-number-of-pages="numberOfPages")

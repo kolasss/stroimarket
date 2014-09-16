@@ -38,7 +38,7 @@
               %ruble-icon
             %p
               {{service.store_title}}
-            %a.btn.btn-blue(ng-href="{{stroiUtils.path_for('ServiceCtrl', {service_id: service._id.$oid})}}")
+            %a.btn.btn-blue.mini-btn(ng-href="{{stroiUtils.path_for('ServiceCtrl', {service_id: service._id.$oid})}}")
               Подробнее
 
     %my-paginator(data-current-page="currentServicePage" data-number-of-pages="numberOfServicePages")
