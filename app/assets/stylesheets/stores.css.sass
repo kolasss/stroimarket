@@ -1,13 +1,13 @@
 @import "lib"
 
 .store_profile_header
-  margin-top: -20px
   margin-bottom: 30px
   .header_background
     background-color: $light-blue-color
     background-size: cover
     background-position: 50% 50%
     height: 250px
+    margin-top: -20px
     margin-bottom: -15px
   .logo
     width: 98px
@@ -18,7 +18,12 @@
 
   .profile_menu
     margin-left: 15px
+    height: 97px
     display: inline-block
+    position: relative
+    .nav-pills
+      position: absolute
+      bottom: 0
 
 .store_profile_body
   .carousel_popular

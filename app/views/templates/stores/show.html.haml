@@ -1,53 +1,55 @@
 .ng-cloak
-  .row.store_profile_header
-    = render 'templates/stores/store_header'
+  %span(ng-hide="currentStore") loading
+  .store_wrapper(ng-show="currentStore")
+    .row.store_profile_header
+      = render 'templates/stores/store_header'
 
-  .row.store_profile_body
-    .col-md-12.carousel_popular
-      %h4
-        Популярные товары →
-      %products-carousel(data-products="currentStore.popular" data-store="true")
+    .row.store_profile_body
+      .col-md-12.carousel_popular
+        %h4
+          Популярные товары →
+        %products-carousel(data-products="currentStore.popular" data-store="true")
 
-  .row.catalog_view
-    .col-md-3
-      .panel.panel-info
-        .panel-body
-          %form(role="form")
-            = render 'templates/catalog/text_filter'
-            = render 'templates/catalog/price_filter'
+    .row.catalog_view
+      .col-md-3
+        .panel.panel-info
+          .panel-body
+            %form(role="form")
+              = render 'templates/catalog/text_filter'
+              = render 'templates/catalog/price_filter'
 
-            .form-group(ng-show="categories.length > 0")
-              %label
-                Категории
-              %ul.list-unstyled
-                %li(ng-repeat="cat in categories")
-                  .checkbox
-                    %label
-                      %input(type="checkbox"
-                        ng-click="FilterCatalog.toggleSubcat(cat.id, cat.children_ids)")
-                      {{cat.title}}
-                      %span.text-muted {{cats_counter[cat.id]}}
+              .form-group(ng-show="categories.length > 0")
+                %label
+                  Категории
+                %ul.list-unstyled
+                  %li(ng-repeat="cat in categories")
+                    .checkbox
+                      %label
+                        %input(type="checkbox"
+                          ng-click="FilterCatalog.toggleSubcat(cat.id, cat.children_ids)")
+                        {{cat.title}}
+                        %span.text-muted {{cats_counter[cat.id]}}
 
-    .col-md-9
-      = render 'templates/catalog/sorting_btns2'
+      .col-md-9
+        = render 'templates/catalog/sorting_btns2'
 
-      %table.table.products_list
-        %tbody
-          %tr(ng-repeat="product in FilterCatalog.filteredProducts() | orderBy:SortingCatalog.sort.column:SortingCatalog.sort.descending | startFrom:currentPage*SortingCatalog.pageSize | limitTo:SortingCatalog.pageSize")
-            %td.product_img
-              %img(ng-src="{{product.cover.thumb.url}}")
-            %td
-              %a(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
-                {{product.title}}
-              .control-links(ng-show="stroiUtils.canEdit(product.user_id.$oid)")
-                %a{'ng-href' => "{{stroiUtils.editProductPath(product._id.$oid)}}"}
-                  %i.fa.fa-pencil
-              %p {{product.intro}}
-            %td.product_prices
-              %p(ng-show="product.price")
-                {{product.price}}
-                %ruble-icon
-              %a.btn.btn-blue(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
-                Подробнее
+        %table.table.products_list
+          %tbody
+            %tr(ng-repeat="product in FilterCatalog.filteredProducts() | orderBy:SortingCatalog.sort.column:SortingCatalog.sort.descending | startFrom:currentPage*SortingCatalog.pageSize | limitTo:SortingCatalog.pageSize")
+              %td.product_img
+                %img(ng-src="{{product.cover.thumb.url}}")
+              %td
+                %a(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
+                  {{product.title}}
+                .control-links(ng-show="stroiUtils.canEdit(product.user_id.$oid)")
+                  %a{'ng-href' => "{{stroiUtils.editProductPath(product._id.$oid)}}"}
+                    %i.fa.fa-pencil
+                %p {{product.intro}}
+              %td.product_prices
+                %p(ng-show="product.price")
+                  {{product.price}}
+                  %ruble-icon
+                %a.btn.btn-blue(ng-href="{{stroiUtils.path_for('ProductCtrl', {product_id: product._id.$oid})}}")
+                  Подробнее
 
-      %my-paginator(data-current-page="currentPage" data-number-of-pages="numberOfPages")
+        %my-paginator(data-current-page="currentPage" data-number-of-pages="numberOfPages")

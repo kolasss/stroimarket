@@ -3,7 +3,8 @@
     .row.logowrapper
       .col-md-3.col-logo
         %a.logo{ href: root_path }
-          = image_tag("logo.png", alt: "GuruStroy")
+          .logo_img
+          -# = image_tag("logo.png", alt: "GuruStroy")
       .col-md-9.col-search
         = render 'search'
     .row

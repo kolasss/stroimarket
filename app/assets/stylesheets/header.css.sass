@@ -10,13 +10,19 @@
     width: auto
   .logowrapper
     margin-top: 15px
-    // .logo
-    //   float: left
+    .logo_img
+      height: 64px
+      width: 259px
+      background: image-url("logo.png") 0 0 no-repeat
+      background-size: 259px 64px
+      @include mq_retina
+        background-image: image-url("logo-x2.png")
 
   .search_form
     margin-top: 25px
     max-width: 480px
     width: 100%
+    opacity: 0.9
     .has-feedback
       width: 100%
       .form-control
@@ -24,6 +30,10 @@
       .form-control-feedback
         cursor: pointer
         font-size: 18px
+    &:hover, &:focus
+      opacity: 1
+      .form-control
+        color: $black-color
 
   .nav .open>a, .nav .open>a:hover, .nav .open>a:focus
     background-color: rgba(0, 0, 0, 0)
@@ -37,7 +47,7 @@
 
 // Main menu
 .site-header .navbar-nav > li > a
-  color: #fff
+  color: $white-color
   text-shadow: none
   font-size: 18px
 
@@ -54,7 +64,7 @@
 
 @media screen and (max-width: 768px)
   .usermenu-dropdown > li > a
-    color: #fff
+    color: $white-color
     text-shadow: none
 
   .usermenu-dropdown > li > a:hover,
@@ -68,7 +78,7 @@
 
 .site-header .navbar-toggle
   // border-color: #DDDDDD
-  color: #fff
+  color: $white-color
 
 
 // .site-header .navbar-toggle:hover, .site-header .navbar-toggle:focus
@@ -170,7 +180,7 @@
 @media screen and (max-width: 768px)
   .main_categories
     li > a
-      color: #fff
+      color: $white-color
       &:hover, &:focus
-        color: #fff
+        color: $white-color
         background-color: $blue-color

@@ -1,4 +1,4 @@
-.header_background(back-img="{{currentStore.header.url}}")
+.header_background(back-img="{{currentStore.header.url}}" ng-show="currentStore.header.url")
 %img.logo.img-rounded(ng-src="{{currentStore.logo.url}}")
 .profile_menu
   %h1 {{currentStore.name}}

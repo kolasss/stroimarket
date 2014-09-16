@@ -31,5 +31,13 @@ $light-blue-color: #e5f0f6
 $gray-blue-color: #ddeeee
 $yellow-color: #ffde05
 $blue-border-color: #c1dbea
-$light-gray-color: #f3f8fb
 $gray-color: #ccc
+$light-gray-color: #f3f8fb
+$pills-gray-color: #eee
+$white-color: #fff
+
+// media query for retina display
+@mixin mq_retina
+  @media only screen
+    @media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-device-pixel-ratio: 2)
+      @content
