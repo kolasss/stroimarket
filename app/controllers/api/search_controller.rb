@@ -15,7 +15,19 @@ class Api::SearchController < ApplicationController
 
     result[:services] = Service.full_text_search(params[:id]).as_json(
       except: [:body, :_keywords, :cover_filename, :user_id],
-      methods: [:store_title]
+      include: {
+        user: {
+          only: [:store_profile],
+          include: {
+            store_profile: {
+              only: [
+                :slug,
+                :name,
+              ]
+            }
+          }
+        }
+      }
     )
 
     respond_with result

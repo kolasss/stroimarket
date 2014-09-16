@@ -27,16 +27,18 @@
         .body(ng-bind-html="service.body")
 
       .col-md-4
-        .price_range_wrapper(ng-show="service.price")
+        .price_wrapper(ng-show="service.price")
           %p Цена:
-          %p.price_range
+          %p.price
             {{service.price}}
             %ruble-icon
 
-        %a(ng-href="{{stroiUtils.path_for('StoreServicesCtrl', {store_slug: service.user.store_profile.slug})}}")
-          {{service.user.store_profile.name}}
+        .store_profile
+          %h3
+            %a(ng-href="{{stroiUtils.path_for('StoreServicesCtrl', {store_slug: service.user.store_profile.slug})}}")
+              {{service.user.store_profile.name}}
 
-        %p {{service.user.store_profile.phone}}
-        %p {{service.user.store_profile.site}}
-        %p {{service.user.store_profile.email}}
+          %p {{service.user.store_profile.phone}}
+          %p {{service.user.store_profile.site}}
+          %p {{service.user.store_profile.email}}
 

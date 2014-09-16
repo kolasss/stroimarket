@@ -16,10 +16,6 @@ class Service
   validates :service_category_id, :presence => true
   validates :user_id, :presence => true
 
-  def store_title
-    user.company_name if user?
-  end
-
   def as_json_for_catalog
     options = {
       except: [:_id, :_keywords, :service_category_id, :product_images],

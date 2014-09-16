@@ -4,8 +4,20 @@ class Api::ServicesController < ApplicationController
   def index
     services = Service.all
     respond_with services,
-      except: [:body, :_keywords, :cover_filename],
-      methods: [:store_title]
+      except: [:body, :_keywords, :cover_filename, :user_id],
+      include: {
+        user: {
+          only: [:store_profile],
+          include: {
+            store_profile: {
+              only: [
+                :slug,
+                :name,
+              ]
+            }
+          }
+        }
+      }
   end
 
   def show

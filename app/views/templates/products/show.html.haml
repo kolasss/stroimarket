@@ -38,6 +38,6 @@
                 {{offer.price}}
                 %ruble-icon
       .col-md-4
-        .price_range_wrapper(ng-show="product.min_price")
+        .price_wrapper(ng-show="product.min_price")
           %p Цена:
-          %p.price_range(ng-bind-html="draw_price()")
+          %p.price(ng-bind-html="draw_price()")

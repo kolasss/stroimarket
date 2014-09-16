@@ -3,8 +3,8 @@ app.controller 'ServiceCategoriesCtrl',
   ($scope, ServiceCategory, Service, $q, SortingCatalog, FilterCatalog) ->
 
     $scope.SortingCatalog = SortingCatalog
-    $scope.currentPage = 0
-    $scope.numberOfPages = 0
+    $scope.currentServicePage = 0
+    $scope.numberOfServicePages = 0
 
     $scope.FilterCatalog = FilterCatalog
 
@@ -26,6 +26,6 @@ app.controller 'ServiceCategoriesCtrl',
       FilterCatalog.count_services($scope.cats_counter, $scope.categories)
 
     $scope.$on 'ServiceNumberOfPages:updated', (event, data) ->
-      $scope.numberOfPages = data
+      $scope.numberOfServicePages = data
 
 ]

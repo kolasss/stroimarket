@@ -21,28 +21,5 @@
 
     .col-md-9
       %h3 Услуги
-
       = render 'templates/catalog/sorting_btns2'
-
-      %table.table.products_list
-        %tbody
-          %tr(ng-repeat="service in FilterCatalog.filteredServices() | orderBy:SortingCatalog.sort.column:SortingCatalog.sort.descending | startFrom:currentPage*SortingCatalog.pageSize | limitTo:SortingCatalog.pageSize")
-            %td.product_img
-              %img(ng-src="{{service.cover.thumb.url}}")
-            %td
-              %a(ng-href="{{stroiUtils.path_for('ServiceCtrl', {service_id: service._id.$oid})}}")
-                {{service.title}}
-              .control-links(ng-show="stroiUtils.canEdit(service.user_id.$oid)")
-                %a{'ng-href' => "{{stroiUtils.editServicePath(service._id.$oid)}}"}
-                  %i.fa.fa-pencil
-              %p {{service.intro}}
-            %td.product_prices
-              %p.price(ng-show="service.price")
-                {{service.price}}
-                %ruble-icon
-              %p
-                {{service.store_title}}
-              %a.btn.btn-blue.mini-btn(ng-href="{{stroiUtils.path_for('ServiceCtrl', {service_id: service._id.$oid})}}")
-                Подробнее
-
-      %my-paginator(data-current-page="currentPage" data-number-of-pages="numberOfPages")
+      = render 'templates/catalog/services_catalog'
