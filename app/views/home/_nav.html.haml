@@ -1,5 +1,5 @@
 %ul.nav.navbar-nav.ng-cloak(nav-menu)
-  %li.dropdown.dropdown-on-hover(ng-class="{'active': isActive('CategoriesCtrl', 'CategoryCtrl', 'ProductCtrl')}")
+  %li.dropdown.dropdown-on-hover(ng-class="{'active': isActive('CategoriesCtrl', 'CategoryCtrl', 'ProductCtrl')}" ng-mouseenter="openSubmenu()" ng-mouseleave="closeSubmenu()")
     %a.dropdown-toggle(href='#/categories')
       Каталог товаров
       %b.caret.hidden-xs

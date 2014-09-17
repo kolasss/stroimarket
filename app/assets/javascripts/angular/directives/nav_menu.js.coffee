@@ -68,6 +68,10 @@ app.directive 'categoriesDropdown',
       templateUrl: 'templates/navigation/categories.html'
       link: (scope, element, attrs) ->
         rows = 10
+        openedClass = 'always-opened'
+
+        onMain = () ->
+          $route.current.controller == 'HomeCtrl'
 
         Category.all().$promise.then (result) ->
           scope.categories = angular.copy(result)
@@ -78,9 +82,14 @@ app.directive 'categoriesDropdown',
           "col-md-#{12 / cat_length}"
         scope.alwaysOpen = () ->
           if $route.current
-            return 'always-opened' if $route.current.controller == 'HomeCtrl'
+            return openedClass if onMain()
         scope.submenuClass = (category) ->
           'dropdown-submenu' if category.children.length > 0
-
+        scope.openSubmenu = () ->
+          element.addClass(openedClass) unless onMain()
+          return true
+        scope.closeSubmenu = () ->
+          element.removeClass(openedClass) unless onMain()
+          return true
     }
 ]
