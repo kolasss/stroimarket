@@ -1,5 +1,6 @@
 .ng-cloak
-  .row.catalog_view
+  %span(ng-hide="services.$resolved") loading
+  .row.catalog_view(ng-show="services.$resolved")
     .col-md-3
       .panel.panel-info
         .panel-body
@@ -17,7 +18,7 @@
                       %input(type="checkbox"
                         ng-click="FilterCatalog.toggleSubcat(subcat._id.$oid)")
                       {{subcat.title}}
-                      %span.text-muted {{subcats_counter[subcat._id.$oid]}}
+                      %span.text-muted {{cats_counter[subcat._id.$oid]}}
 
     .col-md-9
       %h3 Услуги

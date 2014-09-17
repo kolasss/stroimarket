@@ -1,5 +1,6 @@
 .ng-cloak
-  .row.catalog_view
+  %span(ng-hide="currentCategory.products.$resolved") loading
+  .row.catalog_view(ng-show="currentCategory.products.$resolved")
     .col-md-3
       .panel.panel-info
         .panel-body

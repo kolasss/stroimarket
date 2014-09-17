@@ -8,7 +8,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
 gem 'mongoid', :git => 'https://github.com/mongoid/mongoid.git'
-gem 'mongoid-tree', :git => 'https://github.com/benedikt/mongoid-tree.git', :branch => "mongoid-4.0", :require => 'mongoid/tree'
+gem 'mongoid-tree', :require => 'mongoid/tree'
 gem 'mongoid_slug'
 gem 'mongoid_search', :git => 'https://github.com/mauriciozaffari/mongoid_search.git'
 
@@ -19,7 +19,6 @@ gem 'fog' #aws s3 support
 
 gem 'haml-rails'
 
-# gem 'cancan'
 gem 'devise'
 gem "pundit" #authorization
 
