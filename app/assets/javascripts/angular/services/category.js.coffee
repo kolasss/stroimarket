@@ -29,12 +29,14 @@ app.factory 'Category', ['$resource', ($resource) ->
         @categoriesCache[id] = @get(id)
 
     set_children_ids: (category) ->
+      console.log category
       ids = []
       for subcat in category.children
         ids = ids.concat subcat.id
-        if subcat.children_ids and subcat.children_ids.length > 0
-          ids = ids.concat subcat.children_ids
-        else if subcat.children.length > 0
+        # if subcat.children_ids and subcat.children_ids.length > 0
+        #   console.log subcat.children_ids
+        #   ids = ids.concat subcat.children_ids
+        if subcat.children.length > 0
           ids = ids.concat @set_children_ids(subcat)
       category.children_ids = ids
       return ids

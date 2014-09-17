@@ -1,5 +1,6 @@
 .ng-cloak
-  .row
+  %span(ng-hide="currentManufacturer.products.$resolved") loading
+  .row(ng-show="currentManufacturer.products.$resolved")
     .col-md-3
       .panel.panel-info
         .panel-body

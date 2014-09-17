@@ -23,6 +23,8 @@ app.factory 'FilterCatalog', ['filterFilter', '$filter', 'SortingCatalog', '$roo
             subcats_counter[item.category_id.$oid] += 1
           else
             for subcat in @current.children
+              # console.log subcat.children_ids
+              # console.log subcat
               if item.category_id.$oid in subcat.children_ids
                 subcats_counter[subcat.id] += 1
                 break
