@@ -29,7 +29,6 @@ app.factory 'Category', ['$resource', ($resource) ->
         @categoriesCache[id] = @get(id)
 
     set_children_ids: (category) ->
-      console.log category
       ids = []
       for subcat in category.children
         ids = ids.concat subcat.id
